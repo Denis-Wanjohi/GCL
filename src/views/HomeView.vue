@@ -3,6 +3,7 @@
 import { VTabs } from "vuetify/lib/components/index.mjs";
 import HeroSection from "./HomePage/HeroSection.vue";
 import FeaturesSection from "./HomePage/FeaturesSection.vue";
+import PlansSection from "./HomePage/PlansSection.vue";
 </script>
 
 <template>
@@ -32,6 +33,7 @@ import FeaturesSection from "./HomePage/FeaturesSection.vue";
   <main>
     <hero-section></hero-section>
     <features-section></features-section>
+    <plans-section></plans-section>
   </main>
   <footer>
 
