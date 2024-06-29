@@ -6,59 +6,82 @@
         color="deep-purple-accent-4"
         fixed-tabs="true"
       >
-        <v-tab :value="1">HOME</v-tab>
-        <v-tab :value="2">BUSINESS</v-tab>
-        <v-tab :value="3">STUDENT</v-tab>
+        <v-tab value="HOME">HOME</v-tab>
+        <v-tab value="BUSINESS">BUSINESS</v-tab>
+        <v-tab value="STUDENT">STUDENT</v-tab>
       </v-tabs>
   
-      <v-tabs-window v-model="tab">
+      <v-card-text>
+        <v-tabs-window v-model="tab" >
         <v-tabs-window-item
-          v-for="n in 3"
+          v-for="(plan,n) in plans.length"
           :key="n"
-          :value="n"
+          :value=plans[n].plan
         >
           <v-container fluid>
             <v-row>
               <v-col
-                v-for="i in 6"
+                v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
                 md="4"
               >
-              <v-card
-                class="mx-auto text-base"
-                color="surface-variant"
-                image="https://cdn.vuetifyjs.com/docs/images/cards/dark-beach.jpg"
-                max-width="340"
-                height="200"
-                subtitle="Take a walk down the beach"
-                title="Evening sunset"
-            >
-                <!-- <template v-slot:actions>
-                <v-btn
-                    append-icon="mdi-chevron-right"
-                    color="red-lighten-2"
-                    text="Book Activity"
-                    variant="outlined"
-                    block
-                ></v-btn>
-                </template> -->
-                
-            </v-card>
-            <div class="bg-slate-300 w-[80%] h-[200px] mx-auto">
+              <div>
+                <v-card
+                    class="mx-auto "
+                    color="surface-variant"
+                    image="/Images/student-pro.jpg"
+                    max-width="350"
+                    height="200"
+                    :subtitle="`Ksh. ${packages.price} only`"
+                    :title=packages.feature
+                    
+                >
+                    
+                    <p class="text-[100px] px-4 py-4 bg-gradient-to-t from-orange-500 ">{{ packages.speed }} <span  class="text-[40px]">Mbps</span></p>
+                    <p>onw</p>
+                </v-card>
+                <v-card
+                    class="mx-auto"
+                    max-width="350"
+                    style="background-color: greenyellow;"
+                >
+                    <v-list density="compact">
 
-            </div>
+                    <v-list-item
+                        v-for="(description, i) in packages.description"
+                        :key="i"
+                        :value="item"
+                        color="primary"
+                        style="background-color: beige;"
+                    >
+                        <template v-slot:prepend>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
+                        </template>
+
+                        <v-list-item-title class="text-xl">{{ description }}</v-list-item-title>
+                    </v-list-item>
+                    </v-list>
+                </v-card>
+
+              </div>
+                        
               
               </v-col>
             </v-row>
           </v-container>
         </v-tabs-window-item>
+        <!-- <v-tabs-window-item  value="HOME">HOME</v-tabs-window-item> -->
+        <!-- <v-tabs-window-item  value="BUSINESS">BUSINESS</v-tabs-window-item>
+        <v-tabs-window-item  value="STUDENT">STUDENT</v-tabs-window-item> -->
       </v-tabs-window>
+      </v-card-text>
     </v-card>
   </template>
   <script setup>
   import {ref} from 'vue'
   const tab = ref()
+
 
   const plans = [
     {
@@ -73,7 +96,8 @@
                     "Browsing",
                     "Unlimited",
                     "social media",
-                    "e-learning"
+                    "e-learning",
+                    ""
                 ],
                 users:"5-8"
             },
@@ -194,6 +218,7 @@
         packages:[
             {
                 feature:"Student Lite",
+                immage:"/Image/student-lite.jpg",
                 speed:3,
                 price:999,
                 description:[
@@ -205,6 +230,7 @@
             },
             {
                 feature:"Student Pro",
+                immage:"/Image/student-pro.jpg",
                 speed:5,
                 price:1499,
                 description:[
