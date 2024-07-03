@@ -1,0 +1,23 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [6.955, 46.818],
+              [6.955, 47.808],
+              [8.464, 47.808],
+              [8.464, 46.818],
+              [6.955, 46.818]
+            ]
+          ]
+        },
+        "properties": {
+          "name": "Switzerland"
+        }
+      }
+    ]
+}
