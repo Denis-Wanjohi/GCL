@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card class="text-start" >
       <v-tabs
         v-model="tab"
         align-tabs="center"
@@ -28,18 +28,15 @@
               >
               <div>
                 <v-card
-                    class="mx-auto "
+                    style="color: red;background-color: green;"
+                    class="mx-auto"
                     color="surface-variant"
                     image="/Images/student-pro.jpg"
                     max-width="350"
                     height="200"
-                    :subtitle="`Ksh. ${packages.price} only`"
-                    :title=packages.feature
-                    
                 >
-                    
-                    <p class="text-[100px] px-4 py-4 bg-gradient-to-t from-orange-500 ">{{ packages.speed }} <span  class="text-[40px]">Mbps</span></p>
-                    <p>onw</p>
+                    <v-card-title class="bg-gradient-to-r from-orange-500 py-7" >{{ packages.feature }}</v-card-title>
+                    <p class="text-[80px] px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[40px]">Mbps <span class="text-base bg-gradient-to-l from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
                 </v-card>
                 <v-card
                     class="mx-auto"

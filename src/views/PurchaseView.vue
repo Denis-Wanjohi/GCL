@@ -1,7 +1,7 @@
 <template>
     <div>
       <p class="text-center font-bold text-5xl py-5 text-cyan ">QUALITY AT A CHEAPER PRICE</p>
-      <p class="text-grey text-center">*click on any option to see more</p>
+      <p class="text-grey text-center">*click on an option to see more</p>
     </div>
     <div class=" pb-5 w-10/12 mx-auto">
       <div class="text-center d-flex pb-4">
@@ -31,23 +31,22 @@
             <v-container fluid>
             <v-row>
               <v-col
-                v-for="(packages,i) in plan.packages"
+                v-for="(package_plan,i) in plan.packages"
                 :key="i"
                 cols="12"
                 md="4"
               >
               <div>
                 <v-card
-                    class="mx-auto "
+                    style="color: red;background-color: green;"
+                    class="mx-auto text-start"
                     color="surface-variant"
                     image="/Images/student-pro.jpg"
                     max-width="350"
                     height="200"
-                    :subtitle="`Ksh. ${packages.price} only`"
-                    :title=packages.feature
-                    
                 >
-                    <p class="text-[100px] px-4 py-4 bg-gradient-to-t from-orange-500 ">{{ packages.speed }} <span  class="text-[40px]">Mbps</span></p>
+                    <v-card-title class="bg-gradient-to-b from-orange-500 py-7" >{{ package_plan.feature }}</v-card-title>
+                    <p class="text-[80px] px-4 bg-gradient-to-t from-orange-500 ">{{ package_plan.speed }}<span  class="text-[40px]">Mbps <span class="text-base bg-gradient-to-l from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
                 </v-card>
                 <v-card
                     class="mx-auto"
@@ -56,7 +55,7 @@
                     <v-list density="compact">
 
                     <v-list-item
-                        v-for="(description, i) in packages.description"
+                        v-for="(description, i) in package_plan.description"
                         :key="i"
                         :value="item"
                         color="primary"
@@ -68,7 +67,7 @@
                         <v-list-item-title class="text-xl">{{ description }}</v-list-item-title>
                     </v-list-item>
                     </v-list>
-                    <div class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PLAN</div>
+                    <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PLAN</div>
                 </v-card>
               </div>
               </v-col>
@@ -307,5 +306,10 @@ function all() {
 
 function none() {
   panel.value = []
+}
+function selectedPlan(plan,package_plan){
+  // alert(plan)
+  console.log(plan)
+  console.log(package_plan)
 }
 </script>

@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="w-1/2 grid place-content-center">
-                <button class="px-5 py-3 rounded-md font-bold  bg-white">GET STARTED</button>
+                <router-link to="/purchase" class="px-5 py-3 rounded-md font-bold  bg-white">GET STARTED</router-link>
             </div>
             <!-- <img src="../../../public/Images/Avators/CTA.svg" alt=""> -->
         </div>
