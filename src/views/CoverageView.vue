@@ -8,23 +8,28 @@
         <div class="py-5">
           <p class="text-xl font-semibold">Fibre:</p>
           <p>For the fibre connection, we are deeply rooted in North Imenti,Meru County.</p>
-          <p>We are the leading  company offering the quality product in the market and a very 
-convenient customer support always ready to tend to your queries</p>
+          <p class="sm:text-md text-sm">We are the leading  company offering the quality product in the market and a very 
+convenient and  customer centric  support always ready to tend to your queries</p>
         </div>
           <!-- wireless -->
     </div>
     
 
-    <div class="w-full h-[70vh] bg-red flex">
+    <div class="w-full bg-gradient-to-t from-orange-500  h-[70vh]  flex sm:flex-row flex-col-reverse ">
       <!-- map -->
-      <Map class="w-1/2 h-[70%] py-4 mx-5"></Map>
+      <Map class="sm:w-1/2 h-[70%] py-4 mx-5" :getLngLat="getLngLat"></Map>
       <!-- locations -->
-       <div class="w-1/2">
+       <div class="sm:w-1/2 w-full">
           <div class="text-2xl font-bold">LOCATIONS</div>
           <div>
-            <p>Areas that we have reached...just next to you</p>
+            <p class="text-sm">Areas that we have reached...just next to you</p>
             <div class="flex flex-wrap">
-              <v-chip>Kinoru</v-chip>
+              <v-chip @click="location(37.644744,0.053949)">Kinoru</v-chip>
+              <v-chip @click="location(37.639968,0.054526)">Kinoru(meru care)</v-chip>
+              <v-chip @click="location(37.638214,0.054451)">Kinoru(MCK)</v-chip>
+              <v-chip @click="location(37.639979,0.051962)">Kinoru(Green Oak)</v-chip>
+              <v-chip @click="location(37.641417,0.058606)">Makutano(Nevada)</v-chip>
+              <v-chip @click="location(37.644030,0.059765)">Makutano(Equity Bank)</v-chip>
               <v-chip>Cathedral</v-chip>
               <v-chip>Central</v-chip>
               <v-chip>Commercial</v-chip>
@@ -43,14 +48,18 @@ convenient customer support always ready to tend to your queries</p>
     </div>
   </template>
    
-  <script>
+  <script  setup>
+  import {ref} from 'vue'
   import Map from '../components/Map.vue'
-   
-  export default {
-    name: 'App',
-    components: {
-      Map
-    }
+  const lng = ref(0)
+  const lat = ref(0)
+  function location(longitude,latitude){
+    lng.value = longitude
+    lat.value = latitude
+  }
+
+  function getLngLat(){
+    return {lng:lng.value, lat:lat.value}
   }
   </script>
    

@@ -3,7 +3,7 @@
 </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, watch,onMounted } from 'vue';
   import { Map, View } from 'ol';
   import { Tile as TileLayer } from 'ol/layer';
   import { OSM } from 'ol/source';
@@ -11,8 +11,30 @@
   import { Vector as VectorSource } from 'ol/source';
   import { GeoJSON } from 'ol/format';
   import { transform } from 'ol/proj';
-  
+  import { Point } from 'ol/geom';
+  import { Feature } from 'ol';
+  import { Icon, Style } from 'ol/style';
+
+  const  props = defineProps({getLngLat:Function})
+  const lng = ref(0)
+  const lat = ref(0)
+
+  watch(() => props.getLngLat(), (newVals) => {
+    // const { lng: newLng, lat: newLat } = newVals()
+    lng.value = newVals.lng;
+    lat.value = newVals.lat;
+  })
+
+  setInterval(() => {
+      console.log(lng.value)
+      console.log(lat.value)
+  }, 4000);
+ 
+
+
   const map = ref(null);
+  const marker = ref()
+
   const data = {
         type: 'Feature',
         properties: {},
@@ -45,6 +67,23 @@
         features: [feature],
         }),
     });
+
+     // Create the marker feature
+    marker.value = new Feature({
+      geometry: new Point(transform([lat.value, lng.value], 'EPSG:4326', 'EPSG:3857')),
+    });
+    marker.value.setId('my-marker');
+    // Style the marker
+    marker.value.setStyle(new Style({
+      image: new Icon({
+        //  src: IconWhatsappVue, 
+        src: 'https://openlayers.org/en/latest/examples/data/icon.png', // Marker icon URL
+        anchor: [0.5, 1], // Anchor the icon
+        scale:0.5,
+      }),
+    }));
+
+    vectorLayer.getSource().addFeature(marker);
   
     map.value = new Map({
       target: 'map',
@@ -58,6 +97,12 @@
         center: transform([37.653115, 0.045502], 'EPSG:4326', 'EPSG:3857'), // Center on Kenya
         zoom: 12 // Appropriate zoom level for Kenya
       }),
+    });
+    watch([lng, lat], ([newLng, newLat]) => {
+      //update the center
+      map.value.getView().setCenter(transform([newLng, newLat], 'EPSG:4326', 'EPSG:3857'));
+      //update the marker
+      marker.value.getGeometry().setCoordinates(transform([newLng, newLat], 'EPSG:4326', 'EPSG:3857'));
     });
   });
   </script>

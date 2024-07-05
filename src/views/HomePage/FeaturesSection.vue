@@ -1,15 +1,14 @@
 <template>
-  <div class="px-4 flex justify-around">
-    <div  v-for="(feature,i) in features" :key="i"  class=" 
-     h-[400px] w-1/4 rounded-[50px]   py-5 px-2 animate__animated animate__rubberBand">
-        <VEmptyState class="hover:animate-pulse focus:animate-spin   rounded-2xl  font-bold " style="font-size: 40px;"
-            size="100"
-            height="100"
-            :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
-            :title=feature.title
-            :icon=feature.icon
-            :text=feature.text
-        >{{ feature.headline  }}</VEmptyState>
+  <div class="sm:px-4 my-2 py-2 flex flex-wrap  justify-around">
+    <div v-for="(feature,i) in features" :key="i"
+        class="text-center sm:w-[20%] w-[75%] py-2 px-2  my-3 mx-auto    rounded-xl"
+        :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
+            
+    >
+        <v-icon  :icon=feature.icon size="100"></v-icon>
+        <p class="text-xl font-semibold">{{ feature.title }}</p>
+        <p>{{ feature.text }}</p>
+        <p class="text-3xl font-extrabold">{{ feature.headline }}</p>
     </div>
   </div>
 </template>
@@ -21,7 +20,6 @@ import IconFastVue from "@/components/icons/IconFast.vue";
 import IconReliable from "@/components/icons/IconReliable.vue";
 import IconPrice from "@/components/icons/IconPrice.vue";
 import IconSupport from "@/components/icons/IconSupport.vue";
-import { VEmptyState} from "vuetify/lib/components/index.mjs";
 
 const features = [
     {

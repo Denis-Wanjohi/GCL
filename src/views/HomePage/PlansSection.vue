@@ -10,9 +10,8 @@
         <v-tab value="BUSINESS">BUSINESS</v-tab>
         <v-tab value="STUDENT">STUDENT</v-tab>
       </v-tabs>
-  
       <v-card-text>
-        <v-tabs-window v-model="tab" >
+        <v-tabs-window v-model="tab" v-if="plans" >
         <v-tabs-window-item
           v-for="(plan,n) in plans.length"
           :key="n"
@@ -26,7 +25,7 @@
                 cols="12"
                 md="4"
               >
-              <div>
+              <div >
                 <v-card
                     style="color: red;background-color: green;"
                     class="mx-auto"
@@ -35,8 +34,9 @@
                     max-width="350"
                     height="200"
                 >
-                    <v-card-title class="bg-gradient-to-r from-orange-500 py-7" >{{ packages.feature }}</v-card-title>
-                    <p class="text-[80px] px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[40px]">Mbps <span class="text-base bg-gradient-to-l from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
+                    <v-card-title class="bg-gradient-to-r from-orange-500 py-3" >{{ packages.feature }}</v-card-title>
+                    <p class="text-[70px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[40px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
+                    <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  text-xl from-orange-500">Ksh. {{ packages.price }}/month </p>
                 </v-card>
                 <v-card
                     class="mx-auto"
@@ -56,7 +56,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
                         </template>
 
-                        <v-list-item-title class="text-xl">{{ description }}</v-list-item-title>
+                        <v-list-item-title class="text-xl text-wrap">{{ description }}</v-list-item-title>
                     </v-list-item>
                     </v-list>
                 </v-card>
@@ -76,168 +76,170 @@
     </v-card>
   </template>
   <script setup>
-  import {ref} from 'vue'
+  import {onMounted, ref} from 'vue'
   const tab = ref()
-
-
-  const plans = [
-    {
-        plan:'HOME',
-        packages:[
-            {
-                feature:"Essential",
-                speed:7,
-                price:2199,
-                description:[
-                    "Basic internet use",
-                    "Browsing",
-                    "Unlimited",
-                    "social media",
-                    "e-learning",
-                    ""
-                ],
-                users:"5-8"
-            },
-            {
-                feature:"Streamer",
-                speed:12,
-                price:2599,
-                description:[
-                    "Smooth HD streaming",
-                    "Online gaming",
-                    "Unlimited",
-                    "email",
-                    "social media",
-                    "e-learning"
-                ],
-                users:"9-12"
-            },
-            {
-                feature:"Family",
-                speed:20,
-                price:2599,
-                description:[
-                    "Family connectivity",
-                    "Multiple devices streaming",
-                    "3D Conferencing",
-                    "Unlimited",
-                    "social media",
-                    "e-learning"
-                ],
-                users:"13-15"
-            },
-            {
-                feature:"Power User",
-                speed:30,
-                price:2599,
-                description:[
-                    "Heavy Internet user",
-                    "Online gaming",
-                    "Unlimited",
-                    "Fast uploads/downloads",
-                    "social media",
-                    "e-learning"
-                ],
-                users:"15-20"
-            },
-            {
-                feature:"Turboo",
-                speed:50,
-                price:2599,
-                description:[
-                    "Ultimate speed",
-                    "Business use",
-                    "Unlimited",
-                    "Heavy online activity",
-                    "Large Families",
-                    "Heavy online users"
-                ],
-                users:"25-30"
-            },
-        ]
-    },
-    {
-        plan:'BUSINESS',
-        packages:[
-            {
-                feature:"Starter",
-                speed:2,
-                price:3480,
-                description:[
-                    "Basic online activities",
-                    "Fast upload and downloads speeeds",
-                    "Low latency",
-                    "Reliable conectivity",
-                ],
-                users:"1-5"
-            },
-            {
-                feature:"Growth",
-                speed:5,
-                price:5800,
-                description:[
-                    "Faster speeds for onine activities",
-                    "Seamless connectivity",
-                    "High-speed uploads and downoads",
-                    "Low latency",
-                    "Reliable connectivity",
-                ],
-                users:"5-10"
-            },
-            {
-                feature:"Pro",
-                speed:10,
-                price:11600,
-                description:[
-                    "High-speed connectivity",
-                    "Fast uploads and downoads",
-                    "Low latency",
-                    "Reliable connectivity",
-                ],
-                users:"10-20"
-            },
-            {
-                feature:"Power User",
-                speed:30,
-                price:2599,
-                description:[
-                    "Lightening-fast connectivity",
-                    "High-speed uploads and downoads",
-                    "Low latency",
-                    "Reliable connectivity",
-                ],
-                users:"20-50"
-            },
-        ]
-    },
-    {
-        plan:'STUDENT',
-        packages:[
-            {
-                feature:"Student Lite",
-                immage:"/Image/student-lite.jpg",
-                speed:3,
-                price:999,
-                description:[
-                    "2 GB daily data allocation",
-                    "256 kbps bandwidth after exhausting the daily limit",
-                    "Suitable for light online activities",
-                ],
-                users:"1-2"
-            },
-            {
-                feature:"Student Pro",
-                immage:"/Image/student-pro.jpg",
-                speed:5,
-                price:1499,
-                description:[
-                    "3 GB daily data allocation",
-                    "512 kbps bandwidth after exhausting the daily limit",
-                    "Suitable for moderate to heavy activities",
-                ],
-                users:"2-3"
-            },
-        ]
-    },
+  const plans = ref()
+  onMounted(()=>{
+     plans.value = [
+        {
+            plan:'HOME',
+            packages:[
+                {
+                    feature:"Essential",
+                    speed:7,
+                    price:2199,
+                    description:[
+                        "Basic internet use",
+                        "Browsing",
+                        "Unlimited",
+                        "social media",
+                        "e-learning",
+                        ""
+                    ],
+                    users:"5-8"
+                },
+                {
+                    feature:"Streamer",
+                    speed:12,
+                    price:2599,
+                    description:[
+                        "Smooth HD streaming",
+                        "Online gaming",
+                        "Unlimited",
+                        "email",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"9-12"
+                },
+                {
+                    feature:"Family",
+                    speed:20,
+                    price:2599,
+                    description:[
+                        "Family connectivity",
+                        "Multiple devices streaming",
+                        "3D Conferencing",
+                        "Unlimited",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"13-15"
+                },
+                {
+                    feature:"Power User",
+                    speed:30,
+                    price:2599,
+                    description:[
+                        "Heavy Internet user",
+                        "Online gaming",
+                        "Unlimited",
+                        "Fast uploads/downloads",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"15-20"
+                },
+                {
+                    feature:"Turboo",
+                    speed:50,
+                    price:2599,
+                    description:[
+                        "Ultimate speed",
+                        "Business use",
+                        "Unlimited",
+                        "Heavy online activity",
+                        "Large Families",
+                        "Heavy online users"
+                    ],
+                    users:"25-30"
+                },
+            ]
+        },
+        {
+            plan:'BUSINESS',
+            packages:[
+                {
+                    feature:"Starter",
+                    speed:2,
+                    price:3480,
+                    description:[
+                        "Basic online activities",
+                        "Fast upload and downloads speeeds",
+                        "Low latency",
+                        "Reliable conectivity",
+                    ],
+                    users:"1-5"
+                },
+                {
+                    feature:"Growth",
+                    speed:5,
+                    price:5800,
+                    description:[
+                        "Faster speeds for onine activities",
+                        "Seamless connectivity",
+                        "High-speed uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"5-10"
+                },
+                {
+                    feature:"Pro",
+                    speed:10,
+                    price:11600,
+                    description:[
+                        "High-speed connectivity",
+                        "Fast uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"10-20"
+                },
+                {
+                    feature:"Power User",
+                    speed:30,
+                    price:2599,
+                    description:[
+                        "Lightening-fast connectivity",
+                        "High-speed uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"20-50"
+                },
+            ]
+        },
+        {
+            plan:'STUDENT',
+            packages:[
+                {
+                    feature:"Student Lite",
+                    immage:"/Image/student-lite.jpg",
+                    speed:3,
+                    price:999,
+                    description:[
+                        "2 GB daily data allocation",
+                        "256 kbps bandwidth after exhausting the daily limit",
+                        "Suitable for light online activities",
+                    ],
+                    users:"1-2"
+                },
+                {
+                    feature:"Student Pro",
+                    immage:"/Image/student-pro.jpg",
+                    speed:5,
+                    price:1499,
+                    description:[
+                        "3 GB daily data allocation",
+                        "512 kbps bandwidth after exhausting the daily limit",
+                        "Suitable for moderate to heavy activities",
+                    ],
+                    users:"2-3"
+                },
+            ]
+        },
   ]
+  })
+
   </script>,

@@ -1,36 +1,52 @@
 <template>
-  <!-- <div class="w-full h-[90vh] bg-slate-400 overflow-hidden">
-    <img src="/Images/gigabit-happy-family.jpg" class="w-full" alt="">
-  </div> -->
-
   <v-carousel  
     v-if="plans"
-    
-    height="600"
+    height=""
     style="width: 100vw;"
-    class="border mx-auto"
+    class="border mx-auto bg-gradient-to-tr from-orange-500 to-pink-600"
     :show-arrows="false"
     cycle
     interval="5000"
     hide-delimiters="true"
   >
     <v-carousel-item
+      class="bg-orange rounded-3xl"
       v-for="(plan, i) in plans.length"
+      height=""
       :key="i"
     >
       <v-sheet
-        class=""
-        height="100%"
+        class="bg-blue"
+        height=""
       >
-        <div class="d-flex fill-height justify-center align-center w-screen">
-          <img :src=plans[plan-1].imagePath class="w-full" alt="">
-          <div class="w-[500px] bg-cyan-500 rounded absolute text-center  h-[200px] opacity-90  mt-[150px] -ml-[700px] ">
-            <p class="text-5xl text-center py-5 font-bold text-white">{{plans[plan-1].name}}</p>
+        <div class="d-flex sm:h-[500px] h-[300px] bg-red justify-center align-center w-screen">
+          <img :src=plans[plan-1].imagePath class="w-full sm:h-[600px] h-[300px]  " alt="">
+          
+          <!-- FOR PC SCREENS -->
+          <div class="sm:w-[500px] w-3/4  sm:block hidden bg-cyan-500 rounded absolute text-center  sm:h-[200px] sm:opacity-90 opacity-100  sm:mt-[150px] mt-[100px] sm:-ml-[700px] ">
+            <p class="sm:text-5xl text-2xl text-center py-5 font-bold text-white">{{plans[plan-1].name}}</p>
             <p>{{plans[plan-1].description}}</p>
             <p>Pocket friendly from as low as <span class="text-xl font-bold">KSH {{plans[plan-1].price}} bob</span> </p>
-            <div class="py-4">
+            <div class="py-4  sm:block hidden">
                 <router-link to="/purchase" class="px-5  font-bold bg-orange-400 w-fit rounded-md py-3 text-xl mx-auto">GET THE PLAN</router-link>
             </div>
+          </div>
+
+
+          <!-- FOR MOBILE -->
+          <div class="inset-0 flex justify-between flex-col absolute sm:hidden w-full  h-full">
+              <p class="text-start px-5 font-semibold text-2xl bg-gradient-to-b from-blue-600">{{plans[plan-1].name}}</p>
+              <div class=" text-start bg-gradient-to-t from-orange-300 ">
+                <p class="bg-gradient-to-r from-orange-400 ">{{plans[plan-1].description}}</p>
+                <div class="flex flex-wrap ">
+                  <p class="bg-gradient-to-r from-orange-400">Starting from <span class="text-xl font-bold">KSH {{plans[plan-1].price}} bob</span> </p>
+                  <div class="py-2 mx-auto">
+                    <router-link to="/purchase" class="px-2  font-bold bg-orange-400 w-fit rounded-md py-1 text-lg mx-auto">GET THE PLAN</router-link>
+                  </div>
+                </div>
+                
+              </div>
+              
           </div>
         </div>
       </v-sheet>
@@ -40,8 +56,10 @@
 
 <script setup>
 import 'animate.css'
-// import { VCarousel } from 'vuetify/lib/components/index.mjs'
-const plans = [
+import { onMounted, ref } from 'vue'
+const plans = ref()
+onMounted(()=>{
+   plans.value = [
     {
         name:'HOME FIBRE',
         description: 'Dont miss a moment',
@@ -53,7 +71,7 @@ const plans = [
         name:'BUSINESS FIBRE',
         description: 'Keeping you up with no ease ',
         price:'2199',
-        imagePath:"/public/Images/business.jpg",
+        imagePath:"/Images/business.jpg",
         direction:"horizontal"
 
     },
@@ -78,11 +96,10 @@ const plans = [
         description:'Focus on the profit we take care of the connectivity',
 
         price:'2199',
-        imagePath:"/public/Images/business_2.jpg",
+        imagePath:"/Images/business_2.jpg",
         direction:"horizontal"
 
     },
-
     {
         name:'STUDENT PLANS',
         description: 'When it comes to taking a break we got you!',
@@ -90,9 +107,10 @@ const plans = [
         imagePath:"/Images/african-student.jpg",
         // imagePath:"https://unsplash.com/photos/a-man-sitting-on-a-bench-with-a-cell-phone-in-his-hand-kZz-4g2JgYM",
         direction:"horizontal"
-
     },
-]
+ ]
+})
+
 </script>
 
 <style>

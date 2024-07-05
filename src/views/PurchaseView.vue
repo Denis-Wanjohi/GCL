@@ -4,12 +4,12 @@
     <Form  :data = data v-if="packageSelected" @close=close></Form>
 
     <!--PLANS AND PACKAGES  -->
-      <div v-else>
+      <div v-else class="mx-auto">
           <div>
             <p class="text-center font-bold text-5xl py-5 text-cyan ">QUALITY AT A CHEAPER PRICE</p>
             <p class="text-grey text-center">*click on an option to see more</p>
           </div>
-          <div class=" pb-5 w-10/12 mx-auto">
+          <div class=" pb-5 sm:w-10/12 mx-2">
             <div class="text-center d-flex pb-4">
               <v-btn class="ma-2 bg-blue shadow" @click="all">
                 All
@@ -28,11 +28,9 @@
               <v-expansion-panel
                 :title=plan.plan
                 :value=plan.value
-              
                 style=""
               
               >
-                <!-- <v-expansion-panel-title style="font-size: 20px; padding-left: 10%">{{ plan.plan }}</v-expansion-panel-title> -->
                 <v-expansion-panel-text>
                   <v-container fluid>
                   <v-row>
@@ -51,9 +49,10 @@
                           max-width="350"
                           height="200"
                       >
-                          <v-card-title class="bg-gradient-to-b from-orange-500 py-7" >{{ package_plan.feature }}</v-card-title>
-                          <p class="text-[80px] px-4 bg-gradient-to-t from-orange-500 ">{{ package_plan.speed }}<span  class="text-[40px]">Mbps <span class="text-base bg-gradient-to-l from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
-                      </v-card>
+                          <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-7 py-4" >{{ package_plan.feature }}</v-card-title>
+                          <p class="text-[70px] px-1 bg-gradient-to-r from-orange-500 ">{{ package_plan.speed }}<span  class="text-[30px]">Mbps <span class="sm:block hidden text-base bg-gradient-to-l from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
+                          <span class="sm:hidden block bg-gradient-to-r text-xl from-orange-500">Ksh. {{ package_plan.price }}/month </span>
+                          </v-card>
                       <v-card
                           class="mx-auto"
                           max-width="350"
@@ -88,11 +87,11 @@
           <div class="w-full text-center">
             <v-text class="text-center font-bold">The following steps will help you in make a request for your plan:</v-text>
           </div>
-          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan w-1/2 mx-auto">
+          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto">
             <template v-slot:item.1>
               <v-card title="Choose a Plan" flat>
                 <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
                     <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
                       <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
                       <path d="m5.75 7.75l2.5 2.5l6-6.5" />
@@ -107,7 +106,7 @@
             <template v-slot:item.2>
               <v-card title="Your Details" flat>
                 <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
                     <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
                       <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
                       <path d="m5.75 7.75l2.5 2.5l6-6.5" />
@@ -121,7 +120,7 @@
             <template v-slot:item.3>
               <v-card title="All good" flat>
                 <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
                     <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
                       <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
                       <path d="m5.75 7.75l2.5 2.5l6-6.5" />
