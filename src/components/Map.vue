@@ -42,7 +42,6 @@
             type: 'Polygon',
             coordinates: [
             [
-
                 //top
                 [37.700033, 0.093933],
                 [37.600033, 0.093933],
@@ -51,8 +50,6 @@
                 [37.700033, 0.003333],
                 //top
                 // [37.600033, 0.583333]
-                
-                
             ]
             ]
         }
@@ -83,7 +80,7 @@
       }),
     }));
 
-    vectorLayer.getSource().addFeature(marker);
+    vectorLayer.getSource().addFeature(marker.value);
   
     map.value = new Map({
       target: 'map',

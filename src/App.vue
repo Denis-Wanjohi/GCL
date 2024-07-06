@@ -58,13 +58,14 @@ const footer = [
 </script>
 
 <template>
-    <header class="w-screen bg-blue-400 h-[80px]">
+  <header class="w-screen bg-blue-400 h-[80px]">
     <div class="flex h-full w-full">
       <div class="sm:w-1/4 w-3/4 flex justify-center">
         <router-link to="/">
           <img src="/Images/gigabit-web-logo.png" class=" my-auto h-[80px]" alt="LOGO PNG">
         </router-link>
       </div>
+
       <div  class=" w-3/4 my-auto sm:block hidden ">
         <VTabs bg-color="" fixedTabs class=" h-[200px]  font-bold text-xl ">
           <VTab style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
@@ -81,7 +82,71 @@ const footer = [
           Call us: 0712 999 333
         </VTab>
       </div>
+
+      <!-- MOBILE VIEW MENU -->
+      <div class="sm:hidden block  w-1/4  h-fit flex place-content-end  my-auto  ">
+        <v-menu>
+          <template v-slot:activator="{ props }">
+          
+            <div
+              color="rgb(59 130 246 / 0.5)"
+              v-bind="props"
+              elevation="0"
+
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24">
+              <path fill="none" stroke="#676665" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8h12M6 12h12M6 16h12" />
+            </svg>
+            </div>
+            
+          </template>
+          <v-list>
+            <!-- <v-list-item
+              v-for="(item, index) in 3"
+              :key="index"
+              :value="index"
+            >
+              <v-list-item-title>{{ item }}</v-list-item-title>
+            </v-list-item> -->
+            <v-list-item
+                      v-for="(item,i) in footer[0].items"
+                      :key="i"
+                      link=true
+                      class=" my-1  h-[50px] "
+                    >
+                    <template v-slot:prepend>
+                        <router-link :to=item.link class="">
+                          <v-icon :icon="item.icon"></v-icon>
+                        </router-link>
+                    </template>
+                    <router-link :to=item.link class="px-3">
+                      <v-list-item-title><span class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
+                    </router-link>
+             </v-list-item>
+             <v-list-item
+                      v-for="(item,i) in footer[1].items"
+                      :key="i"
+                      link=true
+                      class=" my-1  h-[50px] "
+                    >
+                    <template v-slot:prepend>
+                        <router-link :to=item.link class="">
+                          <v-icon :icon="item.icon"></v-icon>
+                        </router-link>
+                    </template>
+                    <router-link :to=item.link class="px-3">
+                      <v-list-item-title><span class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
+                    </router-link>
+             </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+        
     </div>
+
+    <!--  MOBILE VIEW HEADER -->
+    
+    
   </header>
 
   <RouterView />
