@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PurchaseView from '../views/PurchaseView.vue'
+import SupportView from '../views/SupportView.vue'
+import axios from 'axios';
+import AboutView from '@/views/AboutView.vue';
 import ContactsView from '../views/ContactsView.vue'
 import CoverageView from '../views/CoverageView.vue'
 
@@ -14,28 +17,34 @@ const router = createRouter({
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'Aboutus',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: AboutView
     },
     {
-      path:'/purchase',
-      name:'purchase',
+      path: '/purchase',
+      name: 'purchase',
       component: PurchaseView
     },
     {
-      path:'/contacts',
-      name:'contacts',
+      path: '/support',
+      name: 'support',
+      component: SupportView
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
       component: ContactsView
     },
     {
-      path:'/coverage',
-      name:'coverage',
+      path: '/coverage',
+      name: 'coverage',
       component: CoverageView
     }
   ]
 })
 
 export default router
+
