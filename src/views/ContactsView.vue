@@ -47,10 +47,10 @@
                    
                     
                  </div>
-
-                <!-- form -->
+             
+                 <!-- form -->
                  <div class="sm:w-1/2 w-full px-5">
-                    <form class="border-b border-gray-900/10 pb-12" @submit="userDetails">
+                    <form class="border-b border-gray-900/10 pb-12" @submit.prevent="userDetails">
                         <h2 class=" text-2xl pt-5 font-semibold leading-7 text-gray-900">Inquery Information</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-400">Incase of any inquiry please reach out to us through this form.Thank you  :)</p>
                         <p class="mt-1 text-sm leading-6 text-gray-400">Please fill in correct details*</p>
@@ -135,7 +135,7 @@
                             <div class="sm:col-span-3" v-if="details.service === 'Request for internet'">
                                 <label for="package" class=" block text-sm font-semibold leading-6 text-gray-900">Package</label>
                                 <div class="mt-2">
-                                    <select id="package" name="package"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <select id="package" name="package" v-model="details.package"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                         <option v-if="details.plan === 'Home'">7Mbs for Ksh 2199/month </option>
                                         <option v-if="details.plan === 'Home'">12Mbps for Ksh 2599/month</option>
                                         <option v-if="details.plan === 'Home'">20Mbps for Ksh 3799/month</option>
@@ -151,14 +151,23 @@
                                     </select>
                                 </div>
                             </div>
-                            
-                            <button class="py-3 bg-blue rounded-md sm:col-span-6 w-3/4 font-semibold mx-auto">submit</button>
+                            <button class="py-3 bg-blue rounded-md sm:col-span-6 w-3/4 font-semibold mx-auto" @click="submitted" >
+                                <v-progress-circular indeterminate v-if="submittedForm"></v-progress-circular>
+                                <span v-else>submit</span>
+                            </button>
+                            <div class="w-full mx-auto sm:col-span-6 " v-if="emailSent">
+                                <v-alert
+                                    text="submitted successfully!👍"
+                                    type="success"
+                                ></v-alert>
+                            </div>
                         </div>
                     </form>
                  </div>
              </div>
         </div>
-
+       
+        
 
     </div>
 </template>
@@ -172,6 +181,7 @@ import IconPhone from "@/components/icons/IconPhone.vue"
 import IconWhatsapp from "@/components/icons/IconWhatsapp.vue"
 import {vMaska} from "maska/vue"
 import {ref,onMounted} from 'vue'
+import store from '@/store/index.js'
 const contacts = ref()
 
 onMounted(()=>{
@@ -209,8 +219,70 @@ const details = ref({
     plan:'',
     package:''
 })
-
+const submittedForm = ref(false)
+const emailSent = ref(false)
+// function submitted(){
+//     if(details.value.firstname != '' || details.value.lastname != '' || details.value.firstname != '')
+//     submittedForm.value = true
+// }
 function userDetails(){
-    console.log(details)
+    if(details.value.service == 'Request for internet'){
+        details.value.message == ''
+    }else{
+        details.value.plan == ''
+        details.value.package == ''
+    }
+
+    let  user  = {
+            firstName: details.value.firstname,
+            lastName: details.value.lastname,
+            email: details.value.email,
+            phoneNumber: details.value.phoneNumber,
+            location: details.value.location,
+            service: details.value.service,
+    }
+
+    let service = {}
+    if(details.value.service == 'Request for internet'){
+        service = {
+            service:details.value.service,
+            plan:details.value.plan,
+            package:details.value.package
+        }
+    }else{
+        service = {
+            service:details.value.service,
+            message:details.value.message
+        }
+    }
+    let data = {
+        user:user,
+        service:service
+    }
+
+    store.dispatch('contactForm',data)
+        .then((response)=>{
+            submittedForm.value = false
+            details.value.firstname = ''
+            details.value.lastname =''
+            details.value.email =''
+            details.value.phoneNumber = ''
+            details.value.location = ''
+            details.value.service = ''
+            details.value.message = ''
+            details.value.plan = ''
+            details.value.package = ''
+            console.log(response.data.message)
+            console.log(response.status)
+            emailSent.value = true
+            setTimeout(() => {
+                emailSent.value = false
+            }, 5000);
+        })
+        .catch((error)=>{
+            submittedForm.value = false
+            console.log(error)
+        })
+    
 }
 </script>
