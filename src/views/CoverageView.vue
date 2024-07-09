@@ -24,21 +24,42 @@ convenient and  customer centric  support always ready to tend to your queries</
           <div>
             <p class="text-sm">Areas that we have reached...just next to you</p>
             <div class="flex flex-wrap">
-              <v-chip @click="location(37.644744,0.053949)">Kinoru</v-chip>
-              <v-chip @click="location(37.639968,0.054526)">Kinoru(meru care)</v-chip>
-              <v-chip @click="location(37.638214,0.054451)">Kinoru(MCK)</v-chip>
-              <v-chip @click="location(37.639979,0.051962)">Kinoru(Green Oak)</v-chip>
-              <v-chip @click="location(37.641417,0.058606)">Makutano(Nevada)</v-chip>
-              <v-chip @click="location(37.644030,0.059765)">Makutano(Equity Bank)</v-chip>
-              <v-chip>Cathedral</v-chip>
-              <v-chip>Central</v-chip>
-              <v-chip>Commercial</v-chip>
-              <v-chip>Gakoromone</v-chip>
-              <v-chip>Hospital</v-chip>
-              <v-chip>Milimani</v-chip>
-              <v-chip>Mwendantu</v-chip>
-              <v-chip>Kaaga</v-chip>
-              <v-chip>Stadium</v-chip>
+              <v-chip @click="location(0.05694866265979159, 37.642335516833356)">Meru Town</v-chip>
+              <v-chip @click="location(37.639968,0.054526)">Kinoru</v-chip>
+              <v-chip @click="location(37.641417,0.058606)">Makutano</v-chip>
+               <v-chip @click="location(0.04397,37.64536)">Mwendatu</v-chip>
+               <v-chip @click="location(0.06143,37.64536)">Kambakia</v-chip>
+               <v-chip @click="location(0.07504,37.64911)">Kongoacheke</v-chip>
+               <v-chip @click="location(0.06935654358706765, 37.64418702505114)">CCM</v-chip>
+               <v-chip @click="location(0.05174638118569249, 37.65125284713504)">Brotherhood</v-chip>
+               <v-chip @click="location(0.07749101012804159, 37.657343903899964)">Mjini</v-chip>
+               <v-chip @click="location(-0.17881783195745135, 37.83635348259383)">Maweni</v-chip>
+               <v-chip @click="location(0.05059417031297015, 37.661143379594606)">Kooje</v-chip>
+               <v-chip @click="location(0.03791792391832968, 37.652361606745366)">Gitimbine</v-chip>
+               <v-chip @click="location(0.026274826945309138, 37.65845071095882)">Gikumene Bypass</v-chip>
+               <v-chip @click="location(0.03329442791490069, 37.64715538954481)">Kathumbi</v-chip>
+               <v-chip @click="location(0.09249158320517943, 37.65720034907254)">Ruiri Junction</v-chip>
+               <v-chip @click="location(0.05393539872902565, 37.639741996714)">Total Milimani</v-chip>
+               <v-chip @click="location(0.04675023923592474, 37.64227776441821)">White Lotus</v-chip>
+               <v-chip @click="location(0.039827081582576605, 37.647304320236124)">Irinda Primary</v-chip>
+               <v-chip @click="location(0.04013709691506824, 37.65374203743669)">Kwa Nthambi</v-chip>
+               <v-chip @click="location(0.03471367155140713, 37.65674074721487)">Woodlands</v-chip>
+               <v-chip @click="location(0.03964893500218091, 37.66343554113827)">Mwiteria</v-chip>
+               <v-chip @click="location(0.03895288525141898, 37.66792053743669)">Ngamia</v-chip>
+               <v-chip @click="location(0.04893606406184273, 37.66008312243502)">Kiorone</v-chip>
+               <v-chip @click="location(0.041951086342570935, 37.65945307917725)">Meru Diary</v-chip>
+               <v-chip @click="location(0.07013693136047787, 37.65000931053776)">Mwithumwiru</v-chip>
+               <v-chip @click="location(0.06391957524235498, 37.654778278324535)">Kaaga Boys</v-chip>
+               <v-chip @click="location(0.06788069122698175, 37.65985971627175)">Mpakone</v-chip>
+               <v-chip @click="location(0.05740652751650088, 37.65379379325462)">Nkoune</v-chip>
+               <v-chip @click="location(0.08506920484543119, 37.64749291188904)">Kemu</v-chip>
+               <v-chip @click="location(0.06471230202639075, 37.62996822597197)">Gitoro</v-chip>
+               <v-chip @click="location(0.051408083383665155, 37.627968866273115)">Kigure</v-chip>
+               <v-chip @click="location(0.07125223177087159, 37.63282225590323)">Kambakia</v-chip>
+               <v-chip @click="location(0.07815122740871763, 37.652426322091046)">Runogone</v-chip>
+               <v-chip @click="location(0.07294816799402155, 37.655503079763875)">Kanthiga</v-chip>
+               <v-chip @click="location(0.048460031407292145, 37.66561092555042)">Gakoromone</v-chip>
+               <v-chip @click="location(-0.1424990026335755, 37.89822178390614)">Kiruai</v-chip>
             </div>
           </div>
        </div>
