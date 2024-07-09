@@ -1,18 +1,10 @@
 <template>
-<div class="flex py-20">   
-  <img class="p-8 w-[400px] h-[400px]img" src='https://i.pinimg.com/564x/72/2b/da/722bdace96d8290d7dd8c99a381adad6.jpg' alt="why choose us">
-    <div class="justify align-center px-30">
-      <div class="underline justify-end text-3xl text center w-full pl-100 px-20 ">WHY CHOOSE US?</div>
-       <p class="flex align-center text-center px-20 font-sans"> 
-    What sets us apart is our commitment to safety and security. That's why we offer complimentary CCTV installation 
-    with every internet plan, giving our customers an added layer of protection and peace of mind. Today, Gigabit is 
-    one of the fastest-growing WiFi companies in the country, with a network that spans across cities and towns. Our 
-    customers rave about our lightning-fast speeds, 24/7 customer support, and innovative approach to internet 
-    security. With Gigabit, you can rest assured that you're getting the best possible internet experience, backed 
-    by a team that truly cares about your online safety and well-being. Join the Gigabit family today and discover a 
-    better way to stay connected, protected, and productive in the digital age.    
-    </p>
-    </div>
+<div class="text-[50px] font-extrabold">WHY GIGABIT</div>
+<div class="sm:flex sm:h-[50vh] mb-10">   
+  <img class="sm:w-1/2" src="/Images/GCL_main_logo.png" alt="">
+  <div class=" sm:w-1/2 text-md font-semibold   flex justify-center align-center">
+    Choose us for a seamless internet experience! Our ultra-fast fibre optic connection ensures uninterrupted browsing, streaming, and downloading. <br> But what sets us apart is our customer-centric support. <br> Our dedicated team is always available to address your concerns, providing personalized assistance to ensure your needs are met. <br> And the best part? Our affordable plans make it easy on your wallet. <br> With us, you get the perfect blend of speed, support, and savings. <br> Experience the difference for yourself!
+  </div>
 </div> 
 </template>
 

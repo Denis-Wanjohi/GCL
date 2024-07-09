@@ -6,6 +6,11 @@ import axios from 'axios';
 import AboutView from '@/views/AboutView.vue';
 import ContactsView from '../views/ContactsView.vue'
 import CoverageView from '../views/CoverageView.vue'
+import GeneralFAQ from '@/views/FAQS/GeneralFAQ.vue';
+import SecurityFAQ from '@/views/FAQS/SecurityFAQ.vue';
+import TechnicalIssuesFAQ from '@/views/FAQS/TechnicalIssuesFAQ.vue';
+import Installation_setup_FAQ from '@/views/FAQS/Installation_setup_FAQ.vue';
+import RouterFAQ from '@/views/FAQS/RouterFAQ.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,7 +36,14 @@ const router = createRouter({
     {
       path: '/support',
       name: 'support',
-      component: SupportView
+      component: SupportView,
+      children:[
+        {path:'/general',component:GeneralFAQ,name:'general'},
+        {path:'/installations_and_setup',component:Installation_setup_FAQ,name:'installations_and_setup'},
+        {path:'/technical_issues',component:TechnicalIssuesFAQ,name:'technical_issues'},
+        {path:'/security',component:SecurityFAQ,name:'security'},
+        {path:'/router',component:RouterFAQ,name:'router'},
+      ]
     },
     {
       path: '/contacts',

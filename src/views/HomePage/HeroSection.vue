@@ -19,11 +19,11 @@
         class="bg-blue"
         height=""
       >
-        <div class="d-flex sm:h-[500px] h-[300px] bg-red justify-center align-center w-screen">
-          <img :src=plans[plan-1].imagePath class="w-full sm:h-[600px] h-[300px]  " alt="">
+        <div class="d-flex sm:h-[90vh] h-[300px] bg-red justify-center align-center w-screen">
+          <img :src=plans[plan-1].imagePath class="w-full   " alt="">
           
           <!-- FOR PC SCREENS -->
-          <div class="sm:w-[500px] w-3/4  sm:block hidden bg-cyan-500 rounded absolute text-center  sm:h-[200px] sm:opacity-90 opacity-100  sm:mt-[150px] mt-[100px] sm:-ml-[700px] ">
+          <div class="sm:w-[500px] w-3/4  sm:block hidden bg-cyan-800 rounded absolute text-center  sm:h-[200px] sm:opacity-90 opacity-100  sm:mt-[150px] mt-[100px] sm:-ml-[700px] ">
             <p class="sm:text-5xl text-2xl text-center py-5 font-bold text-white">{{plans[plan-1].name}}</p>
             <p>{{plans[plan-1].description}}</p>
             <p>Pocket friendly from as low as <span class="text-xl font-bold">KSH {{plans[plan-1].price}} bob</span> </p>
