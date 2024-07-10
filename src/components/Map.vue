@@ -14,6 +14,7 @@
   import { Point } from 'ol/geom';
   import { Feature } from 'ol';
   import { Icon, Style } from 'ol/style';
+ 
 
   const  props = defineProps({getLngLat:Function})
   const lng = ref(0)
@@ -25,10 +26,6 @@
     lat.value = newVals.lat;
   })
 
-  setInterval(() => {
-      console.log(lng.value)
-      console.log(lat.value)
-  }, 4000);
  
 
 
@@ -91,6 +88,7 @@
         vectorLayer,
       ],
       view: new View({
+        // 0.053921, 37.644769
         center: transform([37.653115, 0.045502], 'EPSG:4326', 'EPSG:3857'), // Center on Kenya
         zoom: 12 // Appropriate zoom level for Kenya
       }),
@@ -101,5 +99,11 @@
       //update the marker
       marker.value.getGeometry().setCoordinates(transform([newLng, newLat], 'EPSG:4326', 'EPSG:3857'));
     });
+
+
+
+  
   });
+
+
   </script>
