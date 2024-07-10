@@ -88,15 +88,44 @@
                                 <label for="location" class=" block text-sm font-semibold leading-6 text-gray-900">Location</label>
                                 <div class="mt-2">
                                     <select id="location" required  v-model="details.location" name="location"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option>MeruTown</option>
                                         <option>Kinoru</option>
-                                        <option>Milimani</option>
-                                        <option>Makutano-shell</option>
-                                        <option>Kaaga</option>
-                                        <option>Meru prison</option>
-                                        <option>Town</option>
-                                        <option>Mjini</option>
-                                        <option>Kooje</option>
-                                        <option>Others</option>
+                                        <option>Makutano</option>
+                                         <option>Mwendatu</option>
+                                         <option>Kambakia</option>
+                                         <option>Kongoacheke</option>
+                                         <option>CCM</option>
+                                         <option>Brotherhood</option>
+                                          <option>Mjini</option>
+                                         <option>Meru General Area</option>
+                                          <option>Kooje</option>
+                                         <option>Gitimbine</option>
+                                       <option>Gikumene</option>
+                                        <option>Bypass</option>
+                                        <option>Kathumbi</option>
+                                        <option>Ruiri Junction</option>
+                                      <option>Total Milimani</option>
+                                        <option>White Lotus</option>
+                                     <option>Irinda Primary</option>
+                                    <option>Kwa Nthambi</option>
+                                        <option>Woodlands</option>
+                                     <option>Mwiteria</option>
+                                      <option>Ngamia</option>
+                                      <option>Kiorone</option>
+                                      <option>Meru Diary</option>
+                                      <option>Mwithumwiru</option>
+                                      <option>KaagaBoys</option>
+                                      <option>Mpakone</option>
+                                     <option>Nkoune</option>
+                                     <option>Kemu</option>
+                                      <option>Gitoro</option>
+                                      <option>Kigure</option>
+                                     <option>Kambakia</option>
+                                     <option>Runogone</option>
+                                      <option>Kanthiga</option>
+                                     <option>Gakoromone</option>
+                                      <option>Kiruai</option>
+                                         <option>Others</option>
                                     </select>
                                 </div>
                             </div>
