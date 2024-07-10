@@ -55,6 +55,11 @@ const footer = [
         ]
       }
 ]
+
+ function scrollToTop(){
+  window.scrollTo(0, 0);
+}
+
 </script>
 
 <template>
@@ -115,12 +120,12 @@ const footer = [
                       class=" my-1  h-[50px] "
                     >
                     <template v-slot:prepend>
-                        <router-link :to=item.link class="">
+                        <router-link :to=item.link   class="">
                           <v-icon :icon="item.icon"></v-icon>
                         </router-link>
                     </template>
                     <router-link :to=item.link class="px-3">
-                      <v-list-item-title><span class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
+                      <v-list-item-title><span  class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
                     </router-link>
              </v-list-item>
              <v-list-item
@@ -144,9 +149,6 @@ const footer = [
         
     </div>
 
-    <!--  MOBILE VIEW HEADER -->
-    
-    
   </header>
 
   <RouterView />
@@ -198,7 +200,7 @@ const footer = [
                           <v-icon :icon="item.icon"></v-icon>
                         </router-link>
                     </template>
-                    <router-link :to=item.link class="px-2">
+                    <router-link :to=item.link @click.prevent=scrollToTop class="px-2">
                       <v-list-item-title><span class="font-bold">{{ item.value }}</span></v-list-item-title>
                     </router-link>
                     </v-list-item>

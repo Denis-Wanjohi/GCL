@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PurchaseView from '../views/PurchaseView.vue'
 import SupportView from '../views/SupportView.vue'
-import axios from 'axios';
 import AboutView from '@/views/AboutView.vue';
 import ContactsView from '../views/ContactsView.vue'
 import CoverageView from '../views/CoverageView.vue'
@@ -38,6 +37,7 @@ const router = createRouter({
       name: 'support',
       component: SupportView,
       children:[
+        {path:'/support',component:GeneralFAQ,name:'general'},
         {path:'/general',component:GeneralFAQ,name:'general'},
         {path:'/installations_and_setup',component:Installation_setup_FAQ,name:'installations_and_setup'},
         {path:'/technical_issues',component:TechnicalIssuesFAQ,name:'technical_issues'},
@@ -55,7 +55,7 @@ const router = createRouter({
       name: 'coverage',
       component: CoverageView
     }
-  ]
+  ],
 })
 
 export default router

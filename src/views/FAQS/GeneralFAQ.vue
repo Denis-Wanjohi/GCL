@@ -40,7 +40,7 @@ const data = [
         ],
         answers:[
             " Contact our support team to discuss your options and make changes to your package.",
-            "Yes, we offer discounts for students and seniors. Contact our support team to learn more."
+            "Yes, we offer discounts for students. Contact our support team to learn more."
         ]
     },
     {

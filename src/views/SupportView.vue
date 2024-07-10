@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="sm:flex sm:mx-5 sm:px-3 border rounded">
-    <div class="sm:w-1/4 w-screen bg-slate-200">
+    <div class="sm:w-1/4 w-screen bg-slate-200 h-fit">
       <!-- category -->
       <div class="w-full border rounded">
         <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/general">General</router-link> </div>
