@@ -32,11 +32,10 @@
     <div class="sm:w-1/4 w-screen bg-slate-200 h-fit">
       <!-- category -->
       <div class="w-full border rounded">
-        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/general">General</router-link> </div>
-        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/installations_and_setup"> Installations and setup</router-link></div>
-        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="technical_issues">Technical issues</router-link> </div>
-        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="security">Security</router-link> </div>
-        
+        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/support/general">General</router-link> </div>
+        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/support/installations_and_setup"> Installations and setup</router-link></div>
+        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/support/technical_issues">Technical issues</router-link> </div>
+        <div class="w-full text-center font-bold py-1 border border-white rounded-md"><router-link to="/support/security">Security</router-link> </div>
       </div>
       <!-- socials -->
       <div>
@@ -78,12 +77,13 @@
     </div>
     <!-- FAQS -->
     <div class="sm:w-3/4 w-screen">
-      <router-view></router-view>
+      <GeneralFAQ v-if="$route.path === '/support'"/>
+      <router-view  v-else></router-view>
     </div>
 
   </div>
 </template>
 
 <script setup>
-  
+import GeneralFAQ from '@/views/FAQS/GeneralFAQ.vue'
 </script>

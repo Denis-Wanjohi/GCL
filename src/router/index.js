@@ -37,12 +37,11 @@ const router = createRouter({
       name: 'support',
       component: SupportView,
       children:[
-        {path:'/support',component:GeneralFAQ,name:'general'},
-        {path:'/general',component:GeneralFAQ,name:'general'},
-        {path:'/installations_and_setup',component:Installation_setup_FAQ,name:'installations_and_setup'},
-        {path:'/technical_issues',component:TechnicalIssuesFAQ,name:'technical_issues'},
-        {path:'/security',component:SecurityFAQ,name:'security'},
-        {path:'/router',component:RouterFAQ,name:'router'},
+        {path:'/support/general',component:GeneralFAQ,name:'general'},
+        {path:'/support/installations_and_setup',component:Installation_setup_FAQ,name:'installations_and_setup'},
+        {path:'/support/technical_issues',component:TechnicalIssuesFAQ,name:'technical_issues'},
+        {path:'/support/security',component:SecurityFAQ,name:'security'},
+        {path:'/support/router',component:RouterFAQ,name:'router'},
       ]
     },
     {
