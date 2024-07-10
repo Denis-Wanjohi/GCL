@@ -55,17 +55,23 @@ const footer = [
         ]
       }
 ]
+
+ function scrollToTop(){
+  window.scrollTo(0, 0);
+}
+
 </script>
 
 <template>
-    <header class="w-screen bg-blue-400 h-[80px]">
-    <div class="flex h-full w-full">
-      <div class="sm:w-1/4 w-3/4 flex justify-center">
+  <header class="w-screen bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-900 ">
+    <div class="flex  w-full">
+      <div class="sm:w-1/4 w-3/4 flex justify-center  ">
         <router-link to="/">
-          <img src="/Images/gigabit-web-logo.png" class=" my-auto h-[80px]" alt="LOGO PNG">
+          <img src="/Images/Gigabit_logo.png"  class=" my-auto h-[80px] w-full" alt="LOGO PNG">
         </router-link>
       </div>
-      <div  class=" w-3/4 my-auto sm:block hidden ">
+
+      <div  class=" w-3/4 my-auto sm:block hidden text-white">
         <VTabs bg-color="" fixedTabs class=" h-[200px]  font-bold text-xl ">
           <VTab style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
           <VTab  style="font-weight: 700;font-size: medium;" to="/about">ABOUT US</VTab>
@@ -75,13 +81,74 @@ const footer = [
           <VTab  style="font-weight: 700;font-size: medium;" to="/support"> SUPPORT</VTab>
         </VTabs>
       </div>
-      <div class="w-1/4 sm:flex sm:justify-center hidden">
+      <div class="w-1/4 sm:flex sm:justify-center hidden text-white">
         <VTab style="font-size: medium;">
           <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02c-.37-1.11-.56-2.3-.56-3.53c0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
           Call us: 0712 999 333
         </VTab>
       </div>
+
+      <!-- MOBILE VIEW MENU -->
+      <div class="sm:hidden block  w-1/4  h-fit flex place-content-end  my-auto  ">
+        <v-menu>
+          <template v-slot:activator="{ props }">
+          
+            <div
+              color="rgb(59 130 246 / 0.5)"
+              v-bind="props"
+              elevation="0"
+
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24">
+              <path fill="none" stroke="#676665" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8h12M6 12h12M6 16h12" />
+            </svg>
+            </div>
+            
+          </template>
+          <v-list>
+            <!-- <v-list-item
+              v-for="(item, index) in 3"
+              :key="index"
+              :value="index"
+            >
+              <v-list-item-title>{{ item }}</v-list-item-title>
+            </v-list-item> -->
+            <v-list-item
+                      v-for="(item,i) in footer[0].items"
+                      :key="i"
+                      link=true
+                      class=" my-1  h-[50px] "
+                    >
+                    <template v-slot:prepend>
+                        <router-link :to=item.link   class="">
+                          <v-icon :icon="item.icon"></v-icon>
+                        </router-link>
+                    </template>
+                    <router-link :to=item.link class="px-3">
+                      <v-list-item-title><span  class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
+                    </router-link>
+             </v-list-item>
+             <v-list-item
+                      v-for="(item,i) in footer[1].items"
+                      :key="i"
+                      link=true
+                      class=" my-1  h-[50px] "
+                    >
+                    <template v-slot:prepend>
+                        <router-link :to=item.link class="">
+                          <v-icon :icon="item.icon"></v-icon>
+                        </router-link>
+                    </template>
+                    <router-link :to=item.link class="px-3">
+                      <v-list-item-title><span class="font-semibold px-4">{{ item.value }}</span></v-list-item-title>
+                    </router-link>
+             </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+        
     </div>
+
   </header>
 
   <RouterView />
@@ -133,7 +200,7 @@ const footer = [
                           <v-icon :icon="item.icon"></v-icon>
                         </router-link>
                     </template>
-                    <router-link :to=item.link class="px-2">
+                    <router-link :to=item.link @click.prevent=scrollToTop class="px-2">
                       <v-list-item-title><span class="font-bold">{{ item.value }}</span></v-list-item-title>
                     </router-link>
                     </v-list-item>

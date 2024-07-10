@@ -1,0 +1,44 @@
+<template>
+   <div>
+        <div class="font-semibold text-3xl  py-5">Technical FAQS</div>
+        
+        <div v-for="(faq,i) in data" :key="i" class="border-t shadow-lg mx-5  text-start">
+            <v-card  class="border my-1">
+                <v-card-title class="text-wrap" style="font-weight: 600">{{ faq.question }}</v-card-title>
+                <v-card-text>{{ faq.answer }}</v-card-text>
+            </v-card>
+        </div>
+    </div>
+</template>
+
+<script setup>
+const data = [
+
+    {
+        question:"Why is my internet connection slow?",
+        answer:"Check your router's location, ensure it's not obstructed, and restart it. If the issue persists, contact our support team to investigate further.",
+    }, {
+        question:"How do I troubleshoot my fibre connection?",
+        answer:"Check the fibre optic cable for damage, ensure it's securely connected to the router, and restart the router. If the issue persists, contact our support team",
+    },
+    {
+        question:"What do I do if I'm experiencing dropped calls or poor voice quality?",
+        answer:"Check your phone's connection to the router, ensure it's not obstructed, and restart the router. If the issue persists, contact our support team to investigate further.",
+    }, {
+        question:"Why can't I access certain websites or online services? ",
+        answer:"Check your firewall settings, ensure they're not blocking the website, and try accessing the website from a different device. If the issue persists, contact our support team.",
+    },
+    {
+        question:"How do I reset my router?",
+        answer:" Press and hold the reset button on the back of the router for 10 seconds. This will restore the router to its factory settings. Note: This will erase all customized settings.",
+    },
+    {
+        question:"What do I do if my fibre optic cable is damaged?",
+        answer:"Contact our support team immediately to report the damage. We'll send a technician to repair or replace the cable as needed.",
+    },
+    {
+        question:"Why is my Wi-Fi network not showing up? ",
+        answer:"Check your router's power cord, ensure it's securely plugged in, and restart the router. If the issue persists, contact our support team to investigate further.",
+    },
+]
+</script>

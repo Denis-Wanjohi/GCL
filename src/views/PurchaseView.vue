@@ -9,7 +9,7 @@
             <p class="text-center font-bold text-5xl py-5 text-cyan ">QUALITY AT A CHEAPER PRICE</p>
             <p class="text-grey text-center">*click on an option to see more</p>
           </div>
-          <div class=" pb-5 sm:w-10/12 mx-2">
+          <div class=" pb-5 sm:w-10/12 mx-auto">
             <div class="text-center d-flex pb-4">
               <v-btn class="ma-2 bg-blue shadow" @click="all">
                 All
@@ -50,7 +50,7 @@
                           height="200"
                       >
                           <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-7 py-4" >{{ package_plan.feature }}</v-card-title>
-                          <p class="text-[70px] px-1 bg-gradient-to-r from-orange-500 ">{{ package_plan.speed }}<span  class="text-[30px]">Mbps <span class="sm:block hidden text-base bg-gradient-to-l from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
+                          <p class="text-[70px] px-1 bg-gradient-to-r from-orange-500 ">{{ package_plan.speed }}<span  class="text-[30px]">Mbps <span class="sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
                           <span class="sm:hidden block bg-gradient-to-r text-xl from-orange-500">Ksh. {{ package_plan.price }}/month </span>
                           </v-card>
                       <v-card

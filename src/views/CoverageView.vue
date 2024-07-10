@@ -59,7 +59,7 @@ convenient and  customer centric  support always ready to tend to your queries</
                <v-chip @click="location(37.652426322091046, 0.07815122740871763)">Runogone</v-chip>
                <v-chip @click="location( 37.655503079763875, 0.07294816799402155)">Kanthiga</v-chip>
                <v-chip @click="location(37.66561092555042, 0.048460031407292145)">Gakoromone</v-chip>
-               <v-chip @click="location(37.67162875880659, 0.1101863245048477) ">Kiruai</v-chip>
+                <v-chip @click="location(37.67162875880659, 0.1101863245048477) ">Kiruai</v-chip>
             </div>
           </div>
        </div>
