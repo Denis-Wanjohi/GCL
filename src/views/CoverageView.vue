@@ -24,7 +24,7 @@ convenient and  customer centric  support always ready to tend to your queries</
           <div>
             <p class="text-sm">Areas that we have reached...just next to you</p>
             <div class="flex flex-wrap">
-              <v-chip @click="location(0.05694866265979159, 37.642335516833356)">Meru Town</v-chip>
+              <v-chip @click="location(37.64397203980247, 0.060811031349528574)">Meru Town</v-chip>
               <v-chip @click="location(37.639968,0.054526)">Kinoru</v-chip>
               <v-chip @click="location(37.641417,0.058606)">Makutano</v-chip>
                <v-chip @click="location(37.64536,0.04397)">Mwendatu</v-chip>
@@ -33,7 +33,7 @@ convenient and  customer centric  support always ready to tend to your queries</
                <v-chip @click="location(37.64418702505114, 0.06935654358706765)">CCM</v-chip>
                <v-chip @click="location( 37.65125284713504, 0.05174638118569249)">Brotherhood</v-chip>
                <v-chip @click="location( 37.657343903899964, 0.07749101012804159)">Mjini</v-chip>
-               <v-chip @click="location(37.83635348259383, -0.17881783195745135)">Maweni</v-chip>
+               <v-chip @click="location(37.654502474534894, 0.05114340618807852)">Meru General Area</v-chip>
                <v-chip @click="location( 37.661143379594606, 0.05059417031297015)">Kooje</v-chip>
                <v-chip @click="location(37.652361606745366, 0.03791792391832968)">Gitimbine</v-chip>
                <v-chip @click="location(37.65845071095882, 0.026274826945309138)">Gikumene Bypass</v-chip>
@@ -59,7 +59,7 @@ convenient and  customer centric  support always ready to tend to your queries</
                <v-chip @click="location(37.652426322091046, 0.07815122740871763)">Runogone</v-chip>
                <v-chip @click="location( 37.655503079763875, 0.07294816799402155)">Kanthiga</v-chip>
                <v-chip @click="location(37.66561092555042, 0.048460031407292145)">Gakoromone</v-chip>
-               <v-chip @click="location( 37.89822178390614, -0.1424990026335755)">Kiruai</v-chip>
+                <v-chip @click="location(37.67162875880659, 0.1101863245048477) ">Kiruai</v-chip>
             </div>
           </div>
        </div>
@@ -102,3 +102,4 @@ convenient and  customer centric  support always ready to tend to your queries</
     padding: 0;
   }
   </style>
+
