@@ -9,7 +9,7 @@
         <div class="flex space-x-4">
             <!-- Card 1 -->
             <div class="min-w-[400px] bg-white shadow-md rounded-lg p-6" v-for="testimony,i in testimonials" :key="i">
-                <v-banner :icon=testimony.icon :text=testimony.testimony class="bg-brown h-[300px] overflow-y-auto hide-scrollbar">
+                <v-banner :icon=testimony.icon :text=testimony.testimony style="background: #bfbcbb;" class="h-[300px] rounded-xl overflow-y-auto hide-scrollbar">
                 </v-banner>
                 <p class="text-xs italic text-end">~{{ testimony.profession }}</p>
             </div>

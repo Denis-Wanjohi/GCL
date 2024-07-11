@@ -115,7 +115,7 @@
                 {
                     feature:"Family",
                     speed:20,
-                    price:2599,
+                    price:3799,
                     description:[
                         "Family connectivity",
                         "Multiple devices streaming",
@@ -129,7 +129,7 @@
                 {
                     feature:"Power User",
                     speed:30,
-                    price:2599,
+                    price:5399,
                     description:[
                         "Heavy Internet user",
                         "Online gaming",
@@ -143,7 +143,7 @@
                 {
                     feature:"Turboo",
                     speed:50,
-                    price:2599,
+                    price:6999,
                     description:[
                         "Ultimate speed",
                         "Business use",

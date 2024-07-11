@@ -30,6 +30,7 @@ const transporter = nodemailer.createTransport({
   
   host: 'smtp.gmail.com',
   port: 587,
+
   secure: false, // or 'STARTTLS'
   auth: {
     user: 'gightkingss@gmail.com',
@@ -37,22 +38,40 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+//email from  the contact us page
 app.post('/contact', (req, res) => {
   const { user, service } = req.body;
-  
+  console.log(service)
   let data = null;
   if(service.service == 'Comment' ||  service.service == 'Technical Support'){
     data = service.message
-  }else if(user.service == 'Request for internet'){
+  }else if(service.service == 'Request for internet'){
     data = `Internet Request.   ${service.plan} plan  ${service.package} package`
   }
+  // sends an email to the client
+  sendEmail(user.firstName,user.lastName,user.location,user.service,user.email,user.whatsAppNumber,user.phoneNumber)
+  //send message to office
+  const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
+  const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
 
-  sendEmail(user.firstName,user.lastName,user.service,user.email,data)
+  // Compile the Handlebars template
+  const template = handlebars.compile(htmlTemplate);
+
+  // Render the template with the data
+  const html = template({ user, service, data });
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
-    text: `Hello GCL client service, \nName: ${user.firstName} ${user.lastName} \nEmail: ${user.email}  \nPhone Number : ${user.phoneNumber} \nWhatsApp Number : ${user.whatsAppNumber} \nLocation: ${user.location} \nMessage: ${data}`,
+    // text: `Hello GCL client service, \nName: ${user.firstName} ${user.lastName} \nEmail: ${user.email}  \nPhone Number : ${user.phoneNumber} \nWhatsApp Number : ${user.whatsAppNumber} \nLocation: ${user.location} \nMessage: ${data}`,
+    html:html,
+    attachments:[{
+      filename:'image.png',
+      content: imageAttachment.toString('base64'),
+      encoding:'base64',
+      contentDisposition: 'inline',
+      cid:'uniqueImageCID'
+    }]
   };
 
   transporter.verify((error, success) => {
@@ -73,17 +92,44 @@ app.post('/contact', (req, res) => {
     }
   });
 
-  
-
 });
 
+//email from internet plans 
 app.post('/internet',(req,res)=>{
   const details = req.body;
+  let user = req.body;
+  user.service = "Request for internet";
+
+  let service = {
+    service:"Request for internet",
+    plan:user.plan,
+    package:user.package,
+  }
+ 
+  let data = `Internet Plan : ${details.plan} \tInternet Package: ${details.package}`
+  console.log(user);
+  sendEmail(user.firstName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
+  const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
+
+  // Compile the Handlebars template
+  const template = handlebars.compile(htmlTemplate);
+
+  // Render the template with the data
+  const html = template({ user, service, data });
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
-    subject: `GCL Client: Internet Request` ,
-    text: `Hello GCL client service, \nName: ${details.firstName} ${details.lastName} \nEmail: ${details.email}  \nPhone Number : ${details.phoneNumber} \nWhatsApp Number : ${details.whatsAppNumber} \nLocation: ${details.location} \nInternet Plan : ${details.plan} \nInternet Package: ${details.package}`,
+    subject: `GCL Client: ${user.service}` ,
+    // text: `Hello GCL client service, \nName: ${user.firstName} ${user.lastName} \nEmail: ${user.email}  \nPhone Number : ${user.phoneNumber} \nWhatsApp Number : ${user.whatsAppNumber} \nLocation: ${user.location} \nMessage: ${data}`,
+    html:html,
+    attachments:[{
+      filename:'image.png',
+      content: imageAttachment.toString('base64'),
+      encoding:'base64',
+      contentDisposition: 'inline',
+      cid:'uniqueImageCID'
+    }]
   };
 
   transporter.verify((error, success) => {
@@ -105,7 +151,7 @@ app.post('/internet',(req,res)=>{
   });
 
 })
-
+//test request
 app.get('/internet',(req,res)=>{
   const details = req.body;
   const mailOptions = {
@@ -137,16 +183,28 @@ app.get('/internet',(req,res)=>{
 
 })
 
-async function sendEmail(firstName,lastName,service,email,message) {
+//email to client
+async function sendEmail(firstName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
   // Read the HTML template and image file
-  const htmlTemplate = await readFileAsync('./email.html', 'utf-8');
+  let htmlTemplate = 'Default HTML template';
+  if(service.service == 'Comment'){
+     htmlTemplate = await readFileAsync('./ClientCommentConfirmation.html', 'utf-8');
+  }else if(service.service == 'Technical Support'){
+    htmlTemplate = await readFileAsync('./ClientTechSupportConfirmation.html', 'utf-8')
+  }else if(service.service == 'Request for internet'){
+    htmlTemplate = await readFileAsync('./ClientInternetReqConfirmation.html', 'utf-8')
+  }
   const template = handlebars.compile(htmlTemplate)
   const imageAttachment = await readFileAsync('./GCL_logo.jpg');
  
   const data ={
-      name:`${firstName} ${lastName}`,
+      firstName:firstName,      
+      lastName:lastName,      
+      location:location,      
       service:service,
-      message:message
+      whatsAppNumber:whatsAppNumber,
+      phoneNumber:phoneNumber,
+      email:email,
   }
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
@@ -169,6 +227,7 @@ async function sendEmail(firstName,lastName,service,email,message) {
           filename: 'image.png',
           content: imageAttachment,
           encoding: 'base64',
+          contentDisposition: 'inline',
           cid: 'uniqueImageCID', // Referenced in the HTML template
       }],
   });

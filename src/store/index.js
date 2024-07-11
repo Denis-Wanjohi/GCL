@@ -5,7 +5,6 @@ const store = createStore({
     getters:{},
     actions:{
         async contactForm({commit},data){
-            console.log(data)
             const res = await axiosClient.post('/contact',data)
             console.log(res)
             return res;
