@@ -63,8 +63,8 @@ const data = [
             "How do I report an outage or technical issue?"
         ],
         answers:[
-            "You can contact us through our website, email, phone, or social media.",
-            "Our office is open from 8 am to 5 pm, Monday to Friday.",
+            "You can contact us through our website email (sales@gigabit.co.ke) or call (+254712999333)",
+            "Our office is open from 8 am to 5 pm on Monday to Friday and 9 am to 1 pm.",
             "Yes, our support team is fluent in both English and Swahili.",
             "Contact our support team through our website, email, or phone to report an outage or technical issue."
         ]
