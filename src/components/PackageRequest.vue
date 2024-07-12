@@ -81,8 +81,17 @@
                   <option>Kanthiga</option>
                   <option>Gakoromone</option>
                   <option>Kiruai</option>
-                  <option>Others</option>
+                  <option>Others (specify your location)</option>
             </select>
+          </div>
+        </div>
+
+        <div class="sm:col-span-3" v-if="details.location === 'Others (specify your location)'">
+          <label for="otherLocation" class="block text-sm font-semibold leading-6 text-gray-900">Your location <br> <span class="text-xs font-normal">
+            please fill this if your location is not on the list*
+          </span></label>
+          <div class="mt-2">
+            <input id="otherLocation" required   v-model="details.otherLocation" name="otherLocation" type="text" placeholder="specify your location..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
           </div>
         </div>
 
@@ -188,6 +197,7 @@ const details = ref({
   firstName:'',
   lastName:'',
   location:'',
+  otherLocation:'',
   email:'',
   phoneNumber:'',
   whatsAppNumber:'',
@@ -197,6 +207,9 @@ const details = ref({
 })
 function internet(){
   submitting.value = true;
+  if(details.value.location == 'Others (specify your location)'){
+    details.value.location = details.value.otherLocation 
+  }
   store.dispatch('internet',details.value)
     .then((response)=>{
       console.log(response.data.message)
@@ -206,10 +219,12 @@ function internet(){
         details.value.firstName = ''
         details.value.lastName = ''
         details.value.location = ''
+        details.value.otherLocation = ''
         details.value.email = ''
         details.value.phoneNumber = ''
         details.value.whatsAppNumber = ''
         emailSent.value = false
+        this.$emit('close')
       },5000)
     })
     .catch((err)=>{

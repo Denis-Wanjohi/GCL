@@ -348,7 +348,7 @@ function userDetails(){
         details.value.plan == ''
         details.value.package == ''
     }
-    if(details.value.location == 'Others'){
+    if(details.value.location == 'Others (specify your location)'){
         details.value.location = details.value.otherLocation 
     }
     let  user  = {
@@ -389,6 +389,7 @@ function userDetails(){
             details.value.phoneNumber = ''
             details.value.whatsAppNumber = ''
             details.value.location = ''
+            details.value.otherLocation = ''
             details.value.service = ''
             details.value.message = ''
             details.value.plan = ''

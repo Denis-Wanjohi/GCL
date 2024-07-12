@@ -21,6 +21,16 @@ npm install
 ```sh
 npm run dev
 ```
+open another terminal:
+
+```sh
+npm install 
+```
+then 
+
+```sh
+node index.js
+```
 
 ### Compile and Minify for Production
 

@@ -41,7 +41,7 @@ const transporter = nodemailer.createTransport({
 //email from  the contact us page
 app.post('/contact', (req, res) => {
   const { user, service } = req.body;
-  console.log(service)
+  console.log(user)
   let data = null;
   if(service.service == 'Comment' ||  service.service == 'Technical Support'){
     data = service.message
@@ -49,7 +49,7 @@ app.post('/contact', (req, res) => {
     data = `Internet Request.   ${service.plan} plan  ${service.package} package`
   }
   // sends an email to the client
-  sendEmail(user.firstName,user.lastName,user.location,user.service,user.email,user.whatsAppNumber,user.phoneNumber)
+  sendEmail(user.firstName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
@@ -187,9 +187,10 @@ app.get('/internet',(req,res)=>{
 async function sendEmail(firstName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
   // Read the HTML template and image file
   let htmlTemplate = 'Default HTML template';
+  // console.log("190 service " + service)
   if(service.service == 'Comment'){
      htmlTemplate = await readFileAsync('./ClientCommentConfirmation.html', 'utf-8');
-  }else if(service.service == 'Technical Support'){
+  }else if(service.service == 'Technical Support'){ 
     htmlTemplate = await readFileAsync('./ClientTechSupportConfirmation.html', 'utf-8')
   }else if(service.service == 'Request for internet'){
     htmlTemplate = await readFileAsync('./ClientInternetReqConfirmation.html', 'utf-8')

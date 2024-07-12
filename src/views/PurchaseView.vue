@@ -331,5 +331,6 @@ function selectedPlan(plan,package_plan){
 }
 function close(){
   packageSelected.value = false
+  console.log('closed')
 }
 </script>
