@@ -21,16 +21,18 @@
             </div>
         
             <v-expansion-panels
+              @click="planClick"
               color="blue bg-blue shadow w-1/2"
               v-model="panel"
               multiple
+              
               v-for="(plan,i) in plans" :key="i"
             >
               <v-expansion-panel
                 :title=plan.plan
                 :value=plan.value
                 style=""
-              
+                
               >
                 <v-expansion-panel-text>
                   <v-container fluid>
@@ -312,6 +314,9 @@ import Form from '../components/PackageRequest.vue'
 let panel = ref([])
 const packageSelected = ref(false)
 const data = ref()
+function planClick(){
+  window.scrollTo(0,window.innerHeight * 0.39)
+}
 function all() {
   panel.value = ['home', 'business', 'student']
 }
