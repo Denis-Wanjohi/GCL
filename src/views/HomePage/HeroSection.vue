@@ -105,7 +105,6 @@ onMounted(()=>{
         description: 'When it comes to taking a break we got you!',
         price:'999',
         imagePath:"/Images/african-student.jpg",
-        // imagePath:"https://unsplash.com/photos/a-man-sitting-on-a-bench-with-a-cell-phone-in-his-hand-kZz-4g2JgYM",
         direction:"horizontal"
     },
  ]

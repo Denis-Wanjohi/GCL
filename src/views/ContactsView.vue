@@ -85,49 +85,65 @@
                             </div>
 
                             <div class="sm:col-span-3">
+                            <label for="whatsAppNumber" class="block text-sm font-semibold leading-6 text-gray-900">WhatsApp number</label>
+                            <div class="mt-2">
+                                <input id="whatsAppNumber" required   v-model="details.whatsAppNumber" name="whatsAppNumber" type="tel" v-maska  data-maska="+254#########" placeholder="+2547XXXXXXXX" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                            </div>
+                            </div>
+
+                            <div class="sm:col-span-3">
                                 <label for="location" class=" block text-sm font-semibold leading-6 text-gray-900">Location</label>
                                 <div class="mt-2">
                                     <select id="location" required  v-model="details.location" name="location"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                         <option>MeruTown</option>
                                         <option>Kinoru</option>
                                         <option>Makutano</option>
-                                         <option>Mwendatu</option>
-                                         <option>Kambakia</option>
-                                         <option>Kongoacheke</option>
-                                         <option>CCM</option>
-                                         <option>Brotherhood</option>
-                                          <option>Mjini</option>
-                                         <option>Meru General Area</option>
-                                          <option>Kooje</option>
-                                         <option>Gitimbine</option>
-                                       <option>Gikumene</option>
+                                        <option>Mwendatu</option>
+                                        <option>Kambakia</option>
+                                        <option>Kongoacheke</option>
+                                        <option>CCM</option>
+                                        <option>Brotherhood</option>
+                                        <option>Mjini</option>
+                                        <option>Meru General Area</option>
+                                        <option>Kooje</option>
+                                        <option>Gitimbine</option>
+                                        <option>Gikumene</option>
                                         <option>Bypass</option>
                                         <option>Kathumbi</option>
                                         <option>Ruiri Junction</option>
-                                      <option>Total Milimani</option>
+                                        <option>Total Milimani</option>
                                         <option>White Lotus</option>
-                                     <option>Irinda Primary</option>
-                                    <option>Kwa Nthambi</option>
+                                        <option>Irinda Primary</option>
+                                        <option>Kwa Nthambi</option>
                                         <option>Woodlands</option>
-                                     <option>Mwiteria</option>
-                                      <option>Ngamia</option>
-                                      <option>Kiorone</option>
-                                      <option>Meru Diary</option>
-                                      <option>Mwithumwiru</option>
-                                      <option>KaagaBoys</option>
-                                      <option>Mpakone</option>
-                                     <option>Nkoune</option>
-                                     <option>Kemu</option>
-                                      <option>Gitoro</option>
-                                      <option>Kigure</option>
-                                     <option>Kambakia</option>
-                                     <option>Runogone</option>
-                                      <option>Kanthiga</option>
-                                     <option>Gakoromone</option>
-                                      <option>Kiruai</option>
-                                         <option>Others</option>
+                                        <option>Mwiteria</option>
+                                        <option>Ngamia</option>
+                                        <option>Kiorone</option>
+                                        <option>Meru Diary</option>
+                                        <option>Mwithumwiru</option>
+                                        <option>KaagaBoys</option>
+                                        <option>Mpakone</option>
+                                        <option>Nkoune</option>
+                                        <option>Kemu</option>
+                                        <option>Gitoro</option>
+                                        <option>Kigure</option>
+                                        <option>Kambakia</option>
+                                        <option>Runogone</option>
+                                        <option>Kanthiga</option>
+                                        <option>Gakoromone</option>
+                                        <option>Kiruai</option>
+                                        <option>Others <span class="text-xs font-bold">(specify your location)</span> </option>
                                     </select>
                                 </div>
+                            </div>
+                            
+                            <div class="sm:col-span-3" v-if="details.location === 'Others (specify your location)'">
+                            <label for="otherLocation" class="block text-sm font-semibold leading-6 text-gray-900">Your location <br> <span class="text-xs font-normal">
+                                please fill this if your location is not on the list*
+                            </span></label>
+                            <div class="mt-2">
+                                <input id="otherLocation" required   v-model="details.otherLocation" name="otherLocation" type="text" placeholder="specify your location..." class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
+                            </div>
                             </div>
 
                             <div class="sm:col-span-3">
@@ -192,6 +208,72 @@
                             </div>
                         </div>
                     </form>
+                     <!-- submitting -->
+                    <div v-if="submitting" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                        <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div class="w-full ">
+                            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                            <rect width="10" height="10" x="1" y="1" fill="blue" rx="1">
+                                <animate id="svgSpinnersBlocksShuffle30" fill="freeze" attributeName="x" begin="0;svgSpinnersBlocksShuffle3b.end" dur="0.15s" values="1;13" />
+                                <animate id="svgSpinnersBlocksShuffle31" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle38.end" dur="0.15s" values="1;13" />
+                                <animate id="svgSpinnersBlocksShuffle32" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle39.end" dur="0.15s" values="13;1" />
+                                <animate id="svgSpinnersBlocksShuffle33" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle3a.end" dur="0.15s" values="13;1" />
+                            </rect>
+                            <rect width="10" height="10" x="1" y="13" fill="orange" rx="1">
+                                <animate id="svgSpinnersBlocksShuffle34" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle30.end" dur="0.15s" values="13;1" />
+                                <animate id="svgSpinnersBlocksShuffle35" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle31.end" dur="0.15s" values="1;13" />
+                                <animate id="svgSpinnersBlocksShuffle36" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle32.end" dur="0.15s" values="1;13" />
+                                <animate id="svgSpinnersBlocksShuffle37" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle33.end" dur="0.15s" values="13;1" />
+                            </rect>
+                            <rect width="10" height="10" x="13" y="13"  fill="brown" rx="1">
+                                <animate id="svgSpinnersBlocksShuffle38" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle34.end" dur="0.15s" values="13;1" />
+                                <animate id="svgSpinnersBlocksShuffle39" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle35.end" dur="0.15s" values="13;1" />
+                                <animate id="svgSpinnersBlocksShuffle3a" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle36.end" dur="0.15s" values="1;13" />
+                                <animate id="svgSpinnersBlocksShuffle3b" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle37.end" dur="0.15s" values="1;13" />
+                            </rect>
+                            </svg>
+                        </div>
+                        <div class="font-mono text-3xl text-center">Submitting ....</div>
+                        </div>
+                    </div>
+                    <!-- submitted -->
+                    <div v-if="emailSent" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                        <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div class="w-full ">
+                            <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                            <g stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <circle cx="12" cy="12" r="9" fill="blue" fill-opacity="0.3" />
+                                <path fill="none" stroke-dasharray="14" stroke-dashoffset="14" d="M8 12L11 15L16 10">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="2s" values="14;0" />
+                                </path>
+                            </g>
+                            </svg>
+                        </div>
+                        <div class="font-mono text-3xl">Submitted!</div>
+                        </div>
+                    </div>
+                    <!-- Failed submit -->
+                    <div v-if="failedSubmit" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                        <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div class="w-full ">
+                            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                            <rect width="24" height="24" fill="none" />
+                            <g fill="none" stroke="#ff8000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="1.5s" values="60;0" />
+                                </path>
+                                <path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.8s" dur="0.6s" values="6;0" />
+                                </path>
+                            </g>
+                            <circle cx="12" cy="17" r="1" fill="#ff8000" fill-opacity="0">
+                                <animate fill="freeze" attributeName="fill-opacity" begin="2.4s" dur="1.2s" values="0;1" />
+                            </circle>
+                            </svg>
+                        </div>
+                        <div class="font-mono text-3xl">Failed to submit!</div>
+                        </div>
+                    </div>
                  </div>
              </div>
         </div>
@@ -212,6 +294,9 @@ import {vMaska} from "maska/vue"
 import {ref,onMounted} from 'vue'
 import store from '@/store/index.js'
 const contacts = ref()
+const submitting = ref(false)
+const failedSubmit = ref(false)
+const emailSent = ref(false)
 
 onMounted(()=>{
     contacts.value = [
@@ -242,31 +327,36 @@ const details = ref({
     lastname:'',
     email:'',
     phoneNumber:'',
+    whatsAppNumber:'',
     location:'',
+    otherLocation:'',
     service:'',
     message:'',
     plan:'',
     package:''
 })
 const submittedForm = ref(false)
-const emailSent = ref(false)
 // function submitted(){
 //     if(details.value.firstname != '' || details.value.lastname != '' || details.value.firstname != '')
 //     submittedForm.value = true
 // }
 function userDetails(){
+    submitting.value = true
     if(details.value.service == 'Request for internet'){
         details.value.message == ''
     }else{
         details.value.plan == ''
         details.value.package == ''
     }
-
+    if(details.value.location == 'Others (specify your location)'){
+        details.value.location = details.value.otherLocation 
+    }
     let  user  = {
             firstName: details.value.firstname,
             lastName: details.value.lastname,
             email: details.value.email,
             phoneNumber: details.value.phoneNumber,
+            whatsAppNumber: details.value.whatsAppNumber,
             location: details.value.location,
             service: details.value.service,
     }
@@ -292,11 +382,14 @@ function userDetails(){
     store.dispatch('contactForm',data)
         .then((response)=>{
             submittedForm.value = false
+            submitting.value =false
             details.value.firstname = ''
             details.value.lastname =''
             details.value.email =''
             details.value.phoneNumber = ''
+            details.value.whatsAppNumber = ''
             details.value.location = ''
+            details.value.otherLocation = ''
             details.value.service = ''
             details.value.message = ''
             details.value.plan = ''
@@ -310,6 +403,12 @@ function userDetails(){
         })
         .catch((error)=>{
             submittedForm.value = false
+            emailSent.value = false
+            failedSubmit.value = true;
+            submitting.value = false
+            setTimeout(() => {
+                failedSubmit.value =  false;
+            }, 5000);
             console.log(error)
         })
     

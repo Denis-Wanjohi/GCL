@@ -16,19 +16,19 @@ const data =[
     },
     {
         question:"Do I need to be present during the installation?",
-        answer:"Yes, please ensure someone is present to grant our technician access to your premises and to answer any questions they may have.Yes, please ensure someone is present to grant our technician access to your premises and to answer any questions they may have.",
+        answer:"Yes, please ensure someone is present to grant our technician access to your premises and to answer any questions they may have.",
     },
     {
         question:"What equipment do I need to provide for installation? ",
-        answer:"We provide all necessary equipment, including a route. You don't need to provide anything.",
+        answer:"We provide all necessary equipment, including a router. You don't need to provide anything.",
     },
     {
         question:"Can I schedule a specific installation time? ",
-        answer:"Yes, we offer flexible scheduling to accommodate your needs. Contact us to schedule a time that works for you.",
+        answer:"Yes, we offer flexible scheduling to accommodate your needs. Contact us to schedule  time that works for you.",
     },
     {
         question:"How do I prepare for my installation appointment?",
-        answer:"Please ensure a clear path for our technician to access your premises, and have a power outlet available for the equipment.",
+        answer:"Please ensure a clear path for our technician to access your premises, and have  power outlet available for the equipment.",
     },
     {
         question:"What if I need to reschedule my installation appointment?",
@@ -36,7 +36,7 @@ const data =[
     },
     {
         question:"Will the installation technician configure my devices?",
-        answer:" Our technician will configure your router and modem, but you may need to configure your devices (e.g., computers, smartphones) to connect to the internet. We can provide guidance on how to do this.",
+        answer:" Our technician will configure your router and modem, but you may need to configure your devices (e.g., computers, smartphones) to connect to the internet. We offer guidance on how to do this.",
     },
 
 ]

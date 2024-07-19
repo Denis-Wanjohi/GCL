@@ -1,6 +1,7 @@
 <template>
 
     <!-- FORM TO FILL WITH DATA -->
+    <!-- <Form  :data = data v-if="packageSelected" @close=close></Form> -->
     <Form  :data = data v-if="packageSelected" @close=close></Form>
 
     <!--PLANS AND PACKAGES  -->
@@ -20,16 +21,18 @@
             </div>
         
             <v-expansion-panels
+              @click="planClick"
               color="blue bg-blue shadow w-1/2"
               v-model="panel"
               multiple
+              
               v-for="(plan,i) in plans" :key="i"
             >
               <v-expansion-panel
                 :title=plan.plan
                 :value=plan.value
                 style=""
-              
+                
               >
                 <v-expansion-panel-text>
                   <v-container fluid>
@@ -181,7 +184,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Family",
                 speed:20,
-                price:2599,
+                price:3799,
                 description:[
                     "Family connectivity",
                     "Multiple devices streaming",
@@ -195,7 +198,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Power User",
                 speed:30,
-                price:2599,
+                price:5399,
                 description:[
                     "Heavy Internet user",
                     "Online gaming",
@@ -209,7 +212,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Turboo",
                 speed:50,
-                price:2599,
+                price:6999,
                 description:[
                     "Ultimate speed",
                     "Business use",
@@ -311,6 +314,9 @@ import Form from '../components/PackageRequest.vue'
 let panel = ref([])
 const packageSelected = ref(false)
 const data = ref()
+function planClick(){
+  window.scrollTo(0,window.innerHeight * 0.39)
+}
 function all() {
   panel.value = ['home', 'business', 'student']
 }
@@ -319,10 +325,12 @@ function none() {
   panel.value = []
 }
 function selectedPlan(plan,package_plan){
+   window.scrollTo(0, 0);
    data.value = [plan,package_plan]
    packageSelected.value = true
 }
 function close(){
   packageSelected.value = false
+  console.log('closed')
 }
 </script>

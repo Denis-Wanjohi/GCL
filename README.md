@@ -1,6 +1,6 @@
 # GCL
 
-This template should help get you started developing with Vue 3 in Vite.
+This template should help get you setup GCL.
 
 ## Recommended IDE Setup
 
@@ -20,6 +20,16 @@ npm install
 
 ```sh
 npm run dev
+```
+open another terminal:
+
+```sh
+npm install 
+```
+then 
+
+```sh
+node index.js
 ```
 
 ### Compile and Minify for Production

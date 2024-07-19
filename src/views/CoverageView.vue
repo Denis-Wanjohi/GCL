@@ -17,13 +17,13 @@ convenient and  customer centric  support always ready to tend to your queries</
 
     <div class="w-full bg-gradient-to-t from-orange-500  h-[70vh]  flex sm:flex-row flex-col-reverse ">
       <!-- map -->
-      <Map class="sm:w-1/2 h-[70%] py-4 mx-5" :getLngLat="getLngLat"></Map>
+      <Map class="sm:w-1/2 h-[70%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat"></Map>
       <!-- locations -->
        <div class="sm:w-1/2 w-full">
           <div class="text-2xl font-bold">LOCATIONS</div>
           <div>
             <p class="text-sm">Areas that we have reached...just next to you</p>
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
               <v-chip @click="location(37.64397203980247, 0.060811031349528574)">Meru Town</v-chip>
               <v-chip @click="location(37.639968,0.054526)">Kinoru</v-chip>
               <v-chip @click="location(37.641417,0.058606)">Makutano</v-chip>
