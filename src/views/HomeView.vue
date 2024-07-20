@@ -30,14 +30,14 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
   <main>
     <hero-section></hero-section>
     <features-section></features-section>
-    <v-tab>
+    <!-- <v-tab>
      <div id="continous-slider" class="slider">
        <transition name="slide">
-         <p class="text-xl font-bold animate__slideInLeft bg-gradient-to-r from-blue-500 via-transparent to-orange-500">{{message}} </p>
+         <p class="text-xl font-bold animate__slideInLeft bg-gradient-to-r from-blue-500 via-transparent to-orange-500">message </p>
        </transition>
      </div>
        
-    </v-tab>
+    </v-tab> -->
     <plans-section></plans-section>
     <testimonial-section></testimonial-section>
     <call-to-action-section></call-to-action-section>

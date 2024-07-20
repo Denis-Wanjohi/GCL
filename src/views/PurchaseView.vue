@@ -1,5 +1,5 @@
 <template>
-
+    
     <!-- FORM TO FILL WITH DATA -->
     <!-- <Form  :data = data v-if="packageSelected" @close=close></Form> -->
     <Form  :data = data v-if="packageSelected" @close=close></Form>
@@ -19,7 +19,6 @@
                 None
               </v-btn>
             </div>
-        
             <v-expansion-panels
               @click="planClick"
               color="blue bg-blue shadow w-1/2"
@@ -136,17 +135,13 @@
           </v-stepper>
       </div>
 
-
-
-
-
-
-
+    <router-view></router-view>
 
 </template>
 
 <script setup>
-import   {ref} from 'vue';
+import router from '@/router';
+import   {ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
   const plans = [
     {
@@ -311,12 +306,29 @@ import Form from '../components/PackageRequest.vue'
         ]
     },
   ]
-let panel = ref([])
+let panel = ref([''])
 const packageSelected = ref(false)
 const data = ref()
-function planClick(){
-  window.scrollTo(0,window.innerHeight * 0.39)
+const currentPath = router.currentRoute.value.path
+watch(currentPath,(newPath)=>{
+  console.log(newPath)
+})
+if(currentPath == '/purchase/home'){
+  panel.value = [],
+  panel.value[0] = 'home'
+}else if(currentPath == '/purchase/student'){
+  panel.value = [],
+  panel.value[0] = 'student'
+}else if(currentPath == '/purchase/business'){
+  panel.value = [],
+  panel.value[0] = 'business'
 }
+function planClick(){
+  window.scrollTo(0,window.innerHeight * 0.2)
+  console.log(this.$route)
+
+}
+console.log(router.currentRoute.value.path)
 function all() {
   panel.value = ['home', 'business', 'student']
 }
@@ -333,4 +345,5 @@ function close(){
   packageSelected.value = false
   console.log('closed')
 }
+
 </script>

@@ -64,6 +64,28 @@
                             </div>
 
                             <div class="sm:col-span-3">
+                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Middle name</label>
+                            <div class="mt-2">
+                                <input type="text"  v-model="details.middlename" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                            </div>
+
+                            <!-- <div class="sm:col-span-3">
+                            <div class="">
+                                <input type="text" required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                 <v-text-field label="names" variant="outlined" v-model="details.firstname" ></v-text-field>
+                            </div>
+                            </div>
+
+                            
+                            <div class="sm:col-span-3">
+                            <div class="">
+                                <input type="text" required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                 <v-text-field label="names" variant="outlined" v-model="details.firstname" ></v-text-field>
+                            </div>
+                            </div> -->
+
+                            <div class="sm:col-span-3">
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Last name</label>
                             <div class="mt-2">
                                 <input type="text" required v-model="details.lastname" name="last-name" id="last-name" autocomplete="family-name" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -324,6 +346,7 @@ onMounted(()=>{
 })
 const details = ref({
     firstname:'',
+    middlename:'',
     lastname:'',
     email:'',
     phoneNumber:'',
@@ -351,8 +374,12 @@ function userDetails(){
     if(details.value.location == 'Others (specify your location)'){
         details.value.location = details.value.otherLocation 
     }
+    if(details.value.middlename == ''){
+        details.value.middlename = ' '
+    } 
     let  user  = {
             firstName: details.value.firstname,
+            middlename: details.value.middlename,
             lastName: details.value.lastname,
             email: details.value.email,
             phoneNumber: details.value.phoneNumber,
@@ -384,6 +411,7 @@ function userDetails(){
             submittedForm.value = false
             submitting.value =false
             details.value.firstname = ''
+            details.value.middlename = ''
             details.value.lastname =''
             details.value.email =''
             details.value.phoneNumber = ''
@@ -394,8 +422,6 @@ function userDetails(){
             details.value.message = ''
             details.value.plan = ''
             details.value.package = ''
-            console.log(response.data.message)
-            console.log(response.status)
             emailSent.value = true
             setTimeout(() => {
                 emailSent.value = false
@@ -410,7 +436,6 @@ function userDetails(){
                 failedSubmit.value =  false;
             }, 5000);
             console.log(error)
-        })
-    
+        }) 
 }
 </script>

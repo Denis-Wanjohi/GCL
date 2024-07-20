@@ -1,16 +1,35 @@
 <template>
-  <div class="sm:px-4 my-2 py-2 flex flex-wrap  justify-around">
-    <div v-for="(feature,i) in features" :key="i"
-        class="text-center sm:w-[20%] w-[75%] py-2 px-2  my-3 mx-auto    rounded-xl"
-        :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
-            
-    >
-        <v-icon  :icon=feature.icon size="100"></v-icon>
-        <p class="text-xl font-semibold">{{ feature.title }}</p>
-        <p>{{ feature.text }}</p>
-        <p class="text-3xl font-extrabold">{{ feature.headline }}</p>
+    <div class="py-3 font-extrabold text-xl">WHY US ...</div>
+    <!-- LARGE SCREEN -->
+ 
+        <div class="sm:px-4 my-2 py-2 flex flex-wrap  justify-around  sm:flex hidden  ">
+            <div v-for="(feature,i) in features" :key="i"
+                class="text-center sm:w-[20%] w-[75%] py-2 px-2  my-3 mx-auto    rounded-xl"
+                :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
+                    
+            >
+                <v-icon  :icon=feature.icon size="100"></v-icon>
+                <p class="text-xl font-semibold">{{ feature.title }}</p>
+                <p>{{ feature.text }}</p>
+                <p class="text-3xl font-extrabold">{{ feature.headline }}</p>
+            </div>
+        </div>
+
+    <!-- MOBILE VIEW -->
+    <div class="flex w-screen py-3 overflow-x-auto sm:hidden  hide-scrollbar shadow-sm">
+        <div class="flex">
+            <div v-for="(feature,i) in features" :key="i"
+                class="text-center w-[250px]   pt-2 px-2  mx-2 rounded-sm shadow-xl "
+                :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
+            >
+                <v-icon  :icon=feature.icon size="50"></v-icon>
+                <p class="text-xl font-semibold">{{ feature.title }}</p>
+                <p>{{ feature.text }}</p>
+                <p class="text-3xl font-extrabold">{{ feature.headline }}</p>
+            </div>
+        </div>
     </div>
-  </div>
+    
 </template>
 
 <script setup>

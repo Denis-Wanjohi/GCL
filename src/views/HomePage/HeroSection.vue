@@ -2,54 +2,56 @@
   <v-carousel  
     v-if="plans"
     height=""
-    style="width: 100vw;"
-    class="border mx-auto bg-gradient-to-tr from-orange-500 to-pink-600"
+    style="width: 100vw;background-color: black; background-image: url('/public/Images/Gigabit_logo.png');"
+    class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600"
     :show-arrows="false"
     cycle
-    interval="5000"
+    interval="10000"
     hide-delimiters="true"
   >
     <v-carousel-item
-      class="bg-orange rounded-3xl"
+    style=""
+      class=" rounded-3xl bg-cover bg-center"
       v-for="(plan, i) in plans.length"
       height=""
       :key="i"
+      
     >
-      <v-sheet
-        class="bg-blue"
-        height=""
-      >
-        <div class="d-flex sm:h-[90vh] h-[300px] bg-[url('/Images/GCL_G_logo.png')] justify-center align-center w-screen">
-          <img :src=plans[plan-1].imagePath class="w-full   " alt="">
-          <!-- <img v-lazy="{ src: plans[plan-1].imagePath, loading: 'loading.gif', error: 'error.gif' }" class="w-full" alt=""> -->
-          <!-- FOR PC SCREENS -->
-          <div class="sm:w-[500px] w-3/4  sm:block hidden bg-cyan-800 rounded absolute text-center  sm:h-[200px] sm:opacity-90 opacity-100  sm:mt-[150px] mt-[100px] sm:-ml-[700px] ">
-            <p class="sm:text-5xl text-2xl text-center py-5 font-bold text-white">{{plans[plan-1].name}}</p>
-            <p>{{plans[plan-1].description}}</p>
-            <p>Pocket friendly from as low as <span class="text-xl font-bold">KSH {{plans[plan-1].price}} bob</span> </p>
-            <div class="py-4  sm:block hidden">
-                <router-link to="/purchase" class="px-5  font-bold bg-orange-400 w-fit rounded-md py-3 text-xl mx-auto">GET THE PLAN</router-link>
+    
+      <!-- LARGE SCREENS -->
+      <div class="relative h-[90vh] sm:block hidden animate__animated animate__wobble" >
+        <v-parallax :src=plans[plan-1].imagePath>
+          <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
+          <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
+            <div class=" w-[180px] h-[180px]  bg-gradient-to-l from-blue-500 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+                <div class="text-center text-white font-semibold">{{ pack.feature }}</div>
+                <div class="text-[100px] h-[65%] text-white text-center font-bold flex w-full align-center justify-center">
+                  {{ pack.speed }} 
+                  <span class="text-2xl text-end">Mbps</span>
+                </div>
+                <div class=" h-1/4 text-center font-mono  flex w-full align-center text-2xl  justify-center">{{ pack.price }}/month</div>
             </div>
           </div>
-
-
-          <!-- FOR MOBILE -->
-          <div class="inset-0 flex justify-between flex-col absolute sm:hidden w-full  h-full">
-              <p class="text-start px-5 font-semibold text-2xl bg-gradient-to-b from-blue-600">{{plans[plan-1].name}}</p>
-              <div class=" text-start bg-gradient-to-t from-orange-300 ">
-                <p class="bg-gradient-to-r from-orange-400 ">{{plans[plan-1].description}}</p>
-                <div class="flex flex-wrap ">
-                  <p class="bg-gradient-to-r from-orange-400">Starting from <span class="text-xl font-bold">KSH {{plans[plan-1].price}} bob</span> </p>
-                  <div class="py-2 mx-auto">
-                    <router-link to="/purchase" class="px-2  font-bold bg-orange-400 w-fit rounded-md py-1 text-lg mx-auto">GET THE PLAN</router-link>
-                  </div>
+        </v-parallax>
+      </div>
+     
+      <!-- MOBILE VIEW -->
+      <div class="relative sm:h-[90vh] sm:hidden block text-white">
+        <v-parallax :src=plans[plan-1].imagePath style="height:400px;">
+          <div class="absolute bottom-5 left-0  flex flex-wrap w-full justify-start">
+          <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-orange-800  ">{{ plans[plan-1].name }}</div>
+          <div class="flex flex-wrap w-full justify-evenly">
+            <div class=" sm:w-[180px] m-1   w-1/4 sm:h-[180px] h-fit  bg-gradient-to-b from-blue-700 via-orange-400 to-blue-600   cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+                <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
+                  {{ pack.speed }} 
+                  <span class="sm:text-2xl text-sm text-end">Mbps</span>
                 </div>
-                
-              </div>
-              
+                <div class=" h-1/4 text-center font-mono  flex w-full align-center text-sm  justify-center">{{ pack.price }}/month</div>
+            </div>
           </div>
-        </div>
-      </v-sheet>
+          </div>
+        </v-parallax>
+      </div>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -57,22 +59,26 @@
 <script setup>
 import 'animate.css'
 import { onMounted, ref } from 'vue'
+const current = ref()
 const plans = ref()
+const packages = ref()
 onMounted(()=>{
    plans.value = [
     {
-        name:'HOME FIBRE',
+        name:'HOME PLANS',
         description: 'Dont miss a moment',
         price:'2199',
-        imagePath:"/Images/gigabit-happy-family.jpg",
-        direction:"horizontal"
+        imagePath:"/Images/gigabit-family.jpg",
+        direction:"horizontal",
+        tag:0
     },
     {
-        name:'BUSINESS FIBRE',
+        name:'BUSINESS PLANS',
         description: 'Keeping you up with no ease ',
         price:'2199',
         imagePath:"/Images/business.jpg",
-        direction:"horizontal"
+        direction:"horizontal",
+        tag:1
 
     },
     {
@@ -80,24 +86,27 @@ onMounted(()=>{
         description: 'Improve Grade performance with ease',
         price:'999',
         imagePath:"/Images/soundtrap.jpg",
-        direction:"horizontal"
+        direction:"horizontal",
+        tag:2
 
     },
     {
-        name:'HOME FIBRE',
+        name:'HOME PLANS',
         description: 'Happy moments tailored for you',
         price:'2199',
         imagePath:"/Images/netflix.jpg",
-        direction:"horizontal"
+        direction:"horizontal",
+        tag:0
 
     },
     {
-        name:'BUSINESS FIBRE',
+        name:'BUSINESS PLANS',
         description:'Focus on the profit we take care of the connectivity',
 
         price:'2199',
         imagePath:"/Images/business_2.jpg",
-        direction:"horizontal"
+        direction:"horizontal",
+        tag:1
 
     },
     {
@@ -105,9 +114,170 @@ onMounted(()=>{
         description: 'When it comes to taking a break we got you!',
         price:'999',
         imagePath:"/Images/african-student.jpg",
-        direction:"horizontal"
+        direction:"horizontal",
+        tag:2
     },
  ]
+ packages.value = [
+        {
+            plan:'HOME',
+            packages:[
+                {
+                    feature:"Essential",
+                    speed:7,
+                    price:2199,
+                    description:[
+                        "Basic internet use",
+                        "Browsing",
+                        "Unlimited",
+                        "social media",
+                        "e-learning",
+                        ""
+                    ],
+                    users:"5-8"
+                },
+                {
+                    feature:"Streamer",
+                    speed:12,
+                    price:2599,
+                    description:[
+                        "Smooth HD streaming",
+                        "Online gaming",
+                        "Unlimited",
+                        "email",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"9-12"
+                },
+                {
+                    feature:"Family",
+                    speed:20,
+                    price:3799,
+                    description:[
+                        "Family connectivity",
+                        "Multiple devices streaming",
+                        "3D Conferencing",
+                        "Unlimited",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"13-15"
+                },
+                {
+                    feature:"Power User",
+                    speed:30,
+                    price:5399,
+                    description:[
+                        "Heavy Internet user",
+                        "Online gaming",
+                        "Unlimited",
+                        "Fast uploads/downloads",
+                        "social media",
+                        "e-learning"
+                    ],
+                    users:"15-20"
+                },
+                {
+                    feature:"Turboo",
+                    speed:50,
+                    price:6999,
+                    description:[
+                        "Ultimate speed",
+                        "Business use",
+                        "Unlimited",
+                        "Heavy online activity",
+                        "Large Families",
+                        "Heavy online users"
+                    ],
+                    users:"25-30"
+                },
+            ]
+        },
+        {
+            plan:'BUSINESS',
+            packages:[
+                {
+                    feature:"Starter",
+                    speed:2,
+                    price:3480,
+                    description:[
+                        "Basic online activities",
+                        "Fast upload and downloads speeeds",
+                        "Low latency",
+                        "Reliable conectivity",
+                    ],
+                    users:"1-5"
+                },
+                {
+                    feature:"Growth",
+                    speed:5,
+                    price:5800,
+                    description:[
+                        "Faster speeds for onine activities",
+                        "Seamless connectivity",
+                        "High-speed uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"5-10"
+                },
+                {
+                    feature:"Pro",
+                    speed:10,
+                    price:11600,
+                    description:[
+                        "High-speed connectivity",
+                        "Fast uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"10-20"
+                },
+                {
+                    feature:"Power User",
+                    speed:30,
+                    price:2599,
+                    description:[
+                        "Lightening-fast connectivity",
+                        "High-speed uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"20-50"
+                },
+            ]
+        },
+        {
+            plan:'STUDENT',
+            packages:[
+                {
+                    feature:"Student Lite",
+                    immage:"/Image/student-lite.jpg",
+                    speed:3,
+                    price:999,
+                    description:[
+                        "2 GB daily data allocation",
+                        "256 kbps bandwidth after exhausting the daily limit",
+                        "Suitable for light online activities",
+                    ],
+                    users:"1-2"
+                },
+                {
+                    feature:"Student Pro",
+                    immage:"/Image/student-pro.jpg",
+                    speed:5,
+                    price:1499,
+                    description:[
+                        "3 GB daily data allocation",
+                        "512 kbps bandwidth after exhausting the daily limit",
+                        "Suitable for moderate to heavy activities",
+                    ],
+                    users:"2-3"
+                },
+            ]
+        },
+  ]
 })
 
 </script>

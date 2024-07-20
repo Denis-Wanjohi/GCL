@@ -1,4 +1,47 @@
 <template>
+    <div class="sm:text-[40px] text-2xl flex justify-around align-center font-bold py-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 512 512">
+            <rect width="512" height="512" fill="none" />
+            <path fill="#2a81bf" d="M293.5 298a7.7 7.7 0 0 0-5.3 2L256 330.9L223.8 300a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.975s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.975s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 253a7.7 7.7 0 0 0-5.3 2L256 285.9L223.8 255a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.9s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.9s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 208a7.7 7.7 0 0 0-5.3 2L256 240.9L223.8 210a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.825s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.825s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 163a7.7 7.7 0 0 0-5.3 2L256 195.9L223.8 165a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.75s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.75s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+        </svg>
+        OUR PLANS
+        <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 512 512">
+            <rect width="512" height="512" fill="none" />
+            <path fill="#2a81bf" d="M293.5 298a7.7 7.7 0 0 0-5.3 2L256 330.9L223.8 300a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.975s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.975s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 253a7.7 7.7 0 0 0-5.3 2L256 285.9L223.8 255a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.9s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.9s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 208a7.7 7.7 0 0 0-5.3 2L256 240.9L223.8 210a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.825s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.825s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+            <path fill="#2a81bf" d="M293.5 163a7.7 7.7 0 0 0-5.3 2L256 195.9L223.8 165a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
+                <animateTransform attributeName="transform" begin="-0.75s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" type="translate" values="0 -30; 0 0; 0 30" />
+                <animate attributeName="opacity" begin="-0.75s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
+            </path>
+        </svg>
+
+    </div>
+    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! </p>
     <v-card class="text-start" >
       <v-tabs
         v-model="tab"
@@ -19,24 +62,26 @@
         >
           <v-container fluid>
             <v-row>
+                <!-- LARGE SCREENS -->
               <v-col
+                class="sm:block hidden"
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
                 md="4"
               >
-              <div >
+              <div class=" sm:h-[460px]" >
                 <v-card
                     style="color: red;background-color: green;"
-                    class="mx-auto"
+                    class="mx-auto h-[150px]"
                     color="surface-variant"
                     image="/Images/student-pro.jpg"
                     max-width="350"
-                    height="200"
+                    height=""
                 >
-                    <v-card-title class="bg-gradient-to-r from-orange-500 py-3" >{{ packages.feature }}</v-card-title>
-                    <p class="text-[70px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[40px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
-                    <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  text-xl from-orange-500">Ksh. {{ packages.price }}/month </p>
+                    <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ packages.feature }}</v-card-title>
+                    <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
+                    <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p>
                 </v-card>
                 <v-card
                     class="mx-auto"
@@ -44,33 +89,66 @@
                     style="background-color: greenyellow;"
                 >
                     <v-list density="compact">
-
-                    <v-list-item
-                        v-for="(description, i) in packages.description"
-                        :key="i"
-                        :value="item"
-                        color="primary"
-                        style="background-color: beige;"
-                    >
-                        <template v-slot:prepend>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
-                        </template>
-
-                        <v-list-item-title class="text-xl text-wrap">{{ description }}</v-list-item-title>
-                    </v-list-item>
+                        <v-list-item
+                            v-for="(description, i) in packages.description"
+                            :key="i"
+                            :value="item"
+                            color="primary"
+                            style="background-color: beige;"
+                        >
+                            <template v-slot:prepend>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
+                            </template>
+                            <v-list-item-title class="text-sm text-wrap">{{ description }} </v-list-item-title>
+                        </v-list-item>
                     </v-list>
                 </v-card>
 
               </div>
-                        
-              
               </v-col>
+
+
+              <!-- MOBILE VIEW -->
+              <div class="flex overflow-x-auto sm:hidden">
+                <div class="flex" v-for="(packages,i) in plans[n].packages" :key="i">
+                    <div class=" sm:h-[460px] w-[300px]" >
+                        <v-card
+                            class="mx-auto h-[150px]"
+                            color="surface-variant"
+                            image="/Images/student-pro.jpg"
+                            max-width="250"
+                            height=""
+                        >
+                            <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ packages.feature }}</v-card-title>
+                            <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
+                            <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p>
+                        </v-card>
+                        <v-card
+                            class="mx-auto"
+                            max-width="250"
+                            style="background-color: greenyellow;"
+                        >
+                            <v-list density="compact">
+                                <v-list-item
+                                    v-for="(description, i) in packages.description"
+                                    :key="i"
+                                    :value="item"
+                                    color="primary"
+                                    style="background-color: beige;"
+                                >
+                                    <template v-slot:prepend>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
+                                    </template>
+                                    <v-list-item-title class="text-sm text-wrap">{{ description }} </v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-card>
+                    </div>
+                </div>
+              </div>
             </v-row>
           </v-container>
         </v-tabs-window-item>
-        <!-- <v-tabs-window-item  value="HOME">HOME</v-tabs-window-item> -->
-        <!-- <v-tabs-window-item  value="BUSINESS">BUSINESS</v-tabs-window-item>
-        <v-tabs-window-item  value="STUDENT">STUDENT</v-tabs-window-item> -->
       </v-tabs-window>
       </v-card-text>
     </v-card>
