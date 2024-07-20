@@ -70,14 +70,14 @@
                 cols="12"
                 md="4"
               >
-              <div class=" sm:h-[460px]" >
+              <div class="" >
                 <v-card
                     style="color: red;background-color: green;"
                     class="mx-auto h-[150px]"
                     color="surface-variant"
                     image="/Images/student-pro.jpg"
                     max-width="350"
-                    height=""
+                    height="170"
                 >
                     <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ packages.feature }}</v-card-title>
                     <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>

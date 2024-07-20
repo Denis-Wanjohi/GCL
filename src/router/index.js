@@ -34,9 +34,9 @@ const router = createRouter({
       name: 'purchase',
       component: PurchaseView,
       children:[
-        {path:'/purchase/home',component:HomePlan,name:'home'},
-        {path:'/purchase/business',component:BusinessPlan,name:'business'},
-        {path:'/purchase/student',component:StudentPlan,name:'student'},
+        {path:'/purchase/home',component:HomePlan,name:'homePlan'},
+        {path:'/purchase/business',component:BusinessPlan,name:'businessPlan'},
+        {path:'/purchase/student',component:StudentPlan,name:'studentPlan'},
       ]
     },
     {
@@ -60,6 +60,11 @@ const router = createRouter({
       path: '/coverage',
       name: 'coverage',
       component: CoverageView
+    },
+    {
+      path: '/support_form',
+      name: 'support_form',
+      redirect:'/contacts'
     }
   ],
 })
