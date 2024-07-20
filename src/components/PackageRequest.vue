@@ -2,7 +2,7 @@
     
     <div class="border-b border-gray-900/10 pb-12 sm:w-1/2 sm:mx-auto sm:pt-10">
       <div class="flex justify-start">
-        <div class="flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
+        <div class="pl-5 flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
             <svg  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="black" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225z" />
             </svg>

@@ -133,7 +133,7 @@
           <div class="w-full text-center">
             <v-text class="text-center font-bold">The following steps will help you in make a request for your plan:</v-text>
           </div>
-          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto">
+          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto" editable hide-actions>
             <template v-slot:item.1>
               <v-card title="Choose a Plan" flat>
                 <div  class="flex align-baseline">
