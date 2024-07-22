@@ -4,6 +4,7 @@ import IconHome from "./components/icons/IconHome.vue"
 import IconAboutUs from "./components/icons/IconAboutUs.vue"
 import IconContact from "./components/icons/IconContact.vue"
 import IconMap from "./components/icons/IconMap.vue"
+import IconSupport from "./components/icons/IconSupport.vue"
 import IconHomePlan from "./components/icons/IconHomePlan.vue"
 import IconStudentPlan from "./components/icons/IconStudentPlan.vue"
 import IconBusinessPlan from "./components/icons/IconBusinessPlan.vue"
@@ -32,6 +33,11 @@ const footer = [
             link:"/coverage",
             icon:IconMap
           },
+          {
+            value:"Support",
+            link:"/support",
+            icon:IconSupport
+          },
         ]
       },
       {
@@ -55,70 +61,79 @@ const footer = [
         ]
       }
 ]
-
  function scrollToTop(){
   window.scrollTo(0, 0);
 }
 import router from '@/router/index.js'
 function supportReq(){
   router.push('/support_form')
+  // window.scrollTo(0,window.innerHeight * 0.1)
+  if(window.innerWidth <= 426){
+    window.scrollTo(0,window.innerHeight * 1.85) 
+  }else{
+    window.scrollTo(0,window.innerHeight * 0.6)
+  }
+  console.log(window.innerWidth)
 }
 
 </script>
-
 <template>
-  <div v-if="$route.name">
-    
-    <header class="w-screen bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-900   ">
-      <div class="flex  w-full">
-        <div class="sm:w-1/4 w-3/4 flex justify-center  ">
+  <div v-if="$route.name">   
+    <header class="w-screen bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-900">
+      <!-- <header class="w-screen   sm:bg-red-700 md:bg-orange-400 bg-lime-600"> -->
+      <div class="flex  w-full justify-between">
+        <div class="sm:w-[30%]   w-3/4 flex justify-center  ">
           <router-link to="/">
-            <img src="/Images/Gigabit_logo.png"  class=" my-auto h-[80px] w-full" alt="LOGO PNG">
+            <img src="/Images/Gigabit_main_logo.png"  class=" my-auto h-[80px] w-full bg-fill" alt="LOGO PNG">
           </router-link>
         </div>
-
-        <div  class=" w-3/4 my-auto sm:block hidden text-white">
-          <VTabs bg-color="" fixedTabs class=" h-[200px]  font-bold text-xl ">
-            <VTab style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
-            <VTab  style="font-weight: 700;font-size: medium;" to="/about">ABOUT US</VTab>
+        <!-- LARGE  SCREEN -->
+        <div  class=" w-[60%] my-auto lg:block hidden text-white ">
+          <VTabs bg-color="" fixedTabs class=" h-[200px] hidden font-bold text-xl ">
+            <VTab  style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
+            <VTab  class="hidden" style="font-weight: 700;font-size: medium;" to="/about">ABOUT US</VTab>
             <VTab  style="font-weight: 700;font-size: medium;" to="/coverage"> COVERAGE</VTab>
             <VTab  style="font-weight: 700;font-size: medium;" to="/purchase">PURCHASE</VTab>
             <VTab  style="font-weight: 700;font-size: medium;" to="/contacts"> CONTACTS</VTab>
             <VTab  style="font-weight: 700;font-size: medium;" to="/support"> SUPPORT</VTab>
           </VTabs>
         </div>
-        <div class="w-1/4 sm:flex sm:justify-center hidden text-white">
-          <VTab style="font-size: medium;">
+        <!-- TABLET VIEW -->
+        <div  class=" w-[60%] my-auto lg:hidden  sm:block hidden text-white ">
+          <VTabs bg-color="" fixedTabs class=" h-[200px] hidden font-bold text-xl ">
+            <VTab  style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
+            <VTab  style="font-weight: 700;font-size: medium;" to="/purchase">PURCHASE</VTab>
+            <VTab  style="font-weight: 700;font-size: medium;" to="/contacts"> CONTACTS</VTab>
+          </VTabs>
+          <VTab style="font-size: medium;" class="py-2">
+            <svg xmlns="http://www.w3.org/2000/svg"  width="20px" height="20px" viewBox="0 0 24 24"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02c-.37-1.11-.56-2.3-.56-3.53c0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
+            Call us: 0712 999 333
+          </VTab>
+        </div>
+
+        <div class="w-1/4 md:flex md:justify-center hidden text-white ">
+          <VTab style="font-size: medium;" class="">
             <svg xmlns="http://www.w3.org/2000/svg"  width="30px" height="30px" viewBox="0 0 24 24"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02c-.37-1.11-.56-2.3-.56-3.53c0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
             Call us: 0712 999 333
           </VTab>
         </div>
 
         <!-- MOBILE VIEW MENU -->
-        <div class="sm:hidden block  w-1/4  h-fit flex place-content-end  my-auto">
+        <div class="md:hidden block  w-1/4 b pr-3 h-fit flex place-content-end  my-auto">
           <v-menu>
             <template v-slot:activator="{ props }">
-            
               <div
                 color="rgb(59 130 246 / 0.5)"
                 v-bind="props"
                 elevation="0"
 
               >
-              <svg xmlns="http://www.w3.org/2000/svg"   width="50px" height="50px" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg"    class=" mx-auto mr-3"   width="50px" height="50px" viewBox="0 0 24 24">
                 <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8h12M6 12h12M6 16h12" />
               </svg>
               </div>
-              
             </template>
             <v-list>
-              <!-- <v-list-item
-                v-for="(item, index) in 3"
-                :key="index"
-                :value="index"
-              >
-                <v-list-item-title>{{ item }}</v-list-item-title>
-              </v-list-item> -->
               <v-list-item
                         v-for="(item,i) in footer[0].items"
                         :key="i"
@@ -172,8 +187,7 @@ function supportReq(){
       <v-card
       color="surface-variant"
                       image="/Images/patch-panel.webp"
-                      class="mt-1"
-                      
+                      class="mt-1"           
     >
         <div class=" pt-[50px] pb-[50px]  bg-gradient-to-t from-blue-700 flex-col">
 
@@ -203,7 +217,7 @@ function supportReq(){
                       class="mt-5 mx-5 flex-col bg-transparent"
                   >
                     <v-list-subheader style="font-size: 20px;"><span class="font-bold text-black">{{foot.title}}</span></v-list-subheader>
-                    <router-link to="home">
+                   
                       <v-list-item
                         v-for="(item,i) in foot.items"
                         :key="i"
@@ -215,11 +229,11 @@ function supportReq(){
                             <v-icon :icon="item.icon"></v-icon>
                           </router-link>
                       </template>
-                      <router-link :to=item.link @click.prevent=scrollToTop class="px-2">
-                        <v-list-item-title><span class="font-bold">{{ item.value }}</span></v-list-item-title>
+                      <router-link :to=item.link @click.prevent=scrollToTop class="px-2 py-0">
+                        <v-list-item-title><span class="font-bold  sm:text-xs md:text-md ">{{ item.value }}</span></v-list-item-title>
                       </router-link>
                       </v-list-item>
-                    </router-link>
+                    
                   </v-list>
                 </v-card>
             </div>
@@ -261,7 +275,7 @@ function supportReq(){
               </div>
           </div>
           <v-divider class="mx-10" thickness="2"></v-divider>
-          <div class="text-grey text-center text-sm py-2">
+          <div class="text-grey text-center text-sm pt-2">
             <p>@{{year}} Gigabit Connection Limited</p>
           </div>
           

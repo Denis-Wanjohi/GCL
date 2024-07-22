@@ -64,7 +64,7 @@
             <v-row>
                 <!-- LARGE SCREENS -->
               <v-col
-                class="sm:block hidden"
+                class="lg:block hidden"
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
@@ -109,7 +109,7 @@
 
 
               <!-- MOBILE VIEW -->
-              <div class="flex overflow-x-auto sm:hidden">
+              <div class="flex overflow-x-auto lg:hidden hide-scrollbar">
                 <div class="flex" v-for="(packages,i) in plans[n].packages" :key="i">
                     <div class=" sm:h-[460px] w-[300px]" >
                         <v-card

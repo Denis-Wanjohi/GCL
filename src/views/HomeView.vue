@@ -19,7 +19,6 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
         'With a deposit of only KSH 4000 fully refundable for each plan!'
       ];
       const newIndex = Math.floor(Math.random() * messages.length);
-      console.log(messages[newIndex]);
       message.value = messages[newIndex];
     }, 3000);
     });
