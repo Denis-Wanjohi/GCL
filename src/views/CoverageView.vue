@@ -23,7 +23,7 @@ convenient and  customer centric  support always ready to tend to your queries</
           <div class="text-2xl font-bold">LOCATIONS</div>
           <div>
             <p class="text-sm">Areas that we have reached...just next to you</p>
-            <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
+            <div class="flex flex-wrap sm:h-[300px] md:h-full h-[200px] hide-scrollbar overflow-y-auto">
               <v-chip @click="location(37.64397203980247, 0.060811031349528574)">Meru Town</v-chip>
               <v-chip @click="location(37.639968,0.054526)">Kinoru</v-chip>
               <v-chip @click="location(37.641417,0.058606)">Makutano</v-chip>
