@@ -4,7 +4,7 @@
     height=""
     style="width: 100vw;background-color: black; background-image: url('/public/Images/Gigabit_logo.png');"
     class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600"
-    :show-arrows="true"
+    :show-arrows="false"
     cycle
     interval="10000"
     hide-delimiters="true"
@@ -15,11 +15,12 @@
       v-for="(plan, i) in plans.length"
       height=""
       :key="i"
+      data-aos="fade-up"
       
     >
     
       <!-- LARGE SCREENS -->
-      <div class="relative lg:h-[90vh] sm:block hidden animate__animated animate__wobble" >
+      <div class="relative lg:h-[90vh] sm:block hidden" >
         <v-parallax :src=plans[plan-1].imagePath>
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
           <div class="absolute bottom-10 left-0  flex w-full justify-evenly">

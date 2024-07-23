@@ -37,7 +37,7 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
      </div>
        
     </v-tab> -->
-    <plans-section></plans-section>
+    <plans-section ></plans-section>
     <testimonial-section></testimonial-section>
     <call-to-action-section></call-to-action-section>
   </main>

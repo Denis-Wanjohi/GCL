@@ -65,6 +65,8 @@
                 <!-- LARGE SCREENS -->
               <v-col
                 class="lg:block hidden"
+                 data-aos-duration="2000"
+                 data-aos="flip-up"
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
