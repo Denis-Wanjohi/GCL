@@ -85,10 +85,11 @@
             plan:'HOME',
             packages:[
                 {
-                    feature:"Essential",
+                    feature:"Connecting you to the world",
                     speed:7,
                     price:2199,
                     description:[
+                        "Family connectivity",
                         "Basic internet use",
                         "Browsing",
                         "Unlimited",
@@ -99,10 +100,11 @@
                     users:"5-8"
                 },
                 {
-                    feature:"Streamer",
+                    feature:"Connecting you to the world",
                     speed:12,
                     price:2599,
                     description:[
+                        "Family connectivity",
                         "Smooth HD streaming",
                         "Online gaming",
                         "Unlimited",
@@ -113,7 +115,7 @@
                     users:"9-12"
                 },
                 {
-                    feature:"Family",
+                    feature:"Connecting you to the world",
                     speed:20,
                     price:3799,
                     description:[
@@ -127,10 +129,11 @@
                     users:"13-15"
                 },
                 {
-                    feature:"Power User",
+                    feature:"Connecting you to the world",
                     speed:30,
                     price:5399,
                     description:[
+                        "Family connectivity",
                         "Heavy Internet user",
                         "Online gaming",
                         "Unlimited",
@@ -141,10 +144,11 @@
                     users:"15-20"
                 },
                 {
-                    feature:"Turboo",
+                    feature:"Connecting you to the world",
                     speed:50,
                     price:6999,
                     description:[
+                        "Family connectivity",
                         "Ultimate speed",
                         "Business use",
                         "Unlimited",
@@ -162,7 +166,7 @@
                 {
                     feature:"Starter",
                     speed:2,
-                    price:3480,
+                    price:2999,
                     description:[
                         "Basic online activities",
                         "Fast upload and downloads speeeds",
@@ -174,7 +178,7 @@
                 {
                     feature:"Growth",
                     speed:5,
-                    price:5800,
+                    price:4999,
                     description:[
                         "Faster speeds for onine activities",
                         "Seamless connectivity",
@@ -187,7 +191,7 @@
                 {
                     feature:"Pro",
                     speed:10,
-                    price:11600,
+                    price:9999,
                     description:[
                         "High-speed connectivity",
                         "Fast uploads and downoads",
@@ -197,9 +201,21 @@
                     users:"10-20"
                 },
                 {
+                    feature:"Faaasst",
+                    speed:20 Mbps,
+                    price:19999,
+                    description:[
+                        "High-speed connectivity",
+                        "Fast uploads and downoads",
+                        "Low latency",
+                        "Reliable connectivity",
+                    ],
+                    users:"20-40"
+                },
+                {
                     feature:"Power User",
                     speed:30,
-                    price:2599,
+                    price:27999,
                     description:[
                         "Lightening-fast connectivity",
                         "High-speed uploads and downoads",
