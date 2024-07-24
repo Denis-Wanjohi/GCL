@@ -88,14 +88,14 @@ function supportReq(){
           </router-link>
         </div>
         <!-- LARGE  SCREEN -->
-        <div  class=" w-[60%] my-auto lg:block hidden text-white ">
-          <VTabs bg-color="" fixedTabs class=" h-[200px] hidden font-bold text-xl ">
-            <VTab  style="font-weight: 700;font-size:medium" to="/">HOME</VTab>
-            <VTab  class="hidden" style="font-weight: 700;font-size: medium;" to="/about">ABOUT US</VTab>
-            <VTab  style="font-weight: 700;font-size: medium;" to="/coverage"> COVERAGE</VTab>
-            <VTab  style="font-weight: 700;font-size: medium;" to="/purchase">PURCHASE</VTab>
-            <VTab  style="font-weight: 700;font-size: medium;" to="/contacts"> CONTACTS</VTab>
-            <VTab  style="font-weight: 700;font-size: medium;" to="/support"> SUPPORT</VTab>
+        <div  class=" w-[70%] my-auto lg:block hidden text-white ">
+          <VTabs bg-color=""  class=" h-[200px] hidden font-bold text-xl ">
+            <VTab  style="font-weight: 700;" to="/">HOME</VTab>
+            <VTab  style="font-weight: 700;" to="/about">ABOUT US</VTab>
+            <VTab  style="font-weight: 700;" to="/coverage"> COVERAGE</VTab>
+            <VTab  style="font-weight: 700;" to="/purchase">PURCHASE</VTab>
+            <VTab  style="font-weight: 700;" to="/contacts"> CONTACTS</VTab>
+            <VTab  style="font-weight: 700;" to="/support"> SUPPORT</VTab>
           </VTabs>
         </div>
         <!-- TABLET VIEW -->
@@ -111,9 +111,9 @@ function supportReq(){
           </VTab>
         </div>
 
-        <div class="w-1/4 lg:flex lg:justify-center hidden text-white ">
-          <VTab style="font-size: medium;" class="">
-            <svg xmlns="http://www.w3.org/2000/svg"  width="30px" height="30px" viewBox="0 0 24 24"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02c-.37-1.11-.56-2.3-.56-3.53c0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
+        <div class="w-[20%]  lg:flex lg:justify-center hidden text-white ">
+          <VTab style="font-size: small;" class="">
+            <svg xmlns="http://www.w3.org/2000/svg"  width="20px" height="30px" viewBox="0 0 24 24"><path fill="currentColor" d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02c-.37-1.11-.56-2.3-.56-3.53c0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
             Call us: 0712 999 333
           </VTab>
         </div>

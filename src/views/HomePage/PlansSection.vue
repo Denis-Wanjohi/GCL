@@ -81,7 +81,7 @@
                     max-width="350"
                     height="170"
                 >
-                    <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ packages.feature }}</v-card-title>
+                    <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3 hidden" >{{ packages.feature }}</v-card-title>
                     <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
                     <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p>
                 </v-card>

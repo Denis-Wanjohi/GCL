@@ -25,8 +25,8 @@
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
           <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
             <!-- <div class="w-[180px]   h-[180px]  bg-gradient-to-l from-blue-500 to-green-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i"> -->
-            <div class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-blue-500 to-green-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
-                <div class="text-center text-white font-semibold">{{ pack.feature }}</div>
+            <div class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-blue-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+                <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                 <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
                   <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
@@ -41,7 +41,7 @@
       <div class="relative sm:h-[90vh] sm:hidden block text-white">
         <v-parallax :src=plans[plan-1].imagePath style="height:400px;">
           <div class="absolute bottom-5 left-0  flex flex-wrap w-full justify-start">
-          <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-orange-800  ">{{ plans[plan-1].name }}</div>
+          <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-orange-800">{{ plans[plan-1].name }}</div>
           <div class="flex flex-wrap w-full justify-evenly">
             <div @click="package_selected()" class=" sm:w-[180px] m-1   w-1/4 sm:h-[180px] h-fit  bg-gradient-to-b from-blue-700 via-orange-400 to-blue-600   cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
