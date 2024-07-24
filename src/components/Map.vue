@@ -95,4 +95,8 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> f97124368cd317504caedd44da6585d361279772

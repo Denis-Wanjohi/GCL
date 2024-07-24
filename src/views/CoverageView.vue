@@ -86,6 +86,7 @@
 import { ref } from 'vue';
 import Map from '../components/Map.vue';
 
+<<<<<<< HEAD
 // Covered areas list with coordinates
 const coveredAreas = [
   { name: "Meru Town", lng: 37.64397203980247, lat: 0.060811031349528574 },
@@ -123,6 +124,46 @@ const coveredAreas = [
   { name: "Kanthiga", lng: 37.655503079763875, lat: 0.07294816799402155 },
   { name: "Gakoromone", lng: 37.66561092555042, lat: 0.048460031407292145 },
   { name: "Kiruai", lng: 37.67162875880659, lat: 0.1101863245048477 }
+=======
+// Covered areas list
+const coveredAreas = [
+  "Meru Town",
+  "Kinoru",
+  "Makutano",
+  "Mwendatu",
+  "Kambakia",
+  "Kongoacheke",
+  "CCM",
+  "Brotherhood",
+  "Mjini",
+  "Meru General Area",
+  "Kooje",
+  "Gitimbine",
+  "Gikumene Bypass",
+  "Kathumbi",
+  "Ruiri Junction",
+  "Total Milimani",
+  "White Lotus",
+  "Irinda Primary",
+  "Kwa Nthambi",
+  "Woodlands",
+  "Mwiteria",
+  "Ngamia",
+  "Kiorone",
+  "Meru Diary",
+  "Mwithumwiru",
+  "Kaaga Boys",
+  "Mpakone",
+  "Nkoune",
+  "Kemu",
+  "Gitoro",
+  "Kigure",
+  "Kambakia",
+  "Runogone",
+  "Kanthiga",
+  "Gakoromone",
+  "Kiruai"
+>>>>>>> f97124368cd317504caedd44da6585d361279772
 ];
 
 const searchQuery = ref('');
@@ -145,6 +186,7 @@ function getLngLat() {
 
 // Function to search for location
 function searchLocation() {
+<<<<<<< HEAD
   const area = searchQuery.value.trim().toLowerCase();
 
   if (area === '') {
@@ -153,6 +195,55 @@ function searchLocation() {
   }
 
   const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
+=======
+  const area = searchQuery.value.toLowerCase();
+  const index = coveredAreas.findIndex(a => a.toLowerCase() === area);
+
+  if (index !== -1) {
+    message.value = `Yes, we cover the area: ${coveredAreas[index]}`;
+    const coordinates = {
+      "Meru Town": { lng: 37.64397203980247, lat: 0.060811031349528574 },
+      "Kinoru": { lng: 37.639968, lat: 0.054526 },
+      "Makutano": { lng: 37.641417, lat: 0.058606 },
+      "Mwendatu": { lng: 37.64536, lat: 0.04397 },
+      // Add other areas' coordinates here
+    };
+
+    const coord = coordinates[coveredAreas[index]];
+    if (coord) {
+      location(coord.lng, coord.lat, coveredAreas[index]);
+    }
+  } else {
+    message.value = `Sorry, we do not cover  ${searchQuery.value}`;
+  }
+}
+</script>
+
+<style>
+@import url('../../node_modules/ol/ol.css');
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+html, body, #map, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+>>>>>>> f97124368cd317504caedd44da6585d361279772
 
   if (index !== -1) {
     message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
