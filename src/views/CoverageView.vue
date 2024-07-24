@@ -86,45 +86,6 @@
 import { ref } from 'vue';
 import Map from '../components/Map.vue';
 
-<<<<<<< HEAD
-// Covered areas list with coordinates
-const coveredAreas = [
-  { name: "Meru Town", lng: 37.64397203980247, lat: 0.060811031349528574 },
-  { name: "Kinoru", lng: 37.639968, lat: 0.054526 },
-  { name: "Makutano", lng: 37.641417, lat: 0.058606 },
-  { name: "Mwendatu", lng: 37.64536, lat: 0.04397 },
-  { name: "Kambakia", lng: 37.64536, lat: 0.06143 },
-  { name: "Kongoacheke", lng: 37.64911, lat: 0.07504 },
-  { name: "CCM", lng: 37.64418702505114, lat: 0.06935654358706765 },
-  { name: "Brotherhood", lng: 37.65125284713504, lat: 0.05174638118569249 },
-  { name: "Mjini", lng: 37.657343903899964, lat: 0.07749101012804159 },
-  { name: "Meru General Area", lng: 37.654502474534894, lat: 0.05114340618807852 },
-  { name: "Kooje", lng: 37.661143379594606, lat: 0.05059417031297015 },
-  { name: "Gitimbine", lng: 37.652361606745366, lat: 0.03791792391832968 },
-  { name: "Gikumene Bypass", lng: 37.65845071095882, lat: 0.026274826945309138 },
-  { name: "Kathumbi", lng: 37.64715538954481, lat: 0.03329442791490069 },
-  { name: "Ruiri Junction", lng: 37.65720034907254, lat: 0.09249158320517943 },
-  { name: "Total Milimani", lng: 37.639741996714, lat: 0.05393539872902565 },
-  { name: "White Lotus", lng: 37.64227776441821, lat: 0.04675023923592474 },
-  { name: "Irinda Primary", lng: 37.647304320236124, lat: 0.039827081582576605 },
-  { name: "Kwa Nthambi", lng: 37.65374203743669, lat: 0.04013709691506824 },
-  { name: "Woodlands", lng: 37.65674074721487, lat: 0.03471367155140713 },
-  { name: "Mwiteria", lng: 37.65674074721487, lat: 0.03964893500218091 },
-  { name: "Ngamia", lng: 37.66792053743669, lat: 0.03895288525141898 },
-  { name: "Kiorone", lng: 37.66008312243502, lat: 0.04893606406184273 },
-  { name: "Meru Diary", lng: 37.65945307917725, lat: 0.041951086342570935 },
-  { name: "Mwithumwiru", lng: 37.65000931053776, lat: 0.07013693136047787 },
-  { name: "Kaaga Boys", lng: 37.654778278324535, lat: 0.06391957524235498 },
-  { name: "Mpakone", lng: 37.65985971627175, lat: 0.06788069122698175 },
-  { name: "Nkoune", lng: 37.65379379325462, lat: 0.05740652751650088 },
-  { name: "Kemu", lng: 37.64749291188904, lat: 0.08506920484543119 },
-  { name: "Gitoro", lng: 37.62996822597197, lat: 0.06471230202639075 },
-  { name: "Kigure", lng: 37.627968866273115, lat: 0.051408083383665155 },
-  { name: "Runogone", lng: 37.652426322091046, lat: 0.07815122740871763 },
-  { name: "Kanthiga", lng: 37.655503079763875, lat: 0.07294816799402155 },
-  { name: "Gakoromone", lng: 37.66561092555042, lat: 0.048460031407292145 },
-  { name: "Kiruai", lng: 37.67162875880659, lat: 0.1101863245048477 }
-=======
 // Covered areas list
 const coveredAreas = [
   "Meru Town",
@@ -163,7 +124,6 @@ const coveredAreas = [
   "Kanthiga",
   "Gakoromone",
   "Kiruai"
->>>>>>> f97124368cd317504caedd44da6585d361279772
 ];
 
 const searchQuery = ref('');
@@ -186,16 +146,6 @@ function getLngLat() {
 
 // Function to search for location
 function searchLocation() {
-<<<<<<< HEAD
-  const area = searchQuery.value.trim().toLowerCase();
-
-  if (area === '') {
-    message.value = 'Please enter an area name.';
-    return;
-  }
-
-  const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
-=======
   const area = searchQuery.value.toLowerCase();
   const index = coveredAreas.findIndex(a => a.toLowerCase() === area);
 
@@ -243,37 +193,4 @@ html, body, #map, #app {
 }
 </style>
 
->>>>>>> f97124368cd317504caedd44da6585d361279772
 
-  if (index !== -1) {
-    message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
-    location(coveredAreas[index].lng, coveredAreas[index].lat, coveredAreas[index].name);
-  } else {
-    message.value = `Sorry, we do not cover ${searchQuery.value}.`;
-  }
-}
-</script>
-
-<style>
-@import url('../../node_modules/ol/ol.css');
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-html, body, #map, #app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.map-container {
-  width: 100%;
-  height: 100%;
-}
-</style>
