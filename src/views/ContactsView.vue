@@ -91,6 +91,11 @@
                                 <input type="text" required v-model="details.lastname" name="last-name" id="last-name" autocomplete="family-name" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                             </div>
+                            <div class="sm:col-span-3">
+                            <label for="NationalIDnumber" class="block text-sm font-semibold leading-6 text-gray-900">National ID number</label>
+                            <div class="mt-2">
+                                <input id="nationalIDnumber" required v-model="details.nationalIdnumber" name="national-id-number" type="Id-number" data-maska="########" placeholder="xxxxxxxx" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
 
                             <div class="sm:col-span-3">
                             <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email address</label>
@@ -112,7 +117,7 @@
                                 <input id="whatsAppNumber" required   v-model="details.whatsAppNumber" name="whatsAppNumber" type="tel" v-maska  data-maska="+254#########" placeholder="+2547XXXXXXXX" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
                             </div>
                             </div>
-
+                        </div>
                             <div class="sm:col-span-3">
                                 <label for="location" class=" block text-sm font-semibold leading-6 text-gray-900">Location</label>
                                 <div class="mt-2">
@@ -324,7 +329,7 @@ onMounted(()=>{
     contacts.value = [
         {
             title:'Our Offices',
-            description:'Union Square,Adjacent to Meru Prison, Meru County',
+            description:'Riverand Rafiki Building first floor, Meru County',
             icon:IconBuilding
         },
         {
