@@ -22,19 +22,8 @@ const data = [
         answer:"Check the fibre optic cable for damage, ensure it's securely connected to the router, and restart the router. If the issue persists, contact our support team",
     },
     {
-        question:"What do I do if I'm experiencing dropped calls or poor voice quality?",
-        answer:"Check your phone's connection to the router, ensure it's not obstructed, and restart the router. If the issue persists, contact our support team to investigate further.",
-    }, {
         question:"Why can't I access certain websites or online services? ",
         answer:"Check your firewall settings, ensure they're not blocking the website, and try accessing the website from a different device. If the issue persists, contact our support team.",
-    },
-    {
-        question:"How do I reset my router?",
-        answer:" Press and hold the reset button on the back of the router for 10 seconds. This will restore the router to its factory settings. Note: This will erase all customized settings.",
-    },
-    {
-        question:"What do I do if my fibre optic cable is damaged?",
-        answer:"Contact our support team immediately to report the damage. We'll send a technician to repair or replace the cable as needed.",
     },
     {
         question:"Why is my Wi-Fi network not showing up? ",

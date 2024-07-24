@@ -15,7 +15,7 @@
 const data = [
     {
         question:"What is a strong password?",
-        answer:"A strong password is at least 12 characters long, includes a mix of uppercase and lowercase letters, numbers, and special characters. Avoid using personal information or common words.",
+        answer:"A strong password is at least 8 characters long, includes a mix of uppercase and lowercase letters, numbers, and special characters. Avoid using personal information or common words.",
     },
     {
         question:"How do I secure my Wi-Fi network? ",
