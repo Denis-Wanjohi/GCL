@@ -202,7 +202,7 @@
                 },
                 {
                     feature:"Faaasst",
-                    speed:20 Mbps,
+                    speed:20,
                     price:19999,
                     description:[
                         "High-speed connectivity",
