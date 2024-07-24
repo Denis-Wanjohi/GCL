@@ -38,13 +38,13 @@
                   <v-row>
                     <!-- LARGE SCREENS -->
                     <v-col
-                      class="sm:block hidden"
+                      class="lg:block hidden"
                       v-for="(package_plan,i) in plan.packages"
                       :key="i"
                       cols="12"
                       md="4"
                     >
-                    <!-- LARGE SCREENS -->    
+                     
                     <div >
                       <v-card
                           style=""
@@ -83,7 +83,7 @@
                     </v-col>
 
                     <!-- SMALL SCREENS -->
-                    <div class="flex overflow-x-auto sm:hidden">
+                    <div class="flex overflow-x-auto lg:hidden hide-scrollbar">
                       <div class="flex" v-for="(package_plan,i) in plan.packages" :key="i">
                           <div class=" sm:h-[460px] w-[300px]" >
                               <v-card

@@ -49,17 +49,17 @@
                  </div>
              
                  <!-- form -->
-                 <div class="sm:w-1/2 w-full px-5">
-                    <form class="border-b border-gray-900/10 pb-12" @submit.prevent="userDetails">
+                 <div class="sm:w-1/2 w-full px-5  ">
+                    <form  class="border-b  border-gray-900/10 pb-12" @submit.prevent="userDetails">
                         <h2 class=" text-2xl pt-5 font-semibold leading-7 text-gray-900">Inquery Information</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-400">Incase of any inquiry please reach out to us through this form.Thank you  :)</p>
                         <p class="mt-1 text-sm leading-6 text-gray-400">Please fill in correct details*</p>
                       
-                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div v-if="!isFormFilled" class="mt-10  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div class="sm:col-span-3">
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">First name</label>
                             <div class="mt-2">
-                                <input type="text" required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text"  required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4    rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                             </div>
 
@@ -234,9 +234,72 @@
                                 ></v-alert>
                             </div>
                         </div>
+
+                        <div v-if="submitting" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                            <div class="w-full ">
+                                <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                                <rect width="10" height="10" x="1" y="1" fill="blue" rx="1">
+                                    <animate id="svgSpinnersBlocksShuffle30" fill="freeze" attributeName="x" begin="0;svgSpinnersBlocksShuffle3b.end" dur="0.15s" values="1;13" />
+                                    <animate id="svgSpinnersBlocksShuffle31" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle38.end" dur="0.15s" values="1;13" />
+                                    <animate id="svgSpinnersBlocksShuffle32" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle39.end" dur="0.15s" values="13;1" />
+                                    <animate id="svgSpinnersBlocksShuffle33" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle3a.end" dur="0.15s" values="13;1" />
+                                </rect>
+                                <rect width="10" height="10" x="1" y="13" fill="orange" rx="1">
+                                    <animate id="svgSpinnersBlocksShuffle34" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle30.end" dur="0.15s" values="13;1" />
+                                    <animate id="svgSpinnersBlocksShuffle35" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle31.end" dur="0.15s" values="1;13" />
+                                    <animate id="svgSpinnersBlocksShuffle36" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle32.end" dur="0.15s" values="1;13" />
+                                    <animate id="svgSpinnersBlocksShuffle37" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle33.end" dur="0.15s" values="13;1" />
+                                </rect>
+                                <rect width="10" height="10" x="13" y="13"  fill="brown" rx="1">
+                                    <animate id="svgSpinnersBlocksShuffle38" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle34.end" dur="0.15s" values="13;1" />
+                                    <animate id="svgSpinnersBlocksShuffle39" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle35.end" dur="0.15s" values="13;1" />
+                                    <animate id="svgSpinnersBlocksShuffle3a" fill="freeze" attributeName="x" begin="svgSpinnersBlocksShuffle36.end" dur="0.15s" values="1;13" />
+                                    <animate id="svgSpinnersBlocksShuffle3b" fill="freeze" attributeName="y" begin="svgSpinnersBlocksShuffle37.end" dur="0.15s" values="1;13" />
+                                </rect>
+                                </svg>
+                            </div>
+                            <div class="font-mono text-3xl text-center">Submitting ....</div>
+                       </div>
+
+                        <div v-if="emailSent" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                            <div class="w-full ">
+                                <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                                <g stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <circle cx="12" cy="12" r="9" fill="blue" fill-opacity="0.3" />
+                                    <path fill="none" stroke-dasharray="14" stroke-dashoffset="14" d="M8 12L11 15L16 10">
+                                    <animate fill="freeze" attributeName="stroke-dashoffset" dur="2s" values="14;0" />
+                                    </path>
+                                </g>
+                                </svg>
+                            </div>
+                            <div class="font-mono text-3xl">Submitted!</div>
+                        </div>
+
+                        <div v-if="failedSubmit" class="bg-blue-500  mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                            <div class="w-full ">
+                                <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
+                                <rect width="24" height="24" fill="none" />
+                                <g fill="none" stroke="#ff8000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                    <path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z">
+                                    <animate fill="freeze" attributeName="stroke-dashoffset" dur="1.5s" values="60;0" />
+                                    </path>
+                                    <path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14">
+                                    <animate fill="freeze" attributeName="stroke-dashoffset" begin="1.8s" dur="0.6s" values="6;0" />
+                                    </path>
+                                </g>
+                                <circle cx="12" cy="17" r="1" fill="#ff8000" fill-opacity="0">
+                                    <animate fill="freeze" attributeName="fill-opacity" begin="2.4s" dur="1.2s" values="0;1" />
+                                </circle>
+                                </svg>
+                            </div>
+                            <div class="font-mono text-3xl">Failed to submit!</div>
+                        </div>
                     </form>
+                    
+                    <!-- OVERLAYS -->
+                    <div class=""></div>
                      <!-- submitting -->
-                    <div v-if="submitting" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                    <!-- <div v-if="submitting" class="sm:w-1/2 w-[90%] bg-red  sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] sm:bg-blue md:bg-red lg:bg-black inset-y-[210vh]  opacity-90 flex justify-center align-center">
                         <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
                         <div class="w-full ">
                             <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
@@ -262,9 +325,9 @@
                         </div>
                         <div class="font-mono text-3xl text-center">Submitting ....</div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- submitted -->
-                    <div v-if="emailSent" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                    <!-- <div v-if="emailSent" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
                         <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
                         <div class="w-full ">
                             <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
@@ -278,9 +341,9 @@
                         </div>
                         <div class="font-mono text-3xl">Submitted!</div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Failed submit -->
-                    <div v-if="failedSubmit" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
+                    <!-- <div v-if="failedSubmit" class="sm:w-1/2 w-[90%] sm:right-0 sm:h-[95vh] h-[170vh] absolute overflow-hidden sm:inset-[100vh] inset-y-[210vh] bg-black opacity-90 flex justify-center align-center">
                         <div class="bg-blue-500 sm:w-[20vw] sm:h-fit rounded text-center">
                         <div class="w-full ">
                             <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
@@ -300,7 +363,7 @@
                         </div>
                         <div class="font-mono text-3xl">Failed to submit!</div>
                         </div>
-                    </div>
+                    </div> -->
                  </div>
              </div>
         </div>
@@ -324,6 +387,7 @@ const contacts = ref()
 const submitting = ref(false)
 const failedSubmit = ref(false)
 const emailSent = ref(false)
+const isFormFilled = ref(false)
 
 onMounted(()=>{
     contacts.value = [
@@ -370,6 +434,7 @@ const submittedForm = ref(false)
 // }
 function userDetails(){
     submitting.value = true
+    isFormFilled.value =true
     if(details.value.service == 'Request for internet'){
         details.value.message == ''
     }else{
@@ -415,6 +480,7 @@ function userDetails(){
         .then((response)=>{
             submittedForm.value = false
             submitting.value =false
+            
             details.value.firstname = ''
             details.value.middlename = ''
             details.value.lastname =''
@@ -428,7 +494,9 @@ function userDetails(){
             details.value.plan = ''
             details.value.package = ''
             emailSent.value = true
+
             setTimeout(() => {
+                isFormFilled.value  = false
                 emailSent.value = false
             }, 5000);
         })

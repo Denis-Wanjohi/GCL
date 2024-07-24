@@ -18,7 +18,6 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
         'With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!!',
       ];
       const newIndex = Math.floor(Math.random() * messages.length);
-      console.log(messages[newIndex]);
       message.value = messages[newIndex];
     }, 3000);
     });
@@ -37,7 +36,7 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
      </div>
        
     </v-tab> -->
-    <plans-section></plans-section>
+    <plans-section ></plans-section>
     <testimonial-section></testimonial-section>
     <call-to-action-section></call-to-action-section>
   </main>

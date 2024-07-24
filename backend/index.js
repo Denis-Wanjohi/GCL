@@ -156,7 +156,12 @@ app.get('/internet',(req,res)=>{
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: Internet Request` ,
-    text:'hello'
+    html: `
+    <div style="background-image: url('./GCL_logo.jpg'); background-size: cover; background-color: orange;  height: 100vh; padding: 20px; color: white;">
+      <h1>Hello, World!</h1>
+      <p>This is an email with a background image.</p>
+    </div>
+  `
   };
 
   transporter.verify((error, success) => {
