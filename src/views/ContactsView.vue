@@ -56,6 +56,7 @@
                         <p class="mt-1 text-sm leading-6 text-gray-400">Please fill in correct details*</p>
                       
                         <div v-if="!isFormFilled" class="mt-10  grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <!-- FIRST NAME -->
                             <div class="sm:col-span-3">
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">First name</label>
                             <div class="mt-2">
@@ -63,6 +64,7 @@
                             </div>
                             </div>
 
+                            <!-- MIDDLE NAME -->
                             <div class="sm:col-span-3">
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Middle name</label>
                             <div class="mt-2">
@@ -70,33 +72,23 @@
                             </div>
                             </div>
 
-                            <!-- <div class="sm:col-span-3">
-                            <div class="">
-                                <input type="text" required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                 <v-text-field label="names" variant="outlined" v-model="details.firstname" ></v-text-field>
-                            </div>
-                            </div>
-
-                            
-                            <div class="sm:col-span-3">
-                            <div class="">
-                                <input type="text" required v-model="details.firstname" name="first-name" id="first-name" autocomplete="given-name" class="block w-full px-4  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                 <v-text-field label="names" variant="outlined" v-model="details.firstname" ></v-text-field>
-                            </div>
-                            </div> -->
-
+                            <!-- LAST NAME -->
                             <div class="sm:col-span-3">
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Last name</label>
                             <div class="mt-2">
                                 <input type="text" required v-model="details.lastname" name="last-name" id="last-name" autocomplete="family-name" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                             </div>
+
+                            <!-- NATIONAL ID NUMBER -->
                             <div class="sm:col-span-3">
                             <label for="NationalIDnumber" class="block text-sm font-semibold leading-6 text-gray-900">National ID number</label>
                             <div class="mt-2">
                                 <input id="nationalIDnumber" required v-model="details.nationalIdnumber" name="national-id-number" type="Id-number" data-maska="########" placeholder="xxxxxxxx" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
-
+                            </div>
+                            
+                            <!-- EMAIL -->
                             <div class="sm:col-span-3">
                             <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email address</label>
                             <div class="mt-2">
@@ -104,6 +96,7 @@
                             </div>
                             </div>
 
+                            <!-- PHONE NUMBER -->
                             <div class="sm:col-span-3">
                             <label for="phoneNumber" class="block text-sm font-semibold leading-6 text-gray-900">Phone number</label>
                             <div class="mt-2">
@@ -111,13 +104,15 @@
                             </div>
                             </div>
 
+                            <!-- WHATSAPP NUMBER -->
                             <div class="sm:col-span-3">
                             <label for="whatsAppNumber" class="block text-sm font-semibold leading-6 text-gray-900">WhatsApp number</label>
                             <div class="mt-2">
                                 <input id="whatsAppNumber" required   v-model="details.whatsAppNumber" name="whatsAppNumber" type="tel" v-maska  data-maska="+254#########" placeholder="+2547XXXXXXXX" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3">
                             </div>
                             </div>
-                        </div>
+                        
+                            <!-- LOCATION -->
                             <div class="sm:col-span-3">
                                 <label for="location" class=" block text-sm font-semibold leading-6 text-gray-900">Location</label>
                                 <div class="mt-2">
@@ -185,7 +180,7 @@
                                 </div>
                             </div>
 
-
+                            <!-- SERVICE -->
                             <div class="sm:col-span-6" v-if="details.service  !== 'Request for internet'">
                                 <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Message</label>
                                 <div class="mt-2.5">
