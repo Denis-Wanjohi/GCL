@@ -31,7 +31,8 @@ import CallToActionSection from "./HomePage/CallToActionSection.vue";
     <!-- <v-tab>
      <div id="continous-slider" class="slider">
        <transition name="slide">
-         <p class="text-xl font-bold animate__slideInLeft bg-gradient-to-r from-blue-500 via-transparent to-orange-500">message </p>
+         <p class="text-xl font-bold animate__slideInLeft bg-gradient-to-r from-blue-500 via-transparent to-orange-500">{{message}} </p>//
+
        </transition>
      </div>
        
