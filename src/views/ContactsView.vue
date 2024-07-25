@@ -501,6 +501,7 @@ function userDetails(){
             failedSubmit.value = true;
             submitting.value = false
             setTimeout(() => {
+                isFormFilled.value  = false
                 failedSubmit.value =  false;
             }, 5000);
             console.log(error)

@@ -109,7 +109,7 @@ app.post('/internet',(req,res)=>{
   console.log(user);
   sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
-  const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
+  // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
 
   // Compile the Handlebars template
   const template = handlebars.compile(htmlTemplate);
@@ -121,13 +121,13 @@ app.post('/internet',(req,res)=>{
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
-    attachments:[{
-      filename:'image.png',
-      content: imageAttachment.toString('base64'),
-      encoding:'base64',
-      contentDisposition: 'inline',
-      cid:'uniqueImageCID'
-    }]
+    // attachments:[{
+    //   filename:'image.png',
+    //   content: imageAttachment.toString('base64'),
+    //   encoding:'base64',
+    //   contentDisposition: 'inline',
+    //   cid:'uniqueImageCID'
+    // }]
   };
 
   transporter.verify((error, success) => {
@@ -199,7 +199,7 @@ async function sendEmail(firstName,middleName,lastName,location,service,email,wh
     htmlTemplate = await readFileAsync('./ClientInternetReqConfirmation.html', 'utf-8')
   }
   const template = handlebars.compile(htmlTemplate)
-  const imageAttachment = await readFileAsync('./GCL_logo.jpg');
+  
  
   const data ={
       firstName:firstName,      
@@ -228,13 +228,7 @@ async function sendEmail(firstName,middleName,lastName,location,service,email,wh
       to: email,
       subject: 'GCL CLIENT SUPPORT',
       html: html,
-      attachments: [{
-          filename: 'image.png',
-          content: imageAttachment,
-          encoding: 'base64',
-          contentDisposition: 'inline',
-          cid: 'uniqueImageCID', // Referenced in the HTML template
-      }],
+
   });
 
   console.log('Email sent:', info.messageId);
