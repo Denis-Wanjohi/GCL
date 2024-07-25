@@ -2,7 +2,7 @@
     
     <div class="border-b border-gray-900/10 pb-12 sm:w-1/2 sm:mx-auto sm:pt-10">
       <div class="flex justify-start">
-        <div class="flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
+        <div class="pl-5 flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
             <svg  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                 <path fill="black" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225z" />
             </svg>
@@ -23,6 +23,13 @@
           <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
           <div class="mt-2">
             <input type="text" v-model="details.firstName" name="first-name" id="first-name" autocomplete="given-name" required class="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div class="sm:col-span-3 col-span-3 px-3 sm:px-0">
+          <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Middle name</label>
+          <div class="mt-2">
+            <input type="text" v-model="details.middleName" name="middle-name" id="middle-name" autocomplete="family-name" required class="px-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
 
@@ -195,6 +202,7 @@ const failedSubmit = ref(false)
 const emailSent = ref(false)
 const details = ref({
   firstName:'',
+  middleName:'',
   lastName:'',
   location:'',
   otherLocation:'',
@@ -210,6 +218,9 @@ function internet(){
   if(details.value.location == 'Others (specify your location)'){
     details.value.location = details.value.otherLocation 
   }
+  if(details.value.middleName == ''){
+    details.value.middleName = ' '
+  }
   store.dispatch('internet',details.value)
     .then((response)=>{
       console.log(response.data.message)
@@ -217,6 +228,7 @@ function internet(){
       emailSent.value = true
       setTimeout(()=>{
         details.value.firstName = ''
+        details.value.middleName = ''
         details.value.lastName = ''
         details.value.location = ''
         details.value.otherLocation = ''

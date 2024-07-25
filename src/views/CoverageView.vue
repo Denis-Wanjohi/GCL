@@ -4,6 +4,8 @@
     <div class="mx-auto font-extrabold text-5xl py-5 my-2">AREAS WE COVER</div>
     <v-divider thickness="2" opacity="2" class="mx-28"></v-divider>
 
+
+
     <!-- Message -->
     <div class="py-5">
       <p class="text-xl font-semibold">Fibre:</p>
@@ -11,6 +13,7 @@
       <p class="sm:text-md text-sm">
         We are the leading company offering the quality product in the market and a very convenient and customer-centric support always ready to tend to your queries.
       </p>
+
     </div>
 
     <!-- Search Area -->
