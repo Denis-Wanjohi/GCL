@@ -8,15 +8,14 @@ import TestimonialSection from "./HomePage/TestimonialSection.vue";
 import CallToActionSection from "./HomePage/CallToActionSection.vue";
   import { ref, onMounted } from 'vue';
 
-  const message = ref('With a deposit of only KSH 4000 fully refundable for each plan!');
-
+  const message = ref('With a deposit of only KSH 4000 fully refundable for each plan! INSTALLATION IS FREE!!!');
   onMounted(() => {
     setInterval(() => {
       
       const messages = [
-        'With a deposit of only KSH 4000 fully refundable for each plan!',
-        'With a deposit of only KSH 4000 fully refundable for each plan!',
-        'With a deposit of only KSH 4000 fully refundable for each plan!'
+        'With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!!',
+        'With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!!',
+        'With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!!',
       ];
       const newIndex = Math.floor(Math.random() * messages.length);
       message.value = messages[newIndex];
