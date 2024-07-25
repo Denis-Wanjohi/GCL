@@ -24,6 +24,7 @@ npm run dev
 open another terminal:
 
 ```sh
+cd backend 
 npm install 
 ```
 then 

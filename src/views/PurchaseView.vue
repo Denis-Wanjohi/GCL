@@ -1,5 +1,5 @@
 <template>
-
+    
     <!-- FORM TO FILL WITH DATA -->
     <!-- <Form  :data = data v-if="packageSelected" @close=close></Form> -->
     <Form  :data = data v-if="packageSelected" @close=close></Form>
@@ -19,7 +19,6 @@
                 None
               </v-btn>
             </div>
-        
             <v-expansion-panels
               @click="planClick"
               color="blue bg-blue shadow w-1/2"
@@ -37,15 +36,18 @@
                 <v-expansion-panel-text>
                   <v-container fluid>
                   <v-row>
+                    <!-- LARGE SCREENS -->
                     <v-col
+                      class="lg:block hidden"
                       v-for="(package_plan,i) in plan.packages"
                       :key="i"
                       cols="12"
                       md="4"
                     >
-                    <div>
+                     
+                    <div >
                       <v-card
-                          style="color: red;background-color: green;"
+                          style=""
                           class="mx-auto text-start"
                           color="surface-variant"
                           image="/Images/student-pro.jpg"
@@ -79,6 +81,47 @@
                       </v-card>
                     </div>
                     </v-col>
+
+                    <!-- SMALL SCREENS -->
+                    <div class="flex overflow-x-auto lg:hidden hide-scrollbar">
+                      <div class="flex" v-for="(package_plan,i) in plan.packages" :key="i">
+                          <div class=" sm:h-[460px] w-[300px]" >
+                              <v-card
+                                  class="mx-auto h-[150px]"
+                                  color="surface-variant"
+                                  image="/Images/student-pro.jpg"
+                                  max-width="250"
+                                  height=""
+                              >
+                                  <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ package_plan.feature }}</v-card-title>
+                                  <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ package_plan.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
+                                  <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ package_plan.price }}/month </p>
+                              </v-card>
+                              <v-card
+                                  class="mx-auto"
+                                  max-width="250"
+                                  style=""
+                              >
+                                  <v-list density="compact">
+                                      <v-list-item
+                                          v-for="(description, i) in package_plan.description"
+                                          :key="i"
+                                          :value="item"
+                                          color="primary"
+                                          style="background-color: beige;"
+                                      >
+                                          <template v-slot:prepend>
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
+                                          </template>
+                                          <v-list-item-title class="text-sm text-wrap">{{ description }} </v-list-item-title>
+                                      </v-list-item>
+                                  </v-list>
+                                  <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PLAN</div>
+                              </v-card>
+                          </div>
+                      </div>
+                    </div>
+
                   </v-row>
                 </v-container>
                 </v-expansion-panel-text>
@@ -90,7 +133,7 @@
           <div class="w-full text-center">
             <v-text class="text-center font-bold">The following steps will help you in make a request for your plan:</v-text>
           </div>
-          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto">
+          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto" editable hide-actions>
             <template v-slot:item.1>
               <v-card title="Choose a Plan" flat>
                 <div  class="flex align-baseline">
@@ -136,17 +179,13 @@
           </v-stepper>
       </div>
 
-
-
-
-
-
-
+    <router-view></router-view>
 
 </template>
 
 <script setup>
-import   {ref} from 'vue';
+import router from '@/router';
+import   {ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
   const plans = [
     {
@@ -311,12 +350,29 @@ import Form from '../components/PackageRequest.vue'
         ]
     },
   ]
-let panel = ref([])
+let panel = ref([''])
 const packageSelected = ref(false)
 const data = ref()
-function planClick(){
-  window.scrollTo(0,window.innerHeight * 0.39)
+const currentPath = router.currentRoute.value.path
+watch(currentPath,(newPath)=>{
+  console.log(newPath)
+})
+if(currentPath == '/purchase/home'){
+  panel.value = [],
+  panel.value[0] = 'home'
+}else if(currentPath == '/purchase/student'){
+  panel.value = [],
+  panel.value[0] = 'student'
+}else if(currentPath == '/purchase/business'){
+  panel.value = [],
+  panel.value[0] = 'business'
 }
+function planClick(){
+  window.scrollTo(0,window.innerHeight * 0.2)
+  console.log(this.$route)
+
+}
+console.log(router.currentRoute.value.path)
 function all() {
   panel.value = ['home', 'business', 'student']
 }
@@ -333,4 +389,5 @@ function close(){
   packageSelected.value = false
   console.log('closed')
 }
+
 </script>

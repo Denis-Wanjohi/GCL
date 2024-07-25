@@ -49,7 +49,7 @@ app.post('/contact', (req, res) => {
     data = `Internet Request.   ${service.plan} plan  ${service.package} package`
   }
   // sends an email to the client
-  sendEmail(user.firstName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
@@ -63,7 +63,6 @@ app.post('/contact', (req, res) => {
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
-    // text: `Hello GCL client service, \nName: ${user.firstName} ${user.lastName} \nEmail: ${user.email}  \nPhone Number : ${user.phoneNumber} \nWhatsApp Number : ${user.whatsAppNumber} \nLocation: ${user.location} \nMessage: ${data}`,
     html:html,
     attachments:[{
       filename:'image.png',
@@ -108,7 +107,7 @@ app.post('/internet',(req,res)=>{
  
   let data = `Internet Plan : ${details.plan} \tInternet Package: ${details.package}`
   console.log(user);
-  sendEmail(user.firstName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
 
@@ -121,7 +120,6 @@ app.post('/internet',(req,res)=>{
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
-    // text: `Hello GCL client service, \nName: ${user.firstName} ${user.lastName} \nEmail: ${user.email}  \nPhone Number : ${user.phoneNumber} \nWhatsApp Number : ${user.whatsAppNumber} \nLocation: ${user.location} \nMessage: ${data}`,
     html:html,
     attachments:[{
       filename:'image.png',
@@ -158,7 +156,12 @@ app.get('/internet',(req,res)=>{
     from: "GCL CLIENT <sender@gmail.com>",
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: Internet Request` ,
-    text:'hello'
+    html: `
+    <div style="background-image: url('./GCL_logo.jpg'); background-size: cover; background-color: orange;  height: 100vh; padding: 20px; color: white;">
+      <h1>Hello, World!</h1>
+      <p>This is an email with a background image.</p>
+    </div>
+  `
   };
 
   transporter.verify((error, success) => {
@@ -184,7 +187,7 @@ app.get('/internet',(req,res)=>{
 })
 
 //email to client
-async function sendEmail(firstName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
+async function sendEmail(firstName,middleName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
   // Read the HTML template and image file
   let htmlTemplate = 'Default HTML template';
   // console.log("190 service " + service)
@@ -200,6 +203,7 @@ async function sendEmail(firstName,lastName,location,service,email,whatsAppNumbe
  
   const data ={
       firstName:firstName,      
+      middleName:middleName,      
       lastName:lastName,      
       location:location,      
       service:service,
