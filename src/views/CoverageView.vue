@@ -18,6 +18,8 @@
 
     <!-- Search Area -->
     <div class="py-5">
+      {{ searchQuery }}
+      {{ selectedLocation }}
       <input
         type="text"
         v-model="searchQuery"
@@ -30,7 +32,7 @@
 
     <div class="w-full bg-gradient-to-t from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
       <!-- Map -->
-      <Map class="sm:w-1/2 h-[70%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :currentArea="currentArea"></Map>
+      <Map class="sm:w-1/2 h-[70%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
       <!-- Locations -->
       <div class="sm:w-1/2 w-full">
@@ -53,7 +55,7 @@
             <v-chip @click="location(37.65845071095882, 0.026274826945309138, 'Gikumene Bypass')">Gikumene Bypass</v-chip>
             <v-chip @click="location(37.64715538954481, 0.03329442791490069, 'Kathumbi')">Kathumbi</v-chip>
             <v-chip @click="location(37.65720034907254, 0.09249158320517943, 'Ruiri Junction')">Ruiri Junction</v-chip>
-            <v-chip @click="location(37.639741996714, 0.05393539872902565, 'Total Milimani')">Total Milimani</v-chip>
+            <v-chip @click="location(37.639741996714, 0.05393539872902565, 'Milimani')">Total Milimani</v-chip>
             <v-chip @click="location(37.64227776441821, 0.04675023923592474, 'White Lotus')">White Lotus</v-chip>
             <v-chip @click="location(37.647304320236124, 0.039827081582576605, 'Irinda Primary')">Irinda Primary</v-chip>
             <v-chip @click="location(37.65374203743669, 0.04013709691506824, 'Kwa Nthambi')">Kwa Nthambi</v-chip>
@@ -86,7 +88,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import Map from '../components/Map.vue';
 
 // Covered areas list
@@ -130,6 +132,7 @@ const coveredAreas = [
 ];
 
 const searchQuery = ref('');
+const selectedLocation = ref('');
 const message = ref('');
 const lng = ref(0);
 const lat = ref(0);
@@ -146,6 +149,13 @@ function location(longitude, latitude, area) {
 function getLngLat() {
   return { lng: lng.value, lat: lat.value };
 }
+function getLocation() {
+  return "hello";
+}
+
+watch(selectedLocation,(newLocation)=>{
+  console.log(newLocation)
+})
 
 // Function to search for location
 function searchLocation() {
@@ -161,6 +171,7 @@ function searchLocation() {
       "Mwendatu": { lng: 37.64536, lat: 0.04397 },
       // Add other areas' coordinates here
     };
+    selectedLocation.value = searchQuery.value
 
     const coord = coordinates[coveredAreas[index]];
     if (coord) {
