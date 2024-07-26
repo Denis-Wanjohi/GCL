@@ -41,7 +41,7 @@
         </svg>
 
     </div>
-    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!! </p>
+    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
     <v-card class="text-start" >
       <v-tabs
         v-model="tab"
@@ -165,7 +165,7 @@
             plan:'HOME',
             packages:[
                 {
-                    feature:"Connecting you to the world",
+                    feature:"",
                     speed:7,
                     price:2199,
                     description:[
@@ -175,12 +175,12 @@
                         "Unlimited",
                         "social media",
                         "e-learning",
-                        ""
+                        
                     ],
                     users:"5-8"
                 },
                 {
-                    feature:"Connecting you to the world",
+                    feature:"",
                     speed:12,
                     price:2599,
                     description:[
@@ -195,7 +195,7 @@
                     users:"9-12"
                 },
                 {
-                    feature:"Connecting you to the world",
+                    feature:"",
                     speed:20,
                     price:3799,
                     description:[
@@ -209,7 +209,7 @@
                     users:"13-15"
                 },
                 {
-                    feature:"Connecting you to the world",
+                    feature:"",
                     speed:30,
                     price:5399,
                     description:[
@@ -224,7 +224,7 @@
                     users:"15-20"
                 },
                 {
-                    feature:"Connecting you to the world",
+                    feature:"",
                     speed:50,
                     price:6999,
                     description:[

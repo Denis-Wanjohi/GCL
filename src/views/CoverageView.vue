@@ -15,8 +15,6 @@
 
     <!-- Search Area -->
     <div class="py-5">
-      {{ searchQuery }}
-      {{ selectedLocation }}
       <input
         type="text"
         v-model="searchQuery"
@@ -35,7 +33,7 @@
       <div class="sm:w-1/2 w-full">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
-          <p class="text-sm">Areas that we have reached.</p>
+          <p class="text-sm">Our coverage</p>
           <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
             <v-chip @click="location(37.64397203980247, 0.060811031349528574, 'Meru Town')">Meru Town</v-chip>
             <v-chip @click="location(37.639968,0.054526, 'Kinoru')">Kinoru</v-chip>
@@ -85,7 +83,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import Map from '../components/Map.vue';
 
 // Covered areas list with coordinates
@@ -146,12 +144,12 @@ function getLngLat() {
   return { lng: lng.value, lat: lat.value };
 }
 function getLocation() {
-  return "hello";
+  return selectedLocation;
 }
 
-watch(selectedLocation,(newLocation)=>{
-  console.log(newLocation)
-})
+// watch(selectedLocation,(newLocation)=>{
+//   console.log("new location "+ newLocation)
+// })
 
 // Function to search for location
 function searchLocation() {
@@ -163,9 +161,9 @@ function searchLocation() {
   }
 
   const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
-
+  console.log(index)
   if (index !== -1) {
-    message.value = `Yes, we cover the area: ${coveredAreas[index]}`;
+    message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
     const coordinates = {
       "Meru Town": { lng: 37.64397203980247, lat: 0.060811031349528574 },
       "Kinoru": { lng: 37.639968, lat: 0.054526 },
