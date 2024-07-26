@@ -41,7 +41,7 @@
         </svg>
 
     </div>
-    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! </p>
+    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan!INSTALLATION IS FREE!!! </p>
     <v-card class="text-start" >
       <v-tabs
         v-model="tab"
