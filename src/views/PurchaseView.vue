@@ -271,7 +271,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Starter",
                 speed:2,
-                price:3480,
+                price:2999,
                 description:[
                     "Basic online activities",
                     "Fast upload and downloads speeeds",
@@ -283,7 +283,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Growth",
                 speed:5,
-                price:5800,
+                price:4999,
                 description:[
                     "Faster speeds for onine activities",
                     "Seamless connectivity",
@@ -296,7 +296,19 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Pro",
                 speed:10,
-                price:11600,
+                price:9999,
+                description:[
+                    "High-speed connectivity",
+                    "Fast uploads and downoads",
+                    "Low latency",
+                    "Reliable connectivity",
+                ],
+                users:"10-20"
+            },
+            {
+                feature:"Pro",
+                speed:20,
+                price:19999,
                 description:[
                     "High-speed connectivity",
                     "Fast uploads and downoads",
@@ -308,7 +320,7 @@ import Form from '../components/PackageRequest.vue'
             {
                 feature:"Power User",
                 speed:30,
-                price:2599,
+                price:27999,
                 description:[
                     "Lightening-fast connectivity",
                     "High-speed uploads and downoads",
