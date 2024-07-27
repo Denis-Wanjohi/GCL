@@ -49,7 +49,7 @@
         color="deep-purple-accent-4"
         fixed-tabs="true"
       >
-        <v-tab value="HOME">HOME</v-tab>
+        <v-tab  value="HOME">HOME</v-tab>
         <v-tab value="BUSINESS">BUSINESS</v-tab>
         <v-tab value="STUDENT">STUDENT</v-tab>
       </v-tabs>

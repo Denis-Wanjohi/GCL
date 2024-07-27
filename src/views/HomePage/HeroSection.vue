@@ -7,11 +7,16 @@
                 </div>
                 <div>
                     <p>Hello there !</p>
-                    <p class="text-sm">Here is some description about the <span class="font-bold">7 Mbps</span> package</p>
+                    <p class="text-sm">Here is some description about the <span class="font-bold">{{ selectedPackage.speed }} Mbps</span> package </p>
                     <div>
-                        <p v-for="x in 10" :key="x">
-                            <p>Lorem ipsum dolor sit amet.</p>
+                        <p>Fully refundable Ksh 4000 deposit</p>
+                        <p><span class="font-bold">Price: </span> {{ selectedPackage.price }}/month</p>
+                        <p  v-for=" desc in selectedPackage.description" :key="desc">
+                            <p class="py-3">{{desc}}</p>
                         </p>
+
+                        <div @click="getPlan" class="bg-gradient-to-t cursor-pointer rounded-md py-2 font-mono font-bold  from-amber-500 to-red-400 w-1/2 mx-auto">GET  PLAN</div>
+                        
                     </div>
                 </div>
             </div>    
@@ -44,7 +49,7 @@
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
           <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
            
-            <div @click="clicked" class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+            <div @click="clicked(pack)" class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                 <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
@@ -78,15 +83,23 @@
 </template>
 
 <script setup>
-function clicked(){
-    overlay.value = true
-}
+
 import 'animate.css'
 import { onMounted, ref } from 'vue'
+
 const plans = ref()
 const packages = ref()
 const overlay = ref(false)
+const selectedPackage = ref()
 // const packageClicked = ref(false)
+function clicked(pack){
+    selectedPackage.value  = pack
+    overlay.value = true
+}
+function getPlan(){
+    overlay.value = false
+    
+}
 onMounted(()=>{
    plans.value = [
     {
