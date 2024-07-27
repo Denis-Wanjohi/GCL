@@ -1,4 +1,23 @@
 <template>
+    <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
+      <div class="absolute top-1/2 left-1/2 w-1/2 h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
+            <div>
+                <div class="w-full flex justify-end">
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                </div>
+                <div>
+                    <p>Hello there !</p>
+                    <p class="text-sm">Here is some description about the <span class="font-bold">7 Mbps</span> package</p>
+                    <div>
+                        <p v-for="x in 10" :key="x">
+                            <p>Lorem ipsum dolor sit amet.</p>
+                        </p>
+                    </div>
+                </div>
+            </div>    
+
+      </div>
+    </div>
   <v-carousel  
     v-if="plans"
     height=""
@@ -24,8 +43,8 @@
         <v-parallax :src=plans[plan-1].imagePath>
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
           <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
-            <!-- <div class="w-[180px]   h-[180px]  bg-gradient-to-l from-blue-500 to-green-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i"> -->
-            <div class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-blue-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+           
+            <div @click="clicked" class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                 <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
@@ -59,11 +78,15 @@
 </template>
 
 <script setup>
+function clicked(){
+    overlay.value = true
+}
 import 'animate.css'
 import { onMounted, ref } from 'vue'
-const current = ref()
 const plans = ref()
 const packages = ref()
+const overlay = ref(true)
+// const packageClicked = ref(false)
 onMounted(()=>{
    plans.value = [
     {

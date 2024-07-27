@@ -102,7 +102,6 @@ function pinLocation(){
       .addTo(map.value);
   });
   // Changes to red the selected location
-  console.log(location.value)
   initialState.value.markers.forEach((value)=>{
     if(value.name.toLowerCase() == location.value.toLowerCase()){
         console.log(location.value)
