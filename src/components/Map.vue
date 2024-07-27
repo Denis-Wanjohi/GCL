@@ -1,7 +1,5 @@
 <template>
-  {{props.getLocation()}}
-  <!-- {{ initialState}} -->
-  <div class="map-wrap">
+  <div class="map-wrap mx-4 my-4 h-1/2 w-[20%] rounded">
     <div class="map" ref="mapContainer"></div>
   </div>
   
@@ -16,16 +14,17 @@ import '@maptiler/sdk/dist/maptiler-sdk.css';
 const mapContainer = shallowRef(null);
 const map = shallowRef(null);
 
-const props = defineProps({selectedLocation:String,getLocation:Function})
+const props = defineProps({selectedLocation:String,getLocation:Function,getLngLat:Function})
 const location = ref(props.selectedLocation)
 
 let initialState  =  ref()
-watch(location,(newVal)=>{
-  console.log("location"+newVal)
-})
+
 watch(props.getLocation(),(newLocation)=>{
-  console.log("new selected location "+newLocation)
   location.value = newLocation
+  pinLocation()
+})
+watch(props.getLngLat(),(newLngLat)=>{
+  location.value = newLngLat.area
   pinLocation()
 })
 
@@ -96,15 +95,18 @@ onUnmounted(() => {
 });
 
 function pinLocation(){
+  // Reformat to initial state 
   initialState.value.markers.forEach(marker => {
     new Marker({ color: marker.color })
       .setLngLat([marker.lng, marker.lat])
       .addTo(map.value);
   });
+  // Changes to red the selected location
+  console.log(location.value)
   initialState.value.markers.forEach((value)=>{
-    if(value.name.toLowerCase() == location.value){
-        console.log(value)
-        new Marker({ color: "red" })
+    if(value.name.toLowerCase() == location.value.toLowerCase()){
+        console.log(location.value)
+         new Marker({ color: "red" })
         .setLngLat([value.lng, value.lat])
         .addTo(map.value);
     }

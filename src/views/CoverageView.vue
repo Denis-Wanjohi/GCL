@@ -25,9 +25,9 @@
       <p v-if="message" class="mt-2">{{ message }}</p>
     </div>
 
-    <div class="w-full bg-gradient-to-t from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
+    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
       <!-- Map -->
-      <Map class="sm:w-1/2 h-[70%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+      <Map class="sm:w-1/2 h-[70%] overflow-scroll  py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
       <!-- Locations -->
       <div class="sm:w-1/2 w-full">
@@ -83,7 +83,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref,watch } from 'vue';
 import Map from '../components/Map.vue';
 
 // Covered areas list with coordinates
@@ -131,25 +131,23 @@ const message = ref('');
 const lng = ref(0);
 const lat = ref(0);
 const currentArea = ref('');
+let data  = ref({})
 
 // Function to update location
 function location(longitude, latitude, area) {
   lng.value = longitude;
   lat.value = latitude;
   currentArea.value = area;
+  data.value = { lng: lng.value, lat: lat.value, area:currentArea.value }
 }
 
 // Function to get current longitude and latitude
 function getLngLat() {
-  return { lng: lng.value, lat: lat.value };
+  return data;
 }
 function getLocation() {
   return selectedLocation;
 }
-
-// watch(selectedLocation,(newLocation)=>{
-//   console.log("new location "+ newLocation)
-// })
 
 // Function to search for location
 function searchLocation() {
@@ -161,7 +159,6 @@ function searchLocation() {
   }
 
   const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
-  console.log(index)
   if (index !== -1) {
     message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
     const coordinates = {
