@@ -85,7 +85,7 @@ import 'animate.css'
 import { onMounted, ref } from 'vue'
 const plans = ref()
 const packages = ref()
-const overlay = ref(true)
+const overlay = ref(false)
 // const packageClicked = ref(false)
 onMounted(()=>{
    plans.value = [
