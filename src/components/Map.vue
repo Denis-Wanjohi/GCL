@@ -7,7 +7,7 @@
 
 
 <script setup>
-import { Map, MapStyle, Marker, config } from '@maptiler/sdk';
+import { Map, MapStyle, Marker, config, Popup } from '@maptiler/sdk';
 import { shallowRef, onMounted, ref, onUnmounted, markRaw, watch } from 'vue';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 
@@ -16,6 +16,8 @@ const map = shallowRef(null);
 
 const props = defineProps({selectedLocation:String,getLocation:Function,getLngLat:Function})
 const location = ref(props.selectedLocation)
+const coord = ref()
+const popupText = ref()
 
 let initialState  =  ref()
 
@@ -25,6 +27,7 @@ watch(props.getLocation(),(newLocation)=>{
 })
 watch(props.getLngLat(),(newLngLat)=>{
   location.value = newLngLat.area
+  coord.value = newLngLat
   pinLocation()
 })
 
@@ -33,14 +36,14 @@ onMounted(() => {
 
    initialState.value = {
     lng: 37.6525,
-    lat: 0.0471,
-    zoom: 14,
+    lat: 0.0601,
+    zoom: 11.6,
     markers: [
       { name: "Meru Town", lng: 37.64397203980247, lat: 0.060811031349528574, color: 'black' },
       { name: "Kinoru", lng: 37.639968, lat: 0.054526, color: 'green' },
       { name: "Makutano", lng: 37.641417, lat: 0.058606, color: 'green' },
       { name: "Mwendatu", lng: 37.64536, lat: 0.04397, color: 'green' },
-      { name: "Kambakia", lng: 37.64536, lat: 0.06143, color: 'green' },
+      // { name: "Kambakia", lng: 37.64536, lat: 0.06143, color: 'green' },
       { name: "Kongoacheke", lng: 37.64911, lat: 0.07504, color: 'green' },
       { name: "CCM", lng: 37.64418702505114, lat: 0.06935654358706765, color: 'green' },
       { name: "Brotherhood", lng: 37.65125284713504, lat: 0.05174638118569249, color: 'green' },
@@ -78,14 +81,17 @@ onMounted(() => {
 
   map.value = markRaw(new Map({
     container: mapContainer.value,
-    style: MapStyle.STREETS,
+    style: MapStyle.STREETS.DARK,
     center: [initialState.value.lng, initialState.value.lat],
     zoom: initialState.value.zoom
   }));
 
+  // let x = markRaw(new Popup({offset:25}).setText('one'))
   initialState.value.markers.forEach(marker => {
+    popupText.value = markRaw(new  Popup().setText(marker.name))
     new Marker({ color: marker.color })
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(popupText.value)
       .addTo(map.value);
   });
 });
@@ -95,16 +101,24 @@ onUnmounted(() => {
 });
 
 function pinLocation(){
+  // set the map accordingly
+  map.value = markRaw(new Map({
+      container: mapContainer.value,
+      style: MapStyle.STREETS.LIGHT,
+      center: [coord.value.lng, coord.value.lat],
+      zoom: 14,
+    }));
+
   // Reformat to initial state 
   initialState.value.markers.forEach(marker => {
     new Marker({ color: marker.color })
       .setLngLat([marker.lng, marker.lat])
       .addTo(map.value);
   });
+ 
   // Changes to red the selected location
   initialState.value.markers.forEach((value)=>{
     if(value.name.toLowerCase() == location.value.toLowerCase()){
-        console.log(location.value)
          new Marker({ color: "red" })
         .setLngLat([value.lng, value.lat])
         .addTo(map.value);
@@ -118,7 +132,7 @@ function pinLocation(){
 .map-wrap {
   position: relative;
   width: 100%;
-  height: calc(100vh - 77px); /* calculate height of the screen minus the heading */
+  /* height: calc(100vh - 77px); calculate height of the screen minus the heading */
 }
 
 .map {

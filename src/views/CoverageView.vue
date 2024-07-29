@@ -22,15 +22,18 @@
         class="border p-2 w-full sm:w-1/2"
       />
       <button @click="searchLocation" class="bg-blue-500 text-white p-2 mt-2">Enter your location</button>
-      <p v-if="message" class="mt-2">{{ message }}</p>
+      <p v-if="message" class="mt-2">
+        <span v-if="message === 'PASS'">We cover your area 🥳, checkout our <button @click="purchase"  class="bg-blue-500 px-2 py-1 rounded font-bold">PLANS 😁</button> </span>
+        <span v-if="message ==='FAIL'">Ooop!We dont cover that area.For more <router-link to="/contacts" class="bg-blue-500 px-2 py-1 rounded font-bold">Reach out</router-link> </span>
+      </p>
     </div>
 
     <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
       <!-- Map -->
-      <Map class="sm:w-1/2 h-[70%] overflow-scroll  py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+      <Map class="w-1/2  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
       <!-- Locations -->
-      <div class="sm:w-1/2 w-full">
+      <div class=" w-full">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
           <p class="text-sm">Our coverage</p>
@@ -39,7 +42,7 @@
             <v-chip @click="location(37.639968,0.054526, 'Kinoru')">Kinoru</v-chip>
             <v-chip @click="location(37.641417,0.058606, 'Makutano')">Makutano</v-chip>
             <v-chip @click="location(37.64536,0.04397, 'Mwendatu')">Mwendatu</v-chip>
-            <v-chip @click="location(37.64536, 0.06143, 'Kambakia')">Kambakia</v-chip>
+            <!-- <v-chip @click="location(37.64536, 0.06143, 'Kambakia')">Kambakia</v-chip> -->
             <v-chip @click="location(37.64911, 0.07504, 'Kongoacheke')">Kongoacheke</v-chip>
             <v-chip @click="location(37.64418702505114, 0.06935654358706765, 'CCM')">CCM</v-chip>
             <v-chip @click="location(37.65125284713504, 0.05174638118569249, 'Brotherhood')">Brotherhood</v-chip>
@@ -83,8 +86,10 @@
 </template>
 
 <script setup>
-import { ref,watch } from 'vue';
+import { ref} from 'vue';
 import Map from '../components/Map.vue';
+import 'animate.css'
+import router from '../router/index.js'
 
 // Covered areas list with coordinates
 const coveredAreas = [
@@ -160,7 +165,7 @@ function searchLocation() {
 
   const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
   if (index !== -1) {
-    message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
+    message.value = 'PASS';
     const coordinates = {
       "Meru Town": { lng: 37.64397203980247, lat: 0.060811031349528574 },
       "Kinoru": { lng: 37.639968, lat: 0.054526 },
@@ -175,8 +180,12 @@ function searchLocation() {
       location(coord.lng, coord.lat, coveredAreas[index]);
     }
   } else {
-    message.value = `Sorry, we do not cover ${searchQuery.value}.`;
+    // message.value = `Sorry, we do not cover ${searchQuery.value}.<h1>one</h1>`;
+    message.value = 'FAIL';
   }
+}
+function purchase(){
+  router.push('/purchase')
 }
 </script>
 
