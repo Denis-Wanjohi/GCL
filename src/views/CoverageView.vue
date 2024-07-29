@@ -22,24 +22,27 @@
         class="border p-2 w-full sm:w-1/2"
       />
       <button @click="searchLocation" class="bg-blue-500 text-white p-2 mt-2">Enter your location</button>
-      <p v-if="message" class="mt-2">{{ message }}</p>
+      <p v-if="message" class="mt-2">
+        <span v-if="message === 'PASS'">We cover your area 🥳, checkout our <button @click="purchase"  class="bg-blue-500 px-2 py-1 rounded font-bold">PLANS 😁</button> </span>
+        <span v-if="message ==='FAIL'">Ooop!We dont cover that area.For more <router-link to="/contacts" class="bg-blue-500 px-2 py-1 rounded font-bold">Reach out</router-link> </span>
+      </p>
     </div>
 
-    <div class="w-full bg-gradient-to-t from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
+    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
       <!-- Map -->
-      <Map class="sm:w-1/2 h-[70%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :currentArea="currentArea"></Map>
+      <Map class="w-1/2  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
       <!-- Locations -->
-      <div class="sm:w-1/2 w-full">
+      <div class=" w-full">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
-          <p class="text-sm">Areas that we have reached.</p>
+          <p class="text-sm">Our coverage</p>
           <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
             <v-chip @click="location(37.64397203980247, 0.060811031349528574, 'Meru Town')">Meru Town</v-chip>
             <v-chip @click="location(37.639968,0.054526, 'Kinoru')">Kinoru</v-chip>
             <v-chip @click="location(37.641417,0.058606, 'Makutano')">Makutano</v-chip>
             <v-chip @click="location(37.64536,0.04397, 'Mwendatu')">Mwendatu</v-chip>
-            <v-chip @click="location(37.64536, 0.06143, 'Kambakia')">Kambakia</v-chip>
+            <!-- <v-chip @click="location(37.64536, 0.06143, 'Kambakia')">Kambakia</v-chip> -->
             <v-chip @click="location(37.64911, 0.07504, 'Kongoacheke')">Kongoacheke</v-chip>
             <v-chip @click="location(37.64418702505114, 0.06935654358706765, 'CCM')">CCM</v-chip>
             <v-chip @click="location(37.65125284713504, 0.05174638118569249, 'Brotherhood')">Brotherhood</v-chip>
@@ -50,7 +53,7 @@
             <v-chip @click="location(37.65845071095882, 0.026274826945309138, 'Gikumene Bypass')">Gikumene Bypass</v-chip>
             <v-chip @click="location(37.64715538954481, 0.03329442791490069, 'Kathumbi')">Kathumbi</v-chip>
             <v-chip @click="location(37.65720034907254, 0.09249158320517943, 'Ruiri Junction')">Ruiri Junction</v-chip>
-            <v-chip @click="location(37.639741996714, 0.05393539872902565, 'Total Milimani')">Total Milimani</v-chip>
+            <v-chip @click="location(37.639741996714, 0.05393539872902565, 'Milimani')">Total Milimani</v-chip>
             <v-chip @click="location(37.64227776441821, 0.04675023923592474, 'White Lotus')">White Lotus</v-chip>
             <v-chip @click="location(37.647304320236124, 0.039827081582576605, 'Irinda Primary')">Irinda Primary</v-chip>
             <v-chip @click="location(37.65374203743669, 0.04013709691506824, 'Kwa Nthambi')">Kwa Nthambi</v-chip>
@@ -83,8 +86,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref} from 'vue';
 import Map from '../components/Map.vue';
+import 'animate.css'
+import router from '../router/index.js'
 
 // Covered areas list with coordinates
 const coveredAreas = [
@@ -103,9 +108,9 @@ const coveredAreas = [
   { name: "Gikumene Bypass", lng: 37.65845071095882, lat: 0.026274826945309138 },
   { name: "Kathumbi", lng: 37.64715538954481, lat: 0.03329442791490069 },
   { name: "Ruiri Junction", lng: 37.65720034907254, lat: 0.09249158320517943 },
-  { name: "Total Milimani", lng: 37.639741996714, lat: 0.05393539872902565 },
+  { name: "Milimani", lng: 37.639741996714, lat: 0.05393539872902565 },
   { name: "White Lotus", lng: 37.64227776441821, lat: 0.04675023923592474 },
-  { name: "Irinda Primary", lng: 37.647304320236124, lat: 0.039827081582576605 },
+  { name: "Irinda ", lng: 37.647304320236124, lat: 0.039827081582576605 },
   { name: "Kwa Nthambi", lng: 37.65374203743669, lat: 0.04013709691506824 },
   { name: "Woodlands", lng: 37.65674074721487, lat: 0.03471367155140713 },
   { name: "Mwiteria", lng: 37.65674074721487, lat: 0.03964893500218091 },
@@ -113,7 +118,7 @@ const coveredAreas = [
   { name: "Kiorone", lng: 37.66008312243502, lat: 0.04893606406184273 },
   { name: "Meru Diary", lng: 37.65945307917725, lat: 0.041951086342570935 },
   { name: "Mwithumwiru", lng: 37.65000931053776, lat: 0.07013693136047787 },
-  { name: "Kaaga Boys", lng: 37.654778278324535, lat: 0.06391957524235498 },
+  { name: "Kaaga", lng: 37.654778278324535, lat: 0.06391957524235498 },
   { name: "Mpakone", lng: 37.65985971627175, lat: 0.06788069122698175 },
   { name: "Nkoune", lng: 37.65379379325462, lat: 0.05740652751650088 },
   { name: "Kemu", lng: 37.64749291188904, lat: 0.08506920484543119 },
@@ -126,21 +131,27 @@ const coveredAreas = [
 ];
 
 const searchQuery = ref('');
+const selectedLocation = ref('');
 const message = ref('');
 const lng = ref(0);
 const lat = ref(0);
 const currentArea = ref('');
+let data  = ref({})
 
 // Function to update location
 function location(longitude, latitude, area) {
   lng.value = longitude;
   lat.value = latitude;
   currentArea.value = area;
+  data.value = { lng: lng.value, lat: lat.value, area:currentArea.value }
 }
 
 // Function to get current longitude and latitude
 function getLngLat() {
-  return { lng: lng.value, lat: lat.value };
+  return data;
+}
+function getLocation() {
+  return selectedLocation;
 }
 
 // Function to search for location
@@ -153,16 +164,28 @@ function searchLocation() {
   }
 
   const index = coveredAreas.findIndex(a => a.name.toLowerCase() === area);
-
   if (index !== -1) {
-    message.value = `Yes, we cover the area: ${coveredAreas[index].name}`;
-    location(coveredAreas[index].lng, coveredAreas[index].lat, coveredAreas[index].name);
-    // Set the map view to the found location
-    mapView.setCenter([coveredAreas[index].lng, coveredAreas[index].lat]);
-    mapView.setZoom(14); // Adjust the zoom level as needed
+    message.value = 'PASS';
+    const coordinates = {
+      "Meru Town": { lng: 37.64397203980247, lat: 0.060811031349528574 },
+      "Kinoru": { lng: 37.639968, lat: 0.054526 },
+      "Makutano": { lng: 37.641417, lat: 0.058606 },
+      "Mwendatu": { lng: 37.64536, lat: 0.04397 },
+      // Add other areas' coordinates here
+    };
+    selectedLocation.value = searchQuery.value
+
+    const coord = coordinates[coveredAreas[index]];
+    if (coord) {
+      location(coord.lng, coord.lat, coveredAreas[index]);
+    }
   } else {
-    message.value = `Sorry, we do not cover ${searchQuery.value}.`;
+    // message.value = `Sorry, we do not cover ${searchQuery.value}.<h1>one</h1>`;
+    message.value = 'FAIL';
   }
+}
+function purchase(){
+  router.push('/purchase')
 }
 </script>
 

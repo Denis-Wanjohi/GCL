@@ -1,4 +1,28 @@
 <template>
+    <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
+      <div class="absolute top-1/2 left-1/2 w-1/2 h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
+            <div>
+                <div class="w-full flex justify-end">
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                </div>
+                <div>
+                    <p>Hello there !</p>
+                    <p class="text-sm">Here is some description about the <span class="font-bold">{{ selectedPackage.speed }} Mbps</span> package </p>
+                    <div>
+                        <p>Fully refundable Ksh 4000 deposit</p>
+                        <p><span class="font-bold">Price: </span> {{ selectedPackage.price }}/month</p>
+                        <p  v-for=" desc in selectedPackage.description" :key="desc">
+                            <p class="py-3">{{desc}}</p>
+                        </p>
+
+                        <div @click="getPlan" class="bg-gradient-to-t cursor-pointer rounded-md py-2 font-mono font-bold  from-amber-500 to-red-400 w-1/2 mx-auto">GET  PLAN</div>
+                        
+                    </div>
+                </div>
+            </div>    
+
+      </div>
+    </div>
   <v-carousel  
     v-if="plans"
     height=""
@@ -16,16 +40,17 @@
       height=""
       :key="i"
       data-aos="fade-up"
-      
     >
+    <!-- {{ $route }} -->
     
       <!-- LARGE SCREENS -->
-      <div class="relative lg:h-[90vh] sm:block hidden" >
-        <v-parallax :src=plans[plan-1].imagePath>
+      <div class="relative lg:h-[90vh] sm:block hidden animate__animated animate__faster animate__bounceIn" >
+        <!-- <v-parallax :src=plans[plan-1].imagePath> -->
+            <v-parallax :src=plans[plan-1].preloadImage>
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
           <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
-            <!-- <div class="w-[180px]   h-[180px]  bg-gradient-to-l from-blue-500 to-green-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i"> -->
-            <div class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-blue-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+           
+            <div @click="clicked(pack)" class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                 <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
@@ -59,228 +84,275 @@
 </template>
 
 <script setup>
+
 import 'animate.css'
 import { onMounted, ref } from 'vue'
-const current = ref()
-const plans = ref()
+
+const isExisting = ref(false)
 const packages = ref()
+const overlay = ref(false)
+const selectedPackage = ref()
+// const preloadedImage = ref()
+// const packageClicked = ref(false)
+const plans = ref(
+    [
+        {
+            name:'HOME PLANS',
+            description: 'Dont miss a moment',
+            price:'2199',
+            imagePath:"/Images/gigabit-family.jpg",
+            direction:"horizontal",
+            tag:0,
+            preloadedImage:''
+        },
+        {
+            name:'BUSINESS PLANS',
+            description: 'Keeping you up with no ease ',
+            price:'2199',
+            imagePath:"/Images/business.jpg",
+            direction:"horizontal",
+            tag:1,
+            preloadedImage:''
+        },
+        {
+            name:'STUDENT PLANS',
+            description: 'Improve Grade performance with ease',
+            price:'999',
+            imagePath:"/Images/soundtrap.jpg",
+            direction:"horizontal",
+            tag:2,
+            preloadedImage:''
+        },
+        {
+            name:'HOME PLANS',
+            description: 'Happy moments tailored for you',
+            price:'2199',
+            imagePath:"/Images/netflix.jpg",
+            direction:"horizontal",
+            tag:0,
+            preloadedImage:''
+        },
+        {
+            name:'BUSINESS PLANS',
+            description:'Focus on the profit we take care of the connectivity',
+            price:'2199',
+            imagePath:"/Images/business_2.jpg",
+            direction:"horizontal",
+            tag:1,
+            preloadedImage:''
+
+        },
+        {
+            name:'STUDENT PLANS',
+            description: 'When it comes to taking a break we got you!',
+            price:'999',
+            imagePath:"/Images/african-student.jpg",
+            direction:"horizontal",
+            tag:2,
+            preloadedImage:''
+        },
+    ]
+)
+function clicked(pack){
+    selectedPackage.value  = pack
+    overlay.value = true
+}
+function getPlan(){
+    overlay.value = false
+    
+}
+
+const preloadImage = (src,callback)=>{
+        const image = new Image()
+        image.src = src;
+        image.onload = ()=>{
+            if(callback) callback(image);
+        }
+    }
+const preloadPlanImages =  ()=>{
+    plans.value.forEach(plan =>{
+        preloadImage(plan.imagePath,(image)=>{
+            plan.preloadImage  = image.src;
+        })
+    })
+}
 onMounted(()=>{
-   plans.value = [
-    {
-        name:'HOME PLANS',
-        description: 'Dont miss a moment',
-        price:'2199',
-        imagePath:"/Images/gigabit-family.jpg",
-        direction:"horizontal",
-        tag:0
-    },
-    {
-        name:'BUSINESS PLANS',
-        description: 'Keeping you up with no ease ',
-        price:'2199',
-        imagePath:"/Images/business.jpg",
-        direction:"horizontal",
-        tag:1
 
-    },
-    {
-        name:'STUDENT PLANS',
-        description: 'Improve Grade performance with ease',
-        price:'999',
-        imagePath:"/Images/soundtrap.jpg",
-        direction:"horizontal",
-        tag:2
+    preloadPlanImages();
 
-    },
-    {
-        name:'HOME PLANS',
-        description: 'Happy moments tailored for you',
-        price:'2199',
-        imagePath:"/Images/netflix.jpg",
-        direction:"horizontal",
-        tag:0
-
-    },
-    {
-        name:'BUSINESS PLANS',
-        description:'Focus on the profit we take care of the connectivity',
-
-        price:'2199',
-        imagePath:"/Images/business_2.jpg",
-        direction:"horizontal",
-        tag:1
-
-    },
-    {
-        name:'STUDENT PLANS',
-        description: 'When it comes to taking a break we got you!',
-        price:'999',
-        imagePath:"/Images/african-student.jpg",
-        direction:"horizontal",
-        tag:2
-    },
- ]
- packages.value = [
-        {
-            plan:'HOME',
-            packages:[
-                {
-                    feature:"Essential",
-                    speed:7,
-                    price:2199,
-                    description:[
-                        "Basic internet use",
-                        "Browsing",
-                        "Unlimited",
-                        "social media",
-                        "e-learning",
-                        ""
-                    ],
-                    users:"5-8"
-                },
-                {
-                    feature:"Streamer",
-                    speed:12,
-                    price:2599,
-                    description:[
-                        "Smooth HD streaming",
-                        "Online gaming",
-                        "Unlimited",
-                        "email",
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"9-12"
-                },
-                {
-                    feature:"Family",
-                    speed:20,
-                    price:3799,
-                    description:[
-                        "Family connectivity",
-                        "Multiple devices streaming",
-                        "3D Conferencing",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"13-15"
-                },
-                {
-                    feature:"Power User",
-                    speed:30,
-                    price:5399,
-                    description:[
-                        "Heavy Internet user",
-                        "Online gaming",
-                        "Unlimited",
-                        "Fast uploads/downloads",
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"15-20"
-                },
-                {
-                    feature:"Turboo",
-                    speed:50,
-                    price:6999,
-                    description:[
-                        "Ultimate speed",
-                        "Business use",
-                        "Unlimited",
-                        "Heavy online activity",
-                        "Large Families",
-                        "Heavy online users"
-                    ],
-                    users:"25-30"
-                },
-            ]
-        },
-        {
-            plan:'BUSINESS',
-            packages:[
-                {
-                    feature:"Starter",
-                    speed:2,
-                    price:3480,
-                    description:[
-                        "Basic online activities",
-                        "Fast upload and downloads speeeds",
-                        "Low latency",
-                        "Reliable conectivity",
-                    ],
-                    users:"1-5"
-                },
-                {
-                    feature:"Growth",
-                    speed:5,
-                    price:5800,
-                    description:[
-                        "Faster speeds for onine activities",
-                        "Seamless connectivity",
-                        "High-speed uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
-                    ],
-                    users:"5-10"
-                },
-                {
-                    feature:"Pro",
-                    speed:10,
-                    price:11600,
-                    description:[
-                        "High-speed connectivity",
-                        "Fast uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
-                    ],
-                    users:"10-20"
-                },
-                {
-                    feature:"Power User",
-                    speed:30,
-                    price:2599,
-                    description:[
-                        "Lightening-fast connectivity",
-                        "High-speed uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
-                    ],
-                    users:"20-50"
-                },
-            ]
-        },
-        {
-            plan:'STUDENT',
-            packages:[
-                {
-                    feature:"Student Lite",
-                    immage:"/Image/student-lite.jpg",
-                    speed:3,
-                    price:999,
-                    description:[
-                        "2 GB daily data allocation",
-                        "256 kbps bandwidth after exhausting the daily limit",
-                        "Suitable for light online activities",
-                    ],
-                    users:"1-2"
-                },
-                {
-                    feature:"Student Pro",
-                    immage:"/Image/student-pro.jpg",
-                    speed:5,
-                    price:1499,
-                    description:[
-                        "3 GB daily data allocation",
-                        "512 kbps bandwidth after exhausting the daily limit",
-                        "Suitable for moderate to heavy activities",
-                    ],
-                    users:"2-3"
-                },
-            ]
-        },
-  ]
-})
+    packages.value = [
+            {
+                plan:'HOME',
+                packages:[
+                    {
+                        feature:"Essential",
+                        speed:7,
+                        price:2199,
+                        description:[
+                            "Basic internet use",
+                            "Browsing",
+                            "Unlimited",
+                            "social media",
+                            "e-learning",
+                            ""
+                        ],
+                        users:"5-8"
+                    },
+                    {
+                        feature:"Streamer",
+                        speed:12,
+                        price:2599,
+                        description:[
+                            "Smooth HD streaming",
+                            "Online gaming",
+                            "Unlimited",
+                            "email",
+                            "social media",
+                            "e-learning"
+                        ],
+                        users:"9-12"
+                    },
+                    {
+                        feature:"Family",
+                        speed:20,
+                        price:3799,
+                        description:[
+                            "Family connectivity",
+                            "Multiple devices streaming",
+                            "3D Conferencing",
+                            "Unlimited",
+                            "social media",
+                            "e-learning"
+                        ],
+                        users:"13-15"
+                    },
+                    {
+                        feature:"Power User",
+                        speed:30,
+                        price:5399,
+                        description:[
+                            "Heavy Internet user",
+                            "Online gaming",
+                            "Unlimited",
+                            "Fast uploads/downloads",
+                            "social media",
+                            "e-learning"
+                        ],
+                        users:"15-20"
+                    },
+                    {
+                        feature:"Turboo",
+                        speed:50,
+                        price:6999,
+                        description:[
+                            "Ultimate speed",
+                            "Business use",
+                            "Unlimited",
+                            "Heavy online activity",
+                            "Large Families",
+                            "Heavy online users"
+                        ],
+                        users:"25-30"
+                    },
+                ]
+            },
+            {
+                plan:'BUSINESS',
+                packages:[
+                    {
+                        feature:"Starter",
+                        speed:2,
+                        price:2999,
+                        description:[
+                            "Basic online activities",
+                            "Fast upload and downloads speeeds",
+                            "Low latency",
+                            "Reliable conectivity",
+                        ],
+                        users:"1-5"
+                    },
+                    {
+                        feature:"Growth",
+                        speed:5,
+                        price:4999,
+                        description:[
+                            "Faster speeds for onine activities",
+                            "Seamless connectivity",
+                            "High-speed uploads and downoads",
+                            "Low latency",
+                            "Reliable connectivity",
+                        ],
+                        users:"5-10"
+                    },
+                    {
+                        feature:"Pro",
+                        speed:10,
+                        price:9999,
+                        description:[
+                            "High-speed connectivity",
+                            "Fast uploads and downoads",
+                            "Low latency",
+                            "Reliable connectivity",
+                        ],
+                        users:"10-20"
+                    },
+                    {
+                        feature:"Power User",
+                        speed:20,
+                        price:19999,
+                        description:[
+                            "Lightening-fast connectivity",
+                            "High-speed uploads and downoads",
+                            "Low latency",
+                            "Reliable connectivity",
+                        ],
+                        users:"20-50"
+                    },
+                    {
+                        feature:"Power User",
+                        speed:30,
+                        price:27999,
+                        description:[
+                            "Lightening-fast connectivity",
+                            "High-speed uploads and downoads",
+                            "Low latency",
+                            "Reliable connectivity",
+                        ],
+                        users:"20-50"
+                    },
+                ]
+            },
+            {
+                plan:'STUDENT',
+                packages:[
+                    {
+                        feature:"Student Lite",
+                        immage:"/Image/student-lite.jpg",
+                        speed:3,
+                        price:999,
+                        description:[
+                            "2 GB daily data allocation",
+                            "256 kbps bandwidth after exhausting the daily limit",
+                            "Suitable for light online activities",
+                        ],
+                        users:"1-2"
+                    },
+                    {
+                        feature:"Student Pro",
+                        immage:"/Image/student-pro.jpg",
+                        speed:5,
+                        price:1499,
+                        description:[
+                            "3 GB daily data allocation",
+                            "512 kbps bandwidth after exhausting the daily limit",
+                            "Suitable for moderate to heavy activities",
+                        ],
+                        users:"2-3"
+                    },
+                ]
+            },
+    ]
+    })
 
 </script>
 
