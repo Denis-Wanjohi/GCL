@@ -26,7 +26,13 @@
   <v-carousel  
     v-if="plans"
     height=""
-    style="width: 100vw;background-color: black; background-image: url('/public/Images/Gigabit_logo.png');"
+    style="width: 100vw;
+            background-color: black;
+            background-image: url('/Images/Gigabit_logo.png');
+            background-size: cover; /* Ensure the image covers the entire div */
+            background-repeat: no-repeat; /* Prevent repetition */
+            background-position: center;
+            "
     class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600"
     :show-arrows="false"
     cycle
