@@ -39,7 +39,8 @@ onMounted(() => {
     lat: 0.0601,
     zoom: 11.6,
     markers: [
-      { name: "Meru Town", lng: 37.64397203980247, lat: 0.060811031349528574, color: 'black' },
+      { name: "Gigabit ltd main office", lng: 37.65378806525762, lat:  0.044857579759132224, color: 'Red' },
+      { name: "Meru Town", lng: 37.64397203980247, lat: 0.060811031349528574, color: 'green' },
       { name: "Kinoru", lng: 37.639968, lat: 0.054526, color: 'green' },
       { name: "Makutano", lng: 37.641417, lat: 0.058606, color: 'green' },
       { name: "Mwendatu", lng: 37.64536, lat: 0.04397, color: 'green' },
