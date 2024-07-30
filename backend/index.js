@@ -20,8 +20,8 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/send', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+app.get('/', (req, res) => {
+    res.send('hello');
 });
 
 
