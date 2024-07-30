@@ -1,25 +1,95 @@
 <template>
     <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
-      <div class="absolute top-1/2 left-1/2 w-1/2 h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
-            <div>
-                <div class="w-full flex justify-end">
-                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+      <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
+            <!-- LARGE SCREENS -->
+            <div class="shadow  sm:block hidden">
+                <!-- {{selectedPackage}} -->
+                <div class="w-full flex justify-center py-5">
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
                 </div>
-                <div>
-                    <p>Hello there !</p>
-                    <p class="text-sm">Here is some description about the <span class="font-bold">{{ selectedPackage.speed }} Mbps</span> package </p>
-                    <div>
-                        <p>Fully refundable Ksh 4000 deposit</p>
-                        <p><span class="font-bold">Price: </span> {{ selectedPackage.price }}/month</p>
-                        <p  v-for=" desc in selectedPackage.description" :key="desc">
-                            <p class="py-3">{{desc}}</p>
+                <div class="flex justify-around w-3/4  mx-auto">
+                  
+                    <div class="rounded w-1/2  bg-gradient-to-l from-red-500  to-orange-500 flex">
+                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
                         </p>
-
-                        <div @click="getPlan" class="bg-gradient-to-t cursor-pointer rounded-md py-2 font-mono font-bold  from-amber-500 to-red-400 w-1/2 mx-auto">GET  PLAN</div>
-                        
+                    </div>
+                    <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
+                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="py-3 ">
+                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                </div>
+                <div class="w-3/4 my-5 mx-auto">
+                    <div>
+                        <p class="font-semibold text-start">Add-ons</p>
+                        <div class="pl-5 text-start">
+                            <li class="list-none">FREE INSTALLATION</li>
+                        </div>
                     </div>
                 </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
+                    <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
+                        <li class="text-start list-none font-sans">- {{ description }}</li>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
+                    <div class="pl-5 w-3/4 mx-auto">
+                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
+                    </div>
+                </div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
             </div>    
+
+            <!-- MOBILE VIEW -->
+            <div class="shadow sm:hidden ">
+                <!-- {{selectedPackage}} -->
+                <div class="w-full flex justify-center py-5">
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                </div>
+                <div class="flex justify-around w-3/4  mx-auto">
+                  
+                    <div class="rounded w-1/2  bg-gradient-to-l mx-1 from-red-500  to-orange-500 flex">
+                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
+                        </p>
+                    </div>
+                    <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
+                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="py-3 ">
+                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                </div>
+                <div class="w-3/4 my-5 mx-auto">
+                    <div>
+                        <p class="font-semibold text-start">Add-ons</p>
+                        <div class="pl-5 text-start">
+                            <li class="list-none">FREE INSTALLATION</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
+                    <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
+                        <li class="text-start list-none font-sans">- {{ description }}</li>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
+                    <div class="pl-5 w-3/4 mx-auto">
+                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
+                    </div>
+                </div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
+            </div> 
 
       </div>
     </div>
@@ -54,15 +124,14 @@
         <!-- <v-parallax :src=plans[plan-1].imagePath> -->
             <v-parallax :src=plans[plan-1].preloadImage>
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-orange-800  ">{{ plans[plan-1].name }}</div>
-          <div class="absolute bottom-10 left-0  flex w-full justify-evenly">
-           
-            <div @click="clicked(pack)" class="lg:w-[180px]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-1 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+          <div class="absolute lg:bottom-10 bottom-20 left-0  flex w-full justify-evenly">
+            <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-2 from-red-500 to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                 <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
                   <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
                 </div>
-                <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl  justify-center">{{ pack.price }}/month</div>
+                <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl text-xl  justify-center">{{ pack.price }}/month</div>
             </div>
           </div>
         </v-parallax>
@@ -74,7 +143,7 @@
           <div class="absolute bottom-5 left-0  flex flex-wrap w-full justify-start">
           <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-orange-800">{{ plans[plan-1].name }}</div>
           <div class="flex flex-wrap w-full justify-evenly">
-            <div @click="package_selected()" class=" sm:w-[180px] m-1   w-1/4 sm:h-[180px] h-fit  bg-gradient-to-b from-blue-700 via-orange-400 to-blue-600   cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
+            <div @click="clicked(pack)" class=" sm:w-[180px] m-1   w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-red-700 via-orange-400 to-red-600   cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
                 <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
                   {{ pack.speed }} 
                   <span class="sm:text-2xl text-sm text-end">Mbps</span>
@@ -93,13 +162,10 @@
 
 import 'animate.css'
 import { onMounted, ref } from 'vue'
-
-const isExisting = ref(false)
+import router from '@/router/index.js'
 const packages = ref()
 const overlay = ref(false)
 const selectedPackage = ref()
-// const preloadedImage = ref()
-// const packageClicked = ref(false)
 const plans = ref(
     [
         {
@@ -163,9 +229,9 @@ function clicked(pack){
     selectedPackage.value  = pack
     overlay.value = true
 }
-function getPlan(){
+function getPlan(pack){
     overlay.value = false
-    
+    router.push({name:'purchase',query:{plan:pack.tag,speed:pack.speed}})
 }
 
 const preloadImage = (src,callback)=>{
@@ -202,7 +268,8 @@ onMounted(()=>{
                             "e-learning",
                             ""
                         ],
-                        users:"5-8"
+                        users:"5-8",
+                        tag:'home'
                     },
                     {
                         feature:"Streamer",
@@ -216,7 +283,8 @@ onMounted(()=>{
                             "social media",
                             "e-learning"
                         ],
-                        users:"9-12"
+                        users:"9-12",
+                        tag:'home'
                     },
                     {
                         feature:"Family",
@@ -230,7 +298,8 @@ onMounted(()=>{
                             "social media",
                             "e-learning"
                         ],
-                        users:"13-15"
+                        users:"13-15",
+                        tag:'home'
                     },
                     {
                         feature:"Power User",
@@ -244,7 +313,8 @@ onMounted(()=>{
                             "social media",
                             "e-learning"
                         ],
-                        users:"15-20"
+                        users:"15-20",
+                        tag:'home'
                     },
                     {
                         feature:"Turboo",
@@ -258,7 +328,8 @@ onMounted(()=>{
                             "Large Families",
                             "Heavy online users"
                         ],
-                        users:"25-30"
+                        users:"25-30",
+                        tag:'home'
                     },
                 ]
             },
@@ -275,7 +346,8 @@ onMounted(()=>{
                             "Low latency",
                             "Reliable conectivity",
                         ],
-                        users:"1-5"
+                        users:"1-5",
+                        tag:'business'
                     },
                     {
                         feature:"Growth",
@@ -288,7 +360,9 @@ onMounted(()=>{
                             "Low latency",
                             "Reliable connectivity",
                         ],
-                        users:"5-10"
+                        users:"5-10",
+                        tag:'business'
+
                     },
                     {
                         feature:"Pro",
@@ -300,7 +374,9 @@ onMounted(()=>{
                             "Low latency",
                             "Reliable connectivity",
                         ],
-                        users:"10-20"
+                        users:"10-20",
+                        tag:'business'
+
                     },
                     {
                         feature:"Power User",
@@ -312,7 +388,9 @@ onMounted(()=>{
                             "Low latency",
                             "Reliable connectivity",
                         ],
-                        users:"20-50"
+                        users:"20-50",
+                        tag:'business'
+
                     },
                     {
                         feature:"Power User",
@@ -324,7 +402,9 @@ onMounted(()=>{
                             "Low latency",
                             "Reliable connectivity",
                         ],
-                        users:"20-50"
+                        users:"20-50",
+                        tag:'business'
+
                     },
                 ]
             },
@@ -341,7 +421,8 @@ onMounted(()=>{
                             "256 kbps bandwidth after exhausting the daily limit",
                             "Suitable for light online activities",
                         ],
-                        users:"1-2"
+                        users:"1-2",
+                        tag:'student'
                     },
                     {
                         feature:"Student Pro",
@@ -353,7 +434,8 @@ onMounted(()=>{
                             "512 kbps bandwidth after exhausting the daily limit",
                             "Suitable for moderate to heavy activities",
                         ],
-                        users:"2-3"
+                        users:"2-3",
+                        tag:'student'
                     },
                 ]
             },

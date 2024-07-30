@@ -8,6 +8,7 @@ import IconSupport from "./components/icons/IconSupport.vue"
 import IconHomePlan from "./components/icons/IconHomePlan.vue"
 import IconStudentPlan from "./components/icons/IconStudentPlan.vue"
 import IconBusinessPlan from "./components/icons/IconBusinessPlan.vue"
+import router from '@/router/index.js'
 let  year = new Date().getFullYear()
 const footer = [
       {
@@ -64,7 +65,6 @@ const footer = [
  function scrollToTop(){
   window.scrollTo(0, 0);
 }
-import router from '@/router/index.js'
 function supportReq(){
   router.push('/support_form')
   // window.scrollTo(0,window.innerHeight * 0.1)
@@ -75,10 +75,14 @@ function supportReq(){
   }
   console.log(window.innerWidth)
 }
+function one(item){
+  scrollToTop()
+  router.push(item.link)
+}
 
 </script>
 <template>
-  <div v-if="$route.name">   
+  <div v-if="$route.name" class="font-sans">   
     <header class="w-screen bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-900">
       <!-- <header class="w-screen   sm:bg-red-700 md:bg-orange-400 bg-lime-600"> -->
       <div class="flex  w-full justify-between">
@@ -171,10 +175,10 @@ function supportReq(){
       </div>
 
     </header>
-    <div class=" px-2  inset-0 z-10 fixed top-3/4  text-center w-20 h-20 ">
+    <div class=" px-2  inset-0 z-10 fixed top-3/4  text-center w-20 h-20">
       <!-- <v-fab extended prepend-icon="$vuetify" variant="tonal" class="text-blue-500" text="Reach out"></v-fab> -->
       <v-fab @click="supportReq" absolute location="center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-700" width="20px" height="20px" viewBox="0 0 256 256">
+        <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-700 animate__animated animate__flash animate__slower animate__infinite" width="20px" height="20px" viewBox="0 0 256 256">
           <rect width="256" height="256" fill="none" />
           <path fill="currentColor" d="M64 64a48 48 0 0 1 96 0a8 8 0 0 1-16 0a32 32 0 0 0-64 0a8 8 0 0 1-16 0m143.23 56c-8.61.4-15.23 7.82-15.23 16.43v7.28a8.17 8.17 0 0 1-7.47 8.25a8 8 0 0 1-8.53-8v-23.51c0-8.61-6.62-16-15.23-16.43A16 16 0 0 0 144 120v15.73a8.17 8.17 0 0 1-7.47 8.25a8 8 0 0 1-8.53-8V64.45c0-8.61-6.62-16-15.23-16.43A16 16 0 0 0 96 64v119.74a8.19 8.19 0 0 1-6.72 8.16h-.12a6.09 6.09 0 0 1-6-3.09l-21-36.44c-4.3-7.46-13.74-10.57-21.4-6.62A16 16 0 0 0 34.15 168l30.95 60.05A8 8 0 0 0 72 232h136a8 8 0 0 0 7.16-4.42c.36-.72 8.84-15.06 8.84-40.65V136a16 16 0 0 0-16.77-16" />
         </svg>
@@ -182,7 +186,9 @@ function supportReq(){
       </v-fab>
       <!-- <p class="absolute top-10 ">Talk to us!</p> -->
     </div>
+    
     <RouterView />
+
     <footer>
       <v-card
       color="surface-variant"
@@ -192,20 +198,19 @@ function supportReq(){
         <div class=" pt-[50px] pb-[50px]  bg-gradient-to-t from-blue-700 flex-col">
 
           <!-- top content -->
-          <div class="flex flex-col sm:flex-row" >
-
+          <div class="flex flex-col sm:flex-row  pb-0" >
             <!-- logo and details  -->
             <div class="sm:w-1/2 px-10 ">
               <img src="/Images/Gigabit_logo.png"   class="  w-full h-1/2  " alt="Gigabit Logo">
-              <div class="px-3 shadow py-2 text-wrap text-white">
+              <div class="px-3 shadow py-1 text-wrap text-white font-sans">
                 Gigabit Connection Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
               </div>
             </div>
 
             <!-- links -->
-            <div class="sm:w-1/2 flex sm:flex-row flex-col  shadow-lg "> 
+            <div class="sm:w-3/4 flex sm:flex-row flex-col h-fit  shadow-lg  "> 
               <v-card
-                  class="mx-auto w-3/4 my-2 sm:my-0 bg-transparent"
+                  class="mx-auto w-3/4 my-2 sm:my-0 bg-transparent h-fit"
                   max-width="300"
                   elevation="0"
                   v-for="(foot, i) in footer"
@@ -214,24 +219,19 @@ function supportReq(){
                 >
                   <v-list density="compact"
                       elevation="0"
-                      class="mt-5 mx-5 flex-col bg-transparent"
+                      class="mt-5 mx-5 flex-col bg-transparent text-white"
                   >
-                    <v-list-subheader style="font-size: 20px;"><span class="font-bold text-black">{{foot.title}}</span></v-list-subheader>
-                   
+                    <v-list-subheader style="font-size: 20px;"><span class="font-bold text-black">{{foot.title}} </span></v-list-subheader>
                       <v-list-item
                         v-for="(item,i) in foot.items"
                         :key="i"
-                        link=true
-                        class=" my-1   "
+                        @click="one(item)"
+                        class=" my-1 text-start"
                       >
-                      <template v-slot:prepend>
-                          <router-link :to=item.link class="">
-                            <v-icon :icon="item.icon"></v-icon>
-                          </router-link>
-                      </template>
-                      <router-link :to=item.link @click.prevent=scrollToTop class="px-2 py-0">
-                        <v-list-item-title><span class="font-bold  sm:text-xs md:text-md ">{{ item.value }}</span></v-list-item-title>
-                      </router-link>
+                        <template v-slot:prepend>
+                            <v-icon  class="" :icon="item.icon"></v-icon>
+                        </template>
+                        <v-list-item-title><span class="font-bold text-start sm:text-sm md:text-lg ">{{ item.value }}</span></v-list-item-title>
                       </v-list-item>
                     
                   </v-list>
@@ -240,7 +240,7 @@ function supportReq(){
           </div>
 
           <!-- socials -->
-          <div class="sm:w-1/2">
+          <div class="sm:w-1/2 ">
             <div class="flex justify-around sm:w-1/2 mx-auto px-5 py-2">
                 <a href="/">
                   <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
