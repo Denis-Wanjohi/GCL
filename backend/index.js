@@ -14,7 +14,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://gcl-jxde.vercel.app');
+  // res.header('Access-Control-Allow-Origin', 'https://gcl-jxde.vercel.app');https://backend-six-virid.vercel.app/
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -22,10 +23,12 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/', (req, res) => {
-    res.send('hello');
+// app.get('/', (req, res) => {
+//     res.send('hello');
+// });
+app.post('/api/test', (req, res) => {
+  res.send('post message {{test}}');
 });
-
 
 
 const transporter = nodemailer.createTransport({
@@ -152,7 +155,7 @@ app.post('/internet',(req,res)=>{
 
 })
 //test request
-app.get('/internet',(req,res)=>{
+app.get('/',(req,res)=>{
   const details = req.body;
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
@@ -165,11 +168,12 @@ app.get('/internet',(req,res)=>{
     </div>
   `
   };
-
+  let x = ''
   transporter.verify((error, success) => {
     if (error) {
       console.log('Error verifying transporter:', error);
     } else {
+      x = 'Transporter verified successfully'
       console.log('Transporter verified successfully');
     }
   });
@@ -184,7 +188,7 @@ app.get('/internet',(req,res)=>{
     }
   });
 
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.send(x)
 
 })
 

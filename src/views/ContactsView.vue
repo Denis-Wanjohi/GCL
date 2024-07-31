@@ -230,6 +230,7 @@
                             </div>
                         </div>
 
+                        <!-- submitting -->
                         <div v-if="submitting" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
@@ -255,7 +256,7 @@
                             </div>
                             <div class="font-mono text-3xl text-center">Submitting ....</div>
                        </div>
-
+                       <!-- email sent -->
                         <div v-if="emailSent" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
@@ -269,7 +270,7 @@
                             </div>
                             <div class="font-mono text-3xl">Submitted!</div>
                         </div>
-
+                        <!-- failed -->
                         <div v-if="failedSubmit" class="bg-blue-500  mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
