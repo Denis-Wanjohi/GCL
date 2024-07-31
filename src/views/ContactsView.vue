@@ -15,6 +15,7 @@
             <!-- title -->
              <div class="w-full text-center my-auto font-bold text-3xl">
                 Let's Start a Conversation
+                {{user}}
              </div>
 
             <!-- contents -->
@@ -79,14 +80,6 @@
                                 <input type="text" required v-model="details.lastname" name="last-name" id="last-name" autocomplete="family-name" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                             </div>
-
-                            <!-- NATIONAL ID NUMBER -->
-                            <div class="sm:col-span-3">
-                            <label for="NationalIDnumber" class="block text-sm font-semibold leading-6 text-gray-900">National ID number</label>
-                            <div class="mt-2">
-                                <input id="nationalIDnumber" required v-model="details.nationalIdnumber" name="national-id-number" type="Id-number" data-maska="########" placeholder="xxxxxxxx" class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                            </div>
                             
                             <!-- EMAIL -->
                             <div class="sm:col-span-3">
@@ -133,9 +126,9 @@
                                         <option>Bypass</option>
                                         <option>Kathumbi</option>
                                         <option>Ruiri Junction</option>
-                                        <option>Total Milimani</option>
+                                        <option>Milimani</option>
                                         <option>White Lotus</option>
-                                        <option>Irinda Primary</option>
+                                        <option>Irinda</option>
                                         <option>Kwa Nthambi</option>
                                         <option>Woodlands</option>
                                         <option>Mwiteria</option>
@@ -143,7 +136,7 @@
                                         <option>Kiorone</option>
                                         <option>Meru Diary</option>
                                         <option>Mwithumwiru</option>
-                                        <option>KaagaBoys</option>
+                                        <option>Kaaga</option>
                                         <option>Mpakone</option>
                                         <option>Nkoune</option>
                                         <option>Kemu</option>
@@ -185,6 +178,14 @@
                                 <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Message</label>
                                 <div class="mt-2.5">
                                 <textarea name="message" placeholder="write some thing here..."  required v-model="details.message" id="message" rows="4" style="max-height: 100px;min-height: 50px;" class="block w-full   rounded-md border-0 px-3.5 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- NATIONAL ID NUMBER -->
+                            <div class="sm:col-span-3" v-if="details.service  == 'Request for internet'">
+                                <label for="NationalIDnumber" class="block text-sm font-semibold leading-6 text-gray-900">National ID number</label>
+                                <div class="mt-2">
+                                    <input id="nationalIDnumber" required v-model="details.nationalID" name="national-id-number" type="Id-number"  class="block w-full  px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
@@ -231,7 +232,7 @@
                         </div>
 
                         <!-- submitting -->
-                        <div v-if="submitting" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div v-if="submitting" class="bg-blue-500 mx-auto sm:w-full sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
                                 <rect width="10" height="10" x="1" y="1" fill="blue" rx="1">
@@ -257,7 +258,7 @@
                             <div class="font-mono text-3xl text-center">Submitting ....</div>
                        </div>
                        <!-- email sent -->
-                        <div v-if="emailSent" class="bg-blue-500 mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div v-if="emailSent" class="bg-blue-500 mx-auto sm:full sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
                                 <g stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -271,7 +272,7 @@
                             <div class="font-mono text-3xl">Submitted!</div>
                         </div>
                         <!-- failed -->
-                        <div v-if="failedSubmit" class="bg-blue-500  mx-auto sm:w-[20vw] sm:h-fit rounded text-center">
+                        <div v-if="failedSubmit" class="bg-blue-500  mx-auto sm:full sm:h-fit rounded text-center">
                             <div class="w-full ">
                                 <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
                                 <rect width="24" height="24" fill="none" />
@@ -414,6 +415,7 @@ const details = ref({
     middlename:'',
     lastname:'',
     email:'',
+    nationalID:'',
     phoneNumber:'',
     whatsAppNumber:'',
     location:'',
@@ -424,11 +426,13 @@ const details = ref({
     package:''
 })
 const submittedForm = ref(false)
-// function submitted(){
-//     if(details.value.firstname != '' || details.value.lastname != '' || details.value.firstname != '')
-//     submittedForm.value = true
-// }
-function userDetails(){
+
+function userDetails(){ 
+    if(window.innerWidth < 640){
+        window.scrollTo(0,window.innerHeight * 1.5) 
+    }else{
+        window.scrollTo(0,window.innerHeight * 0.5)    
+    }
     submitting.value = true
     isFormFilled.value =true
     if(details.value.service == 'Request for internet'){
@@ -460,7 +464,9 @@ function userDetails(){
             service:details.value.service,
             plan:details.value.plan,
             package:details.value.package
-        }
+        },
+        user.nationalID = details.value.nationalID
+
     }else{
         service = {
             service:details.value.service,
@@ -476,12 +482,12 @@ function userDetails(){
         .then((response)=>{
             submittedForm.value = false
             submitting.value =false
-            
             details.value.firstname = ''
             details.value.middlename = ''
             details.value.lastname =''
             details.value.email =''
             details.value.phoneNumber = ''
+            details.value.nationalID = ''
             details.value.whatsAppNumber = ''
             details.value.location = ''
             details.value.otherLocation = ''

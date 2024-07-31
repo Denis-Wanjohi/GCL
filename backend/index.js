@@ -8,7 +8,7 @@ const handlebars = require('handlebars');
 const { promisify } = require('util');
 const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
-
+const env = require('./env.js')
 const app = express();
 
 app.use(morgan('dev'));
@@ -38,8 +38,8 @@ const transporter = nodemailer.createTransport({
 
   secure: false, // or 'STARTTLS'
   auth: {
-    user: 'gightkingss@gmail.com',
-    pass: 'hzzv dbyc nzap giob'
+    user: env.user,
+    pass: env.pass
   }
 });
 
@@ -54,7 +54,7 @@ app.post('/contact', (req, res) => {
     data = `Internet Request.   ${service.plan} plan  ${service.package} package`
   }
   // sends an email to the client
-  sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  sendEmail(user.firstName,user.middleName,user.lastName,user.nationalID,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
@@ -193,7 +193,18 @@ app.get('/',(req,res)=>{
 })
 
 //email to client
-async function sendEmail(firstName,middleName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
+async function sendEmail(firstName,middleName,lastName,idNumber,location,service,email,whatsAppNumber,phoneNumber) {
+  let data ={
+    firstName:firstName,      
+    middleName:middleName,      
+    lastName:lastName,      
+    location:location,      
+    service:service,
+    whatsAppNumber:whatsAppNumber,
+    phoneNumber:phoneNumber,
+    email:email,
+  }
+  
   // Read the HTML template and image file
   let htmlTemplate = 'Default HTML template';
   // console.log("190 service " + service)
@@ -202,27 +213,19 @@ async function sendEmail(firstName,middleName,lastName,location,service,email,wh
   }else if(service.service == 'Technical Support'){ 
     htmlTemplate = await readFileAsync('./ClientTechSupportConfirmation.html', 'utf-8')
   }else if(service.service == 'Request for internet'){
+    data.nationalID = idNumber
     htmlTemplate = await readFileAsync('./ClientInternetReqConfirmation.html', 'utf-8')
   }
   const template = handlebars.compile(htmlTemplate)
   
  
-  const data ={
-      firstName:firstName,      
-      middleName:middleName,      
-      lastName:lastName,      
-      location:location,      
-      service:service,
-      whatsAppNumber:whatsAppNumber,
-      phoneNumber:phoneNumber,
-      email:email,
-  }
+
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'gightkingss@gmail.com',
-          pass: 'hzzv dbyc nzap giob'
+          user: env.user,
+          pass: env.pass
       },
   });
 
