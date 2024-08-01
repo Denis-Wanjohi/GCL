@@ -1,5 +1,6 @@
 <template>
-     <div class="font-semibold text-3xl  py-5">Installation  FAQS</div>
+    <div data-aos="fade-down">
+       <div class="font-semibold text-3xl  py-5">Installation  FAQS</div>
         
         <div v-for="(faq,i) in data" :key="i" class="border-t shadow-lg mx-5  text-start">
             <v-card  class="border my-1">
@@ -7,6 +8,7 @@
                 <v-card-text>{{ faq.answer }}</v-card-text>
             </v-card>
         </div>
+    </div>
 </template>
 <script setup>
 const data =[

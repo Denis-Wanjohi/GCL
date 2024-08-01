@@ -6,7 +6,7 @@
             <div v-for="(feature,i) in features" :key="i"
                 data-aos="fade-up"  data-aos-duration="2000"
                 class="text-center lg:w-[250px] py-2 px-2  my-3    rounded-xl"
-                :class="{ 'bg-gradient-to-b from-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 to-blue-500': i % 2!== 0 }"
+                :class="{ 'bg-gradient-to-b from-blue-500 via-blue-500 to-orange-600 ': i % 2 === 0, 'bg-gradient-to-b from-orange-600 via-orange-500 to-blue-500': i % 2!== 0 }"
                     
             >
                 <div class="lg:block hidden">
