@@ -390,7 +390,7 @@ onMounted(()=>{
     contacts.value = [
         {
             title:'Our Offices',
-            description:'Riverand Rafiki Building first floor, Meru County',
+            description:'Riverland Rafiki Building first floor, Meru Town',
             icon:IconBuilding
         },
         {
