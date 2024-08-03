@@ -187,7 +187,7 @@ function one(item){
       <!-- <p class="absolute top-10 ">Talk to us!</p> -->
     </div>
 
-    <div class=" px-2  inset-0 z-10 fixed top-[90%] left-[8%] text-center w-20 h-20">
+    <div class=" px-2  inset-0 z-10 fixed top-[90%] md:left-[105px] sm:left-[105px] left-[105px] text-center w-20 h-20">
       
       <a href="tel:+254712999333">
         <v-fab  absolute location="center" color="green">
@@ -212,17 +212,17 @@ function one(item){
         <div class=" pt-[50px] pb-[50px]  bg-gradient-to-tl from-blue-800 via-blue-600 flex-col">
 
           <!-- top content -->
-          <div class="flex flex-col sm:flex-row  pb-0" >
+          <div class="flex flex-col md:flex-row  pb-0" >
             <!-- logo and details  -->
-            <div class="sm:w-1/2 px-10 ">
-              <img src="/Images/Gigabit_logo.png"   class="  w-full h-1/2  " alt="Gigabit Logo">
+            <div class="md:w-1/2 px-10 ">
+              <img src="/Images/Gigabit_logo.png"   class="  w-full  h-1/2  " alt="Gigabit Logo">
               <div class="px-3 shadow py-1 text-wrap text-white font-sans">
                 Gigabit Connection Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
               </div>
             </div>
 
             <!-- links -->
-            <div class="sm:w-3/4 flex sm:flex-row flex-col h-fit  shadow-lg  "> 
+            <div class="sm:w-3/4  flex sm:flex-row flex-col h-fit  shadow-lg  "> 
               <v-card
                   class="mx-auto w-3/4 my-2 sm:my-0 bg-transparent h-fit"
                   max-width="300"
@@ -254,8 +254,8 @@ function one(item){
           </div>
 
           <!-- socials -->
-          <div class="sm:w-1/2 ">
-            <div class="flex justify-around sm:w-1/2 mx-auto px-5 py-2">
+          <!-- <div class="sm:w-1/2 w-full bg-green ">
+            <div class="flex justify-between bg-blue   mx-auto px-5 py-2">
                 <a href="/">
                   <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24">
                     <path fill="white" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978c.401 0 .955.042 1.468.103a9 9 0 0 1 1.141.195v3.325a9 9 0 0 0-.653-.036a27 27 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.7 1.7 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103l-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647" />
@@ -287,7 +287,7 @@ function one(item){
                   </svg>
                 </a>
               </div>
-          </div>
+          </div> -->
           <v-divider class="mx-10" thickness="2"></v-divider>
           <div class="text-grey text-center text-sm pt-2">
             <p>@{{year}} Gigabit Connection Limited</p>
