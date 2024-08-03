@@ -41,7 +41,7 @@
         </svg>
 
     </div>
-    <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
+    <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
     <v-card class="text-start" >
       <v-tabs
         center-active
@@ -165,6 +165,7 @@
   </template>
   <script setup>
   import IconHomeVue from '@/components/icons/IconHome.vue'
+  import 'animate.css'
   import {onMounted, ref} from 'vue'
   import IconBusinessPlan from '@/components/icons/IconBusinessPlan.vue';
 //   import IconStudentPlanVue
