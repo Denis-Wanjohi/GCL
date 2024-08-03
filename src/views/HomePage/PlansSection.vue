@@ -44,14 +44,22 @@
     <p class="text-sm animate__slideInLeft sm:w-1/2 mx-auto bg-gradient-to-t  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
     <v-card class="text-start" >
       <v-tabs
+        center-active
         v-model="tab"
         align-tabs="center"
         color="deep-purple-accent-4"
         fixed-tabs="true"
       >
-        <v-tab  value="HOME">HOME</v-tab>
-        <v-tab value="BUSINESS">BUSINESS</v-tab>
-        <v-tab value="STUDENT">STUDENT</v-tab>
+        <v-tab  value="HOME" base-color="black" hide-slider border="md" rounded="xl" color="white" class="bg-blue" theme="green">
+            <v-icon :icon=IconHomeVue></v-icon>
+            HOME
+        </v-tab>
+        <v-tab value="BUSINESS" base-color="black" hide-slider rounded="xl" border="md" color="white" class="bg-orange" >
+            <v-icon :icon=IconBusinessPlan></v-icon>
+            BUSINESS</v-tab>
+        <v-tab value="STUDENT" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green">
+            <v-icon :icon=IconStudentPlanVue></v-icon>
+            STUDENT</v-tab>
       </v-tabs>
       <v-card-text>
         <v-tabs-window v-model="tab" v-if="plans" >
@@ -156,7 +164,11 @@
     </v-card>
   </template>
   <script setup>
+  import IconHomeVue from '@/components/icons/IconHome.vue'
   import {onMounted, ref} from 'vue'
+  import IconBusinessPlan from '@/components/icons/IconBusinessPlan.vue';
+//   import IconStudentPlanVue
+  import IconStudentPlanVue from '@/components/icons/IconStudentPlan.vue';
   const tab = ref()
   const plans = ref()
   onMounted(()=>{

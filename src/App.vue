@@ -195,7 +195,7 @@ function one(item){
                       image="/Images/patch-panel.webp"
                       class="mt-1"           
     >
-        <div class=" pt-[50px] pb-[50px]  bg-gradient-to-t from-blue-700 flex-col">
+        <div class=" pt-[50px] pb-[50px]  bg-gradient-to-tl from-blue-800 via-blue-600 flex-col">
 
           <!-- top content -->
           <div class="flex flex-col sm:flex-row  pb-0" >
