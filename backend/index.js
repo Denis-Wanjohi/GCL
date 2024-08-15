@@ -46,7 +46,6 @@ const transporter = nodemailer.createTransport({
 //email from  the contact us page
 app.post('/contact', (req, res) => {
   const { user, service } = req.body;
-  console.log(user)
   let data = null;
   if(service.service == 'Comment' ||  service.service == 'Technical Support'){
     data = service.message
@@ -57,7 +56,7 @@ app.post('/contact', (req, res) => {
   sendEmail(user.firstName,user.middleName,user.lastName,user.nationalID,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
-  const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
+  // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
 
   // Compile the Handlebars template
   const template = handlebars.compile(htmlTemplate);
@@ -69,13 +68,13 @@ app.post('/contact', (req, res) => {
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
-    attachments:[{
-      filename:'image.png',
-      content: imageAttachment.toString('base64'),
-      encoding:'base64',
-      contentDisposition: 'inline',
-      cid:'uniqueImageCID'
-    }]
+    // attachments:[{
+    //   filename:'image.png',
+    //   content: imageAttachment.toString('base64'),
+    //   encoding:'base64',
+    //   contentDisposition: 'inline',
+    //   cid:'uniqueImageCID'
+    // }]
   };
 
   transporter.verify((error, success) => {
@@ -111,7 +110,6 @@ app.post('/internet',(req,res)=>{
   }
  
   let data = `Internet Plan : ${details.plan} \tInternet Package: ${details.package}`
-  console.log(user);
   sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
@@ -207,7 +205,6 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
   
   // Read the HTML template and image file
   let htmlTemplate = 'Default HTML template';
-  // console.log("190 service " + service)
   if(service.service == 'Comment'){
      htmlTemplate = await readFileAsync('./ClientCommentConfirmation.html', 'utf-8');
   }else if(service.service == 'Technical Support'){ 
