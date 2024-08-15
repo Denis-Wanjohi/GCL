@@ -128,7 +128,7 @@
       </form>
       
       <!-- submitting -->
-      <div v-if="submitting" class="bg-blue-500 mx-auto sm:w-full sm:h-fit rounded text-center">
+      <div v-if="submitting" class="bg-blue-30 my-2 mx-auto sm:w-full sm:h-fit rounded text-center">
           <div class="w-full ">
             <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
             <rect width="10" height="10" x="1" y="1" fill="blue" rx="1">
@@ -154,7 +154,7 @@
           <div class="font-mono text-3xl text-center">Submitting ....</div>
       </div>
       <!-- email sent -->
-      <div v-if="emailSent" class="bg-blue-500 mx-auto sm:full sm:h-fit rounded text-center">
+      <div v-if="emailSent" class="bg-blue-30 my-2 mx-auto sm:full sm:h-fit rounded text-center">
           <div class="w-full ">
               <svg class="mx-auto"  xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
               <g stroke="orange" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
@@ -168,7 +168,7 @@
           <div class="font-mono text-3xl">Submitted!</div>
       </div>
       <!-- failed -->
-      <div v-if="failedSubmit" class="bg-blue-500  mx-auto sm:full sm:h-fit rounded text-center">
+      <div v-if="failedSubmit" class="bg-blue-30 my-2  mx-auto sm:full sm:h-fit rounded text-center">
           <div class="w-full ">
               <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="200px" height="200px" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
