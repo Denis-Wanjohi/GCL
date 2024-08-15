@@ -225,6 +225,7 @@ const plans = ref(
     ]
 )
 function clicked(pack){
+    console.log(pack)
     selectedPackage.value  = pack
     overlay.value = true
 }

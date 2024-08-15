@@ -13,9 +13,9 @@
       <p class="mt-1 text-sm leading-6 text-gray-400">*please fill the form with correct details.</p>
       
       <div class="flex flex-wrap mx-auto justify-around pt-4">
-            <p  class="bg-gradient-to-tr from-orange-300  to-red-600 px-3 py-2 rounded-md">PLAN : <span class="text-md font-semibold ">{{props.data[0]}}</span></p>
-            <p class="bg-gradient-to-tr from-orange-300  to-red-600 px-3 py-2 rounded-md">PACKAGE : <span class="text-md font-semibold">{{props.data[1].speed}} Mbps</span></p>
-            <p class="bg-gradient-to-tr from-orange-300  to-red-600 px-3 py-2 rounded-md">PRICE : <span class="text-md font-semibold">{{props.data[1].price}}/month </span></p>
+            <p  class="bg-gradient-to-tr from-orange-300 my-1  to-red-600 px-3 py-2 rounded-md">PLAN : <span class="text-md font-semibold ">{{props.data[0]}}</span></p>
+            <p class="bg-gradient-to-tr from-orange-300  my-1 to-red-600 px-3 py-2 rounded-md">PACKAGE : <span class="text-md font-semibold">{{props.data[1].speed}} Mbps</span></p>
+            <p class="bg-gradient-to-tr from-orange-300 my-1  to-red-600 px-3 py-2 rounded-md">PRICE : <span class="text-md font-semibold">{{props.data[1].price}}/month </span></p>
       </div>
 
       <form v-if="!isFormFilled" class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" @submit.prevent="internet">

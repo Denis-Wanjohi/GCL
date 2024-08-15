@@ -79,8 +79,10 @@
                 :key="i"
                 cols="12"
                 md="4"
+                @click.prevent="clicked(packages)"
               >
-              <div class="" >
+              <div  class="bg-green-500 cursor-pointer" >
+               
                 <v-card
                     style="color: red;background-color: green;"
                     class="mx-auto h-[150px]"
@@ -121,7 +123,7 @@
               <!-- MOBILE VIEW -->
               <div class="flex overflow-x-auto lg:hidden hide-scrollbar">
                 <div class="flex" v-for="(packages,i) in plans[n].packages" :key="i">
-                    <div class=" sm:h-[460px] w-[300px]" >
+                    <div class=" sm:h-[460px] w-[300px] cursor-pointer" @click.prevent="clicked(packages)" >
                         <v-card
                             class="mx-auto h-[150px]"
                             color="surface-variant"
@@ -162,16 +164,111 @@
       </v-tabs-window>
       </v-card-text>
     </v-card>
+    <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
+      <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
+            <!-- LARGE SCREENS -->
+            <div class="shadow  sm:block hidden animate__animated animate__rubberBand" >
+                <div class="w-full flex justify-center py-5">
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                </div>
+                <div class="flex justify-around w-3/4  mx-auto">
+                  
+                    <div class="rounded w-1/2  bg-gradient-to-l from-red-500  to-orange-500 flex">
+                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
+                        </p>
+                    </div>
+                    <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
+                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="py-3 " >
+                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                </div>
+                <div class="w-3/4 my-5 mx-auto">
+                    <div>
+                        <p class="font-semibold text-start">Add-ons</p>
+                        <div class="pl-5 text-start">
+                            <li class="list-none">FREE INSTALLATION</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
+                    <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
+                        <li class="text-start list-none font-sans">- {{ description }}</li>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
+                    <div class="pl-5 w-3/4 mx-auto">
+                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
+                    </div>
+                </div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
+            </div>    
+
+            <!-- MOBILE VIEW -->
+            <div class="shadow sm:hidden animate__animated animate__rubberBand ">
+                <!-- {{selectedPackage}} -->
+                <div class="w-full flex justify-center py-5">
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                </div>
+                <div class="flex justify-around w-3/4  mx-auto">
+                  
+                    <div class="rounded w-1/2  bg-gradient-to-l mx-1 from-red-500  to-orange-500 flex">
+                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
+                        </p>
+                    </div>
+                    <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
+                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="py-3 ">
+                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                </div>
+                <div class="w-3/4 my-5 mx-auto">
+                    <div>
+                        <p class="font-semibold text-start">Add-ons</p>
+                        <div class="pl-5 text-start">
+                            <li class="list-none">FREE INSTALLATION</li>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
+                    <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
+                        <li class="text-start list-none font-sans">- {{ description }}</li>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
+                    <div class="pl-5 w-3/4 mx-auto">
+                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
+                    </div>
+                </div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
+            </div> 
+
+      </div>
+    </div>
   </template>
   <script setup>
   import IconHomeVue from '@/components/icons/IconHome.vue'
   import 'animate.css'
+import router from '@/router/index.js'
   import {onMounted, ref} from 'vue'
   import IconBusinessPlan from '@/components/icons/IconBusinessPlan.vue';
-//   import IconStudentPlanVue
   import IconStudentPlanVue from '@/components/icons/IconStudentPlan.vue';
   const tab = ref()
   const plans = ref()
+  const overlay = ref(false)
+  const selectedPackage = ref()
   onMounted(()=>{
      plans.value = [
         {
@@ -190,7 +287,8 @@
                         "e-learning",
                         
                     ],
-                    users:"5-8"
+                    users:"5-8",
+                    tag:'home'
                 },
                 {
                     feature:"",
@@ -205,7 +303,8 @@
                         "social media",
                         "e-learning"
                     ],
-                    users:"9-12"
+                    users:"9-12",
+                    tag:'home'
                 },
                 {
                     feature:"",
@@ -219,7 +318,8 @@
                         "social media",
                         "e-learning"
                     ],
-                    users:"13-15"
+                    users:"13-15",
+                    tag:'home'
                 },
                 {
                     feature:"",
@@ -234,7 +334,8 @@
                         "social media",
                         "e-learning"
                     ],
-                    users:"15-20"
+                    users:"15-20",
+                    tag:'home'
                 },
                 {
                     feature:"",
@@ -249,7 +350,8 @@
                         "Large Families",
                         "Heavy online users"
                     ],
-                    users:"25-30"
+                    users:"25-30",
+                    tag:'home'
                 },
             ]
         },
@@ -266,7 +368,8 @@
                         "Low latency",
                         "Reliable conectivity",
                     ],
-                    users:"1-5"
+                    users:"1-5",
+                    tag:'business'
                 },
                 {
                     feature:"Growth",
@@ -279,7 +382,8 @@
                         "Low latency",
                         "Reliable connectivity",
                     ],
-                    users:"5-10"
+                    users:"5-10",
+                    tag:'business'
                 },
                 {
                     feature:"Pro",
@@ -291,7 +395,8 @@
                         "Low latency",
                         "Reliable connectivity",
                     ],
-                    users:"10-20"
+                    users:"10-20",
+                    tag:'business'
                 },
                 {
                     feature:"Faaasst",
@@ -303,7 +408,8 @@
                         "Low latency",
                         "Reliable connectivity",
                     ],
-                    users:"20-40"
+                    users:"20-40",
+                    tag:'business'
                 },
                 {
                     feature:"Power User",
@@ -315,7 +421,8 @@
                         "Low latency",
                         "Reliable connectivity",
                     ],
-                    users:"20-50"
+                    users:"20-50",
+                    tag:'business'
                 },
             ]
         },
@@ -332,7 +439,8 @@
                         "256 kbps bandwidth after exhausting the daily limit",
                         "Suitable for light online activities",
                     ],
-                    users:"1-2"
+                    users:"1-2",
+                    tag:'student'
                 },
                 {
                     feature:"Student Pro",
@@ -344,11 +452,19 @@
                         "512 kbps bandwidth after exhausting the daily limit",
                         "Suitable for moderate to heavy activities",
                     ],
-                    users:"2-3"
+                    users:"2-3",
+                    tag:'student'
                 },
             ]
         },
   ]
   })
-
+function clicked(pack){
+    selectedPackage.value  = pack
+    overlay.value = true
+}
+function getPlan(pack){
+    overlay.value = false
+    router.push({name:'purchase',query:{plan:pack.tag,speed:pack.speed}})
+}
   </script>,
