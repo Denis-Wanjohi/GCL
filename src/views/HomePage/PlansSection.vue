@@ -81,7 +81,7 @@
                 md="4"
                 @click.prevent="clicked(packages)"
               >
-              <div  class="bg-green-500 cursor-pointer" >
+              <div  class=" cursor-pointer" >
                
                 <v-card
                     style="color: red;background-color: green;"
@@ -167,7 +167,7 @@
     <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
       <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
             <!-- LARGE SCREENS -->
-            <div class="shadow  sm:block hidden animate__animated animate__rubberBand" >
+            <div class="shadow  sm:block hidden animate__animated animate__zoomInDown" >
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
                     <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
@@ -211,7 +211,7 @@
             </div>    
 
             <!-- MOBILE VIEW -->
-            <div class="shadow sm:hidden animate__animated animate__rubberBand ">
+            <div class="shadow sm:hidden animate__animated  animate__zoomInDown ">
                 <!-- {{selectedPackage}} -->
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
