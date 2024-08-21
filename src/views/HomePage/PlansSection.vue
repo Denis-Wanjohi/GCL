@@ -1,4 +1,5 @@
 <template>
+    <!-- TITLE -->
     <div class="sm:text-[40px] text-2xl flex justify-around align-center font-bold py-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 512 512">
             <rect width="512" height="512" fill="none" />
@@ -42,6 +43,8 @@
 
     </div>
     <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
+    
+    <!-- PLANS -->
     <v-card class="text-start" >
       <v-tabs
         center-active
@@ -61,6 +64,7 @@
             <v-icon :icon=IconStudentPlanVue></v-icon>
             STUDENT</v-tab>
       </v-tabs>
+      <!-- TABS -->
       <v-card-text>
         <v-tabs-window v-model="tab" v-if="plans" >
         <v-tabs-window-item
@@ -73,7 +77,7 @@
                 <!-- LARGE SCREENS -->
               <v-col
                 class="lg:block hidden"
-                 data-aos-duration="2000"
+                 data-aos-duration="1000"
                  data-aos="flip-up"
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
@@ -84,16 +88,16 @@
               <div  class=" cursor-pointer" >
                
                 <v-card
-                    style="color: red;background-color: green;"
+                    style=""
                     class="mx-auto h-[150px]"
                     color="surface-variant"
                     image="/Images/student-pro.jpg"
                     max-width="350"
                     height="170"
                 >
-                    <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3 hidden" >{{ packages.feature }}</v-card-title>
-                    <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
-                    <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p>
+                    <!-- <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3 hidden" >{{ packages.feature }}</v-card-title> -->
+                    <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r  from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
+                    <!-- <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p> -->
                 </v-card>
                 <v-card
                     class="mx-auto"

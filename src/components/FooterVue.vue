@@ -70,10 +70,10 @@ const footer = [
         <div class="flex flex-col sm:flex-row" >
 
           <!-- logo and details  -->
-          <div class="sm:w-1/2 px-10 ">
-            <img src="/Images/gigabit-web-logo.png"  class="w-full h-1/2  " alt="Gigabit Logo">
+          <div class="sm:w-1/2 px-10  bg-green-700 ">
+            <img src="/Images/gigabit-web-logo.png"  class=" w-1/2 bg-red-500 h-1/2  " alt="Gigabit Logo">
             <div class="px-3 shadow py-2 text-wrap text-white">
-              Gigabit Connection Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
+              Gigabit Connections Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
             </div>
           </div>
 
