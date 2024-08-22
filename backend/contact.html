@@ -15,7 +15,7 @@
                         <div style="display: flex; justify-items: center;">
                             <img src="https://gcl-jxde.vercel.app/Images/Gigabit_logo.png" style="height: 200px;margin: auto;" alt="Gigabit_logo">
                         </div>
-                        <h2>New {{user.service}} Notification</h2>
+                        <h2 style="width: 100%; text-align: center;">New {{user.service}} Notification</h2>
                         <table cellpadding="5" cellspacing="0" border="0">
                         <tr>
                             <td><strong>Client Details:</strong></td>
@@ -49,19 +49,18 @@
                         </tr>
                         </table>
                         <hr style="background-color: black;">
-                        <div style="text-align: center;">
-                            <p>Want to get more info about us?Reach out to us</p>
-                            <div style="width: 50%;margin: auto;display: flex; justify-items: center;">
-                                <div style="background-color: rgb(235, 179, 76); padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;">
-                                   Call +254712999333
-                                </div>
-            
-                                <div style="background-color: rgb(255, 187, 62); padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px;">
-                                    WhatsApp +254712999333
-                                 </div>
-                            </div>
-                        </div>
+                        <footer style="text-align: center;">
+                            <p>&copy; <span id="year"></span> Gigabit Connections Limited. All rights reserved.</p>
+                        </footer>
                     </div>
                 </div>
             </body>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const yearSpan = document.getElementById('year');
+                    const currentYear = new Date().getFullYear();
+                    console.log(currentYear)
+                    yearSpan.textContent = currentYear;
+                });
+            </script>
             </html>

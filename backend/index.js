@@ -8,22 +8,27 @@ const handlebars = require('handlebars');
 const { promisify } = require('util');
 const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
-
+const env = require('./env.js')
 const app = express();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
+  // res.header('Access-Control-Allow-Origin', 'https://gcl-jxde.vercel.app');https://backend-six-virid.vercel.app/
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
 
-app.get('/send', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+// app.get('/', (req, res) => {
+//     res.send('hello');
+// });
+app.post('/api/test', (req, res) => {
+  res.send('post message {{test}}');
 });
-
 
 
 const transporter = nodemailer.createTransport({
@@ -33,15 +38,14 @@ const transporter = nodemailer.createTransport({
 
   secure: false, // or 'STARTTLS'
   auth: {
-    user: 'gightkingss@gmail.com',
-    pass: 'hzzv dbyc nzap giob'
+    user: env.user,
+    pass: env.pass
   }
 });
 
 //email from  the contact us page
 app.post('/contact', (req, res) => {
   const { user, service } = req.body;
-  console.log(user)
   let data = null;
   if(service.service == 'Comment' ||  service.service == 'Technical Support'){
     data = service.message
@@ -49,10 +53,10 @@ app.post('/contact', (req, res) => {
     data = `Internet Request.   ${service.plan} plan  ${service.package} package`
   }
   // sends an email to the client
-  sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  sendEmail(user.firstName,user.middleName,user.lastName,user.nationalID,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
-  const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
+  // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
 
   // Compile the Handlebars template
   const template = handlebars.compile(htmlTemplate);
@@ -64,13 +68,13 @@ app.post('/contact', (req, res) => {
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
-    attachments:[{
-      filename:'image.png',
-      content: imageAttachment.toString('base64'),
-      encoding:'base64',
-      contentDisposition: 'inline',
-      cid:'uniqueImageCID'
-    }]
+    // attachments:[{
+    //   filename:'image.png',
+    //   content: imageAttachment.toString('base64'),
+    //   encoding:'base64',
+    //   contentDisposition: 'inline',
+    //   cid:'uniqueImageCID'
+    // }]
   };
 
   transporter.verify((error, success) => {
@@ -106,7 +110,6 @@ app.post('/internet',(req,res)=>{
   }
  
   let data = `Internet Plan : ${details.plan} \tInternet Package: ${details.package}`
-  console.log(user);
   sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
   // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
@@ -150,7 +153,7 @@ app.post('/internet',(req,res)=>{
 
 })
 //test request
-app.get('/internet',(req,res)=>{
+app.get('/',(req,res)=>{
   const details = req.body;
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
@@ -163,11 +166,12 @@ app.get('/internet',(req,res)=>{
     </div>
   `
   };
-
+  let x = ''
   transporter.verify((error, success) => {
     if (error) {
       console.log('Error verifying transporter:', error);
     } else {
+      x = 'Transporter verified successfully'
       console.log('Transporter verified successfully');
     }
   });
@@ -182,41 +186,43 @@ app.get('/internet',(req,res)=>{
     }
   });
 
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.send(x)
 
 })
 
 //email to client
-async function sendEmail(firstName,middleName,lastName,location,service,email,whatsAppNumber,phoneNumber) {
+async function sendEmail(firstName,middleName,lastName,idNumber,location,service,email,whatsAppNumber,phoneNumber) {
+  let data ={
+    firstName:firstName,      
+    middleName:middleName,      
+    lastName:lastName,      
+    location:location,      
+    service:service,
+    whatsAppNumber:whatsAppNumber,
+    phoneNumber:phoneNumber,
+    email:email,
+  }
+  
   // Read the HTML template and image file
   let htmlTemplate = 'Default HTML template';
-  // console.log("190 service " + service)
   if(service.service == 'Comment'){
      htmlTemplate = await readFileAsync('./ClientCommentConfirmation.html', 'utf-8');
   }else if(service.service == 'Technical Support'){ 
     htmlTemplate = await readFileAsync('./ClientTechSupportConfirmation.html', 'utf-8')
   }else if(service.service == 'Request for internet'){
+    data.nationalID = idNumber
     htmlTemplate = await readFileAsync('./ClientInternetReqConfirmation.html', 'utf-8')
   }
   const template = handlebars.compile(htmlTemplate)
   
  
-  const data ={
-      firstName:firstName,      
-      middleName:middleName,      
-      lastName:lastName,      
-      location:location,      
-      service:service,
-      whatsAppNumber:whatsAppNumber,
-      phoneNumber:phoneNumber,
-      email:email,
-  }
+
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: 'gightkingss@gmail.com',
-          pass: 'hzzv dbyc nzap giob'
+          user: env.user,
+          pass: env.pass
       },
   });
 

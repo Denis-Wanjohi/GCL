@@ -3,7 +3,7 @@
     <!-- FORM TO FILL WITH DATA -->
     <!-- <Form  :data = data v-if="packageSelected" @close=close></Form> -->
     <Form  :data = data v-if="packageSelected" @close=close></Form>
-
+  
     <!--PLANS AND PACKAGES  -->
       <div v-else class="mx-auto">
           <div>
@@ -185,7 +185,8 @@
 
 <script setup>
 import router from '@/router';
-import   {ref,watch} from 'vue';
+import {useRoute} from 'vue-router';
+import   {onMounted, ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
   const plans = [
     {
@@ -367,26 +368,60 @@ import Form from '../components/PackageRequest.vue'
     },
   ]
 let panel = ref([''])
+const route = useRoute()
 const packageSelected = ref(false)
 const data = ref()
-const currentPath = router.currentRoute.value.path
-watch(currentPath,(newPath)=>{
-  console.log(newPath)
+const currentPath = ref(router.currentRoute.value.path)
+watch(
+  ()=>route.path,
+  (newPath)=>{
+    if(newPath != '/purchase'){
+      currentPath.value = newPath
+      routePlan()
+    }
+  
+  }
+)
+onMounted(()=>{
+
+  if(route.fullPath == '/purchase'){
+    // console.log('no params')
+  }else if(route.fullPath == '/purchase/home' ||route.fullPath == '/purchase/business' ||route.fullPath == '/purchase/student' ){
+    router.replace('/purchase')
+    console.log()
+  }else{
+    plans.forEach((plan)=>{
+      if(plan.plan.toLowerCase() == route.query.plan.toLowerCase()){
+        plan.packages.forEach((pack)=>{
+          if(pack.speed == route.query.speed){
+            selectedPlan(plan.plan,pack)
+          }
+        })
+      }
+    })
+     router.replace('/purchase')
+  }
+ 
 })
-if(currentPath == '/purchase/home'){
-  panel.value = [],
-  panel.value[0] = 'home'
-}else if(currentPath == '/purchase/student'){
-  panel.value = [],
-  panel.value[0] = 'student'
-}else if(currentPath == '/purchase/business'){
-  panel.value = [],
-  panel.value[0] = 'business'
+
+function routePlan(){
+  if(currentPath.value == '/purchase/home'){
+    panel.value = [],
+    panel.value[0] = 'home'
+    router.replace('/purchase')
+  }else if(currentPath.value == '/purchase/student'){
+    panel.value = [],
+    panel.value[0] = 'student'
+    router.replace('/purchase')
+  }else if(currentPath.value == '/purchase/business'){
+    panel.value = [],
+    panel.value[0] = 'business'
+    router.replace('/purchase')
+  }
 }
+routePlan()
 function planClick(){
   window.scrollTo(0,window.innerHeight * 0.2)
-  console.log(this.$route)
-
 }
 console.log(router.currentRoute.value.path)
 function all() {
@@ -403,7 +438,6 @@ function selectedPlan(plan,package_plan){
 }
 function close(){
   packageSelected.value = false
-  console.log('closed')
 }
 
 </script>

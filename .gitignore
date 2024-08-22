@@ -29,3 +29,5 @@ coverage
 
 *.tsbuildinfo
 .vercel
+/backend/vercel.json
+/backend/env.js

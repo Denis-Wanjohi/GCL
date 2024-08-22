@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div data-aos="fade-down">
         <div class="font-semibold text-3xl  py-5">General FAQS</div>
         
         <div v-for="(faqs,i) in data" :key="i" class=" border-t shadow-lg mx-5  text-start">
