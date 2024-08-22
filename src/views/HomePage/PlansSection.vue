@@ -73,36 +73,42 @@
           :value=plans[n].plan
         >
           <v-container fluid>
-            <v-row>
+            <v-row justify="space-around" >
                 <!-- LARGE SCREENS -->
               <v-col
                 class="lg:block hidden"
-                 data-aos-duration="1000"
-                 data-aos="flip-up"
+                 
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
-                md="4"
+                md="2"
                 @click.prevent="clicked(packages)"
               >
               <div  class=" cursor-pointer" >
-               
                 <v-card
                     style=""
                     class="mx-auto h-[150px]"
                     color="surface-variant"
-                    image="/Images/student-pro.jpg"
+                    :image=packages.imagePath
                     max-width="350"
+                    min-width="250"
                     height="170"
                 >
-                    <!-- <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3 hidden" >{{ packages.feature }}</v-card-title> -->
-                    <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r  from-orange-500">Ksh. {{ packages.price }}/month </span></span></p>
-                    <!-- <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.price }}/month </p> -->
+                    <p class="sm:text-[70px] text-[50px]  h-full  px-4 bg-gradient-to-r from-orange-500 ">
+                        {{ packages.speed }}
+                        <span  class="text-[30px] sm:text-[40px]">
+                            Mbps 
+                            <span class=" sm:block py-5  text-2xl  hidden  bg-gradient-to-t  from-orange-500">
+                                Ksh. {{ packages.price }}/month 
+                            </span>
+                        </span>
+                    </p>
                 </v-card>
                 <v-card
                     class="mx-auto"
                     max-width="350"
-                    style="background-color: greenyellow;"
+                    min-width="250"
+                    style="background-color: green;"
                 >
                     <v-list density="compact">
                         <v-list-item
@@ -131,7 +137,7 @@
                         <v-card
                             class="mx-auto h-[150px]"
                             color="surface-variant"
-                            image="/Images/student-pro.jpg"
+                            :image=packages.imagePath
                             max-width="250"
                             height=""
                         >
@@ -282,6 +288,7 @@ import router from '@/router/index.js'
                     feature:"",
                     speed:7,
                     price:2199,
+                    imagePath:'/Images/5mbps.avif',
                     description:[
                         "Family connectivity",
                         "Basic internet use",
@@ -289,6 +296,7 @@ import router from '@/router/index.js'
                         "Unlimited",
                         "social media",
                         "e-learning",
+                        "email",
                         
                     ],
                     users:"5-8",
@@ -298,6 +306,7 @@ import router from '@/router/index.js'
                     feature:"",
                     speed:12,
                     price:2599,
+                    imagePath:'/Images/12mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Smooth HD streaming",
@@ -314,10 +323,12 @@ import router from '@/router/index.js'
                     feature:"",
                     speed:20,
                     price:3799,
+                    imagePath:'/Images/20mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Multiple devices streaming",
                         "3D Conferencing",
+                        "Online gaming",
                         "Unlimited",
                         "social media",
                         "e-learning"
@@ -329,6 +340,7 @@ import router from '@/router/index.js'
                     feature:"",
                     speed:30,
                     price:5399,
+                    imagePath:'/Images/30mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Heavy Internet user",
@@ -345,6 +357,7 @@ import router from '@/router/index.js'
                     feature:"",
                     speed:50,
                     price:6999,
+                    imagePath:'/Images/50mbps.avif',
                     description:[
                         "Family connectivity",
                         "Ultimate speed",
@@ -366,11 +379,13 @@ import router from '@/router/index.js'
                     feature:"Starter",
                     speed:2,
                     price:2999,
+                    imagePath:'/Images/2mbps.avif',
                     description:[
-                        "Basic online activities",
-                        "Fast upload and downloads speeeds",
-                        "Low latency",
-                        "Reliable conectivity",
+                        "Fast Reliable Internet Access",
+                        "Perfect For Small Teams",
+                        "Basic Online Tasks Only",
+                        "Limited User Capacity Available",
+                        "Entry Level Plan Ideal"
                     ],
                     users:"1-5",
                     tag:'business'
@@ -379,12 +394,13 @@ import router from '@/router/index.js'
                     feature:"Growth",
                     speed:5,
                     price:4999,
+                    imagePath:'/Images/5_mbps.avif',
                     description:[
-                        "Faster speeds for onine activities",
-                        "Seamless connectivity",
-                        "High-speed uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
+                        "Faster Speeds For Growth",
+                        "Multiple Device Support Available",
+                        "Medium User Capacity Ideal",
+                        "Online Collaboration Made Easy",
+                        "Boost Productivity With Ease"
                     ],
                     users:"5-10",
                     tag:'business'
@@ -393,11 +409,13 @@ import router from '@/router/index.js'
                     feature:"Pro",
                     speed:10,
                     price:9999,
+                    imagePath:'/Images/10mbps.avif',
                     description:[
-                        "High-speed connectivity",
-                        "Fast uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
+                        "High Performance Internet Access",
+                        "Priority Customer Support Available",
+                        "Large User Capacity Ideal",
+                        "Demanding Apps Run Smoothly",
+                        "Fast And Reliable Network"
                     ],
                     users:"10-20",
                     tag:'business'
@@ -406,11 +424,13 @@ import router from '@/router/index.js'
                     feature:"Faaasst",
                     speed:20,
                     price:19999,
+                    imagePath:'/Images/20_mbps.jpg',
                     description:[
-                        "High-speed connectivity",
-                        "Fast uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
+                        "Lightning Fast Internet Speeds",
+                        "Heavy User Capacity Ideal",
+                        "Fast Online Backup Available",
+                        "Secure And Reliable Network",
+                        "Ultimate Performance Guaranteed Always"
                     ],
                     users:"20-40",
                     tag:'business'
@@ -419,11 +439,13 @@ import router from '@/router/index.js'
                     feature:"Power User",
                     speed:30,
                     price:27999,
+                    imagePath:'/Images/30_mbps.avif',
                     description:[
-                        "Lightening-fast connectivity",
-                        "High-speed uploads and downoads",
-                        "Low latency",
-                        "Reliable connectivity",
+                        "Ultimate Internet Experience Guaranteed",
+                        "Priority Support Always Available",
+                        "Large User Capacity Ideal",
+                        "Fast And Secure Network",
+                        "Dedicated Account Management"
                     ],
                     users:"20-50",
                     tag:'business'
@@ -435,7 +457,7 @@ import router from '@/router/index.js'
             packages:[
                 {
                     feature:"Student Lite",
-                    immage:"/Image/student-lite.jpg",
+                    imagePath:"/Images/soundtrap.jpg",
                     speed:3,
                     price:999,
                     description:[
@@ -448,7 +470,7 @@ import router from '@/router/index.js'
                 },
                 {
                     feature:"Student Pro",
-                    immage:"/Image/student-pro.jpg",
+                    imagePath:"/Images/student-pro.jpg",
                     speed:5,
                     price:1499,
                     description:[

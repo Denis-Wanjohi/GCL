@@ -325,7 +325,12 @@ onMounted(()=>{
         },
         {
             title:'Hotline number',
-            description:'+254712999333',
+            description:'+254712999333/+254111052303',
+            icon:IconPhone
+        },
+        {
+            title:'Sales number',
+            description:'+254111052302',
             icon:IconPhone
         },
         {
