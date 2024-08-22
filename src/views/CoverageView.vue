@@ -28,12 +28,9 @@
       </p>
     </div>
 
-    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
-      <!-- Map -->
-      <Map class="w-1/2  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
-
+    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[100vh] ">
       <!-- Locations -->
-      <div class=" w-full">
+      <div class=" w-full sm:mx-5 mx-2">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
           <p class="text-sm">Our coverage</p> 
@@ -74,10 +71,15 @@
             <v-chip @click="location(37.66561092555042, 0.048460031407292145, 'Gakoromone')">Gakoromone</v-chip>
             <v-chip @click="location(37.67162875880659, 0.1101863245048477, 'Kiruai')">Kiruai</v-chip>
           </div>
-        </div>
+          </div>
+        
+          <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
+            <!-- Map -->
+            <Map class="w-full  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+
+      </div>
       </div>
     </div>
-
     <div>
       <!-- inquiries -->
     </div>
