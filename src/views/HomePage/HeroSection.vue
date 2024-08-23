@@ -234,7 +234,7 @@ const plans = ref(
             name:'HOME PLANS',
             description: 'Happy moments tailored for you',
             price:'2199',
-            imagePath:"/Images/netflix.jpg",
+            imagePath:"/Images/football.avif",
             direction:"horizontal",
             tag:0,
             preloadedImage:''
@@ -482,7 +482,8 @@ onMounted(()=>{
             start.value = -1
         }
         start.value++
-    }, 6000);
+    }, 6
+    000);
     })
 
 </script>
