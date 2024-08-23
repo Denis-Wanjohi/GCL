@@ -189,7 +189,7 @@ function one(item){
 
     <div class=" px-2  inset-0 z-10 fixed top-[90%] md:left-[105px] sm:left-[105px] left-[105px] text-center w-20 h-20">
       
-      <a href="https://wa.me/+254723892001?text=Hello Gigabit">
+      <a href="https://wa.me/+254712999333?text=Hello Gigabit">
         <v-fab  absolute location="center" color="green">
           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
             <rect width="24" height="24" fill="none" />
