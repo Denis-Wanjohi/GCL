@@ -91,21 +91,22 @@
 
       </div>
     </div>
-  <v-carousel  
+  <!-- <v-carousel  
     v-if="plans"
     height=""
     style="width: 100vw;
             height:90vh;
             background-color: white;
-            background-image: url('/Images/GCL_G_logo.png');
+            
             background-size: cover; /* Ensure the image covers the entire div */
             background-repeat: no-repeat; /* Prevent repetition */
             background-position: center;
             "
-    class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600"
+     :style="`background-image: url(${plans[start].imagePath});`"
+    class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600 "
     :show-arrows="false"
     cycle
-    interval="10000"
+    interval="2000"
     hide-delimiters="true"
   >
     <v-carousel-item
@@ -114,13 +115,14 @@
       v-for="(plan, i) in plans.length"
       height=""
       :key="i"
-      data-aos="fade-up"
-    >
+      data-aos="fade-up" -->
+    <!-- > -->
     
       <!-- LARGE SCREENS -->
-      <div class="relative lg:h-[90vh] sm:block hidden animate__animated animate__faster animate__bounceIn" >
+      <!-- <div class="relative lg:h-[90vh] sm:block hidden animate__animated animate__faster animate__bounceIn " > -->
         <!-- <v-parallax :src=plans[plan-1].imagePath> -->
-            <v-parallax :src=plans[plan-1].preloadImage>
+            
+            <!-- <v-parallax>
           <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[plan-1].name }}</div>
           <div class="absolute lg:bottom-10 bottom-20 left-0  flex w-full justify-evenly">
             <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
@@ -132,11 +134,11 @@
                 <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl text-xl  justify-center">{{ pack.price }}/month</div>
             </div>
           </div>
-        </v-parallax>
-      </div>
+        </v-parallax> -->
+      <!-- </div> -->
      
       <!-- MOBILE VIEW -->
-      <div class="relative sm:h-[90vh] sm:hidden block text-white">
+      <!-- <div class="relative sm:h-[90vh] sm:hidden block text-white">
         <v-parallax :src=plans[plan-1].imagePath style="height:400px;">
           <div class="absolute bottom-5 left-0  flex flex-wrap w-full justify-start">
           <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[plan-1].name }}</div>
@@ -151,9 +153,43 @@
           </div>
           </div>
         </v-parallax>
-      </div>
-    </v-carousel-item>
-  </v-carousel>
+      </div> -->
+    <!-- </v-carousel-item> -->
+  <!-- </v-carousel> -->
+
+
+
+  <!-- image test -->
+   <div>
+        <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh]"  v-if="packages">
+            <div class="sm:block hidden">
+                <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
+                <div class="absolute lg:bottom-15 bottom-20 left-0  flex w-full justify-evenly">
+                    <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                        <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
+                        <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
+                        {{ pack.speed }} 
+                        <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
+                        </div>
+                        <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl text-xl  justify-center">{{ pack.price }}/month</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:hidden block  absolute w-screen top-[60%]">
+                <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[start].name }}</div>
+                <div class="flex flex-wrap w-full justify-evenly">
+                    <div @click="clicked(pack)" class=" sm:w-[180px] m-1  text-white  w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                        <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
+                        {{ pack.speed }} 
+                        <span class="sm:text-2xl text-sm text-end">Mbps</span>
+                        </div>
+                        <div class=" h-1/4 text-center font-mono  flex w-full align-center text-sm  justify-center">{{ pack.price }}/month</div>
+                    </div>
+                </div>
+            </div>
+       </div>
+   </div>
+
 </template>
 
 <script setup>
@@ -162,8 +198,9 @@ import 'animate.css'
 import { onMounted, ref } from 'vue'
 import router from '@/router/index.js'
 const packages = ref()
+const start = ref(0)
 const overlay = ref(false)
-const selectedPackage = ref()
+const selectedPackage = ref(null)
 const plans = ref(
     [
         {
@@ -224,7 +261,6 @@ const plans = ref(
     ]
 )
 function clicked(pack){
-    console.log(pack)
     selectedPackage.value  = pack
     overlay.value = true
 }
@@ -439,6 +475,14 @@ onMounted(()=>{
                 ]
             },
     ]
+        
+    
+    setInterval(() => {
+        if(start.value == plans.value.length){
+            start.value = -1
+        }
+        start.value++
+    }, 2000);
     })
 
 </script>
