@@ -238,7 +238,7 @@ const plans = ref(
             name:'HOME PLANS',
             description: 'Happy moments tailored for you',
             price:'2199',
-            imagePath:"/Images/group_of_kids.jpg",
+            imagePath:"https://img.freepik.com/premium-photo/quottwo-male-friends-playing-video-games-homequot_1280275-158391.jpg?w=826",
             direction:"horizontal",
             tag:0,
             preloadedImage:''
