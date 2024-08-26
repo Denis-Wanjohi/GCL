@@ -482,8 +482,7 @@ onMounted(()=>{
             start.value = -1
         }
         start.value++
-    }, 6
-    000);
+    }, 6000);
     })
 
 </script>
