@@ -160,9 +160,11 @@
 
 
   <!-- image test -->
-   <div>
-    <!-- large screen -->
-        <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh]"  v-if="packages">
+   <div class="bg-[url('/Images/fav_G.png')] " style="background-size: 50%;background-position: center">
+
+    <!-- {{packages[plans[start].tag].packages[0]}} -->
+        <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh] aniate__animated animate__fadeIn"  v-if="packages">
+            <!-- large screen -->
             <div class="sm:block hidden">
                 <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
                 <div class="absolute lg:bottom-15 bottom-20 left-0  flex w-full justify-evenly">
@@ -218,7 +220,7 @@ const plans = ref(
             name:'BUSINESS PLANS',
             description: 'Keeping you up with no ease ',
             price:'2199',
-            imagePath:"/Images/business.jpg",
+            imagePath:"https://cdn.uconnectlabs.com/wp-content/uploads/sites/7/2022/07/christina-wocintechchat-com-faEfWCdOKIg-unsplash-scaled-840x560-center-middle.jpg?v=234505",
             direction:"horizontal",
             tag:1,
             preloadedImage:''
@@ -227,7 +229,7 @@ const plans = ref(
             name:'STUDENT PLANS',
             description: 'Improve Grade performance with ease',
             price:'999',
-            imagePath:"/Images/soundtrap.jpg",
+            imagePath:"https://img.freepik.com/premium-photo/hispanic-latin-girl-college-student-using-laptop-computer-watching-distance-online-learning-seminar-class-remote-university-webinar-having-virtual-classroom-meeting-university-creative-space_265022-68286.jpg?w=826",
             direction:"horizontal",
             tag:2,
             preloadedImage:''
@@ -245,7 +247,7 @@ const plans = ref(
             name:'BUSINESS PLANS',
             description:'Focus on the profit we take care of the connectivity',
             price:'2199',
-            imagePath:"/Images/business_2.jpg",
+            imagePath:"https://images.unsplash.com/photo-1573164574511-73c773193279?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
             preloadedImage:''
@@ -282,6 +284,7 @@ const preloadPlanImages =  ()=>{
     plans.value.forEach(plan =>{
         preloadImage(plan.imagePath,(image)=>{
             plan.preloadImage  = image.src;
+            // console.log(image.src)
         })
     })
 }
