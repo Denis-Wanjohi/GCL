@@ -161,6 +161,7 @@
 
   <!-- image test -->
    <div>
+    <!-- large screen -->
         <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh]"  v-if="packages">
             <div class="sm:block hidden">
                 <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
@@ -175,6 +176,7 @@
                     </div>
                 </div>
             </div>
+        <!-- small screen -->
             <div class="sm:hidden block  absolute w-screen top-[60%]">
                 <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[start].name }}</div>
                 <div class="flex flex-wrap w-full justify-evenly">
@@ -234,7 +236,7 @@ const plans = ref(
             name:'HOME PLANS',
             description: 'Happy moments tailored for you',
             price:'2199',
-            imagePath:"/Images/football.avif",
+            imagePath:"/Images/group_of_kids.jpg",
             direction:"horizontal",
             tag:0,
             preloadedImage:''
