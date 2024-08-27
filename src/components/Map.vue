@@ -1,11 +1,11 @@
  <template>
     <div>
-      <div class="flex justify-between items-center mb-2">
-        <button @click="setMapStyle('streets')">Standard View</button>
-        <button @click="setMapStyle('satellite')">Satellite View</button>
+      <div class="flex justify-end items-center mb-2">
+        <button class="w-fit px-3 py-1 mx-2 rounded cursor-pointer bg-blue-500" @click="setMapStyle('streets')">Standard View</button>
+        <button class="w-fit px-3 py-1 mx-2 rounded cursor-pointer bg-blue-500" @click="setMapStyle('satellite')">Satellite View</button>
       </div>
-      <div class="map-wrap mx-4 my-4 h-1/2 w-[20%] rounded">
-        <div class="map" ref="mapContainer"></div>
+      <div class="map-wrap h-full mx-auto rounded">
+        <div class="map mx-auto" ref="mapContainer"></div>
       </div>
     </div>
   </template>
@@ -151,13 +151,13 @@
 .map-wrap {
   position: relative;
   width: 100%;
-  height: calc(90vh - 67px); /* calculate height of the screen minus the heading */
+  /* height: calc(90vh - 67px); calculate height of the screen minus the heading */
 }
 
 .map {
   position: absolute;
   width: 95%;
-  height: 100%;
+  height: 90%;
 }
 </style>
 

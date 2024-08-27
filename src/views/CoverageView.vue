@@ -28,13 +28,13 @@
       </p>
     </div>
 
-    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[100vh] ">
+    <div class="w-full py-5 h-[100vh] ">
       <!-- Locations -->
       <div class=" w-full sm:mx-5 mx-2">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
           <p class="text-sm">Our coverage</p> 
-          <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
+          <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto  px-4">
             <v-chip @click="location(37.653903, 0.044560, 'Meru Town')">Meru Town</v-chip>
             <v-chip @click="location(37.639784,0.054461, 'Kinoru')">Kinoru</v-chip>
             <v-chip @click="location(37.642444,0.056895, 'Makutano')">Makutano</v-chip>
@@ -73,11 +73,11 @@
           </div>
           </div>
         
-          <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
+          <div class="w-full bg-gradient-to-t  h-[500px] my-auto  py-5 from-orange-500  flex sm:flex-row flex-col-reverse">
             <!-- Map -->
-            <Map class="w-full  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+            <Map class="w-full h-[95%]  mx-5 px-4 py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
-      </div>
+          </div>
       </div>
     </div>
     <div>
