@@ -160,7 +160,6 @@
 
 
   <!-- image test -->
-   {{start}}
    <div class="bg-[url('/Images/fav_G.png')] " style="background-size: 50%;background-position: center">
 
     <!-- {{packages[plans[start].tag].packages[0]}} -->
