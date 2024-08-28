@@ -5,7 +5,7 @@
             <div class="shadow  sm:block hidden animate__animated animate__rubberBand" >
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
-                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue rounded-xl ">CLOSE</div>
+                    <div @click="overlay = false" class="px-4  cursor-pointer py-2 text-xs font-mono w-fit bg-blue rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
                   
@@ -49,7 +49,7 @@
             <div class="shadow sm:hidden animate__animated animate__rubberBand ">
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
-                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
                   
@@ -160,6 +160,7 @@
 
 
   <!-- image test -->
+   {{start}}
    <div class="bg-[url('/Images/fav_G.png')] " style="background-size: 50%;background-position: center">
 
     <!-- {{packages[plans[start].tag].packages[0]}} -->
@@ -212,6 +213,7 @@ const plans = ref(
             description: 'Dont miss a moment',
             price:'2199',
             imagePath:"/Images/gigabit-family.jpg",
+             // imagePath:"https://img.freepik.com/premium-photo/happy-african-american-multi-generation-family-watching-soccer-match-television-living-room-home_58466-12800.jpg?w=826",
             direction:"horizontal",
             tag:0,
             preloadedImage:''
@@ -220,7 +222,7 @@ const plans = ref(
             name:'BUSINESS PLANS',
             description: 'Keeping you up with no ease ',
             price:'2199',
-            imagePath:"https://cdn.uconnectlabs.com/wp-content/uploads/sites/7/2022/07/christina-wocintechchat-com-faEfWCdOKIg-unsplash-scaled-840x560-center-middle.jpg?v=234505",
+            imagePath:"https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
             preloadedImage:''
@@ -238,7 +240,8 @@ const plans = ref(
             name:'HOME PLANS',
             description: 'Happy moments tailored for you',
             price:'2199',
-            imagePath:"https://img.freepik.com/premium-photo/quottwo-male-friends-playing-video-games-homequot_1280275-158391.jpg?w=826",
+            imagePath:"https://img.freepik.com/premium-photo/group-people-are-watching-soccer-game-tv_1262781-39800.jpg?w=900",
+            // imagePath:"https://img.freepik.com/premium-photo/quottwo-male-friends-playing-video-games-homequot_1280275-158391.jpg?w=826",
             direction:"horizontal",
             tag:0,
             preloadedImage:''
