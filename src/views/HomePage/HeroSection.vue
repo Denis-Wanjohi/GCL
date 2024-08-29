@@ -485,11 +485,13 @@ onMounted(()=>{
         
     
     setInterval(() => {
-        if(start.value == plans.value.length){
+    console.log(start.value)
+        if(start.value == 5 ){
             start.value = -1
         }
+    console.log("second value "+start.value)
         start.value++
-    }, 6000);
+    }, 4000);
     })
 
 </script>
