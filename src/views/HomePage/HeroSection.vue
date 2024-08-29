@@ -168,7 +168,7 @@
             <div class="sm:block hidden">
                 <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
                 <div class="absolute lg:bottom-15 bottom-20 left-0  flex w-full justify-evenly">
-                    <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                    <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer px-4 " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
                         <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
                         <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                         {{ pack.speed }} 
@@ -182,7 +182,7 @@
             <div class="sm:hidden block  absolute w-screen top-[60%]">
                 <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[start].name }}</div>
                 <div class="flex flex-wrap w-full justify-evenly">
-                    <div @click="clicked(pack)" class=" sm:w-[180px] m-1  text-white  w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                    <div @click="clicked(pack)" class=" sm:w-[180px] m-1  text-white  w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer px-4" v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
                         <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
                         {{ pack.speed }} 
                         <span class="sm:text-2xl text-sm text-end">Mbps</span>
