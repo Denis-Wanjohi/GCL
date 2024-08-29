@@ -160,7 +160,7 @@
 
 
   <!-- image test -->
-   <div class="bg-[url('/Images/fav_G.png')] " style="background-size: 50%;background-position: center">
+   <div class="bg-[url('/Images/fav_G.png')] mb-5 " style="background-size: 50%;background-position: center">
 
     <!-- {{packages[plans[start].tag].packages[0]}} -->
         <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh] aniate__animated animate__fadeIn"  v-if="packages">
@@ -286,7 +286,6 @@ const preloadPlanImages =  ()=>{
     plans.value.forEach(plan =>{
         preloadImage(plan.imagePath,(image)=>{
             plan.preloadImage  = image.src;
-            // console.log(image.src)
         })
     })
 }
@@ -485,11 +484,9 @@ onMounted(()=>{
         
     
     setInterval(() => {
-    console.log(start.value)
         if(start.value == 5 ){
             start.value = -1
         }
-    console.log("second value "+start.value)
         start.value++
     }, 4000);
     })
