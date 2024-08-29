@@ -217,7 +217,7 @@ function one(item){
             <div class="md:w-1/2 px-10 ">
               <img src="/Images/Gigabit_logo.png"   class="h-1/2  " alt="Gigabit Logo">
               <div class="px-3 shadow py-1 text-wrap text-white font-sans">
-                Gigabit Connections Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
+                Gigabit Connections Limited we  excel with FTTH(fiber To The Home), FTTP(fiber To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
               </div>
             </div>
 

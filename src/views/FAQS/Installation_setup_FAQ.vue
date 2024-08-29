@@ -14,7 +14,7 @@
 const data =[
     {
         question:"How long does the installation process take?",
-        answer:"Our standard installation time is 2-4 hours, but we offer same-day installation for fibre connections",
+        answer:"Our standard installation time is 2-4 hours, but we offer same-day installation for fiber connections",
     },
     {
         question:"Do I need to be present during the installation?",

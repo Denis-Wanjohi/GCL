@@ -6,8 +6,8 @@
 
     <!-- Message -->
     <div class="py-5">
-      <p class="text-xl font-semibold">Fibre:</p>
-      <p>For the fibre connection, we are deeply rooted in North Imenti, Meru County.</p>
+      <p class="text-xl font-semibold">fiber:</p>
+      <p>For the fiber connection, we are deeply rooted in North Imenti, Meru County.</p>
       <p class="sm:text-md text-sm">
         We are the leading company offering the quality product in the market and a very convenient and customer-centric support always ready to tend to your queries.
       </p>
@@ -119,7 +119,6 @@ const coveredAreas = [
   { name: "Kiorone", lng: 37.66008312243502, lat: 0.04893606406184273 },
   { name: "Meru Diary", lng: 37.65945307917725, lat: 0.041951086342570935 },
   { name: "Mwithumwiru", lng: 37.65000931053776, lat: 0.07013693136047787 },
-  
   { name: "Kaaga", lng: 37.654778278324535, lat: 0.06391957524235498 },
   { name: "Mpakone", lng: 37.65985971627175, lat: 0.06788069122698175 },
   { name: "Nkoune", lng: 37.65379379325462, lat: 0.05740652751650088 },

@@ -18,8 +18,8 @@ const data = [
         question:"Why is my internet connection slow?",
         answer:"Check your router's location, ensure it's not obstructed, and restart it. If the issue persists, contact our support team to investigate further.",
     }, {
-        question:"How do I troubleshoot my fibre connection?",
-        answer:"Check the fibre optic cable for damage, ensure it's securely connected to the router, and restart the router. If the issue persists, contact our support team",
+        question:"How do I troubleshoot my fiber connection?",
+        answer:"Check the fiber optic cable for damage, ensure it's securely connected to the router, and restart the router. If the issue persists, contact our support team",
     },
     {
         question:"Why can't I access certain websites or online services? ",
