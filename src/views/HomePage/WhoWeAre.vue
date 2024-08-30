@@ -6,7 +6,7 @@
         At Gigabit, we believe that everyone deserves equal access to the opportunities the internet has to offer, regardless of their location or background. That's why we're committed to empower individuals and communities by providing a seamless and reliable fiber optic connection, enabling them to unlock their full potential, pursue their passions, and stay connected to the world."
 
   </p>
-  <img src="/Images/GCL_G_logo.png" data-aos="fade-up" class="md:w-1/2 " alt="">
+  <img src="/Images/GCL_main_logo.png" data-aos="fade-up" class="md:w-1/2 " alt="">
 </div>
 </template>
 <script setup>
