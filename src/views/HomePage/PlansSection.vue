@@ -77,7 +77,6 @@
                 <!-- LARGE SCREENS -->
               <v-col
                 class="lg:block hidden"
-                 
                 v-for="(packages,i) in plans[n].packages"
                 :key="i"
                 cols="12"
@@ -174,6 +173,8 @@
       </v-tabs-window>
       </v-card-text>
     </v-card>
+
+    <!-- OVERLAYS -->
     <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
       <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
             <!-- LARGE SCREENS -->
@@ -197,14 +198,6 @@
                 <div class="py-3 " >
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
                 </div>
-                <!-- <div class="w-3/4 my-5 mx-auto">
-                    <div>
-                        <p class="font-semibold text-start">Add-ons</p>
-                        <div class="pl-5 text-start">
-                            <li class="list-none">FREE INSTALLATION</li>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
