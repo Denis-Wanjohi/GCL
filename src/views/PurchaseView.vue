@@ -128,55 +128,7 @@
               </v-expansion-panel>
             </v-expansion-panels>
           </div>
-
-          <v-divider class="my-10 mx-10" color="red" opacity="1" thickness="2px"></v-divider>
-          <div class="w-full text-center">
-            <v-text class="text-center font-bold">The following steps will help you in make a request for your plan:</v-text>
-          </div>
-          <v-stepper :items="['Step 1', 'Step 2', 'Step 3']" class="bg-cyan sm:w-1/2 w-[95%] mx-auto" editable hide-actions>
-            <template v-slot:item.1>
-              <v-card title="Choose a Plan" flat>
-                <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
-                    <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                      <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
-                      <path d="m5.75 7.75l2.5 2.5l6-6.5" />
-                    </g>
-                  </svg>
-                  <p class="px-2">Pick a plan that fits your options</p>
-                </div>
-                
-              </v-card>
-            </template>
-
-            <template v-slot:item.2>
-              <v-card title="Your Details" flat>
-                <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
-                    <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                      <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
-                      <path d="m5.75 7.75l2.5 2.5l6-6.5" />
-                    </g>
-                  </svg>
-                  <p class="px-2">Fill a form with the required details</p>
-                </div>
-              </v-card>
-            </template>
-
-            <template v-slot:item.3>
-              <v-card title="All good" flat>
-                <div  class="flex align-baseline">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 16 16">
-                    <g fill="white" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                      <path d="M14.25 8.75c-.5 2.5-2.385 4.854-5.03 5.38A6.25 6.25 0 0 1 3.373 3.798C5.187 1.8 8.25 1.25 10.75 2.25" />
-                      <path d="m5.75 7.75l2.5 2.5l6-6.5" />
-                    </g>
-                  </svg>
-                  <p class="px-2">Thats all! You  will be contacted in less than 24hrs</p>
-                </div>
-              </v-card>
-            </template>
-          </v-stepper>
+      
       </div>
 
     <router-view></router-view>
