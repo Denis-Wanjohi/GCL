@@ -22,14 +22,14 @@
                 <div class="py-3 " >
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
                 </div>
-                <div class="w-3/4 my-5 mx-auto">
+                <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
                         <div class="pl-5 text-start">
                             <li class="list-none">FREE INSTALLATION</li>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
@@ -66,14 +66,14 @@
                 <div class="py-3 ">
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
                 </div>
-                <div class="w-3/4 my-5 mx-auto">
+                <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
                         <div class="pl-5 text-start">
                             <li class="list-none">FREE INSTALLATION</li>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
@@ -91,86 +91,18 @@
 
       </div>
     </div>
-  <!-- <v-carousel  
-    v-if="plans"
-    height=""
-    style="width: 100vw;
-            height:90vh;
-            background-color: white;
-            
-            background-size: cover; /* Ensure the image covers the entire div */
-            background-repeat: no-repeat; /* Prevent repetition */
-            background-position: center;
-            "
-     :style="`background-image: url(${plans[start].imagePath});`"
-    class="border mx-auto bg-gradient-to-tr bg-cover from-orange-500 to-pink-600 "
-    :show-arrows="false"
-    cycle
-    interval="2000"
-    hide-delimiters="true"
-  >
-    <v-carousel-item
-    style=""
-      class=" rounded-3xl bg-cover bg-center"
-      v-for="(plan, i) in plans.length"
-      height=""
-      :key="i"
-      data-aos="fade-up" -->
-    <!-- > -->
-    
-      <!-- LARGE SCREENS -->
-      <!-- <div class="relative lg:h-[90vh] sm:block hidden animate__animated animate__faster animate__bounceIn " > -->
-        <!-- <v-parallax :src=plans[plan-1].imagePath> -->
-            
-            <!-- <v-parallax>
-          <div class="absolute top-0 left-[10%] text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[plan-1].name }}</div>
-          <div class="absolute lg:bottom-10 bottom-20 left-0  flex w-full justify-evenly">
-            <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
-                <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
-                <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
-                  {{ pack.speed }} 
-                  <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
-                </div>
-                <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl text-xl  justify-center">{{ pack.price }}/month</div>
-            </div>
-          </div>
-        </v-parallax> -->
-      <!-- </div> -->
-     
-      <!-- MOBILE VIEW -->
-      <!-- <div class="relative sm:h-[90vh] sm:hidden block text-white">
-        <v-parallax :src=plans[plan-1].imagePath style="height:400px;">
-          <div class="absolute bottom-5 left-0  flex flex-wrap w-full justify-start">
-          <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[plan-1].name }}</div>
-          <div class="flex flex-wrap w-full justify-evenly">
-            <div @click="clicked(pack)" class=" sm:w-[180px] m-1   w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer " v-for="(pack,i) in packages[plans[plan-1].tag].packages" :key="i">
-                <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
-                  {{ pack.speed }} 
-                  <span class="sm:text-2xl text-sm text-end">Mbps</span>
-                </div>
-                <div class=" h-1/4 text-center font-mono  flex w-full align-center text-sm  justify-center">{{ pack.price }}/month</div>
-            </div>
-          </div>
-          </div>
-        </v-parallax>
-      </div> -->
-    <!-- </v-carousel-item> -->
-  <!-- </v-carousel> -->
 
-
-
-  <!-- image test -->
+  <!-- HERO SECTION IMAGES -->
    <div class="bg-[url('/Images/fav_G.png')] mb-5 " style="background-size: 50%;background-position: center">
 
-    <!-- {{packages[plans[start].tag].packages[0]}} -->
         <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh] aniate__animated animate__fadeIn"  v-if="packages">
             <!-- large screen -->
             <div class="sm:block hidden">
                 <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
                 <div class="absolute lg:bottom-15 bottom-20 left-0  flex w-full justify-evenly">
-                    <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded px-3 from-[#f15a22] to-orange-600 m-2 cursor-pointer px-4 " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                    <div @click="clicked(pack)" class="lg:w-[180px] w-[50%]  lg:h-[180px] h-[50%] bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 m-2 cursor-pointer px-4 " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
                         <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
-                        <div class="lg:text-[100px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
+                        <div class="lg:text-[80px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
                         {{ pack.speed }} 
                         <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
                         </div>
@@ -212,10 +144,8 @@ const plans = ref(
             description: 'Dont miss a moment',
             price:'2199',
             imagePath:"/Images/gigabit-family.jpg",
-             // imagePath:"https://img.freepik.com/premium-photo/happy-african-american-multi-generation-family-watching-soccer-match-television-living-room-home_58466-12800.jpg?w=826",
             direction:"horizontal",
             tag:0,
-            preloadedImage:''
         },
         {
             name:'BUSINESS PLANS',
@@ -224,7 +154,6 @@ const plans = ref(
             imagePath:"https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
-            preloadedImage:''
         },
         {
             name:'STUDENT PLANS',
@@ -233,17 +162,14 @@ const plans = ref(
             imagePath:"https://img.freepik.com/premium-photo/hispanic-latin-girl-college-student-using-laptop-computer-watching-distance-online-learning-seminar-class-remote-university-webinar-having-virtual-classroom-meeting-university-creative-space_265022-68286.jpg?w=826",
             direction:"horizontal",
             tag:2,
-            preloadedImage:''
         },
         {
             name:'HOME PLANS',
             description: 'Happy moments tailored for you',
             price:'2199',
             imagePath:"https://img.freepik.com/premium-photo/group-people-are-watching-soccer-game-tv_1262781-39800.jpg?w=900",
-            // imagePath:"https://img.freepik.com/premium-photo/quottwo-male-friends-playing-video-games-homequot_1280275-158391.jpg?w=826",
             direction:"horizontal",
             tag:0,
-            preloadedImage:''
         },
         {
             name:'BUSINESS PLANS',
@@ -252,7 +178,6 @@ const plans = ref(
             imagePath:"https://images.unsplash.com/photo-1573164574511-73c773193279?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
-            preloadedImage:''
 
         },
         {
@@ -262,7 +187,6 @@ const plans = ref(
             imagePath:"/Images/african-student.jpg",
             direction:"horizontal",
             tag:2,
-            preloadedImage:''
         },
     ]
 )
@@ -488,7 +412,7 @@ onMounted(()=>{
             start.value = -1
         }
         start.value++
-    }, 4000);
+    }, 7000);
     })
 
 </script>

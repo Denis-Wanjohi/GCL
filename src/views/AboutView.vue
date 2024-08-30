@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <img class="h-[60vh] sm:block hidden w-screen mx-auto" src="/Images/GCL_G_logo.png" alt=""> -->
   </div>
   <div class="space-y-4">
       <WhoWeAreSection></WhoWeAreSection>
