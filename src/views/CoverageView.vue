@@ -6,8 +6,8 @@
 
     <!-- Message -->
     <div class="py-5">
-      <p class="text-xl font-semibold">Fibre:</p>
-      <p>For the fibre connection, we are deeply rooted in North Imenti, Meru County.</p>
+      <p class="text-xl font-semibold">fiber:</p>
+      <p>For the fiber connection, we are deeply rooted in North Imenti, Meru County.</p>
       <p class="sm:text-md text-sm">
         We are the leading company offering the quality product in the market and a very convenient and customer-centric support always ready to tend to your queries.
       </p>
@@ -28,13 +28,13 @@
       </p>
     </div>
 
-    <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[100vh] ">
+    <div class="w-full py-5 h-[100vh] ">
       <!-- Locations -->
       <div class=" w-full sm:mx-5 mx-2">
         <div class="text-2xl font-bold">LOCATIONS</div>
         <div>
           <p class="text-sm">Our coverage</p> 
-          <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto">
+          <div class="flex flex-wrap sm:h-full h-[200px] overflow-y-auto  px-4">
             <v-chip @click="location(37.653903, 0.044560, 'Meru Town')">Meru Town</v-chip>
             <v-chip @click="location(37.639784,0.054461, 'Kinoru')">Kinoru</v-chip>
             <v-chip @click="location(37.642444,0.056895, 'Makutano')">Makutano</v-chip>
@@ -73,11 +73,11 @@
           </div>
           </div>
         
-          <div class="w-full bg-gradient-to-t  py-5 from-orange-500 h-[70vh] flex sm:flex-row flex-col-reverse">
+          <div class="w-full bg-gradient-to-t  h-[500px] my-auto  py-5 from-orange-500  flex sm:flex-row flex-col-reverse">
             <!-- Map -->
-            <Map class="w-full  h-[90%] py-4 sm:mx-5 mx-2" :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+            <Map class="w-full h-[95%]  mx-5 px-4 py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
-      </div>
+          </div>
       </div>
     </div>
     <div>
@@ -119,7 +119,6 @@ const coveredAreas = [
   { name: "Kiorone", lng: 37.66008312243502, lat: 0.04893606406184273 },
   { name: "Meru Diary", lng: 37.65945307917725, lat: 0.041951086342570935 },
   { name: "Mwithumwiru", lng: 37.65000931053776, lat: 0.07013693136047787 },
-  
   { name: "Kaaga", lng: 37.654778278324535, lat: 0.06391957524235498 },
   { name: "Mpakone", lng: 37.65985971627175, lat: 0.06788069122698175 },
   { name: "Nkoune", lng: 37.65379379325462, lat: 0.05740652751650088 },

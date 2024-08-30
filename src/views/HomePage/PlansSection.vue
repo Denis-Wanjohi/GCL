@@ -42,7 +42,7 @@
         </svg>
 
     </div>
-    <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! <br> INSTALLATION IS FREE!!! </p>
+    <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! </p>
     
     <!-- PLANS -->
     <v-card class="text-start" >
@@ -197,14 +197,14 @@
                 <div class="py-3 " >
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
                 </div>
-                <div class="w-3/4 my-5 mx-auto">
+                <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
                         <div class="pl-5 text-start">
                             <li class="list-none">FREE INSTALLATION</li>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
@@ -242,14 +242,14 @@
                 <div class="py-3 ">
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
                 </div>
-                <div class="w-3/4 my-5 mx-auto">
+                <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
                         <div class="pl-5 text-start">
                             <li class="list-none">FREE INSTALLATION</li>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">

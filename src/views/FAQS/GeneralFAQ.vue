@@ -44,13 +44,13 @@ const data = [
         ]
     },
     {
-        title:"Fibre Specific",
+        title:"fiber Specific",
         questions:[
-            "What is the difference between fibre and wireless internet?",
-            "How do I check if fibre is available in my area?"
+            "What is the difference between fiber and wireless internet?",
+            "How do I check if fiber is available in my area?"
         ],
         answers:[
-            "Fibre optic internet uses light to transmit data through fibre optic cables, while wireless internet uses radio waves to transmit data through the air.",
+            "fiber optic internet uses light to transmit data through fiber optic cables, while wireless internet uses radio waves to transmit data through the air.",
             "Check our coverage map or contact our support team to determine availability"
         ]
     },

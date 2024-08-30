@@ -189,7 +189,7 @@ function one(item){
 
     <div class=" px-2  inset-0 z-10 fixed top-[90%] md:left-[105px] sm:left-[105px] left-[105px] text-center w-20 h-20">
       
-      <a href="https://wa.me/+254723892001?text=Hello Gigabit">
+      <a href="https://wa.me/+254712999333?text=Hello Gigabit">
         <v-fab  absolute location="center" color="green">
           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24">
             <rect width="24" height="24" fill="none" />
@@ -217,7 +217,7 @@ function one(item){
             <div class="md:w-1/2 px-10 ">
               <img src="/Images/Gigabit_logo.png"   class="h-1/2  " alt="Gigabit Logo">
               <div class="px-3 shadow py-1 text-wrap text-white font-sans">
-                Gigabit Connections Limited we  excel with FTTH(Fibre To The Home), FTTP(Fibre To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
+                Gigabit Connections Limited we  excel with FTTH(fiber To The Home), FTTP(fiber To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
               </div>
             </div>
 

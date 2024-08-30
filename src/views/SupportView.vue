@@ -19,7 +19,7 @@
   <div>
     <div class="text-[50px] py-4 font-semibold">Frequently Asked Questions</div>
     <div>
-      We're revolutionizing the digital landscape by building a future-proof, fibre network that is fast and has uninterrupted connectivity  to your home and businesses.
+      We're revolutionizing the digital landscape by building a future-proof, fiber network that is fast and has uninterrupted connectivity  to your home and businesses.
     </div>
     <div class="py-6">
       <p class="text-2xl font-bold py-4">Discover How We're Making it Happen</p>

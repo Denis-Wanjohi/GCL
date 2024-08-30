@@ -61,17 +61,10 @@
                 </div>
             </div>
             <footer style="text-align: center;">
-                <p>&copy; <span id="year"></span> Gigabit Connections Limited. All rights reserved.</p>
+                <p>&copy; <span>{{year}}</span> Gigabit Connections Limited. All rights reserved.</p>
             </footer>
         </div>
     </div>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const yearSpan = document.getElementById('year');
-        const currentYear = new Date().getFullYear();
-        console.log(currentYear)
-        yearSpan.textContent = currentYear;
-    });
-</script>
+
 </html>

@@ -10,7 +10,7 @@ const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
 const env = require('./env.js')
 const app = express();
-
+let year =new Date().getFullYear()
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -23,19 +23,14 @@ app.use((req, res, next) => {
 });
 
 
-// app.get('/', (req, res) => {
-//     res.send('hello');
-// });
 app.post('/api/test', (req, res) => {
   res.send('post message {{test}}');
 });
 
 
 const transporter = nodemailer.createTransport({
-  
   host: 'smtp.gmail.com',
   port: 587,
-
   secure: false, // or 'STARTTLS'
   auth: {
     user: env.user,
@@ -56,25 +51,18 @@ app.post('/contact', (req, res) => {
   sendEmail(user.firstName,user.middleName,user.lastName,user.nationalID,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
   //send message to office
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
-  // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
-
+  
   // Compile the Handlebars template
   const template = handlebars.compile(htmlTemplate);
 
+
   // Render the template with the data
-  const html = template({ user, service, data });
+  const html = template({ user, service, data, year});
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
-    to: "deniswanjohi15@gmail.com",
+    to: "gigabitconnectionslimited@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
-    // attachments:[{
-    //   filename:'image.png',
-    //   content: imageAttachment.toString('base64'),
-    //   encoding:'base64',
-    //   contentDisposition: 'inline',
-    //   cid:'uniqueImageCID'
-    // }]
   };
 
   transporter.verify((error, success) => {
@@ -91,7 +79,7 @@ app.post('/contact', (req, res) => {
       res.status(500).send({ message: 'Error sending email' });
     } else {
       console.log('Email sent:', info.response);
-      res.send({ message: 'Email sent successfully' });
+      res.send({ message: 'Email sent successfully to the office' });
     }
   });
 
@@ -124,13 +112,6 @@ app.post('/internet',(req,res)=>{
     to: "deniswanjohi15@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
-    // attachments:[{
-    //   filename:'image.png',
-    //   content: imageAttachment.toString('base64'),
-    //   encoding:'base64',
-    //   contentDisposition: 'inline',
-    //   cid:'uniqueImageCID'
-    // }]
   };
 
   transporter.verify((error, success) => {
@@ -215,7 +196,6 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
   }
   const template = handlebars.compile(htmlTemplate)
   
- 
 
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
@@ -226,7 +206,7 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
       },
   });
 
-  const html = template(data)
+  const html = template(data,year)
 
   // Send email
   const info = await transporter.sendMail({
