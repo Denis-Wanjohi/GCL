@@ -20,7 +20,7 @@
                 <animate attributeName="opacity" begin="-0.75s" calcMode="spline" dur="2.25s" keySplines=".55, 0, .1, 1; .55, 0, .1, 1" repeatCount="indefinite" values="0; 1; 0" />
             </path>
         </svg>
-        OUR PLANS
+        OUR PACKAGES
         <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 512 512">
             <rect width="512" height="512" fill="none" />
             <path fill="#2a81bf" d="M293.5 298a7.7 7.7 0 0 0-5.3 2L256 330.9L223.8 300a7.8 7.8 0 0 0-10.6 0a6.9 6.9 0 0 0 0 10l37.5 35.8a7.8 7.8 0 0 0 10.6 0l37.5-35.7a6.9 6.9 0 0 0 0-10.1a7.7 7.7 0 0 0-5.3-2.1Z" opacity="0">
@@ -42,7 +42,7 @@
         </svg>
 
     </div>
-    <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! </p>
+    <!-- <p class="text-sm animate__animated animate__zoomIn   animate__slower animate__delay-2s sm:w-1/2 mx-auto bg-gradient-to-b  from-blue-300 text-stone-500  text-wrap"> *With a deposit of only KSH 4000 fully refundable for each plan! </p> -->
     
     <!-- PLANS -->
     <v-card class="text-start" >
@@ -57,7 +57,7 @@
             <v-icon :icon=IconHomeVue></v-icon>
             HOME
         </v-tab>
-        <v-tab value="BUSINESS" base-color="black" hide-slider rounded="xl" border="md" color="white" class="bg-orange" >
+        <v-tab value="BUSINESS" base-color="black" hide-slider rounded="xl" border="md" color="white"  style="background-color: #f15a22" >
             <v-icon :icon=IconBusinessPlan></v-icon>
             BUSINESS</v-tab>
         <v-tab value="STUDENT" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green">

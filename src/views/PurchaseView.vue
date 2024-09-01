@@ -83,7 +83,7 @@
                               <v-list-item-title class="text-xl text-wrap">{{ description }}</v-list-item-title>
                           </v-list-item>
                           </v-list>
-                          <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PLAN</div>
+                          <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center font-mono text-xl mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
                       </v-card>
                     </div>
                     </v-col>
@@ -162,7 +162,7 @@ import Form from '../components/PackageRequest.vue'
                         "Unlimited",
                         "social media",
                         "e-learning",
-                        "email",
+                      
                         
                     ],
                     users:"5-8",
@@ -178,7 +178,6 @@ import Form from '../components/PackageRequest.vue'
                         "Smooth HD streaming",
                         "Online gaming",
                         "Unlimited",
-                        "email",
                         "social media",
                         "e-learning"
                     ],
@@ -212,7 +211,7 @@ import Form from '../components/PackageRequest.vue'
                         "Heavy Internet user",
                         "Online gaming",
                         "Unlimited",
-                        "Fast uploads/downloads",
+                        
                         "social media",
                         "e-learning"
                     ],

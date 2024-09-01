@@ -65,7 +65,7 @@ const features = [
         icon: IconPrice,
         headline:"AFFORDABLE",
         title:"Plans that fit you",
-        text:"Talking about quality at a cheap price...we are at the forefront.",
+        text:"Talking about quality at an affordable price...we are at the forefront.",
     },
     {
         icon: IconSupport,

@@ -1,10 +1,11 @@
 <template>
+    <!-- OVERLAY AT THE HERO SECTIONS -->
     <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
       <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
             <!-- LARGE SCREENS -->
             <div class="shadow  sm:block hidden animate__animated animate__rubberBand" >
                 <div class="w-full flex justify-center py-5">
-                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
                     <div @click="overlay = false" class="px-4  cursor-pointer py-2 text-xs font-mono w-fit bg-blue rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
@@ -19,9 +20,9 @@
                     </div>
                     
                 </div>
-                <div class="py-3 " >
+                <!-- <div class="py-3 " >
                     <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
-                </div>
+                </div> -->
                 <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
@@ -48,7 +49,7 @@
             <!-- MOBILE VIEW -->
             <div class="shadow sm:hidden animate__animated animate__rubberBand ">
                 <div class="w-full flex justify-center py-5">
-                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
                     <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
@@ -64,7 +65,7 @@
                     
                 </div>
                 <div class="py-3 ">
-                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                    <!-- <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p> -->
                 </div>
                 <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
@@ -140,50 +141,45 @@ const selectedPackage = ref(null)
 const plans = ref(
     [
         {
-            name:'HOME PLANS',
+            name:'HOME PACKAGES',
             description: 'Dont miss a moment',
-            price:'2199',
             imagePath:"/Images/gigabit-family.jpg",
             direction:"horizontal",
             tag:0,
         },
         {
-            name:'BUSINESS PLANS',
+            name:'BUSINESS PACKAGES',
             description: 'Keeping you up with no ease ',
-            price:'2199',
+            
             imagePath:"https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
         },
         {
-            name:'STUDENT PLANS',
+            name:'STUDENT PACKAGES',
             description: 'Improve Grade performance with ease',
-            price:'999',
             imagePath:"https://img.freepik.com/premium-photo/hispanic-latin-girl-college-student-using-laptop-computer-watching-distance-online-learning-seminar-class-remote-university-webinar-having-virtual-classroom-meeting-university-creative-space_265022-68286.jpg?w=826",
             direction:"horizontal",
             tag:2,
         },
         {
-            name:'HOME PLANS',
+            name:'HOME PACKAGES',
             description: 'Happy moments tailored for you',
-            price:'2199',
             imagePath:"https://img.freepik.com/premium-photo/group-people-are-watching-soccer-game-tv_1262781-39800.jpg?w=900",
             direction:"horizontal",
             tag:0,
         },
         {
-            name:'BUSINESS PLANS',
+            name:'BUSINESS PACKAGES',
             description:'Focus on the profit we take care of the connectivity',
-            price:'2199',
             imagePath:"https://images.unsplash.com/photo-1573164574511-73c773193279?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction:"horizontal",
             tag:1,
 
         },
         {
-            name:'STUDENT PLANS',
+            name:'STUDENT PACKAGES',
             description: 'When it comes to taking a break we got you!',
-            price:'999',
             imagePath:"/Images/african-student.jpg",
             direction:"horizontal",
             tag:2,
@@ -224,14 +220,13 @@ onMounted(()=>{
                     {
                         feature:"Essential",
                         speed:7,
-                        price:2199,
+                        price:'2,199',
                         description:[
                             "Basic internet use",
                             "Browsing",
                             "Unlimited",
                             "social media",
                             "e-learning",
-                            ""
                         ],
                         users:"5-8",
                         tag:'home'
@@ -239,12 +234,11 @@ onMounted(()=>{
                     {
                         feature:"Streamer",
                         speed:12,
-                        price:2599,
+                        price:'2,599',
                         description:[
                             "Smooth HD streaming",
                             "Online gaming",
                             "Unlimited",
-                            "email",
                             "social media",
                             "e-learning"
                         ],
@@ -254,11 +248,10 @@ onMounted(()=>{
                     {
                         feature:"Family",
                         speed:20,
-                        price:3799,
+                        price:'3,799',
                         description:[
                             "Family connectivity",
                             "Multiple devices streaming",
-                            "3D Conferencing",
                             "Unlimited",
                             "social media",
                             "e-learning"
@@ -269,12 +262,11 @@ onMounted(()=>{
                     {
                         feature:"Power User",
                         speed:30,
-                        price:5399,
+                        price:'5,399',
                         description:[
                             "Heavy Internet user",
                             "Online gaming",
                             "Unlimited",
-                            "Fast uploads/downloads",
                             "social media",
                             "e-learning"
                         ],
@@ -284,10 +276,9 @@ onMounted(()=>{
                     {
                         feature:"Turboo",
                         speed:50,
-                        price:6999,
+                        price:'6,999',
                         description:[
                             "Ultimate speed",
-                            "Business use",
                             "Unlimited",
                             "Heavy online activity",
                             "Large Families",
@@ -304,7 +295,7 @@ onMounted(()=>{
                     {
                         feature:"Starter",
                         speed:2,
-                        price:2999,
+                        price:'2,999',
                         description:[
                             "Basic online activities",
                             "Fast upload and downloads speeeds",
@@ -317,7 +308,7 @@ onMounted(()=>{
                     {
                         feature:"Growth",
                         speed:5,
-                        price:4999,
+                        price:'4,999',
                         description:[
                             "Faster speeds for onine activities",
                             "Seamless connectivity",
@@ -332,7 +323,7 @@ onMounted(()=>{
                     {
                         feature:"Pro",
                         speed:10,
-                        price:9999,
+                        price:'9,999',
                         description:[
                             "High-speed connectivity",
                             "Fast uploads and downoads",
@@ -346,7 +337,7 @@ onMounted(()=>{
                     {
                         feature:"Power User",
                         speed:20,
-                        price:19999,
+                        price:'19,999',
                         description:[
                             "Lightening-fast connectivity",
                             "High-speed uploads and downoads",
@@ -360,7 +351,7 @@ onMounted(()=>{
                     {
                         feature:"Power User",
                         speed:30,
-                        price:27999,
+                        price:'27,999',
                         description:[
                             "Lightening-fast connectivity",
                             "High-speed uploads and downoads",
@@ -380,7 +371,7 @@ onMounted(()=>{
                         feature:"Student Lite",
                         immage:"/Image/student-lite.jpg",
                         speed:3,
-                        price:999,
+                        price:'999',
                         description:[
                             "2 GB daily data allocation",
                             "256 kbps bandwidth after exhausting the daily limit",
@@ -393,7 +384,7 @@ onMounted(()=>{
                         feature:"Student Pro",
                         immage:"/Image/student-pro.jpg",
                         speed:5,
-                        price:1499,
+                        price:'1,499',
                         description:[
                             "3 GB daily data allocation",
                             "512 kbps bandwidth after exhausting the daily limit",

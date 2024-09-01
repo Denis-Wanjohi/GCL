@@ -8,14 +8,12 @@ const handlebars = require('handlebars');
 const { promisify } = require('util');
 const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
-const env = require('./env.js')
 const app = express();
 let year =new Date().getFullYear()
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  // res.header('Access-Control-Allow-Origin', 'https://gcl-jxde.vercel.app');https://backend-six-virid.vercel.app/
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'https://www.gigabit.co.ke/');
   res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -33,8 +31,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // or 'STARTTLS'
   auth: {
-    user: env.user,
-    pass: env.pass
+    user: 'gigabitconnectionslimited@gmail.com',
+    pass: 'opwv guea amxc nvuo'
   }
 });
 
@@ -201,8 +199,8 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
   const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-          user: env.user,
-          pass: env.pass
+          user: 'gigabitconnectionslimited@gmail.com',
+          pass: 'opwv guea amxc nvuo'
       },
   });
 

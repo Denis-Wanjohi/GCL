@@ -88,7 +88,7 @@ function one(item){
       <div class="flex  w-full justify-between">
         <div class="sm:w-[30%]   w-3/4 flex justify-center  ">
           <router-link to="/">
-            <img src="/Images/Gigabit_main_logo.png"  class=" my-auto h-[80px] w-full bg-fill" alt="LOGO PNG">
+            <img src="/Images/GCL_logo.png"  class=" my-auto h-[80px] w-full bg-fill" alt="LOGO PNG">
           </router-link>
         </div>
         <!-- LARGE  SCREEN -->
@@ -217,7 +217,7 @@ function one(item){
             <div class="md:w-1/2 px-10 ">
               <img src="/Images/Gigabit_logo.png"   class="h-1/2  " alt="Gigabit Logo">
               <div class="px-3 shadow py-1 text-wrap text-white font-sans">
-                Gigabit Connections Limited we  excel with FTTH(fiber To The Home), FTTP(fiber To The Premisis) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
+                Gigabit Connections Limited we  excel with FTTH(fiber To The Home), FTTB(fiber To The Business) and wireless services, offering lightning-fast speeds, reliability and customer-centric support, setting a new standard in the industry.
               </div>
               <div>
               <div class="">
