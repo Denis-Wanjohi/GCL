@@ -28,7 +28,7 @@ const data = [
             "What happens if I miss a payment? "
         ],
         answers:[
-            "Reach out to us we update the account info",
+            "Reach out to us through our whatsapp/hotline number for guidance",
             "We will send you a reminder, and if payment is not made, your service may be suspended. Contact us to discuss payment options."
         ]
     },
@@ -63,8 +63,8 @@ const data = [
             "How do I report an outage or technical issue?"
         ],
         answers:[
-            "You can contact us through our website email (sales@gigabit.co.ke) or call (+254712999333)",
-            "Our office is open from 8 am to 5 pm on Monday to Friday and 9 am to 1 pm.",
+            "You can contact us through our website ,email (sales@gigabit.co.ke) or call (+254712999333)",
+            "Our office is open from 8 am to 5 pm on Monday to Friday and 9 am to 1 pm on Saturday.",
             "Yes, our support team is fluent in both English and Swahili.",
             "Contact our support team through our website, email, or phone to report an outage or technical issue."
         ]

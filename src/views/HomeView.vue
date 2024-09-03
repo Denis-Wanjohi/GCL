@@ -3,10 +3,9 @@
 // import { VTabs } from "vuetify/lib/components/index.mjs";
 import HeroSection from "./HomePage/HeroSection.vue";
 import FeaturesSection from "./HomePage/FeaturesSection.vue";
-import PlansSection from "./HomePage/PlansSection.vue";
 import TestimonialSection from "./HomePage/TestimonialSection.vue";
 import CallToActionSection from "./HomePage/CallToActionSection.vue";
-  import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
   const message = ref('With a deposit of only KSH 4000 fully refundable for each plan! INSTALLATION IS FREE!!!');
   onMounted(() => {

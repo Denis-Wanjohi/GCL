@@ -75,15 +75,16 @@
                               :key="i"
                               :value="item"
                               color="primary"
+                              class="text-start"
                               style="background-color: beige;"
                           >
                               <template v-slot:prepend>
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path  fill="currentColor" d="M5 21V5q0-.825.588-1.412T7 3h10q.825 0 1.413.588T19 5v16l-7-3z"></path></svg>
                               </template>
-                              <v-list-item-title class="text-xl text-wrap">{{ description }}</v-list-item-title>
+                              <v-list-item-title class="text-xl  text-start text-wrap">{{ description }}</v-list-item-title>
                           </v-list-item>
                           </v-list>
-                          <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center font-mono text-xl mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
+                          <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-1 rounded-md text-center font-mono text-md mx-auto w-fit my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
                       </v-card>
                     </div>
                     </v-col>
@@ -153,7 +154,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"",
                     speed:7,
-                    price:2199,
+                    price:'2,199',
                     imagePath:'/Images/5mbps.avif',
                     description:[
                         "Family connectivity",
@@ -171,7 +172,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"",
                     speed:12,
-                    price:2599,
+                    price:'2,599',
                     imagePath:'/Images/12mbps.jpg',
                     description:[
                         "Family connectivity",
@@ -187,12 +188,11 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"",
                     speed:20,
-                    price:3799,
+                    price:'3,799',
                     imagePath:'/Images/20mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Multiple devices streaming",
-                        "3D Conferencing",
                         "Online gaming",
                         "Unlimited",
                         "social media",
@@ -204,7 +204,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"",
                     speed:30,
-                    price:5399,
+                    price:'5,399',
                     imagePath:'/Images/30mbps.jpg',
                     description:[
                         "Family connectivity",
@@ -221,12 +221,11 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"",
                     speed:50,
-                    price:6999,
+                    price:'6,999',
                     imagePath:'/Images/50mbps.avif',
                     description:[
                         "Family connectivity",
                         "Ultimate speed",
-                        "Business use",
                         "Unlimited",
                         "Heavy online activity",
                         "Large Families",
@@ -243,7 +242,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"Starter",
                     speed:2,
-                    price:2999,
+                    price:'2,999',
                     imagePath:'/Images/2mbps.avif',
                     description:[
                         "Fast Reliable Internet Access",
@@ -258,7 +257,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"Growth",
                     speed:5,
-                    price:4999,
+                    price:'4,999',
                     imagePath:'/Images/5_mbps.avif',
                     description:[
                         "Faster Speeds For Growth",
@@ -273,7 +272,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"Pro",
                     speed:10,
-                    price:9999,
+                    price:'9,999',
                     imagePath:'/Images/10mbps.avif',
                     description:[
                         "High Performance Internet Access",
@@ -288,7 +287,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"Faaasst",
                     speed:20,
-                    price:19999,
+                    price:'19,999',
                     imagePath:'/Images/20_mbps.jpg',
                     description:[
                         "Lightning Fast Internet Speeds",
@@ -303,7 +302,7 @@ import Form from '../components/PackageRequest.vue'
                 {
                     feature:"Power User",
                     speed:30,
-                    price:27999,
+                    price:'27,999',
                     imagePath:'/Images/30_mbps.avif',
                     description:[
                         "Ultimate Internet Experience Guaranteed",
@@ -337,7 +336,7 @@ import Form from '../components/PackageRequest.vue'
                     feature:"Student Pro",
                     imagePath:"/Images/student-pro.jpg",
                     speed:5,
-                    price:1499,
+                    price:'1,499',
                     description:[
                         "3 GB daily data allocation",
                         "512 kbps bandwidth after exhausting the daily limit",

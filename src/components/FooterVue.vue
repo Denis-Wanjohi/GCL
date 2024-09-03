@@ -151,7 +151,7 @@ const footer = [
         </div>
         <v-divider class="mx-10" thickness="2"></v-divider>
         <div class="text-grey text-center text-sm py-2">
-          <p>@{{year}} Gigabit Connection Limited</p>
+          <p>@{{year}} Gigabit Connections Limited</p>
         </div>
         
       </div>

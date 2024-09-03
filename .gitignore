@@ -31,3 +31,4 @@ coverage
 .vercel
 /backend/vercel.json
 /backend/env.js
+/backend/index.js

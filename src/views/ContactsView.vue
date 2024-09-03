@@ -325,7 +325,7 @@ onMounted(()=>{
         },
         {
             title:'Hotline number',
-            description:'+254712999333/+254111052303',
+            description:'+254712999333/+254111052300',
             icon:IconPhone
         },
         {
@@ -415,6 +415,7 @@ function userDetails(){
 
     store.dispatch('contactForm',data)
         .then((response)=>{
+            console.log(response)
             submittedForm.value = false
             submitting.value =false
             details.value.firstname = ''
@@ -448,5 +449,22 @@ function userDetails(){
             }, 5000);
             console.log(error)
         }) 
+
 }
+
+// import axios from "axios";
+
+// function test(){
+//     axios.post('backend/send_mail.php', {
+//     name: 'John Doe',
+//     email: 'johndoe@example.com',
+//     message: 'Hello, this is a test email!'
+// })
+// .then(response => {
+//     console.log(response.data);
+// })
+// .catch(error => {
+//     console.error(error);
+// });
+// }
 </script>

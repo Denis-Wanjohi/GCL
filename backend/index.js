@@ -6,19 +6,42 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const handlebars = require('handlebars');
 const { promisify } = require('util');
+const cors = require('cors')
 const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
 const app = express();
 let year =new Date().getFullYear()
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://www.gigabit.co.ke/');
-  res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173/');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
+
+// app.options('*', (req, res) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173/');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   res.header('Access-Control-Allow-Credentials', 'true');
+  
+// });
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
+
+const corsOptions = {
+  credentials: true,
+  origin: ['http://localhost:5173/','http://gigabit.co.ke/','https://gigabit.co.ke/'] // Whitelist the domains you want to allow
+};
+
+app.use(cors()); // Use the cors middleware with your options
 
 
 app.post('/api/test', (req, res) => {
@@ -76,7 +99,7 @@ app.post('/contact', (req, res) => {
       console.log('Error sending email:', error);
       res.status(500).send({ message: 'Error sending email' });
     } else {
-      console.log('Email sent:', info.response);
+      console.log('Email sent::', info.response);
       res.send({ message: 'Email sent successfully to the office' });
     }
   });
@@ -133,39 +156,39 @@ app.post('/internet',(req,res)=>{
 })
 //test request
 app.get('/',(req,res)=>{
-  const details = req.body;
-  const mailOptions = {
-    from: "GCL CLIENT <sender@gmail.com>",
-    to: "deniswanjohi15@gmail.com",
-    subject: `GCL Client: Internet Request` ,
-    html: `
-    <div style="background-image: url('./GCL_logo.jpg'); background-size: cover; background-color: orange;  height: 100vh; padding: 20px; color: white;">
-      <h1>Hello, World!</h1>
-      <p>This is an email with a background image.</p>
-    </div>
-  `
-  };
-  let x = ''
-  transporter.verify((error, success) => {
-    if (error) {
-      console.log('Error verifying transporter:', error);
-    } else {
-      x = 'Transporter verified successfully'
-      console.log('Transporter verified successfully');
-    }
-  });
+  // const details = req.body;
+  // const mailOptions = {
+  //   from: "GCL CLIENT <sender@gmail.com>",
+  //   to: "deniswanjohi15@gmail.com",
+  //   subject: `GCL Client: Internet Request` ,
+  //   html: `
+  //   <div style="background-image: url('./GCL_logo.jpg'); background-size: cover; background-color: orange;  height: 100vh; padding: 20px; color: white;">
+  //     <h1>Hello, World!</h1>
+  //     <p>This is an email with a background image.</p>
+  //   </div>
+  // `
+  // };
+  // let x = ''
+  // transporter.verify((error, success) => {
+  //   if (error) {
+  //     console.log('Error verifying transporter:', error);
+  //   } else {
+  //     x = 'Transporter verified successfully'
+  //     console.log('Transporter verified successfully');
+  //   }
+  // });
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log('Error sending email:', error);
-      res.status(500).send({ message: 'Error sending email' });
-    } else {
-      console.log('Email sent:', info.response);
-      res.send({ message: 'Email sent successfully' });
-    }
-  });
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     console.log('Error sending email:', error);
+  //     res.status(500).send({ message: 'Error sending email' });
+  //   } else {
+  //     console.log('Email sent:', info.response);
+  //     res.send({ message: 'Email sent successfully' });
+  //   }
+  // });
 
-  res.send(x)
+  res.send('hello')
 
 })
 
@@ -197,11 +220,13 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
 
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-          user: 'gigabitconnectionslimited@gmail.com',
-          pass: 'opwv guea amxc nvuo'
-      },
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // or 'STARTTLS'
+    auth: {
+      user: 'gigabitconnectionslimited@gmail.com',
+      pass: 'opwv guea amxc nvuo'
+    }
   });
 
   const html = template(data,year)

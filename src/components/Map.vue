@@ -1,10 +1,10 @@
 <template>
   <div class="map-wrap h-full mx-auto rounded relative">
-    <div class="map mx-auto" ref="mapContainer">
+    <div class="w-full  h-full p-3 mx-3 sm:mx-auto" ref="mapContainer">
       <!-- Button Container inside the Map -->
       <div class="button-container">
-        <button class="map-button" @click="setMapStyle('streets')">Standard View</button>
-        <button class="map-button" @click="setMapStyle('satellite')">Satellite View</button>
+        <button class="map-button " @click="setMapStyle('streets')">Standard View</button>
+        <button class="map-button " @click="setMapStyle('satellite')">Satellite View</button>
       </div>
     </div>
   </div>
@@ -152,14 +152,10 @@ function pinLocation() {
 .map-wrap {
   position: relative;
   width: 100%;
-  height: calc(90vh - 67px); /* Adjust height based on your layout */
+   /* Adjust height based on your layout */
 }
 
-.map {
-  position: relative; /* Use relative positioning to make the button container work */
-  width: 95%; /* Use full width of the container */
-  height: 85%; /* Use full height of the container */
-}
+
 
 .button-container {
   position: absolute; /* Absolute positioning to place inside the map */

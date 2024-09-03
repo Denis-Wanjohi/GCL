@@ -60,7 +60,7 @@
         <v-tab value="BUSINESS" base-color="black" hide-slider rounded="xl" border="md" color="white"  style="background-color: #f15a22" >
             <v-icon :icon=IconBusinessPlan></v-icon>
             BUSINESS</v-tab>
-        <v-tab value="STUDENT" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green">
+        <v-tab value="STUDENT" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green ">
             <v-icon :icon=IconStudentPlanVue></v-icon>
             STUDENT</v-tab>
       </v-tabs>
@@ -180,7 +180,7 @@
             <!-- LARGE SCREENS -->
             <div class="shadow  sm:block hidden animate__animated animate__zoomInDown" >
                 <div class="w-full flex justify-center py-5">
-                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
                     <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
@@ -196,7 +196,7 @@
                     
                 </div>
                 <div class="py-3 " >
-                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                    <!-- <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p> -->
                 </div>
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
@@ -217,23 +217,23 @@
             <div class="shadow sm:hidden animate__animated  animate__zoomInDown ">
                 <!-- {{selectedPackage}} -->
                 <div class="w-full flex justify-center py-5">
-                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PLAN</div>
-                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
                   
                     <div class="rounded w-1/2  bg-gradient-to-l mx-1 from-red-500  to-orange-500 flex">
-                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
+                        <p class="text-3xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-xl">Mbps</span>
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
-                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        <p class="text-3xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
                         </p>
                     </div>
                     
                 </div>
                 <div class="py-3 ">
-                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
+                    <!-- <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p> -->
                 </div>
                 <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
@@ -280,7 +280,7 @@ import router from '@/router/index.js'
                 {
                     feature:"",
                     speed:7,
-                    price:2199,
+                    price:'2,199',
                     imagePath:'/Images/5mbps.avif',
                     description:[
                         "Family connectivity",
@@ -289,7 +289,6 @@ import router from '@/router/index.js'
                         "Unlimited",
                         "social media",
                         "e-learning",
-                        "email",
                         
                     ],
                     users:"5-8",
@@ -298,14 +297,13 @@ import router from '@/router/index.js'
                 {
                     feature:"",
                     speed:12,
-                    price:2599,
+                    price:'2,599',
                     imagePath:'/Images/12mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Smooth HD streaming",
                         "Online gaming",
                         "Unlimited",
-                        "email",
                         "social media",
                         "e-learning"
                     ],
@@ -315,12 +313,11 @@ import router from '@/router/index.js'
                 {
                     feature:"",
                     speed:20,
-                    price:3799,
+                    price:'3,799',
                     imagePath:'/Images/20mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Multiple devices streaming",
-                        "3D Conferencing",
                         "Online gaming",
                         "Unlimited",
                         "social media",
@@ -332,14 +329,13 @@ import router from '@/router/index.js'
                 {
                     feature:"",
                     speed:30,
-                    price:5399,
+                    price:'5,399',
                     imagePath:'/Images/30mbps.jpg',
                     description:[
                         "Family connectivity",
                         "Heavy Internet user",
                         "Online gaming",
                         "Unlimited",
-                        "Fast uploads/downloads",
                         "social media",
                         "e-learning"
                     ],
@@ -349,12 +345,11 @@ import router from '@/router/index.js'
                 {
                     feature:"",
                     speed:50,
-                    price:6999,
+                    price:'6,999',
                     imagePath:'/Images/50mbps.avif',
                     description:[
                         "Family connectivity",
                         "Ultimate speed",
-                        "Business use",
                         "Unlimited",
                         "Heavy online activity",
                         "Large Families",
@@ -371,7 +366,7 @@ import router from '@/router/index.js'
                 {
                     feature:"Starter",
                     speed:2,
-                    price:2999,
+                    price:'2,999',
                     imagePath:'/Images/2mbps.avif',
                     description:[
                         "Fast Reliable Internet Access",
@@ -386,7 +381,7 @@ import router from '@/router/index.js'
                 {
                     feature:"Growth",
                     speed:5,
-                    price:4999,
+                    price:'4,999',
                     imagePath:'/Images/5_mbps.avif',
                     description:[
                         "Faster Speeds For Growth",
@@ -401,7 +396,7 @@ import router from '@/router/index.js'
                 {
                     feature:"Pro",
                     speed:10,
-                    price:9999,
+                    price:'9,999',
                     imagePath:'/Images/10mbps.avif',
                     description:[
                         "High Performance Internet Access",
@@ -416,7 +411,7 @@ import router from '@/router/index.js'
                 {
                     feature:"Faaasst",
                     speed:20,
-                    price:19999,
+                    price:'19,999',
                     imagePath:'/Images/20_mbps.jpg',
                     description:[
                         "Lightning Fast Internet Speeds",
@@ -431,7 +426,7 @@ import router from '@/router/index.js'
                 {
                     feature:"Power User",
                     speed:30,
-                    price:27999,
+                    price:'27,999',
                     imagePath:'/Images/30_mbps.avif',
                     description:[
                         "Ultimate Internet Experience Guaranteed",
@@ -465,7 +460,7 @@ import router from '@/router/index.js'
                     feature:"Student Pro",
                     imagePath:"/Images/student-pro.jpg",
                     speed:5,
-                    price:1499,
+                    price:'1,499',
                     description:[
                         "3 GB daily data allocation",
                         "512 kbps bandwidth after exhausting the daily limit",

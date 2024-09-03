@@ -2,7 +2,7 @@
     
     <div class="border-b border-gray-900/10 pb-12 sm:w-1/2 sm:mx-auto sm:pt-10 mt-5 bg-slate-100" data-aos="fade-down">
       <div class="flex justify-start">
-        <div class="ml-5 w-fit px-3 rounded-xl  bg-green-600 font-bold flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
+        <div class="ml-5 w-fit px-3 rounded-xl  bg-blue-600 text-white font-bold flex align-baseline justify-center cursor-pointer" @click="$emit('close')">
             <svg  xmlns="http://www.w3.org/2000/svg" width="1em"  height="1em" viewBox="0 0 24 24" class="pt-1">
                 <path fill="black" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225z" />
             </svg>
@@ -13,9 +13,9 @@
       <p class="mt-1 text-sm leading-6 text-gray-400">*please fill the form with correct details.</p>
       
       <div class="flex flex-wrap mx-auto justify-around pt-4">
-            <p  class="bg-gradient-to-tr from-orange-300 my-1  to-red-600 px-3 py-2 rounded-md">PLAN : <span class="text-md font-semibold ">{{props.data[0]}}</span></p>
-            <p class="bg-gradient-to-tr from-orange-300  my-1 to-red-600 px-3 py-2 rounded-md">PACKAGE : <span class="text-md font-semibold">{{props.data[1].speed}} Mbps</span></p>
-            <p class="bg-gradient-to-tr from-orange-300 my-1  to-red-600 px-3 py-2 rounded-md">PRICE : <span class="text-md font-semibold">{{props.data[1].price}}/month </span></p>
+            <p  class="bg-gradient-to-tr from-orange-500 text-white my-1  to-red-600 px-3 py-2 rounded-md">PLAN : <span class="text-md font-semibold ">{{props.data[0]}}</span></p>
+            <p class="bg-gradient-to-tr from-orange-500 text-white  my-1 to-red-600 px-3 py-2 rounded-md">PACKAGE : <span class="text-md font-semibold">{{props.data[1].speed}} Mbps</span></p>
+            <p class="bg-gradient-to-tr from-orange-500 text-white my-1  to-red-600 px-3 py-2 rounded-md">PRICE : <span class="text-md font-semibold">{{props.data[1].price}}/month </span></p>
       </div>
 
       <form v-if="!isFormFilled" class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" @submit.prevent="internet">

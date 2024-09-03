@@ -12,7 +12,7 @@
       </p>
     </div>
   </div>
-  <div class="sm:flex sm:mx-5 sm:px-3 border rounded">
+  <div class="sm:flex sm:mx-5 sm:px-3 border-y rounded mb-5">
     <div class="sm:w-1/4 w-screen bg-slate-200 h-fit">
       <!-- category -->
       <div class="w-full border rounded">

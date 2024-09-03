@@ -38,7 +38,7 @@ const data =[
     },
     {
         question:"Will the installation technician configure my devices?",
-        answer:" Our technician will configure your router and modem, but you may need to configure your devices (e.g., computers, smartphones) to connect to the internet. We offer guidance on how to do this.",
+        answer:" Our technician will configure your router , but you may need to configure your devices (e.g., computers, smartphones) to connect to the internet. We offer guidance on how to do this.",
     },
 
 ]

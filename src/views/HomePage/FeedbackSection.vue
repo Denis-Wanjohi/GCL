@@ -38,11 +38,9 @@ const sendMessage = () => {
   })
     .then(response => {
       console.log('Message sent successfully:', response.data);
-      alert('Message sent successfully!');
     })
     .catch(error => {
       console.error('Error sending message:', error);
-      alert('Error sending message. Please try again.');
     });
 
   fname.value = '';

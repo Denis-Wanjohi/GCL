@@ -49,17 +49,17 @@
             <!-- MOBILE VIEW -->
             <div class="shadow sm:hidden animate__animated animate__rubberBand ">
                 <div class="w-full flex justify-center py-5">
-                    <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
-                    <div @click="overlay = false" class="px-4 cursor-pointer py-2 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
+                    <div class="w-full  font-bold text-xl">{{ selectedPackage.tag.toUpperCase() }} PACKAGE</div>
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-1 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
                 </div>
-                <div class="flex justify-around w-3/4  mx-auto">
+                <div class="flex justify-around    mx-auto">
                   
                     <div class="rounded w-1/2  bg-gradient-to-l mx-1 from-[#f15a22]  to-orange-500 flex">
-                        <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-3xl">Mbps</span>
+                        <p class="text-3xl mx-auto font-bold font-mono">{{ selectedPackage.speed }}<span class="text-xl">Mbps</span>
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-[#f15a22] to-orange-500 flex align-baseline justify-between">
-                        <p class="text-7xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
+                        <p class="text-3xl font-bold font-mono">{{selectedPackage.price}}<span class="text-sm">/month</span>
                         </p>
                     </div>
                     
@@ -114,13 +114,13 @@
         <!-- small screen -->
             <div class="sm:hidden block  absolute w-screen top-[60%]">
                 <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{ plans[start].name }}</div>
-                <div class="flex flex-wrap w-full justify-evenly">
-                    <div @click="clicked(pack)" class=" sm:w-[180px] m-1  text-white  w-1/4 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer px-4" v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
+                <div class="flex flex-wrap w-full justify-evenly ">
+                    <div @click="clicked(pack)" class=" sm:w-[180px] m-1  text-white  w-fit px-1 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer " v-for="(pack,i) in packages[plans[start].tag].packages" :key="i">
                         <div class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
                         {{ pack.speed }} 
                         <span class="sm:text-2xl text-sm text-end">Mbps</span>
                         </div>
-                        <div class=" h-1/4 text-center font-mono  flex w-full align-center text-sm  justify-center">{{ pack.price }}/month</div>
+                        <div class=" h-1/4 text-center font-mono   flex  align-center text-sm  justify-center">{{ pack.price }}/month</div>
                     </div>
                 </div>
             </div>
@@ -403,7 +403,7 @@ onMounted(()=>{
             start.value = -1
         }
         start.value++
-    }, 7000);
+    }, 9000);
     })
 
 </script>

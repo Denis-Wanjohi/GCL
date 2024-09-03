@@ -6,10 +6,10 @@
 
     <!-- Message -->
     <div class="py-5">
-      <p class="text-xl font-semibold">fiber:</p>
-      <p>For the fiber connection, we are deeply rooted in North Imenti, Meru County.</p>
+      <!-- <p class="text-xl font-semibold">fiber:</p> -->
+      <!-- <p>For the fiber connection, we are deeply rooted in North Imenti, Meru County.</p> -->
       <p class="sm:text-md text-sm">
-        We are the leading company offering the quality product in the market and a very convenient and customer-centric support always ready to tend to your queries.
+        We are the leading company offering  quality product in the market and a very convenient and customer-centric support always ready to tend to your queries.
       </p>
     </div>
 
@@ -23,8 +23,8 @@
       />
       <button @click="searchLocation" class="bg-blue-500 text-white p-2 mt-2">Enter your location</button>
       <p v-if="message" class="mt-2">
-        <span v-if="message === 'PASS'">We cover your area 🥳, checkout our <button @click="purchase"  class="bg-blue-500 px-2 py-1 rounded font-bold">PLANS 😁</button> </span>
-        <span v-if="message ==='FAIL'">Ooop!We dont cover that area.For more <router-link to="/contacts" class="bg-blue-500 px-2 py-1 rounded font-bold">Reach out</router-link> </span>
+        <span v-if="message === 'PASS'">We cover your area 🥳, checkout our <button @click="purchase"  class="bg-blue-500 px-2 py-1  text-white font-mono rounded font-bold">PLANS 😁</button> </span>
+        <span v-if="message ==='FAIL'">Ooop!We dont cover that area.For more <router-link to="/contacts" class="bg-blue-500 px-2 py-1 text-white font-mono  rounded font-bold">Reach out</router-link> </span>
       </p>
     </div>
 
@@ -73,9 +73,9 @@
           </div>
           </div>
         
-          <div class="w-full bg-gradient-to-t  h-[500px] my-auto  py-5 from-orange-500  flex sm:flex-row flex-col-reverse">
+          <div class="w-full bg-gradient-to-t  from-orange-500 to-orange-400  sm:h-[500px] h-[300px] mx-2 my-auto  sm:py-5  flex sm:flex-row flex-col-reverse">
             <!-- Map -->
-            <Map class="w-full h-[95%]  mx-5 px-4 py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+            <Map class="w-full h-full  overflow-hidden sm:mx-5 sm:px-4 sm:py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
           </div>
       </div>
@@ -175,7 +175,6 @@ function searchLocation() {
       // Add other areas' coordinates here
     };
     selectedLocation.value = searchQuery.value
-    alert()
     const coord = coordinates[coveredAreas[index]];
     if (coord) {
       location(coord.lng, coord.lat, coveredAreas[index]);

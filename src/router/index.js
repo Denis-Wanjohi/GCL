@@ -10,9 +10,6 @@ import SecurityFAQ from '@/views/FAQS/SecurityFAQ.vue';
 import TechnicalIssuesFAQ from '@/views/FAQS/TechnicalIssuesFAQ.vue';
 import Installation_setup_FAQ from '@/views/FAQS/Installation_setup_FAQ.vue';
 import RouterFAQ from '@/views/FAQS/RouterFAQ.vue';
-import HomePlan from '@/views/PlansLayout/HomePlan.vue';
-import StudentPlan from '@/views/PlansLayout/StudentPlan.vue';
-import BusinessPlan from '@/views/PlansLayout/BusinessPlan.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,9 +31,9 @@ const router = createRouter({
       name: 'purchase',
       component: PurchaseView,
       children:[
-        {path:'/purchase/home',component:HomePlan,name:'homePlan'},
-        {path:'/purchase/business',component:BusinessPlan,name:'businessPlan'},
-        {path:'/purchase/student',component:StudentPlan,name:'studentPlan'},
+        // {path:'/purchase/home',component:HomePlan,name:'homePlan'},
+        // {path:'/purchase/business',component:BusinessPlan,name:'businessPlan'},
+        // {path:'/purchase/student',component:StudentPlan,name:'studentPlan'},
       ]
     },
     {

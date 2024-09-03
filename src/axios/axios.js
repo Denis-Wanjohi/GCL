@@ -1,7 +1,8 @@
 import axios from "axios"
 
 const axiosClient = axios.create({
-    baseURL : 'https://gigabit.co.ke/backend/',
+    // baseURL : ' http://localhost:5500/',
+    baseURL : 'https://gigabit.co.ke/app',
 })
 
 export default axiosClient;
