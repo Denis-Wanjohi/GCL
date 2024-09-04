@@ -73,9 +73,9 @@
           </div>
           </div>
         
-          <div class="w-full bg-gradient-to-t  from-orange-500 to-orange-400  sm:h-[500px] h-[300px] mx-2 my-auto  sm:py-5  flex sm:flex-row flex-col-reverse">
+          <div class="w-full bg-opacity-50 bg-gradient-to-tr  from-cyan-100 to-cyan-200  sm:h-[500px] h-[300px] mx-2 my-auto  sm:py-2  flex sm:flex-row flex-col-reverse">
             <!-- Map -->
-            <Map class="w-full h-full  overflow-hidden sm:mx-5 sm:px-4 sm:py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
+            <Map class=" h-full  overflow-hidden sm:mx-3 sm:px-4 sm:py-4  sm:mx-5 " :getLngLat="getLngLat" :getLocation="getLocation" :currentArea="currentArea" :selectedLocation="selectedLocation"></Map>
 
           </div>
       </div>

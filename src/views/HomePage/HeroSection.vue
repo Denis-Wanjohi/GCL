@@ -43,7 +43,7 @@
                         <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
                     </div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PLAN</div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
             </div>    
 
             <!-- MOBILE VIEW -->
@@ -87,7 +87,7 @@
                         <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
                     </div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PLAN</div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
             </div> 
 
       </div>
@@ -218,7 +218,7 @@ onMounted(()=>{
                 plan:'HOME',
                 packages:[
                     {
-                        feature:"Essential",
+                        feature:"",
                         speed:7,
                         price:'2,199',
                         description:[
@@ -232,7 +232,7 @@ onMounted(()=>{
                         tag:'home'
                     },
                     {
-                        feature:"Streamer",
+                        feature:"",
                         speed:12,
                         price:'2,599',
                         description:[
@@ -246,7 +246,7 @@ onMounted(()=>{
                         tag:'home'
                     },
                     {
-                        feature:"Family",
+                        feature:"",
                         speed:20,
                         price:'3,799',
                         description:[
@@ -260,7 +260,7 @@ onMounted(()=>{
                         tag:'home'
                     },
                     {
-                        feature:"Power User",
+                        feature:"",
                         speed:30,
                         price:'5,399',
                         description:[
@@ -274,7 +274,7 @@ onMounted(()=>{
                         tag:'home'
                     },
                     {
-                        feature:"Turboo",
+                        feature:"",
                         speed:50,
                         price:'6,999',
                         description:[
@@ -293,7 +293,7 @@ onMounted(()=>{
                 plan:'BUSINESS',
                 packages:[
                     {
-                        feature:"Starter",
+                        feature:"",
                         speed:2,
                         price:'2,999',
                         description:[
@@ -306,7 +306,7 @@ onMounted(()=>{
                         tag:'business'
                     },
                     {
-                        feature:"Growth",
+                        feature:"",
                         speed:5,
                         price:'4,999',
                         description:[
@@ -321,7 +321,7 @@ onMounted(()=>{
 
                     },
                     {
-                        feature:"Pro",
+                        feature:"",
                         speed:10,
                         price:'9,999',
                         description:[
@@ -335,7 +335,7 @@ onMounted(()=>{
 
                     },
                     {
-                        feature:"Power User",
+                        feature:"",
                         speed:20,
                         price:'19,999',
                         description:[
@@ -349,7 +349,7 @@ onMounted(()=>{
 
                     },
                     {
-                        feature:"Power User",
+                        feature:"",
                         speed:30,
                         price:'27,999',
                         description:[
@@ -368,7 +368,7 @@ onMounted(()=>{
                 plan:'STUDENT',
                 packages:[
                     {
-                        feature:"Student Lite",
+                        feature:"",
                         immage:"/Image/student-lite.jpg",
                         speed:3,
                         price:'999',
@@ -381,7 +381,7 @@ onMounted(()=>{
                         tag:'student'
                     },
                     {
-                        feature:"Student Pro",
+                        feature:"",
                         immage:"/Image/student-pro.jpg",
                         speed:5,
                         price:'1,499',

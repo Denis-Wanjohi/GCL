@@ -6,47 +6,21 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const handlebars = require('handlebars');
 const { promisify } = require('util');
-const cors = require('cors')
 const fs = require('fs');
+const cors = require('cors');
 const readFileAsync = promisify(fs.readFile);
 const app = express();
+import env from './env'
 let year =new Date().getFullYear()
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173/');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
-
-// app.options('*', (req, res) => {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173/');
-//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-//   res.header('Access-Control-Allow-Credentials', 'true');
-  
-// });
-
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Methods','GET,POST,PUT,DELETE')
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   next();
-// });
-
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:5173/','http://gigabit.co.ke/','https://gigabit.co.ke/'] // Whitelist the domains you want to allow
+  origin: ['http://localhost:5173', 'http://gigabit.co.ke/','https://gigabit.co.ke/'] // Whitelist the domains you want to allow
 };
 
-app.use(cors()); // Use the cors middleware with your options
-
-
-app.post('/api/test', (req, res) => {
-  res.send('post message {{test}}');
-});
+app.use(cors(corsOptions)); // Use the cors middleware with your options
 
 
 const transporter = nodemailer.createTransport({
@@ -54,13 +28,16 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // or 'STARTTLS'
   auth: {
-    user: 'gigabitconnectionslimited@gmail.com',
-    pass: 'opwv guea amxc nvuo'
+    user: env.user,
+    pass: env.pass
   }
 });
+app.post('/app/contacts', (req, res) => {
+  res.send('contacts')  
+})
 
 //email from  the contact us page
-app.post('/contact', (req, res) => {
+app.post('/app/contact', (req, res) => {
   const { user, service } = req.body;
   let data = null;
   if(service.service == 'Comment' ||  service.service == 'Technical Support'){
@@ -99,7 +76,7 @@ app.post('/contact', (req, res) => {
       console.log('Error sending email:', error);
       res.status(500).send({ message: 'Error sending email' });
     } else {
-      console.log('Email sent::', info.response);
+      console.log('Email sent:', info.response);
       res.send({ message: 'Email sent successfully to the office' });
     }
   });
@@ -107,7 +84,7 @@ app.post('/contact', (req, res) => {
 });
 
 //email from internet plans 
-app.post('/internet',(req,res)=>{
+app.post('/app/internet',(req,res)=>{
   const details = req.body;
   let user = req.body;
   user.service = "Request for internet";
@@ -119,9 +96,13 @@ app.post('/internet',(req,res)=>{
   }
  
   let data = `Internet Plan : ${details.plan} \tInternet Package: ${details.package}`
-  sendEmail(user.firstName,user.middleName,user.lastName,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  
+  //email to clinet
+  sendEmail(user.firstName,user.middleName,user.lastName,user.nationalID,user.location,service,user.email,user.whatsAppNumber,user.phoneNumber)
+  
+ //email to the office   
   const htmlTemplate = fs.readFileSync('./contact.html', 'utf-8');
-  // const imageAttachment = fs.readFileSync('./GCL_logo.jpg');
+
 
   // Compile the Handlebars template
   const template = handlebars.compile(htmlTemplate);
@@ -130,7 +111,7 @@ app.post('/internet',(req,res)=>{
   const html = template({ user, service, data });
   const mailOptions = {
     from: "GCL CLIENT <sender@gmail.com>",
-    to: "deniswanjohi15@gmail.com",
+    to: "gigabitconnectionslimited@gmail.com",
     subject: `GCL Client: ${user.service}` ,
     html:html,
   };
@@ -155,40 +136,9 @@ app.post('/internet',(req,res)=>{
 
 })
 //test request
-app.get('/',(req,res)=>{
-  // const details = req.body;
-  // const mailOptions = {
-  //   from: "GCL CLIENT <sender@gmail.com>",
-  //   to: "deniswanjohi15@gmail.com",
-  //   subject: `GCL Client: Internet Request` ,
-  //   html: `
-  //   <div style="background-image: url('./GCL_logo.jpg'); background-size: cover; background-color: orange;  height: 100vh; padding: 20px; color: white;">
-  //     <h1>Hello, World!</h1>
-  //     <p>This is an email with a background image.</p>
-  //   </div>
-  // `
-  // };
-  // let x = ''
-  // transporter.verify((error, success) => {
-  //   if (error) {
-  //     console.log('Error verifying transporter:', error);
-  //   } else {
-  //     x = 'Transporter verified successfully'
-  //     console.log('Transporter verified successfully');
-  //   }
-  // });
+app.get('/app',(req,res)=>{
 
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     console.log('Error sending email:', error);
-  //     res.status(500).send({ message: 'Error sending email' });
-  //   } else {
-  //     console.log('Email sent:', info.response);
-  //     res.send({ message: 'Email sent successfully' });
-  //   }
-  // });
-
-  res.send('hello')
+  res.send('hello ðŸ˜Ž.')
 
 })
 
@@ -220,13 +170,11 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
 
   // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // or 'STARTTLS'
-    auth: {
-      user: 'gigabitconnectionslimited@gmail.com',
-      pass: 'opwv guea amxc nvuo'
-    }
+      service: 'gmail',
+      auth: {
+          user: env.user,
+          pass: env.pass
+      },
   });
 
   const html = template(data,year)
@@ -242,7 +190,7 @@ async function sendEmail(firstName,middleName,lastName,idNumber,location,service
 
   console.log('Email sent:', info.messageId);
 }
-const port = 5500;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

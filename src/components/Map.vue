@@ -1,6 +1,6 @@
 <template>
-  <div class="map-wrap h-full mx-auto rounded relative">
-    <div class="w-full  h-full p-3 mx-3 sm:mx-auto" ref="mapContainer">
+  <div class=" w-[95%] overflow-hidden  h-full mx-auto rounded relative">
+    <div class="w-[100%]  overflow-hidden  h-full p-3 mx-3 sm:mx-auto" ref="mapContainer">
       <!-- Button Container inside the Map -->
       <div class="button-container">
         <button class="map-button " @click="setMapStyle('streets')">Standard View</button>
@@ -149,11 +149,7 @@ function pinLocation() {
 </script>
 
 <style scoped>
-.map-wrap {
-  position: relative;
-  width: 100%;
-   /* Adjust height based on your layout */
-}
+
 
 
 

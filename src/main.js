@@ -17,9 +17,9 @@ const vuetify = createVuetify({
 const app = createApp(App)
 app.use(TawkMessengerVue, {
 
-    propertyId : '6690192cc3fb85929e3e3280',
+    propertyId : '66d1755f50c10f7a00a1f449',
   
-    widgetId : '1i2he4mi8'
+    widgetId : '1i6h3504l'
   
   });
 app.use(router)

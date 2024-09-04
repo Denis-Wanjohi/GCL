@@ -210,7 +210,7 @@
                         <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
                     </div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div>    
 
             <!-- MOBILE VIEW -->
@@ -255,7 +255,7 @@
                         <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
                     </div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PLAN</div>
+                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div> 
 
       </div>
@@ -364,7 +364,7 @@ import router from '@/router/index.js'
             plan:'BUSINESS',
             packages:[
                 {
-                    feature:"Starter",
+                    feature:"",
                     speed:2,
                     price:'2,999',
                     imagePath:'/Images/2mbps.avif',
@@ -379,7 +379,7 @@ import router from '@/router/index.js'
                     tag:'business'
                 },
                 {
-                    feature:"Growth",
+                    feature:"",
                     speed:5,
                     price:'4,999',
                     imagePath:'/Images/5_mbps.avif',
@@ -394,7 +394,7 @@ import router from '@/router/index.js'
                     tag:'business'
                 },
                 {
-                    feature:"Pro",
+                    feature:"",
                     speed:10,
                     price:'9,999',
                     imagePath:'/Images/10mbps.avif',
@@ -409,7 +409,7 @@ import router from '@/router/index.js'
                     tag:'business'
                 },
                 {
-                    feature:"Faaasst",
+                    feature:"",
                     speed:20,
                     price:'19,999',
                     imagePath:'/Images/20_mbps.jpg',
@@ -424,7 +424,7 @@ import router from '@/router/index.js'
                     tag:'business'
                 },
                 {
-                    feature:"Power User",
+                    feature:"",
                     speed:30,
                     price:'27,999',
                     imagePath:'/Images/30_mbps.avif',
@@ -444,7 +444,7 @@ import router from '@/router/index.js'
             plan:'STUDENT',
             packages:[
                 {
-                    feature:"Student Lite",
+                    feature:"",
                     imagePath:"/Images/soundtrap.jpg",
                     speed:3,
                     price:999,
@@ -457,7 +457,7 @@ import router from '@/router/index.js'
                     tag:'student'
                 },
                 {
-                    feature:"Student Pro",
+                    feature:"",
                     imagePath:"/Images/student-pro.jpg",
                     speed:5,
                     price:'1,499',

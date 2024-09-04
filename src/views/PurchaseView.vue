@@ -123,7 +123,7 @@
                                           <v-list-item-title class="text-sm text-wrap">{{ description }} </v-list-item-title>
                                       </v-list-item>
                                   </v-list>
-                                  <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PLAN</div>
+                                  <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PACKAGE</div>
                               </v-card>
                           </div>
                       </div>
@@ -148,8 +148,9 @@ import {useRoute} from 'vue-router';
 import   {onMounted, ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
   const plans = [
-  {
-            plan:'HOME',
+        {
+            plan:'HOME PACKAGES',
+            value:'home',
             packages:[
                 {
                     feature:"",
@@ -237,10 +238,11 @@ import Form from '../components/PackageRequest.vue'
             ]
         },
         {
-            plan:'BUSINESS',
+            plan:'BUSINESS PACKAGES',
+            value:'business',
             packages:[
                 {
-                    feature:"Starter",
+                    feature:"",
                     speed:2,
                     price:'2,999',
                     imagePath:'/Images/2mbps.avif',
@@ -255,7 +257,7 @@ import Form from '../components/PackageRequest.vue'
                     tag:'business'
                 },
                 {
-                    feature:"Growth",
+                    feature:"",
                     speed:5,
                     price:'4,999',
                     imagePath:'/Images/5_mbps.avif',
@@ -270,7 +272,7 @@ import Form from '../components/PackageRequest.vue'
                     tag:'business'
                 },
                 {
-                    feature:"Pro",
+                    feature:"",
                     speed:10,
                     price:'9,999',
                     imagePath:'/Images/10mbps.avif',
@@ -285,7 +287,7 @@ import Form from '../components/PackageRequest.vue'
                     tag:'business'
                 },
                 {
-                    feature:"Faaasst",
+                    feature:"",
                     speed:20,
                     price:'19,999',
                     imagePath:'/Images/20_mbps.jpg',
@@ -300,7 +302,7 @@ import Form from '../components/PackageRequest.vue'
                     tag:'business'
                 },
                 {
-                    feature:"Power User",
+                    feature:"",
                     speed:30,
                     price:'27,999',
                     imagePath:'/Images/30_mbps.avif',
@@ -317,10 +319,11 @@ import Form from '../components/PackageRequest.vue'
             ]
         },
         {
-            plan:'STUDENT',
+            plan:'STUDENT PACKAGES',
+            value:'student',
             packages:[
                 {
-                    feature:"Student Lite",
+                    feature:"",
                     imagePath:"/Images/soundtrap.jpg",
                     speed:3,
                     price:999,
@@ -333,7 +336,7 @@ import Form from '../components/PackageRequest.vue'
                     tag:'student'
                 },
                 {
-                    feature:"Student Pro",
+                    feature:"",
                     imagePath:"/Images/student-pro.jpg",
                     speed:5,
                     price:'1,499',
@@ -348,7 +351,7 @@ import Form from '../components/PackageRequest.vue'
             ]
         },
   ]
-let panel = ref([''])
+let panel = ref([0])
 const route = useRoute()
 const packageSelected = ref(false)
 const data = ref()
@@ -368,6 +371,7 @@ onMounted(()=>{
   if(route.fullPath == '/purchase'){
     // console.log('no params')
   }else if(route.fullPath == '/purchase/home' ||route.fullPath == '/purchase/business' ||route.fullPath == '/purchase/student' ){
+    routePlan()
     router.replace('/purchase')
     console.log()
   }else{
@@ -404,11 +408,9 @@ routePlan()
 function planClick(){
   window.scrollTo(0,window.innerHeight * 0.2)
 }
-console.log(router.currentRoute.value.path)
 function all() {
   panel.value = ['home', 'business', 'student']
 }
-
 function none() {
   panel.value = []
 }
