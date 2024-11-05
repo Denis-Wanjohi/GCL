@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Awesome Internet Request</title>
+</head>
+<body>
+    <div style="width: 100%; background-color: powderblue;">
+        <div style="width: 75%; margin: auto; background-color: aliceblue; margin-top: 20px;">
+            <!-- <img src="cid:uniqueImageCID" style="width: 100%; height: 200px; margin-top: 20px;"  alt=""> -->
+            <div style="display: flex; justify-items: center;">
+                <img src="https://www.gigabit.co.ke/Images/Gigabit_logo.png" style="height: 200px;margin: auto;" alt="Gigabit_logo">
+            </div>
+            <h2 style="text-align: center;">{{service.service}} Confirmation</h2>
+            <div style="padding-left: 20px;font-family: Comic sans ms;">
+                <p>Dear {{firstName}} {{lastName}},</p>
+                <p>Thank you for reaching out to us. We have received your Request for Internet and appreciate the time you took to reach out to us.</p>
+                <p>We have noted down the following details:</p>
+                <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td>Full Name:</td>
+                    <td>{{firstName}} {{middleName}} {{lastName}}</td>
+                </tr>
+                <tr>
+                    <td>Location:</td>
+                    <td>{{location}}</td>
+                </tr>
+                <tr>
+                    <td>Contact Information:</td>
+                    <td>
+                    Email: <a href="mailto:{{email}}">{{email}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>WhatsApp Number: {{whatsAppNumber}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Phone Number: {{phoneNumber}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>ID Number: {{nationalId}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Plan</strong></td>
+                    <td>{{service.plan}} plan</td>
+                </tr>
+                <tr>
+                    <td><strong>Package</strong></td>
+                    <td>{{service.package}} package</td>
+                </tr>
+                </table>
+                <p>We will review your request,start working on it  and get back to you soon as possible with more information incase needed.</p>
+                <p>Thank you again for considering our services. We look forward to the opportunity to serve you.</p>
+                <p>Best regards,</p>
+                <p>Gigabit Connections Limited</p>
+            </div>
+            <hr style="background-color: black;">
+            <div style="text-align: center;">
+                <p>Want to get more info about us?Reach out to us</p>
+                <div style="width: 50%;margin: auto;display: flex; justify-content: space-around;">
+                    <div style="background-color: rgb(235, 179, 76); border-radius: 20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
+                       Call: +254712999333
+                    </div>
+
+                    <div style="background-color: rgb(255, 187, 62); border-radius: 20px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;">
+                        WhatsApp: +254712999333
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer style="text-align: center;">
+        <p>&copy; <span>{{year}}</span> Gigabit Connections Limited. All rights reserved.</p>
+    </footer>
+    
+</body>
+
+</html>

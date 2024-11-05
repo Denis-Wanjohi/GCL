@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Awesome Email</title>
+    </head>
+    <body>
+        <div style="width: 100%; background-color: powderblue; font-family: Comic sans ms;">
+            <div style="width: 75%; margin: auto; background-color: aliceblue; margin-top: 20px;">
+                <div style="display: flex; justify-items: center;">
+                    <img src="https://gcl-jxde.vercel.app/Images/Gigabit_logo.png" style="height: 200px;margin: auto;" alt="Gigabit_logo">
+                </div>
+                <h2 style="width: 100%; text-align: center;">New {{user.service}} Notification</h2>
+                <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td><strong>Client Details:</strong></td>
+                </tr>
+                <tr>
+                    <td> <strong>&nbsp;Full Name:</strong> {{user.firstName}} {{user.lastName}}</td>
+                </tr>
+                <tr>
+                    <td><strong>&nbsp;Location:</strong>  {{user.location}}</td>
+                </tr>
+                <tr>
+                    <td><strong>&nbsp;Contact Information:</strong></td>
+                    <td>Email: <a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>WhatsApp Number: {{user.whatsAppNumber}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Phone Number: {{user.phoneNumber}}</td>
+                </tr>
+                {{#if user.nationalID}}
+                 <tr>
+                    <td></td>
+                    <td>ID Number: {{user.nationalID}}</td>
+                </tr>
+                {{/if}}
+                </table>
+                <br>
+                <table cellpadding="5" cellspacing="0" border="0">
+                <tr>
+                    <td><strong>Inquiry Details:</strong></td>
+                </tr>
+                <tr>
+                    <td>&nbsp; <strong>Request:</strong>{{data}} </td>
+                </tr>
+                </table>
+                <hr style="background-color: black;">
+                <footer style="text-align: center;">
+                    <p>&copy; <span>{{year}}</span> Gigabit Connections Limited. All rights reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
