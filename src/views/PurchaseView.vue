@@ -24,11 +24,11 @@
               v-model="panel"
               multiple
               
-              v-for="(plan,i) in plans" :key="i"
+              v-for="(plan,i) in newPlans" :key="i"
             >
             
               <v-expansion-panel
-                :title=plan.plan
+                :title=plan.name
                 :value=plan.value
               >
                 <v-expansion-panel-text style="padding: 0px; ">
@@ -41,25 +41,27 @@
                       v-for="(package_plan,i) in plan.packages"
                       :key="i"
                       cols="12"
-                      md="2"
+                      md="3"
                     >
                      
-                    <div>
+                    <div class="shadow">
                       <v-card
                           style=""
                           class="mx-auto h-[150px]"
                           color="surface-variant"
                           :image=package_plan.imagePath
                           max-width="300"
-                          width="220"
+                          width="270"
                           height="170"
                       >
                         <p class="sm:text-[50px] text-[50px]  h-full  px-4 bg-gradient-to-r from-orange-500 ">
-                          {{ package_plan.speed }}
+                          {{ package_plan.bandwidth }}
                           <span  class="text-[30px] sm:text-[40px]">
                             Mbps 
                               <span class=" sm:block py-5  text-2xl  hidden  bg-gradient-to-t  from-orange-500">
-                                  Ksh. {{ package_plan.price }}/month 
+                                  Ksh. {{ package_plan.fee }}
+                                  <span v-if="plan.name === 'Metred Home Packages' ">/hour</span>
+                                  <span v-else>/month</span> 
                               </span>
                           </span>
                       </p>
@@ -67,7 +69,7 @@
                       <v-card
                           class="mx-auto"
                           max-width="300"
-                          width="220"
+                          width="270"
                       >
                         <v-list density="compact">
                           <v-list-item
@@ -84,7 +86,7 @@
                               <v-list-item-title class="text-xl  text-start text-wrap">{{ description }}</v-list-item-title>
                           </v-list-item>
                           </v-list>
-                          <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-1 rounded-md text-center font-mono text-md mx-auto w-fit my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
+                          <div @click=selectedPlan(plan.name,package_plan) class="px-4 py-1 rounded-md text-center font-mono text-md mx-auto w-fit my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
                       </v-card>
                     </div>
                     </v-col>
@@ -101,8 +103,11 @@
                                   height=""
                               >
                                   <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ package_plan.feature }}</v-card-title>
-                                  <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ package_plan.speed }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
-                                  <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ package_plan.price }}/month </p>
+                                  <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ package_plan.bandwidth }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
+                                  <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ package_plan.fee }}
+                                    <span v-if="plan.name === 'Metred Home Packages' ">/hour</span>
+                                    <span v-else>/month</span>
+                                  </p>
                               </v-card>
                               <v-card
                                   class="mx-auto"
@@ -123,7 +128,7 @@
                                           <v-list-item-title class="text-sm text-wrap">{{ description }} </v-list-item-title>
                                       </v-list-item>
                                   </v-list>
-                                  <div @click=selectedPlan(plan.plan,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">GET PACKAGE</div>
+                                  <div @click=selectedPlan(plan.name,package_plan) class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">SUBSCRIBE</div>
                               </v-card>
                           </div>
                       </div>
@@ -147,210 +152,697 @@ import router from '@/router';
 import {useRoute} from 'vue-router';
 import   {onMounted, ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
-  const plans = [
-        {
-            plan:'HOME PACKAGES',
-            value:'home',
-            packages:[
-                {
-                    feature:"",
-                    speed:7,
-                    price:'2,199',
-                    imagePath:'/Images/5mbps.avif',
-                    description:[
-                        "Family connectivity",
-                        "Basic internet use",
-                        "Browsing",
-                        "Unlimited",
-                        "social media",
-                        "e-learning",
+const plans = [
+      {
+          plan:'HOME PACKAGES',
+          value:'home',
+          packages:[
+              {
+                  feature:"",
+                  speed:7,
+                  price:'2,199',
+                  imagePath:'/Images/5mbps.avif',
+                  description:[
+                      "Family connectivity",
+                      "Basic internet use",
+                      "Browsing",
+                      "Unlimited",
+                      "social media",
+                      "e-learning",
+                    
                       
-                        
-                    ],
-                    users:"5-8",
-                    tag:'home'
-                },
-                {
-                    feature:"",
-                    speed:12,
-                    price:'2,599',
-                    imagePath:'/Images/12mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Smooth HD streaming",
-                        "Online gaming",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"9-12",
-                    tag:'home'
-                },
-                {
-                    feature:"",
-                    speed:20,
-                    price:'3,799',
-                    imagePath:'/Images/20mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Multiple devices streaming",
-                        "Online gaming",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"13-15",
-                    tag:'home'
-                },
-                {
-                    feature:"",
-                    speed:30,
-                    price:'5,399',
-                    imagePath:'/Images/30mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Heavy Internet user",
-                        "Online gaming",
-                        "Unlimited",
-                        
-                        "social media",
-                        "e-learning"
-                    ],
-                    users:"15-20",
-                    tag:'home'
-                },
-                {
-                    feature:"",
-                    speed:50,
-                    price:'6,999',
-                    imagePath:'/Images/50mbps.avif',
-                    description:[
-                        "Family connectivity",
-                        "Ultimate speed",
-                        "Unlimited",
-                        "Heavy online activity",
-                        "Large Families",
-                        "Heavy online users"
-                    ],
-                    users:"25-30",
-                    tag:'home'
-                },
-            ]
-        },
-        {
-            plan:'BUSINESS PACKAGES',
-            value:'business',
-            packages:[
-                {
-                    feature:"",
-                    speed:2,
-                    price:'2,999',
-                    imagePath:'/Images/2mbps.avif',
-                    description:[
-                        "Fast Reliable Internet Access",
-                        "Perfect For Small Teams",
-                        "Basic Online Tasks Only",
-                        "Limited User Capacity Available",
-                        "Entry Level Plan Ideal"
-                    ],
-                    users:"1-5",
-                    tag:'business'
-                },
-                {
-                    feature:"",
-                    speed:5,
-                    price:'4,999',
-                    imagePath:'/Images/5_mbps.avif',
-                    description:[
-                        "Faster Speeds For Growth",
-                        "Multiple Device Support Available",
-                        "Medium User Capacity Ideal",
-                        "Online Collaboration Made Easy",
-                        "Boost Productivity With Ease"
-                    ],
-                    users:"5-10",
-                    tag:'business'
-                },
-                {
-                    feature:"",
-                    speed:10,
-                    price:'9,999',
-                    imagePath:'/Images/10mbps.avif',
-                    description:[
-                        "High Performance Internet Access",
-                        "Priority Customer Support Available",
-                        "Large User Capacity Ideal",
-                        "Demanding Apps Run Smoothly",
-                        "Fast And Reliable Network"
-                    ],
-                    users:"10-20",
-                    tag:'business'
-                },
-                {
-                    feature:"",
-                    speed:20,
-                    price:'19,999',
-                    imagePath:'/Images/20_mbps.jpg',
-                    description:[
-                        "Lightning Fast Internet Speeds",
-                        "Heavy User Capacity Ideal",
-                        "Fast Online Backup Available",
-                        "Secure And Reliable Network",
-                        "Ultimate Performance Guaranteed Always"
-                    ],
-                    users:"20-40",
-                    tag:'business'
-                },
-                {
-                    feature:"",
-                    speed:30,
-                    price:'27,999',
-                    imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
-                    users:"20-50",
-                    tag:'business'
-                },
-            ]
-        },
-        {
-            plan:'STUDENT PACKAGES',
-            value:'student',
-            packages:[
-                {
-                    feature:"",
-                    imagePath:"/Images/soundtrap.jpg",
-                    speed:3,
-                    price:999,
-                    description:[
-                        "2 GB daily data allocation",
-                        "256 kbps bandwidth after exhausting the daily limit",
-                        "Suitable for light online activities",
-                    ],
-                    users:"1-2",
-                    tag:'student'
-                },
-                {
-                    feature:"",
-                    imagePath:"/Images/student-pro.jpg",
-                    speed:5,
-                    price:'1,499',
-                    description:[
-                        "3 GB daily data allocation",
-                        "512 kbps bandwidth after exhausting the daily limit",
-                        "Suitable for moderate to heavy activities",
-                    ],
-                    users:"2-3",
-                    tag:'student'
-                },
-            ]
-        },
-  ]
+                  ],
+                  users:"5-8",
+                  tag:'home'
+              },
+              {
+                  feature:"",
+                  speed:12,
+                  price:'2,599',
+                  imagePath:'/Images/12mbps.jpg',
+                  description:[
+                      "Family connectivity",
+                      "Smooth HD streaming",
+                      "Online gaming",
+                      "Unlimited",
+                      "social media",
+                      "e-learning"
+                  ],
+                  users:"9-12",
+                  tag:'home'
+              },
+              {
+                  feature:"",
+                  speed:20,
+                  price:'3,799',
+                  imagePath:'/Images/20mbps.jpg',
+                  description:[
+                      "Family connectivity",
+                      "Multiple devices streaming",
+                      "Online gaming",
+                      "Unlimited",
+                      "social media",
+                      "e-learning"
+                  ],
+                  users:"13-15",
+                  tag:'home'
+              },
+              {
+                  feature:"",
+                  speed:30,
+                  price:'5,399',
+                  imagePath:'/Images/30mbps.jpg',
+                  description:[
+                      "Family connectivity",
+                      "Heavy Internet user",
+                      "Online gaming",
+                      "Unlimited",
+                      
+                      "social media",
+                      "e-learning"
+                  ],
+                  users:"15-20",
+                  tag:'home'
+              },
+              {
+                  feature:"",
+                  speed:50,
+                  price:'6,999',
+                  imagePath:'/Images/50mbps.avif',
+                  description:[
+                      "Family connectivity",
+                      "Ultimate speed",
+                      "Unlimited",
+                      "Heavy online activity",
+                      "Large Families",
+                      "Heavy online users"
+                  ],
+                  users:"25-30",
+                  tag:'home'
+              },
+          ]
+      },
+      {
+          plan:'BUSINESS PACKAGES',
+          value:'business',
+          packages:[
+              {
+                  feature:"",
+                  speed:2,
+                  price:'2,999',
+                  imagePath:'/Images/2mbps.avif',
+                  description:[
+                      "Fast Reliable Internet Access",
+                      "Perfect For Small Teams",
+                      "Basic Online Tasks Only",
+                      "Limited User Capacity Available",
+                      "Entry Level Plan Ideal"
+                  ],
+                  users:"1-5",
+                  tag:'business'
+              },
+              {
+                  feature:"",
+                  speed:5,
+                  price:'4,999',
+                  imagePath:'/Images/5_mbps.avif',
+                  description:[
+                      "Faster Speeds For Growth",
+                      "Multiple Device Support Available",
+                      "Medium User Capacity Ideal",
+                      "Online Collaboration Made Easy",
+                      "Boost Productivity With Ease"
+                  ],
+                  users:"5-10",
+                  tag:'business'
+              },
+              {
+                  feature:"",
+                  speed:10,
+                  price:'9,999',
+                  imagePath:'/Images/10mbps.avif',
+                  description:[
+                      "High Performance Internet Access",
+                      "Priority Customer Support Available",
+                      "Large User Capacity Ideal",
+                      "Demanding Apps Run Smoothly",
+                      "Fast And Reliable Network"
+                  ],
+                  users:"10-20",
+                  tag:'business'
+              },
+              {
+                  feature:"",
+                  speed:20,
+                  price:'19,999',
+                  imagePath:'/Images/20_mbps.jpg',
+                  description:[
+                      "Lightning Fast Internet Speeds",
+                      "Heavy User Capacity Ideal",
+                      "Fast Online Backup Available",
+                      "Secure And Reliable Network",
+                      "Ultimate Performance Guaranteed Always"
+                  ],
+                  users:"20-40",
+                  tag:'business'
+              },
+              {
+                  feature:"",
+                  speed:30,
+                  price:'27,999',
+                  imagePath:'/Images/30_mbps.avif',
+                  description:[
+                      "Ultimate Internet Experience Guaranteed",
+                      "Priority Support Always Available",
+                      "Large User Capacity Ideal",
+                      "Fast And Secure Network",
+                      "Dedicated Account Management"
+                  ],
+                  users:"20-50",
+                  tag:'business'
+              },
+          ]
+      },
+      {
+          plan:'STUDENT PACKAGES',
+          value:'student',
+          packages:[
+              {
+                  feature:"",
+                  imagePath:"/Images/soundtrap.jpg",
+                  speed:3,
+                  price:999,
+                  description:[
+                      "2 GB daily data allocation",
+                      "256 kbps bandwidth after exhausting the daily limit",
+                      "Suitable for light online activities",
+                  ],
+                  users:"1-2",
+                  tag:'student'
+              },
+              {
+                  feature:"",
+                  imagePath:"/Images/student-pro.jpg",
+                  speed:5,
+                  price:'1,499',
+                  description:[
+                      "3 GB daily data allocation",
+                      "512 kbps bandwidth after exhausting the daily limit",
+                      "Suitable for moderate to heavy activities",
+                  ],
+                  users:"2-3",
+                  tag:'student'
+              },
+          ]
+      },
+]
+const newPlans = [
+    {
+        name:'Elite Home Packages',
+        value:'Elite Home',
+        packages:[
+            {
+                package_name:'Elite Home Fiber 7',
+                bandwidth:'7',
+                fee:'2,199',
+                limit:'1600GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'2',
+                imagePath:'/Images/5mbps.avif',
+                description:[
+                    "Family connectivity",
+                    "Basic internet use",
+                    "Browsing",
+                    "Unlimited",
+                    "social media",
+                    "e-learning",
+                    
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 12',
+                bandwidth:'12',
+                fee:'2,599',
+                limit:'2000GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'3',
+                imagePath:'/Images/12mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Smooth HD streaming",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 20',
+                bandwidth:'20',
+                fee:'3,799',
+                limit:'2500GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'3',
+                imagePath:'/Images/20mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Multiple devices streaming",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 30',
+                bandwidth:'30',
+                fee:'5,399',
+                limit:'3000GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/30mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Heavy Internet user",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 50',
+                bandwidth:'50',
+                fee:'6,599',
+                limit:'3500GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'7',
+                imagePath:'/Images/50mbps.avif',
+                description:[
+                    "Family connectivity",
+                    "Ultimate speed",
+                    "Unlimited",
+                    "Heavy online activity",
+                    "Large Families",
+                    "Heavy online users"
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 100',
+                bandwidth:'100',
+                fee:'11,999',
+                limit:'4000GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'10',
+                imagePath:'/Images/50mbps.avif',
+                description:[
+                    "Family connectivity",
+                    "Ultimate speed",
+                    "Unlimited",
+                    "Heavy online activity",
+                    "Large Families",
+                    "Heavy online users"
+                ],
+            },
+            {
+                package_name:'Elite Home Fiber 200',
+                bandwidth:'200',
+                fee:'19,999',
+                limit:'5000GB',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'15',
+                imagePath:'/Images/50mbps.avif',
+                description:[
+                    "Family connectivity",
+                    "Ultimate speed",
+                    "Unlimited",
+                    "Heavy online activity",
+                    "Large Families",
+                    "Heavy online users"
+                ],
+            },
+        ]
+    },
+    {
+        name:'Standard Home Packages',
+        value:'Standard Home',
+        packages:[
+            {
+                package_name:'Home Fiber Std 5',
+                bandwidth:'5',
+                fee:'1,349',
+                limit:'300GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'1',
+                imagePath:'/Images/2mbps.avif',
+                description:[
+                    "Fast Reliable Internet Access",
+                    "Perfect For Small Teams",
+                    "Basic Online Tasks Only",
+                    "Limited User Capacity Available",
+                    "Entry Level Plan Ideal"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 8',
+                bandwidth:'8',
+                fee:'1,699',
+                limit:'400GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'2',
+                imagePath:'/Images/5_mbps.avif',
+                description:[
+                    "Faster Speeds For Growth",
+                    "Multiple Device Support Available",
+                    "Medium User Capacity Ideal",
+                    "Online Collaboration Made Easy",
+                    "Boost Productivity With Ease"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 12',
+                bandwidth:'12',
+                fee:'2,199',
+                limit:'600GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'3',
+                imagePath:'/Images/10mbps.avif',
+                description:[
+                    "High Performance Internet Access",
+                    "Priority Customer Support Available",
+                    "Large User Capacity Ideal",
+                    "Demanding Apps Run Smoothly",
+                    "Fast And Reliable Network"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 20',
+                bandwidth:'20',
+                fee:'2,999',
+                limit:'900GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/20_mbps.jpg',
+                description:[
+                    "Lightning Fast Internet Speeds",
+                    "Heavy User Capacity Ideal",
+                    "Fast Online Backup Available",
+                    "Secure And Reliable Network",
+                    "Ultimate Performance Guaranteed Always"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 30',
+                bandwidth:'30',
+                fee:'3,899',
+                limit:'1200GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 50',
+                bandwidth:'50',
+                fee:'4,899',
+                limit:'1500GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 75',
+                bandwidth:'75',
+                fee:'5,899',
+                limit:'1800GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 100',
+                bandwidth:'100',
+                fee:'6,649',
+                limit:'2100GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'10',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 150',
+                bandwidth:'150',
+                fee:'7,799',
+                limit:'2400GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'10',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 220',
+                bandwidth:'220',
+                fee:'8,999',
+                limit:'2600GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'15',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+            {
+                package_name:'Home Fiber Std 300',
+                bandwidth:'300',
+                fee:'11,999',
+                limit:'3000GB',
+                connection_ratio:'1:6',
+                bandwidth_after_limit:'15',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+        ]
+    },
+    {
+        name:'Priority Data Packages',
+        value:'Priority Data',
+        packages:[
+            {
+                package_name:'Priority Data 100GB',
+                bandwidth:'5',
+                fee:'999',
+                limit:'100GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'1',
+                imagePath:'/Images/2mbps.avif',
+                description:[
+                    "Fast Reliable Internet Access",
+                    "Perfect For Small Teams",
+                    "Basic Online Tasks Only",
+                    "Limited User Capacity Available",
+                    "Entry Level Plan Ideal"
+                ],
+            },
+            {
+                package_name:'Priority Data 200GB',
+                bandwidth:'10',
+                fee:'1,499',
+                limit:'200GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'2',
+                imagePath:'/Images/5_mbps.avif',
+                description:[
+                    "Faster Speeds For Growth",
+                    "Multiple Device Support Available",
+                    "Medium User Capacity Ideal",
+                    "Online Collaboration Made Easy",
+                    "Boost Productivity With Ease"
+                ],
+            },
+            {
+                package_name:'Priority Data 300GB',
+                bandwidth:'15',
+                fee:'1,750',
+                limit:'300GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'3',
+                imagePath:'/Images/10mbps.avif',
+                description:[
+                    "High Performance Internet Access",
+                    "Priority Customer Support Available",
+                    "Large User Capacity Ideal",
+                    "Demanding Apps Run Smoothly",
+                    "Fast And Reliable Network"
+                ],
+            },
+            {
+                package_name:'Priority Data 500GB',
+                bandwidth:'20',
+                fee:'2,199',
+                limit:'500GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'4',
+                imagePath:'/Images/10mbps.avif',
+                description:[
+                    "High Performance Internet Access",
+                    "Priority Customer Support Available",
+                    "Large User Capacity Ideal",
+                    "Demanding Apps Run Smoothly",
+                    "Fast And Reliable Network"
+                ],
+            },
+            {
+                package_name:'Priority Data 800GB',
+                bandwidth:'30',
+                fee:'3,199',
+                limit:'800GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'5',
+                imagePath:'/Images/20_mbps.jpg',
+                description:[
+                    "Lightning Fast Internet Speeds",
+                    "Heavy User Capacity Ideal",
+                    "Fast Online Backup Available",
+                    "Secure And Reliable Network",
+                    "Ultimate Performance Guaranteed Always"
+                ],
+            },
+            {
+                package_name:'Priority Data 1200GB',
+                bandwidth:'50',
+                fee:'4,199',
+                limit:'1200GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'8',
+                imagePath:'/Images/30_mbps.avif',
+                description:[
+                    "Ultimate Internet Experience Guaranteed",
+                    "Priority Support Always Available",
+                    "Large User Capacity Ideal",
+                    "Fast And Secure Network",
+                    "Dedicated Account Management"
+                ],
+            },
+        ]
+    },
+    {
+        name:'Metred Home Packages',
+        value:'Metred Home',
+        packages:[
+            {
+                package_name:'Metered Home Fiber 8',
+                bandwidth:'8',
+                fee:'30',
+                limit:'_',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'',
+                imagePath:'/Images/5mbps.avif',
+                description:[
+                    "Family connectivity",
+                    "Basic internet use",
+                    "Browsing",
+                    "Unlimited",
+                    "social media",
+                    "e-learning",
+                    
+                ],
+            },
+            {
+                package_name:'Metered Home Fiber 20',
+                bandwidth:'20',
+                fee:'50',
+                limit:'_',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'',
+                imagePath:'/Images/12mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Smooth HD streaming",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+            {
+                package_name:'Metered Home Fiber 30',
+                bandwidth:'30',
+                fee:'90',
+                limit:'_',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'',
+                imagePath:'/Images/20mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Multiple devices streaming",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+            {
+                package_name:'Metered Home Fiber 50',
+                bandwidth:'50',
+                fee:'140',
+                limit:'_',
+                connection_ratio:'1:4',
+                bandwidth_after_limit:'',
+                imagePath:'/Images/30mbps.jpg',
+                description:[
+                    "Family connectivity",
+                    "Heavy Internet user",
+                    "Online gaming",
+                    "Unlimited",
+                    "social media",
+                    "e-learning"
+                ],
+            },
+        ]
+    },
+]
 let panel = ref([0])
 const route = useRoute()
 const packageSelected = ref(false)
@@ -409,13 +901,15 @@ function planClick(){
   window.scrollTo(0,window.innerHeight * 0.2)
 }
 function all() {
-  panel.value = ['home', 'business', 'student']
+  panel.value = ['Elite Home', 'Standard Home', 'Priority Data','Metred Home']
 }
 function none() {
   panel.value = []
 }
 function selectedPlan(plan,package_plan){
    window.scrollTo(0, 0);
+   console.log(plan)
+   console.log(package_plan)
    data.value = [plan,package_plan]
    packageSelected.value = true
 }
