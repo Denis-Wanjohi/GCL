@@ -19,7 +19,7 @@
               PRICE : 
               <span class="text-md font-semibold">
                 Ksh. {{props.data[1].fee}}
-                <span v-if="props.data[0] === 'Metred Home Packages'">/day</span>
+                <span v-if="props.data[0] === 'Metred Home Packages'">/hour</span>
                 <span  v-else>/month</span> 
               </span>
             </p>
