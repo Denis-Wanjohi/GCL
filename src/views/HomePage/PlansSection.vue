@@ -102,7 +102,9 @@
                         <span  class="text-[30px] sm:text-[40px]">
                             Mbps 
                             <span class=" sm:block py-5  text-2xl  hidden  bg-gradient-to-t  from-orange-500">
-                                Ksh. {{ packages.fee }}/month 
+                                Ksh. {{ packages.fee }}
+                                <span v-if="plan.name == 'Metred Home Packages'">/hour</span>
+                                <span v-else>/month</span>
                             </span>
                         </span>
                     </p>
@@ -145,8 +147,19 @@
                             height=""
                         >
                             <!-- <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ packages.feature }}</v-card-title> -->
-                            <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ packages.bandwidth }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ packages.fee }}/month </span></span></p>
-                            <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.fee }}/month </p>
+                            <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">
+                                {{ packages.bandwidth }}
+                                <span  class="text-[30px] sm:text-[40px]">
+                                    Mbps 
+                                    <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">
+                                        Ksh. {{ packages.fee }}<span v-if="plan.name == 'Metred Home Packages'">/hour</span> <span v-else>/month</span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ packages.fee }}
+                                <span v-if="plan.name == 'Metred Home Packages'">/hour</span>
+                                <span v-else>/month</span>
+                            </p>
                         </v-card>
                         <v-card
                             class="mx-auto"
@@ -185,7 +198,7 @@
             <div class="shadow  sm:block hidden animate__animated animate__zoomInDown" >
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.package_name.toUpperCase() }} PACKAGE</div>
-                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl ">CLOSE</div>
+                    <div @click="overlay = false" class="px-4 w-1/4 cursor-pointer py-2 text-xs font-mono w-fit bg-green rounded-xl  h-fit">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
                   
@@ -194,7 +207,7 @@
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
-                        <p class="text-7xl font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
+                        <p class="text-7xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
                             <span v-if="selectedPackage.package_name.toUpperCase().includes('METERED HOME FIBER')">/hour</span>
                             <span v-else>/month</span>
                         </span>
@@ -234,7 +247,7 @@
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
-                        <p class="text-3xl font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
+                        <p class="text-3xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
                             <span v-if="selectedPackage.package_name.toUpperCase().includes('METERED HOME FIBER')">/hour</span>
                             <span v-else>/month</span>
                         </span>
