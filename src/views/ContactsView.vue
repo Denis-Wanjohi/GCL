@@ -192,9 +192,10 @@
                                 <label for="plan" class=" block text-sm font-semibold leading-6 text-gray-900">Plan</label>
                                 <div class="mt-2">
                                     <select id="plan" name="plan" v-model="details.plan"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option>Home</option>
-                                        <option>Business</option>
-                                        <option>Student</option>
+                                        <option>Elite Home Packages</option>
+                                        <option>Standard Home Packages</option>
+                                        <option>Priority Data Packages</option>
+                                        <option>Metred Home Packages</option>
                                     </select>
                                 </div>
                             </div>
@@ -203,18 +204,34 @@
                                 <label for="package" class=" block text-sm font-semibold leading-6 text-gray-900">Package</label>
                                 <div class="mt-2">
                                     <select id="package" name="package" v-model="details.package"  class="block px-3 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                        <option v-if="details.plan === 'Home'">7Mbs for Ksh 2199/month </option>
-                                        <option v-if="details.plan === 'Home'">12Mbps for Ksh 2599/month</option>
-                                        <option v-if="details.plan === 'Home'">20Mbps for Ksh 3799/month</option>
-                                        <option v-if="details.plan === 'Home'">30Mbps for Ksh 5399/month</option>
-                                        <option v-if="details.plan === 'Home'">50Mbps for Ksh 6999/month</option>
-                                        <option v-if="details.plan === 'Business'">2Mbps for Ksh 2999/month</option>
-                                        <option v-if="details.plan === 'Business'">5Mbps for Ksh 4999/month</option>
-                                        <option v-if="details.plan === 'Business'">10Mbps for Ksh 9999/month</option>
-                                        <option v-if="details.plan === 'Business'">20Mbps for Ksh 19999/month</option>
-                                        <option v-if="details.plan === 'Business'">30Mbps for Ksh 27999/month</option>
-                                        <option v-if="details.plan === 'Student'">3Mbps for Ksh 999/month (2GB daily)</option>
-                                        <option v-if="details.plan === 'Student'">5Mbps for   Ksh 1499/month  (3GB daily)</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">7Mbs for Ksh 2,199/month </option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">12Mbps for Ksh 2,599/month</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">20Mbps for Ksh 3,799/month</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">30Mbps for Ksh 5,399/month</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">50Mbps for Ksh 6,999/month</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">100Mbps for Ksh 11,999/month</option>
+                                        <option v-if="details.plan === 'Elite Home Packages'">200Mbps for Ksh 19,999/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">5Mbps for Ksh 1,349/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">8Mbps for Ksh 1,649/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">12Mbps for Ksh 2,199/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">20Mbps for Ksh 2,999/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">30Mbps for Ksh 3,899/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">50Mbps for Ksh 4,899/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">75Mbps for Ksh 5,899/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">100Mbps for Ksh 6,649/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">150Mbps for Ksh 7,799/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">220Mbps for Ksh 8,999/month</option>
+                                        <option v-if="details.plan === 'Standard Home Packages'">300Mbps for Ksh 11,999/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">5Mbps for 999/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">10Mbps for Ksh 1,499/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">15Mbps for Ksh 1,750/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">20Mbps for Ksh 2,199/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">30Mbps for Ksh 3,199/month</option>
+                                        <option v-if="details.plan === 'Priority Data Packages'">50Mbps for Ksh 4,199/month</option>
+                                        <option v-if="details.plan === 'Metred Home Packages'">8Mbps for   Ksh 30/hour</option>
+                                        <option v-if="details.plan === 'Metred Home Packages'">30Mbps for   Ksh 50/hour</option>
+                                        <option v-if="details.plan === 'Metred Home Packages'">30Mbps for   Ksh 90/hour</option>
+                                        <option v-if="details.plan === 'Metred Home Packages'">50Mbps for   Ksh 140/hour</option>
                                     </select>
                                 </div>
                             </div>
