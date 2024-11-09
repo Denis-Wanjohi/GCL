@@ -255,9 +255,7 @@
                     </div>
                     
                 </div>
-                <div class="py-3 ">
-                    <!-- <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p> -->
-                </div>
+                
                 <!-- <div class="w-3/4 my-5 mx-auto">
                     <div>
                         <p class="font-semibold text-start">Add-ons</p>
