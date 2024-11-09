@@ -106,18 +106,17 @@
         <div :style="`background-image: url(${plans[start].imagePath});`" class="w-screen bg-cover bg-center h-[80vh] aniate__animated animate__fadeIn"  v-if="packages">
             <!-- large screen -->
             <div class="sm:block hidden">
-                <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }} </div>
+                <div class=" w-fit px-5  relative left-10 text-4xl py-5 font-extrabold text-white bg-gradient-to-b from-[#f15a22]  ">{{ plans[start].name }}</div>
                 <div class="absolute lg:bottom-15 bottom-20 left-0 flex flex-wrap w-screen justify-evenly">
                     <div @click="clicked(pack)"  class="lg:w-[180px] w-[30%]  lg:h-[120px] h-[80%] bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 m-2 cursor-pointer px-4 " v-for="(pack,i) in newPackages[plans[start].tag].packages" :key="i">
-                        <div class="text-center text-white font-semibold hidden">{{ pack.feature }}</div>
-                        <div class="lg:text-[80px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center">
-                        <span v-if="start === 0 || start === 1 || start === 4 ||start === 5" class="text-[55px]">{{ pack.bandwidth }} </span>
-                        <span v-else>{{ pack.bandwidth }} </span> 
-                        
-                        
+                        <div class="text-center text-white font-semibold hidden">{{ pack.feature }} </div>
+                        <div class="lg:text-[80px] h-[65%] sm:text-3xl text-white text-center font-bold flex w-full align-center justify-center"> 
+                        <span v-if="start === 0 || start === 1 || start === 4 ||start === 5" class="lg:text-[50px] text-[35px]">{{ pack.bandwidth }}</span>
+                        <span v-else class="text-[55px] py-1">{{ pack.bandwidth }} </span> 
+                                                
                         <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
                         </div>
-                        <div class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-2xl text-xl  justify-center text-nowrap">
+                        <div class=" h-1/4 text-center font-mono   flex w-full align-center lg:text-2xl text-xl  justify-center text-nowrap">
                             {{ pack.fee }}
                             <span v-if="start === 3 || start === 7">/hour</span>
                             <span v-else>/month</span>
@@ -135,7 +134,7 @@
                         {{ pack.bandwidth }} 
                         <span class="sm:text-2xl text-sm text-end">Mbps</span>
                         </div>
-                        <div class=" h-1/4 text-center font-mono   flex  align-center text-md  justify-center">
+                        <div class=" h-1/4  text-stone-900 text-center font-mono   flex  align-center text-md  justify-center">
                             {{ pack.fee}}
                             <span v-if="start === 3 || start === 7" class="text-xs">/hour</span>
                             <span v-else class="text-xs">/month</span>
