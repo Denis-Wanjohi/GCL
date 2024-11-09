@@ -1,4 +1,10 @@
 <template>
+
+    <!-- FORM TO FILL WITH DATA -->
+    <div v-if="packageSelected" class="fixed top-0 left-0 w-full h-full z-10 bg-orange-500 bg-opacity-40 overflow-scroll hide-scrollbar">
+        <Form  :data = data v-if="packageSelected" @close=close></Form>
+    </div>
+
     <!-- OVERLAY AT THE HERO SECTIONS -->
     <div class="fixed top-0 left-0 w-full h-full z-10 bg-green-500 bg-opacity-40 " v-if="overlay">
       <div class="absolute top-1/2 left-1/2 lg:w-1/2 sm:w-3/4 w-full h-fit mx-auto transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded">
@@ -6,7 +12,7 @@
             <div class="shadow  sm:block hidden animate__animated animate__rubberBand" >
                 <div class="w-full flex justify-center py-5">
                     <div class="w-3/4 font-bold text-2xl">{{ selectedPackage.package_name.toUpperCase() }} PACKAGE</div>
-                    <div @click="overlay = false" class="px-4  cursor-pointer py-2 text-xs font-mono w-fit bg-blue rounded-xl ">CLOSE</div>
+                    <div @click="overlay = false" class="px-4  cursor-pointer py-2 text-xs font-mono w-fit h-fit bg-blue-600 rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around w-3/4  mx-auto">
                   
@@ -14,47 +20,36 @@
                         <p class="text-7xl mx-auto font-bold font-mono">{{ selectedPackage.bandwidth }}<span class="text-3xl">Mbps</span>
                         </p>
                     </div>
-                    
                     <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-[#f15a22] to-orange-500 flex align-baseline justify-between">
-                        <p class="text-7xl font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
-                            <span v-if="selectedPackage.package_name.toUpperCase() === 'METERED HOME FIBER 20'">/hour</span>
+                        <p class="text-7xl font-bold font-mono text-nowrap">{{selectedPackage.fee}}<span class="text-sm">
+                            <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
                         </span>
                         </p>
                     </div>
                     
+                    
                 </div>
-                <!-- <div class="py-3 " >
-                    <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p>
-                </div> -->
-                <!-- <div class="w-3/4 my-5 mx-auto">
-                    <div>
-                        <p class="font-semibold text-start">Add-ons</p>
-                        <div class="pl-5 text-start">
-                            <li class="list-none">FREE INSTALLATION</li>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="my-5">
+              
+                <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
                         <li class="text-start list-none font-sans">- {{ description }}</li>
                     </div>
                 </div>
-                <div class="my-5">
-                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
-                    <div class="pl-5 w-3/4 mx-auto">
-                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
-                    </div>
-                </div> -->
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
+                <div class="my-5" v-if="selectedPackage.limit != '_'">
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
+                </div>
+                
+                <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
             </div>    
 
             <!-- MOBILE VIEW -->
             <div class="shadow sm:hidden animate__animated animate__rubberBand ">
                 <div class="w-full flex justify-center py-5">
                     <div class="w-full  font-bold text-xl">{{ selectedPackage.package_name.toUpperCase() }} PACKAGE</div>
-                    <div @click="overlay = false" class="px-4 cursor-pointer py-1 text-xs font-mono w-fit bg-blue-500 rounded-xl ">CLOSE</div>
+                    <div @click="overlay = false" class="px-4 cursor-pointer py-1 text-xs font-mono w-fit  my-auto h-fit bg-blue-500 rounded-xl ">CLOSE</div>
                 </div>
                 <div class="flex justify-around    mx-auto">
                   
@@ -64,37 +59,25 @@
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-[#f15a22] to-orange-500 flex align-baseline justify-between">
                         <p class="text-3xl font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
-                            <span v-if="selectedPackage.package_name.toUpperCase() === 'METERED HOME FIBER 20'">/hour</span>
+                            <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
                         </span>
                         </p>
                     </div>
                     
                 </div>
-                <div class="py-3 ">
-                    <!-- <p class="text-grey font-">*With an exclusive Ksh.4000 refundable deposit</p> -->
-                </div>
-                <!-- <div class="w-3/4 my-5 mx-auto">
-                    <div>
-                        <p class="font-semibold text-start">Add-ons</p>
-                        <div class="pl-5 text-start">
-                            <li class="list-none">FREE INSTALLATION</li>
-                        </div>
-                    </div>
-                </div> -->
+             
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
                         <li class="text-start list-none font-sans">- {{ description }}</li>
                     </div>
                 </div>
-                <div class="my-5">
-                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
-                    <div class="pl-5 w-3/4 mx-auto">
-                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
-                    </div>
+                <div class="my-5" v-if="selectedPackage.limit != '_'">
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
+                <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-[#f15a22] to-orange-500">GET PACKAGE</div>
             </div> 
 
       </div>
@@ -152,7 +135,10 @@
 import 'animate.css'
 import { onMounted, ref } from 'vue'
 import router from '@/router/index.js'
+import Form from '@/components/PackageRequest.vue';
 const packages = ref()
+const data = ref()
+const packageSelected = ref(false)
 const newPackages = ref()
 const start = ref(0)
 const overlay = ref(false)
@@ -224,9 +210,18 @@ function clicked(pack){
     console.log(pack)
     overlay.value = true
 }
+function selectedPlan(package_plan){
+   window.scrollTo(0, 0);
+   data.value = [0,package_plan]
+   packageSelected.value = true
+   overlay.value = false
+}
 function getPlan(pack){
     overlay.value = false
     router.push({name:'purchase',query:{plan:pack.tag,speed:pack.speed}})
+}
+function close(){
+  packageSelected.value = false
 }
 
 const preloadImage = (src,callback)=>{
@@ -432,7 +427,7 @@ onMounted(()=>{
     ]
 
     newPackages.value = [
-        {
+    {
             name:'Elite Home Packages',
             packages:[
                 {
@@ -441,7 +436,17 @@ onMounted(()=>{
                     fee:'2,199',
                     limit:'1600GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'2'
+                    bandwidth_after_limit:'2',
+                    imagePath:'/Images/5mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Basic internet use",
+                        "Browsing",
+                        "Unlimited",
+                        "social media",
+                        "e-learning",
+                        
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 12',
@@ -449,7 +454,16 @@ onMounted(()=>{
                     fee:'2,599',
                     limit:'2000GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'3'
+                    bandwidth_after_limit:'3',
+                    imagePath:'/Images/12mbps.jpg',
+                    description:[
+                        "Family connectivity",
+                        "Smooth HD streaming",
+                        "Online gaming",
+                        "Unlimited",
+                        "social media",
+                        "e-learning"
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 20',
@@ -457,7 +471,16 @@ onMounted(()=>{
                     fee:'3,799',
                     limit:'2500GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'3'
+                    bandwidth_after_limit:'3',
+                    imagePath:'/Images/20mbps.jpg',
+                    description:[
+                        "Family connectivity",
+                        "Multiple devices streaming",
+                        "Online gaming",
+                        "Unlimited",
+                        "social media",
+                        "e-learning"
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 30',
@@ -465,7 +488,16 @@ onMounted(()=>{
                     fee:'5,399',
                     limit:'3000GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/30mbps.jpg',
+                    description:[
+                        "Family connectivity",
+                        "Heavy Internet user",
+                        "Online gaming",
+                        "Unlimited",
+                        "social media",
+                        "e-learning"
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 50',
@@ -473,7 +505,16 @@ onMounted(()=>{
                     fee:'6,599',
                     limit:'3500GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'7'
+                    bandwidth_after_limit:'7',
+                    imagePath:'/Images/50mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Ultimate speed",
+                        "Unlimited",
+                        "Heavy online activity",
+                        "Large Families",
+                        "Heavy online users"
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 100',
@@ -481,7 +522,16 @@ onMounted(()=>{
                     fee:'11,999',
                     limit:'4000GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'10'
+                    bandwidth_after_limit:'10',
+                    imagePath:'/Images/50mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Ultra-Fast Internet Speeds",
+                        "Unlimited",
+                        "Premium User Experience",
+                        "Smart Home Ready",
+                        "Multiple Users Supported" 
+                    ],
                 },
                 {
                     package_name:'Elite Home Fiber 200',
@@ -489,7 +539,16 @@ onMounted(()=>{
                     fee:'19,999',
                     limit:'5000GB',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:'15'
+                    bandwidth_after_limit:'15',
+                    imagePath:'/Images/50mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Top-Tier Performance Package",
+                        "Ideal for Power Users",
+                        "Extensive Usage Capacity",
+                        "Seamless Connectivity Offered",
+                        "Heavy online users"
+                    ],
                 },
             ]
         },
@@ -502,7 +561,9 @@ onMounted(()=>{
                     fee:'1,349',
                     limit:'300GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'1'
+                    bandwidth_after_limit:'1',
+                    imagePath:'/Images/2mbps.avif',
+                    description: [ "Basic Package Available", "Light Browsing Only", "Cost-Effective Solution Offered", "Minimal Usage Plan" ]
                 },
                 {
                     package_name:'Home Fiber Std 8',
@@ -510,7 +571,9 @@ onMounted(()=>{
                     fee:'1,699',
                     limit:'400GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'2'
+                    bandwidth_after_limit:'2',
+                    imagePath:'/Images/5_mbps.avif',
+                    description: [ "Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee" ]
                 },
                 {
                     package_name:'Home Fiber Std 12',
@@ -518,7 +581,9 @@ onMounted(()=>{
                     fee:'2,199',
                     limit:'600GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'3'
+                    bandwidth_after_limit:'3',
+                    imagePath:'/Images/10mbps.avif',
+                    description: [ "Moderate Speed Option", "Suitable for Social Media", "Balanced Usage Experience", "Family-Friendly Package" ]
                 },
                 {
                     package_name:'Home Fiber Std 20',
@@ -526,7 +591,9 @@ onMounted(()=>{
                     fee:'2,999',
                     limit:'900GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/20_mbps.jpg',
+                    description: [ "Ideal for Families", "Supports HD Video Streaming", "Multiple Devices Connected Easily", "Good Value Option" ]
                 },
                 {
                     package_name:'Home Fiber Std 30',
@@ -534,7 +601,9 @@ onMounted(()=>{
                     fee:'3,899',
                     limit:'1200GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Enhanced Speed Availability", "Handles Simultaneous Use Well", "Reliable Performance Guaranteed", "Great for Busy Households" ]
                 },
                 {
                     package_name:'Home Fiber Std 50',
@@ -542,7 +611,9 @@ onMounted(()=>{
                     fee:'4,899',
                     limit:'1500GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience" ]
                 },
                 {
                     package_name:'Home Fiber Std 75',
@@ -550,7 +621,9 @@ onMounted(()=>{
                     fee:'5,899',
                     limit:'1800GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
                 },
                 {
                     package_name:'Home Fiber Std 100',
@@ -558,7 +631,9 @@ onMounted(()=>{
                     fee:'6,649',
                     limit:'2100GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'10'
+                    bandwidth_after_limit:'10',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
                 },
                 {
                     package_name:'Home Fiber Std 150',
@@ -566,7 +641,9 @@ onMounted(()=>{
                     fee:'7,799',
                     limit:'2400GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'10'
+                    bandwidth_after_limit:'10',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
                 },
                 {
                     package_name:'Home Fiber Std 220',
@@ -574,7 +651,9 @@ onMounted(()=>{
                     fee:'8,999',
                     limit:'2600GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'15'
+                    bandwidth_after_limit:'15',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
                 },
                 {
                     package_name:'Home Fiber Std 300',
@@ -582,7 +661,9 @@ onMounted(()=>{
                     fee:'11,999',
                     limit:'3000GB',
                     connection_ratio:'1:6',
-                    bandwidth_after_limit:'15'
+                    bandwidth_after_limit:'15',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
                 },
             ]
         },
@@ -590,52 +671,64 @@ onMounted(()=>{
             name:'Priority Data Packages',
             packages:[
                 {
-                    package_name:'Priority Data 100',
+                    package_name:'Priority Data 100GB',
                     bandwidth:'5',
                     fee:'999',
                     limit:'100GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'1'
+                    bandwidth_after_limit:'1',
+                    imagePath:'/Images/2mbps.avif',
+                    description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
                 },
                 {
-                    package_name:'Priority Data 200',
+                    package_name:'Priority Data 200GB',
                     bandwidth:'10',
                     fee:'1,499',
                     limit:'200GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'2'
+                    bandwidth_after_limit:'2',
+                    imagePath:'/Images/5_mbps.avif',
+                    description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
                 },
                 {
-                    package_name:'Priority Data 300',
+                    package_name:'Priority Data 300GB',
                     bandwidth:'15',
                     fee:'1,750',
                     limit:'300GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'3'
+                    bandwidth_after_limit:'3',
+                    imagePath:'/Images/10mbps.avif',
+                    description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
                 },
                 {
-                    package_name:'Priority Data 500',
+                    package_name:'Priority Data 500GB',
                     bandwidth:'20',
                     fee:'2,199',
                     limit:'500GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'4'
+                    bandwidth_after_limit:'4',
+                    imagePath:'/Images/10mbps.avif',
+                    description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
                 },
                 {
-                    package_name:'Priority Data 800',
+                    package_name:'Priority Data 800GB',
                     bandwidth:'30',
                     fee:'3,199',
                     limit:'800GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'5'
+                    bandwidth_after_limit:'5',
+                    imagePath:'/Images/20_mbps.jpg',
+                    description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
                 },
                 {
-                    package_name:'Priority Data 1200',
+                    package_name:'Priority Data 1200GB',
                     bandwidth:'50',
                     fee:'4,199',
                     limit:'1200GB',
                     connection_ratio:'1:8',
-                    bandwidth_after_limit:'8'
+                    bandwidth_after_limit:'8',
+                    imagePath:'/Images/30_mbps.avif',
+                    description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
                 },
             ]
         },
@@ -648,7 +741,9 @@ onMounted(()=>{
                     fee:'30',
                     limit:'_',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:''
+                    bandwidth_after_limit:'',
+                    imagePath:'/Images/5mbps.avif',
+                    description: [ "Flexible Payment Model", "Short-Term Access Available", "Basic Internet Needs Met", "Pay-Per-Use Convenience" ]
                 },
                 {
                     package_name:'Metered Home Fiber 20',
@@ -656,7 +751,9 @@ onMounted(()=>{
                     fee:'50',
                     limit:'_',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:''
+                    bandwidth_after_limit:'',
+                    imagePath:'/Images/12mbps.jpg',
+                    description: [ "Affordable Metered Option", "Moderate Usage Supported", "Pay-Per-Use Model", "Occasional Use Ideal" ]
                 },
                 {
                     package_name:'Metered Home Fiber 30',
@@ -664,7 +761,9 @@ onMounted(()=>{
                     fee:'90',
                     limit:'_',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:''
+                    bandwidth_after_limit:'',
+                    imagePath:'/Images/20mbps.jpg',
+                    description: [ "Higher Speeds Available", "Short-Term Intensive Use", "Flexible Pricing Model", "Great for Events" ]
                 },
                 {
                     package_name:'Metered Home Fiber 50',
@@ -672,7 +771,9 @@ onMounted(()=>{
                     fee:'140',
                     limit:'_',
                     connection_ratio:'1:4',
-                    bandwidth_after_limit:''
+                    bandwidth_after_limit:'',
+                    imagePath:'/Images/30mbps.jpg',
+                    description: [ "High-Speed Metered Package", "Intensive Usage Supported", "Ideal for Gaming Events", "Streaming Activities Allowed" ]
                 },
             ]
         },

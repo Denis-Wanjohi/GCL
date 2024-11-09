@@ -1,4 +1,11 @@
 <template>
+
+    <!-- FORM TO FILL WITH DATA -->
+    <div v-if="packageSelected" class="fixed top-0 left-0 w-full h-full z-10 bg-orange-500 bg-opacity-40 overflow-scroll hide-scrollbar">
+        <Form  :data = data v-if="packageSelected" @close=close></Form>
+        
+    </div>
+
     <!-- TITLE -->
     <div class="sm:text-[40px] text-2xl flex justify-around align-center font-bold py-5">
         <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="70px" viewBox="0 0 512 512">
@@ -208,7 +215,7 @@
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
                         <p class="text-7xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
-                            <span v-if="selectedPackage.package_name.toUpperCase().includes('METERED HOME FIBER')">/hour</span>
+                            <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
                         </span>
                         </p>
@@ -224,13 +231,11 @@
                         <li class="text-start list-none font-sans">- {{ description }}</li>
                     </div>
                 </div>
-                <div class="my-5">
-                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
-                    <div class="pl-5 w-3/4 mx-auto">
-                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
-                    </div>
+                <div class="my-5" v-if="selectedPackage.limit != '_'">
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
+                <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div>    
 
             <!-- MOBILE VIEW -->
@@ -248,7 +253,7 @@
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
                         <p class="text-3xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
-                            <span v-if="selectedPackage.package_name.toUpperCase().includes('METERED HOME FIBER')">/hour</span>
+                            <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
                         </span>
                         </p>
@@ -270,13 +275,11 @@
                         <li class="text-start list-none font-sans">- {{ description }}</li>
                     </div>
                 </div>
-                <div class="my-5">
-                    <div class="font-bold text-start w-3/4 mx-auto">Users</div>
-                    <div class="pl-5 w-3/4 mx-auto">
-                        <li class="text-start list-none font-sans">{{selectedPackage.users}} users with stable connectivity</li>
-                    </div>
+                <div class="my-5" v-if="selectedPackage.limit != '_'">
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
                 </div>
-                <div @click="getPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
+                <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div> 
 
       </div>
@@ -284,14 +287,17 @@
   </template>
   <script setup>
   import IconHomeVue from '@/components/icons/IconHome.vue'
+  import Form from '@/components/PackageRequest.vue'
   import 'animate.css'
   import router from '@/router/index.js'
   import {onMounted, ref} from 'vue'
   import IconBusinessPlan from '@/components/icons/IconBusinessPlan.vue';
   import IconStudentPlanVue from '@/components/icons/IconStudentPlan.vue';
-import IconMeter from '@/components/icons/IconMeter.vue';
+  import IconMeter from '@/components/icons/IconMeter.vue';
   const tab = ref()
   const plans = ref()
+  const data = ref()
+  const packageSelected = ref(false)
   const newPlans = ref()
   const overlay = ref(false)
   const selectedPackage = ref()
@@ -596,11 +602,11 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     imagePath:'/Images/50mbps.avif',
                     description:[
                         "Family connectivity",
-                        "Ultimate speed",
+                        "Ultra-Fast Internet Speeds",
                         "Unlimited",
-                        "Heavy online activity",
-                        "Large Families",
-                        "Heavy online users"
+                        "Premium User Experience",
+                        "Smart Home Ready",
+                        "Multiple Users Supported" 
                     ],
                 },
                 {
@@ -613,10 +619,10 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     imagePath:'/Images/50mbps.avif',
                     description:[
                         "Family connectivity",
-                        "Ultimate speed",
-                        "Unlimited",
-                        "Heavy online activity",
-                        "Large Families",
+                        "Top-Tier Performance Package",
+                        "Ideal for Power Users",
+                        "Extensive Usage Capacity",
+                        "Seamless Connectivity Offered",
                         "Heavy online users"
                     ],
                 },
@@ -633,13 +639,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'1',
                     imagePath:'/Images/2mbps.avif',
-                    description:[
-                        "Fast Reliable Internet Access",
-                        "Perfect For Small Teams",
-                        "Basic Online Tasks Only",
-                        "Limited User Capacity Available",
-                        "Entry Level Plan Ideal"
-                    ],
+                    description: [ "Basic Package Available", "Light Browsing Only", "Cost-Effective Solution Offered", "Minimal Usage Plan" ]
                 },
                 {
                     package_name:'Home Fiber Std 8',
@@ -649,13 +649,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'2',
                     imagePath:'/Images/5_mbps.avif',
-                    description:[
-                        "Faster Speeds For Growth",
-                        "Multiple Device Support Available",
-                        "Medium User Capacity Ideal",
-                        "Online Collaboration Made Easy",
-                        "Boost Productivity With Ease"
-                    ],
+                    description: [ "Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee" ]
                 },
                 {
                     package_name:'Home Fiber Std 12',
@@ -665,13 +659,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'3',
                     imagePath:'/Images/10mbps.avif',
-                    description:[
-                        "High Performance Internet Access",
-                        "Priority Customer Support Available",
-                        "Large User Capacity Ideal",
-                        "Demanding Apps Run Smoothly",
-                        "Fast And Reliable Network"
-                    ],
+                    description: [ "Moderate Speed Option", "Suitable for Social Media", "Balanced Usage Experience", "Family-Friendly Package" ]
                 },
                 {
                     package_name:'Home Fiber Std 20',
@@ -681,13 +669,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
                     imagePath:'/Images/20_mbps.jpg',
-                    description:[
-                        "Lightning Fast Internet Speeds",
-                        "Heavy User Capacity Ideal",
-                        "Fast Online Backup Available",
-                        "Secure And Reliable Network",
-                        "Ultimate Performance Guaranteed Always"
-                    ],
+                    description: [ "Ideal for Families", "Supports HD Video Streaming", "Multiple Devices Connected Easily", "Good Value Option" ]
                 },
                 {
                     package_name:'Home Fiber Std 30',
@@ -697,13 +679,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Enhanced Speed Availability", "Handles Simultaneous Use Well", "Reliable Performance Guaranteed", "Great for Busy Households" ]
                 },
                 {
                     package_name:'Home Fiber Std 50',
@@ -713,13 +689,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience" ]
                 },
                 {
                     package_name:'Home Fiber Std 75',
@@ -729,13 +699,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
                 },
                 {
                     package_name:'Home Fiber Std 100',
@@ -745,13 +709,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'10',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
                 },
                 {
                     package_name:'Home Fiber Std 150',
@@ -761,13 +719,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'10',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
                 },
                 {
                     package_name:'Home Fiber Std 220',
@@ -777,13 +729,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'15',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
                 },
                 {
                     package_name:'Home Fiber Std 300',
@@ -793,13 +739,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'15',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
                 },
             ]
         },
@@ -814,13 +754,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'1',
                     imagePath:'/Images/2mbps.avif',
-                    description:[
-                        "Fast Reliable Internet Access",
-                        "Perfect For Small Teams",
-                        "Basic Online Tasks Only",
-                        "Limited User Capacity Available",
-                        "Entry Level Plan Ideal"
-                    ],
+                    description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
                 },
                 {
                     package_name:'Priority Data 200GB',
@@ -830,13 +764,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'2',
                     imagePath:'/Images/5_mbps.avif',
-                    description:[
-                        "Faster Speeds For Growth",
-                        "Multiple Device Support Available",
-                        "Medium User Capacity Ideal",
-                        "Online Collaboration Made Easy",
-                        "Boost Productivity With Ease"
-                    ],
+                    description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
                 },
                 {
                     package_name:'Priority Data 300GB',
@@ -846,13 +774,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'3',
                     imagePath:'/Images/10mbps.avif',
-                    description:[
-                        "High Performance Internet Access",
-                        "Priority Customer Support Available",
-                        "Large User Capacity Ideal",
-                        "Demanding Apps Run Smoothly",
-                        "Fast And Reliable Network"
-                    ],
+                    description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
                 },
                 {
                     package_name:'Priority Data 500GB',
@@ -862,13 +784,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'4',
                     imagePath:'/Images/10mbps.avif',
-                    description:[
-                        "High Performance Internet Access",
-                        "Priority Customer Support Available",
-                        "Large User Capacity Ideal",
-                        "Demanding Apps Run Smoothly",
-                        "Fast And Reliable Network"
-                    ],
+                    description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
                 },
                 {
                     package_name:'Priority Data 800GB',
@@ -878,13 +794,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'5',
                     imagePath:'/Images/20_mbps.jpg',
-                    description:[
-                        "Lightning Fast Internet Speeds",
-                        "Heavy User Capacity Ideal",
-                        "Fast Online Backup Available",
-                        "Secure And Reliable Network",
-                        "Ultimate Performance Guaranteed Always"
-                    ],
+                    description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
                 },
                 {
                     package_name:'Priority Data 1200GB',
@@ -894,13 +804,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'8',
                     imagePath:'/Images/30_mbps.avif',
-                    description:[
-                        "Ultimate Internet Experience Guaranteed",
-                        "Priority Support Always Available",
-                        "Large User Capacity Ideal",
-                        "Fast And Secure Network",
-                        "Dedicated Account Management"
-                    ],
+                    description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
                 },
             ]
         },
@@ -915,15 +819,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
                     imagePath:'/Images/5mbps.avif',
-                    description:[
-                        "Family connectivity",
-                        "Basic internet use",
-                        "Browsing",
-                        "Unlimited",
-                        "social media",
-                        "e-learning",
-                        
-                    ],
+                    description: [ "Flexible Payment Model", "Short-Term Access Available", "Basic Internet Needs Met", "Pay-Per-Use Convenience" ]
                 },
                 {
                     package_name:'Metered Home Fiber 20',
@@ -933,14 +829,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
                     imagePath:'/Images/12mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Smooth HD streaming",
-                        "Online gaming",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
+                    description: [ "Affordable Metered Option", "Moderate Usage Supported", "Pay-Per-Use Model", "Occasional Use Ideal" ]
                 },
                 {
                     package_name:'Metered Home Fiber 30',
@@ -950,14 +839,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
                     imagePath:'/Images/20mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Multiple devices streaming",
-                        "Online gaming",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
+                    description: [ "Higher Speeds Available", "Short-Term Intensive Use", "Flexible Pricing Model", "Great for Events" ]
                 },
                 {
                     package_name:'Metered Home Fiber 50',
@@ -967,14 +849,7 @@ import IconMeter from '@/components/icons/IconMeter.vue';
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
                     imagePath:'/Images/30mbps.jpg',
-                    description:[
-                        "Family connectivity",
-                        "Heavy Internet user",
-                        "Online gaming",
-                        "Unlimited",
-                        "social media",
-                        "e-learning"
-                    ],
+                    description: [ "High-Speed Metered Package", "Intensive Usage Supported", "Ideal for Gaming Events", "Streaming Activities Allowed" ]
                 },
             ]
         },
@@ -982,11 +857,19 @@ import IconMeter from '@/components/icons/IconMeter.vue';
   })
 function clicked(pack){
     selectedPackage.value  = pack
-    console.log(pack)
     overlay.value = true
 }
 function getPlan(pack){
     overlay.value = false
     router.push({name:'purchase',query:{plan:pack.tag,speed:pack.speed}})
+}
+function selectedPlan(package_plan){
+   window.scrollTo(0, 0);
+   data.value = [0,package_plan]
+   packageSelected.value = true
+   overlay.value = false
+}
+function close(){
+  packageSelected.value = false
 }
   </script>,

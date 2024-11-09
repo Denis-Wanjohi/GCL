@@ -448,39 +448,39 @@ const newPlans = [
                 ],
             },
             {
-                package_name:'Elite Home Fiber 100',
-                bandwidth:'100',
-                fee:'11,999',
-                limit:'4000GB',
-                connection_ratio:'1:4',
-                bandwidth_after_limit:'10',
-                imagePath:'/Images/50mbps.avif',
-                description:[
-                    "Family connectivity",
-                    "Ultimate speed",
-                    "Unlimited",
-                    "Heavy online activity",
-                    "Large Families",
-                    "Heavy online users"
-                ],
-            },
-            {
-                package_name:'Elite Home Fiber 200',
-                bandwidth:'200',
-                fee:'19,999',
-                limit:'5000GB',
-                connection_ratio:'1:4',
-                bandwidth_after_limit:'15',
-                imagePath:'/Images/50mbps.avif',
-                description:[
-                    "Family connectivity",
-                    "Ultimate speed",
-                    "Unlimited",
-                    "Heavy online activity",
-                    "Large Families",
-                    "Heavy online users"
-                ],
-            },
+                    package_name:'Elite Home Fiber 100',
+                    bandwidth:'100',
+                    fee:'11,999',
+                    limit:'4000GB',
+                    connection_ratio:'1:4',
+                    bandwidth_after_limit:'10',
+                    imagePath:'/Images/50mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Ultra-Fast Internet Speeds",
+                        "Unlimited",
+                        "Premium User Experience",
+                        "Smart Home Ready",
+                        "Multiple Users Supported" 
+                    ],
+                },
+                {
+                    package_name:'Elite Home Fiber 200',
+                    bandwidth:'200',
+                    fee:'19,999',
+                    limit:'5000GB',
+                    connection_ratio:'1:4',
+                    bandwidth_after_limit:'15',
+                    imagePath:'/Images/50mbps.avif',
+                    description:[
+                        "Family connectivity",
+                        "Top-Tier Performance Package",
+                        "Ideal for Power Users",
+                        "Extensive Usage Capacity",
+                        "Seamless Connectivity Offered",
+                        "Heavy online users"
+                    ],
+                },
         ]
     },
     {
@@ -495,13 +495,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'1',
                 imagePath:'/Images/2mbps.avif',
-                description:[
-                    "Fast Reliable Internet Access",
-                    "Perfect For Small Teams",
-                    "Basic Online Tasks Only",
-                    "Limited User Capacity Available",
-                    "Entry Level Plan Ideal"
-                ],
+                description: [ "Basic Package Available", "Light Browsing Only", "Cost-Effective Solution Offered", "Minimal Usage Plan" ]
             },
             {
                 package_name:'Home Fiber Std 8',
@@ -511,13 +505,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'2',
                 imagePath:'/Images/5_mbps.avif',
-                description:[
-                    "Faster Speeds For Growth",
-                    "Multiple Device Support Available",
-                    "Medium User Capacity Ideal",
-                    "Online Collaboration Made Easy",
-                    "Boost Productivity With Ease"
-                ],
+                description: [ "Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee" ]
             },
             {
                 package_name:'Home Fiber Std 12',
@@ -527,13 +515,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'3',
                 imagePath:'/Images/10mbps.avif',
-                description:[
-                    "High Performance Internet Access",
-                    "Priority Customer Support Available",
-                    "Large User Capacity Ideal",
-                    "Demanding Apps Run Smoothly",
-                    "Fast And Reliable Network"
-                ],
+                description: [ "Moderate Speed Option", "Suitable for Social Media", "Balanced Usage Experience", "Family-Friendly Package" ]
             },
             {
                 package_name:'Home Fiber Std 20',
@@ -543,13 +525,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'5',
                 imagePath:'/Images/20_mbps.jpg',
-                description:[
-                    "Lightning Fast Internet Speeds",
-                    "Heavy User Capacity Ideal",
-                    "Fast Online Backup Available",
-                    "Secure And Reliable Network",
-                    "Ultimate Performance Guaranteed Always"
-                ],
+                description: [ "Ideal for Families", "Supports HD Video Streaming", "Multiple Devices Connected Easily", "Good Value Option" ]
             },
             {
                 package_name:'Home Fiber Std 30',
@@ -559,13 +535,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'5',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Enhanced Speed Availability", "Handles Simultaneous Use Well", "Reliable Performance Guaranteed", "Great for Busy Households" ]
             },
             {
                 package_name:'Home Fiber Std 50',
@@ -575,13 +545,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'5',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience" ]
             },
             {
                 package_name:'Home Fiber Std 75',
@@ -591,13 +555,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'5',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
             },
             {
                 package_name:'Home Fiber Std 100',
@@ -607,13 +565,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'10',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
             },
             {
                 package_name:'Home Fiber Std 150',
@@ -623,13 +575,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'10',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
             },
             {
                 package_name:'Home Fiber Std 220',
@@ -639,13 +585,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'15',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
             },
             {
                 package_name:'Home Fiber Std 300',
@@ -655,13 +595,7 @@ const newPlans = [
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'15',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
             },
         ]
     },
@@ -677,13 +611,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'1',
                 imagePath:'/Images/2mbps.avif',
-                description:[
-                    "Fast Reliable Internet Access",
-                    "Perfect For Small Teams",
-                    "Basic Online Tasks Only",
-                    "Limited User Capacity Available",
-                    "Entry Level Plan Ideal"
-                ],
+                description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
             },
             {
                 package_name:'Priority Data 200GB',
@@ -693,13 +621,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'2',
                 imagePath:'/Images/5_mbps.avif',
-                description:[
-                    "Faster Speeds For Growth",
-                    "Multiple Device Support Available",
-                    "Medium User Capacity Ideal",
-                    "Online Collaboration Made Easy",
-                    "Boost Productivity With Ease"
-                ],
+                description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
             },
             {
                 package_name:'Priority Data 300GB',
@@ -709,13 +631,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'3',
                 imagePath:'/Images/10mbps.avif',
-                description:[
-                    "High Performance Internet Access",
-                    "Priority Customer Support Available",
-                    "Large User Capacity Ideal",
-                    "Demanding Apps Run Smoothly",
-                    "Fast And Reliable Network"
-                ],
+                description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
             },
             {
                 package_name:'Priority Data 500GB',
@@ -725,13 +641,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'4',
                 imagePath:'/Images/10mbps.avif',
-                description:[
-                    "High Performance Internet Access",
-                    "Priority Customer Support Available",
-                    "Large User Capacity Ideal",
-                    "Demanding Apps Run Smoothly",
-                    "Fast And Reliable Network"
-                ],
+                description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
             },
             {
                 package_name:'Priority Data 800GB',
@@ -741,13 +651,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'5',
                 imagePath:'/Images/20_mbps.jpg',
-                description:[
-                    "Lightning Fast Internet Speeds",
-                    "Heavy User Capacity Ideal",
-                    "Fast Online Backup Available",
-                    "Secure And Reliable Network",
-                    "Ultimate Performance Guaranteed Always"
-                ],
+                description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
             },
             {
                 package_name:'Priority Data 1200GB',
@@ -757,13 +661,7 @@ const newPlans = [
                 connection_ratio:'1:8',
                 bandwidth_after_limit:'8',
                 imagePath:'/Images/30_mbps.avif',
-                description:[
-                    "Ultimate Internet Experience Guaranteed",
-                    "Priority Support Always Available",
-                    "Large User Capacity Ideal",
-                    "Fast And Secure Network",
-                    "Dedicated Account Management"
-                ],
+                description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
             },
         ]
     },
@@ -779,15 +677,7 @@ const newPlans = [
                 connection_ratio:'1:4',
                 bandwidth_after_limit:'',
                 imagePath:'/Images/5mbps.avif',
-                description:[
-                    "Family connectivity",
-                    "Basic internet use",
-                    "Browsing",
-                    "Unlimited",
-                    "social media",
-                    "e-learning",
-                    
-                ],
+                description: [ "Flexible Payment Model", "Short-Term Access Available", "Basic Internet Needs Met", "Pay-Per-Use Convenience" ]
             },
             {
                 package_name:'Metered Home Fiber 20',
@@ -797,14 +687,7 @@ const newPlans = [
                 connection_ratio:'1:4',
                 bandwidth_after_limit:'',
                 imagePath:'/Images/12mbps.jpg',
-                description:[
-                    "Family connectivity",
-                    "Smooth HD streaming",
-                    "Online gaming",
-                    "Unlimited",
-                    "social media",
-                    "e-learning"
-                ],
+                description: [ "Affordable Metered Option", "Moderate Usage Supported", "Pay-Per-Use Model", "Occasional Use Ideal" ]
             },
             {
                 package_name:'Metered Home Fiber 30',
@@ -814,14 +697,7 @@ const newPlans = [
                 connection_ratio:'1:4',
                 bandwidth_after_limit:'',
                 imagePath:'/Images/20mbps.jpg',
-                description:[
-                    "Family connectivity",
-                    "Multiple devices streaming",
-                    "Online gaming",
-                    "Unlimited",
-                    "social media",
-                    "e-learning"
-                ],
+                description: [ "Higher Speeds Available", "Short-Term Intensive Use", "Flexible Pricing Model", "Great for Events" ]
             },
             {
                 package_name:'Metered Home Fiber 50',
@@ -831,14 +707,7 @@ const newPlans = [
                 connection_ratio:'1:4',
                 bandwidth_after_limit:'',
                 imagePath:'/Images/30mbps.jpg',
-                description:[
-                    "Family connectivity",
-                    "Heavy Internet user",
-                    "Online gaming",
-                    "Unlimited",
-                    "social media",
-                    "e-learning"
-                ],
+                description: [ "High-Speed Metered Package", "Intensive Usage Supported", "Ideal for Gaming Events", "Streaming Activities Allowed" ]
             },
         ]
     },
@@ -908,8 +777,6 @@ function none() {
 }
 function selectedPlan(plan,package_plan){
    window.scrollTo(0, 0);
-   console.log(plan)
-   console.log(package_plan)
    data.value = [plan,package_plan]
    packageSelected.value = true
 }
