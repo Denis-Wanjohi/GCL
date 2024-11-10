@@ -9,6 +9,7 @@
               <p span="font-bold top-5 absolute">Back</p>
           </div>
         </div>
+        
         <h2 class="w-full   font-semibold leading-7 text-3xl py-3 text-gray-900">Personal Information</h2>
         <p class="mt-1 text-sm leading-6 text-gray-400">*please fill the form with correct details.</p>
         
@@ -216,7 +217,8 @@ const details = ref({
   phoneNumber:'',
   whatsAppNumber:'',
   plan:props.data[0],
-  package:`${props.data[1].speed} Mbps for ${props.data[1].price}/month`
+  // package:`${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/month` + 'hello'
+  package: props.data[1].limit == '_' ? `${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/hour` : `${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/month`
   
 })
 function internet(){

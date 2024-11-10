@@ -103,7 +103,10 @@
                                   height=""
                               >
                                   <v-card-title class="bg-gradient-to-r from-orange-500 sm:py-3" >{{ package_plan.feature }}</v-card-title>
-                                  <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ package_plan.bandwidth }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.price }}/month </span></span></p>
+                                  <p class="sm:text-[70px] text-[50px]   px-4 bg-gradient-to-r from-orange-500 ">{{ package_plan.bandwidth }}<span  class="text-[30px] sm:text-[40px]">Mbps <span class=" sm:block hidden text-base bg-gradient-to-r from-orange-500">Ksh. {{ package_plan.fee }}
+                                    <span v-if="plan.name === 'Metred Home Packages' ">/hour</span>
+                                    <span v-else>/month</span>
+                                  </span></span></p>
                                   <p class="sm:hidden block pl-2 bg-gradient-to-r py-2  sm:text-xl text-md from-orange-500">Ksh. {{ package_plan.fee }}
                                     <span v-if="plan.name === 'Metred Home Packages' ">/hour</span>
                                     <span v-else>/month</span>
