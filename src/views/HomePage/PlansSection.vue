@@ -582,7 +582,7 @@
                     limit:'3500GB',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'7',
-                    imagePath:'/Images/50mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/happy-friends-football-fans-watching-soccer-tv-celebrating-victory-home-friendship-spor_721440-9407.jpg?ga=GA1.1.813785655.1730982360',
                     description:[
                         "Family connectivity",
                         "Ultimate speed",
@@ -616,7 +616,7 @@
                     limit:'5000GB',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'15',
-                    imagePath:'/Images/50mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/happy-friends-football-fans-watching-soccer-tv-celebrating-victory-home-friendship-spor_721440-9390.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description:[
                         "Family connectivity",
                         "Top-Tier Performance Package",
@@ -688,7 +688,7 @@
                     limit:'1500GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/executives-talking-headset-office_13339-347579.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience" ]
                 },
                 {
@@ -698,7 +698,7 @@
                     limit:'1800GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'5',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/people-looking-computer-screens-while-sitting-around-them-coffee-shop_1139303-2317.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
                 },
                 {
@@ -708,7 +708,7 @@
                     limit:'2100GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'10',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-colleagues-working-together-data-center_274679-22736.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
                 },
                 {
@@ -718,7 +718,7 @@
                     limit:'2400GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'10',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/free-photo/paralyzed-wheelchair-user-working-call-center-helpline-reception-with-physical-impairment-male-operator-living-with-disability-chronic-pain-helping-clients-customer-service-support_482257-46322.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
                 },
                 {
@@ -728,7 +728,7 @@
                     limit:'2600GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'15',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/free-photo/group-multinational-busy-people-working-office_146671-15660.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
                 },
                 {
@@ -738,7 +738,7 @@
                     limit:'3000GB',
                     connection_ratio:'1:6',
                     bandwidth_after_limit:'15',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/room-with-round-table-with-people-sitting-it_1190297-21272.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
                 },
             ]
@@ -753,7 +753,7 @@
                     limit:'100GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'1',
-                    imagePath:'/Images/2mbps.avif',
+                    imagePath:'https://img.freepik.com/free-photo/medium-shot-friends-looking-laptop_23-2149033806.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
                 },
                 {
@@ -763,7 +763,7 @@
                     limit:'200GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'2',
-                    imagePath:'/Images/5_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/side-view-friends-working-restaurant_1048944-12219374.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
                 },
                 {
@@ -773,7 +773,7 @@
                     limit:'300GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'3',
-                    imagePath:'/Images/10mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/diversity-people-talk-international-conference-partnership_53876-53629.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
                 },
                 {
@@ -783,7 +783,7 @@
                     limit:'500GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'4',
-                    imagePath:'/Images/10mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/business-presentation-meeting_236854-36722.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
                 },
                 {
@@ -793,7 +793,7 @@
                     limit:'800GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'5',
-                    imagePath:'/Images/20_mbps.jpg',
+                    imagePath:'https://img.freepik.com/premium-photo/multiethnic-startup-business-team-discussing-new-business-plan-working-laptop-tablet-computer-while-learning-about-drone-technology-future-business-ventures-top-view_530697-17474.jpg?ga=GA1.1.813785655.1730982360',
                     description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
                 },
                 {
@@ -803,7 +803,7 @@
                     limit:'1200GB',
                     connection_ratio:'1:8',
                     bandwidth_after_limit:'8',
-                    imagePath:'/Images/30_mbps.avif',
+                    imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-diversity-business-people-modern-business-project-habiliment_31965-301259.jpg?ga=GA1.1.813785655.1730982360',
                     description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
                 },
             ]
@@ -818,7 +818,7 @@
                     limit:'_',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
-                    imagePath:'/Images/5mbps.avif',
+                    imagePath:'https://img.freepik.com/free-photo/couple-watching-streaming-service-home_23-2148977246.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Flexible Payment Model", "Short-Term Access Available", "Basic Internet Needs Met", "Pay-Per-Use Convenience" ]
                 },
                 {
@@ -828,7 +828,7 @@
                     limit:'_',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
-                    imagePath:'/Images/12mbps.jpg',
+                    imagePath:'https://img.freepik.com/premium-photo/african-family-having-great-time-together_53876-56835.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Affordable Metered Option", "Moderate Usage Supported", "Pay-Per-Use Model", "Occasional Use Ideal" ]
                 },
                 {
@@ -838,7 +838,7 @@
                     limit:'_',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
-                    imagePath:'/Images/20mbps.jpg',
+                    imagePath:'https://img.freepik.com/free-photo/excited-group-people-watching-american-football-sport-match-home_155003-41874.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Higher Speeds Available", "Short-Term Intensive Use", "Flexible Pricing Model", "Great for Events" ]
                 },
                 {
@@ -848,7 +848,7 @@
                     limit:'_',
                     connection_ratio:'1:4',
                     bandwidth_after_limit:'',
-                    imagePath:'/Images/30mbps.jpg',
+                    imagePath:'https://img.freepik.com/free-photo/portrait-african-american-grandmother-mother-children-watching-movie-eating-popcorn-while-sitting-sofa-home-family-lifestyle-concept_58466-12025.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "High-Speed Metered Package", "Intensive Usage Supported", "Ideal for Gaming Events", "Streaming Activities Allowed" ]
                 },
             ]

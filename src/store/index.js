@@ -6,12 +6,10 @@ const store = createStore({
     actions:{
         async contactForm({commit},data){
             const res = await axiosClient.post('/contact',data)
-            console.log(res)
             return res;
         },
         async internet({commit},data){
             const res = await axiosClient.post('/internet',data)
-            console.log(res)
             return res;
         }
     },
