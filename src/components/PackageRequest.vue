@@ -14,9 +14,9 @@
         <p class="mt-1 text-sm leading-6 text-gray-400">*please fill the form with correct details.</p>
         
         <div class="flex flex-wrap mx-auto justify-around pt-4">
-              <p  class="bg-gradient-to-tr from-orange-500 text-white my-1  to-red-600 px-3 py-2 rounded-md">Package : <span class="text-md font-semibold ">{{props.data[1].package_name}}</span></p>
-              <p class="bg-gradient-to-tr from-orange-500 text-white  my-1 to-red-600 px-3 py-2 rounded-md">Bandwidth : <span class="text-md font-semibold">{{props.data[1].bandwidth}} Mbps</span></p>
-              <p class="bg-gradient-to-tr from-orange-500 text-white my-1  to-red-600 px-3 py-2 rounded-md">
+              <p  class="bg-gradient-to-tr from-orange-500 text-white my-1  to-orange-600 px-3 py-2 rounded-md">Package : <span class="text-md font-semibold ">{{props.data[1].package_name}}</span></p>
+              <p class="bg-gradient-to-tr from-orange-500 text-white  my-1 to-orange-600 px-3 py-2 rounded-md">Bandwidth : <span class="text-md font-semibold">{{props.data[1].bandwidth}} Mbps</span></p>
+              <p class="bg-gradient-to-tr from-orange-500 text-white my-1  to-orange-600 px-3 py-2 rounded-md">
                 PRICE : 
                 <span class="text-md font-semibold">
                   Ksh. {{props.data[1].fee}}

@@ -511,10 +511,10 @@ const newPlans = [
                 description: [ "Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee" ]
             },
             {
-                package_name:'Home Fiber Std 12',
-                bandwidth:'12',
-                fee:'2,199',
-                limit:'600GB',
+                package_name:'Home Fiber Std 14',
+                bandwidth:'14',
+                fee:'2,299',
+                limit:'680GB',
                 connection_ratio:'1:6',
                 bandwidth_after_limit:'3',
                 imagePath:'/Images/10mbps.avif',
