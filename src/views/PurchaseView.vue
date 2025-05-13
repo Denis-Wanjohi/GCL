@@ -361,6 +361,72 @@ const plans = [
 ]
 const newPlans = [
     {
+        name:'Priority Data Packages',
+        value:'Priority Data',
+        packages:[
+            {
+                package_name:'Priority Data 100GB',
+                bandwidth:'5',
+                fee:'999',
+                limit:'100GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'1',
+                imagePath:'https://img.freepik.com/free-photo/medium-shot-friends-looking-laptop_23-2149033806.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
+            },
+            {
+                package_name:'Priority Data 200GB',
+                bandwidth:'10',
+                fee:'1,499',
+                limit:'200GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'2',
+                imagePath:'https://img.freepik.com/premium-photo/side-view-friends-working-restaurant_1048944-12219374.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
+            },
+            {
+                package_name:'Priority Data 300GB',
+                bandwidth:'15',
+                fee:'1,750',
+                limit:'300GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'3',
+                imagePath:'https://img.freepik.com/premium-photo/diversity-people-talk-international-conference-partnership_53876-53629.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
+            },
+            {
+                package_name:'Priority Data 500GB',
+                bandwidth:'20',
+                fee:'2,199',
+                limit:'500GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'4',
+                imagePath:'https://img.freepik.com/premium-photo/business-presentation-meeting_236854-36722.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
+            },
+            {
+                package_name:'Priority Data 800GB',
+                bandwidth:'30',
+                fee:'3,199',
+                limit:'800GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'5',
+                imagePath:'https://img.freepik.com/premium-photo/multiethnic-startup-business-team-discussing-new-business-plan-working-laptop-tablet-computer-while-learning-about-drone-technology-future-business-ventures-top-view_530697-17474.jpg?ga=GA1.1.813785655.1730982360',
+                description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
+            },
+            {
+                package_name:'Priority Data 1200GB',
+                bandwidth:'50',
+                fee:'4,199',
+                limit:'1200GB',
+                connection_ratio:'1:8',
+                bandwidth_after_limit:'8',
+                imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-diversity-business-people-modern-business-project-habiliment_31965-301259.jpg?ga=GA1.1.813785655.1730982360',
+                description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
+            },
+        ]
+    },
+    {
         name:'Elite Home Packages',
         value:'Elite Home',
         packages:[
@@ -599,72 +665,6 @@ const newPlans = [
                 bandwidth_after_limit:'15',
                 imagePath:'https://img.freepik.com/premium-photo/room-with-round-table-with-people-sitting-it_1190297-21272.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                 description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
-            },
-        ]
-    },
-    {
-        name:'Priority Data Packages',
-        value:'Priority Data',
-        packages:[
-            {
-                package_name:'Priority Data 100GB',
-                bandwidth:'5',
-                fee:'999',
-                limit:'100GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'1',
-                imagePath:'https://img.freepik.com/free-photo/medium-shot-friends-looking-laptop_23-2149033806.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
-            },
-            {
-                package_name:'Priority Data 200GB',
-                bandwidth:'10',
-                fee:'1,499',
-                limit:'200GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'2',
-                imagePath:'https://img.freepik.com/premium-photo/side-view-friends-working-restaurant_1048944-12219374.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
-            },
-            {
-                package_name:'Priority Data 300GB',
-                bandwidth:'15',
-                fee:'1,750',
-                limit:'300GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'3',
-                imagePath:'https://img.freepik.com/premium-photo/diversity-people-talk-international-conference-partnership_53876-53629.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
-            },
-            {
-                package_name:'Priority Data 500GB',
-                bandwidth:'20',
-                fee:'2,199',
-                limit:'500GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'4',
-                imagePath:'https://img.freepik.com/premium-photo/business-presentation-meeting_236854-36722.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
-            },
-            {
-                package_name:'Priority Data 800GB',
-                bandwidth:'30',
-                fee:'3,199',
-                limit:'800GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'5',
-                imagePath:'https://img.freepik.com/premium-photo/multiethnic-startup-business-team-discussing-new-business-plan-working-laptop-tablet-computer-while-learning-about-drone-technology-future-business-ventures-top-view_530697-17474.jpg?ga=GA1.1.813785655.1730982360',
-                description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
-            },
-            {
-                package_name:'Priority Data 1200GB',
-                bandwidth:'50',
-                fee:'4,199',
-                limit:'1200GB',
-                connection_ratio:'1:8',
-                bandwidth_after_limit:'8',
-                imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-diversity-business-people-modern-business-project-habiliment_31965-301259.jpg?ga=GA1.1.813785655.1730982360',
-                description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
             },
         ]
     },

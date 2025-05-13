@@ -60,6 +60,9 @@
         color="deep-purple-accent-4"
         fixed-tabs="true"
       >
+      <v-tab value="Priority Data Packages" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green ">
+            <v-icon :icon=IconStudentPlanVue></v-icon>
+            Priority Data</v-tab>
         <v-tab  value="Elite Home Packages" base-color="black" hide-slider border="md" rounded="xl" color="white" class="bg-blue" theme="green">
             <v-icon :icon=IconHomeVue></v-icon>
             Elite Home
@@ -67,9 +70,7 @@
         <v-tab value="Standard Home Packages" base-color="black" hide-slider rounded="xl" border="md" color="white"  style="background-color: #f15a22" >
             <v-icon :icon=IconBusinessPlan></v-icon>
             Standard Home</v-tab>
-        <v-tab value="Priority Data Packages" base-color="black"  border="md"  color="white" hide-slider rounded="xl" class="bg-green ">
-            <v-icon :icon=IconStudentPlanVue></v-icon>
-            Priority Data</v-tab>
+        
         <v-tab value="Metred Home Packages" base-color="black"  border="md"  color="white" hide-slider rounded="xl" style="background-color: #3fbec4">
             <v-icon :icon=IconMeter></v-icon>
             Metred Home </v-tab>
@@ -214,11 +215,11 @@
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
-                        <p class="text-7xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
+                        <div class="text-7xl text-nowrap font-bold font-mono flex flex-nowrap items-baseline"><p class="text-sm">Ksh.</p>{{selectedPackage.fee}}<p class="text-sm">
                             <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
-                        </span>
                         </p>
+                    </div>
                     </div>
                     
                 </div>
@@ -232,8 +233,8 @@
                     </div>
                 </div>
                 <div class="my-5" v-if="selectedPackage.limit != '_'">
-                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
-                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">FUP Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after FUP limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
                 </div>
                 <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div>    
@@ -252,23 +253,14 @@
                         </p>
                     </div>
                     <div class="rounded min:w-1/2 bg-gradient-to-r  px-2 from-red-500 to-orange-500 flex align-baseline justify-between">
-                        <p class="text-3xl text-nowrap font-bold font-mono">{{selectedPackage.fee}}<span class="text-sm">
+                        <div class="text-3xl text-nowrap font-bold font-mono flex flex-nowrap items-baseline"> <p class="text-sm">Ksh.</p>{{selectedPackage.fee}}<p class="text-sm">
                             <span v-if="selectedPackage.limit == '_'">/hour</span>
                             <span v-else>/month</span>
-                        </span>
                         </p>
+                    </div>
                     </div>
                     
                 </div>
-                
-                <!-- <div class="w-3/4 my-5 mx-auto">
-                    <div>
-                        <p class="font-semibold text-start">Add-ons</p>
-                        <div class="pl-5 text-start">
-                            <li class="list-none">FREE INSTALLATION</li>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="my-5">
                     <div class="font-bold text-start w-3/4 mx-auto">Descriptions</div>
                     <div class="pl-5 w-3/4 mx-auto" v-for="(description, i ) in selectedPackage.description" :key="i">
@@ -276,8 +268,8 @@
                     </div>
                 </div>
                 <div class="my-5" v-if="selectedPackage.limit != '_'">
-                    <div class="font-bold text-start py-2 w-3/4 mx-auto">Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
-                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
+                    <div class="font-bold text-start py-2 w-3/4 mx-auto">FUP Limit: <span class="font-normal">{{ selectedPackage.limit }}</span></div>
+                    <div class="font-bold text-start  py-2 w-3/4 mx-auto">Bandwidth after FUP limit: <span class="font-normal">{{ selectedPackage.bandwidth_after_limit }}Mbps</span></div>
                 </div>
                 <div @click="selectedPlan(selectedPackage)" class="w-1/2 cursor-pointer py-2 rounded-xl my-2 mx-auto font-mono font-bold  bg-gradient-to-r from-red-500 to-orange-500">GET PACKAGE</div>
             </div> 
@@ -503,6 +495,71 @@
   ]
 
   newPlans.value = [
+        {
+            name:'Priority Data Packages',
+            packages:[
+                {
+                    package_name:'Priority Data 100GB',
+                    bandwidth:'5',
+                    fee:'999',
+                    limit:'100GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'1',
+                    imagePath:'https://img.freepik.com/free-photo/medium-shot-friends-looking-laptop_23-2149033806.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                    description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
+                },
+                {
+                    package_name:'Priority Data 200GB',
+                    bandwidth:'10',
+                    fee:'1,499',
+                    limit:'200GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'2',
+                    imagePath:'https://img.freepik.com/premium-photo/side-view-friends-working-restaurant_1048944-12219374.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                    description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
+                },
+                {
+                    package_name:'Priority Data 300GB',
+                    bandwidth:'15',
+                    fee:'1,750',
+                    limit:'300GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'3',
+                    imagePath:'https://img.freepik.com/premium-photo/diversity-people-talk-international-conference-partnership_53876-53629.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                    description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
+                },
+                {
+                    package_name:'Priority Data 500GB',
+                    bandwidth:'20',
+                    fee:'2,199',
+                    limit:'500GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'4',
+                    imagePath:'https://img.freepik.com/premium-photo/business-presentation-meeting_236854-36722.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
+                    description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
+                },
+                {
+                    package_name:'Priority Data 800GB',
+                    bandwidth:'30',
+                    fee:'3,199',
+                    limit:'800GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'5',
+                    imagePath:'https://img.freepik.com/premium-photo/multiethnic-startup-business-team-discussing-new-business-plan-working-laptop-tablet-computer-while-learning-about-drone-technology-future-business-ventures-top-view_530697-17474.jpg?ga=GA1.1.813785655.1730982360',
+                    description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
+                },
+                {
+                    package_name:'Priority Data 1200GB',
+                    bandwidth:'50',
+                    fee:'4,199',
+                    limit:'1200GB',
+                    connection_ratio:'1:8',
+                    bandwidth_after_limit:'8',
+                    imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-diversity-business-people-modern-business-project-habiliment_31965-301259.jpg?ga=GA1.1.813785655.1730982360',
+                    description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
+                },
+            ]
+        },
         {
             name:'Elite Home Packages',
             packages:[
@@ -740,71 +797,6 @@
                     bandwidth_after_limit:'15',
                     imagePath:'https://img.freepik.com/premium-photo/room-with-round-table-with-people-sitting-it_1190297-21272.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
                     description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
-                },
-            ]
-        },
-        {
-            name:'Priority Data Packages',
-            packages:[
-                {
-                    package_name:'Priority Data 100GB',
-                    bandwidth:'5',
-                    fee:'999',
-                    limit:'100GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'1',
-                    imagePath:'https://img.freepik.com/free-photo/medium-shot-friends-looking-laptop_23-2149033806.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                    description: [ "Entry-Level Data Plan", "Light Usage Recommended", "Affordable Pricing Available", "Basic Browsing Only" ]
-                },
-                {
-                    package_name:'Priority Data 200GB',
-                    bandwidth:'10',
-                    fee:'1,499',
-                    limit:'200GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'2',
-                    imagePath:'https://img.freepik.com/premium-photo/side-view-friends-working-restaurant_1048944-12219374.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                    description: [ "Moderate Data Allowance", "Casual Streaming Supported", "Good Travel Option", "Budget-Friendly Choice" ]
-                },
-                {
-                    package_name:'Priority Data 300GB',
-                    bandwidth:'15',
-                    fee:'1,750',
-                    limit:'300GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'3',
-                    imagePath:'https://img.freepik.com/premium-photo/diversity-people-talk-international-conference-partnership_53876-53629.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                    description: [ "Balanced Family Option", "Regular Usage Supported", "Social Media Friendly", "Moderate Streaming Capacity" ]
-                },
-                {
-                    package_name:'Priority Data 500GB',
-                    bandwidth:'20',
-                    fee:'2,199',
-                    limit:'500GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'4',
-                    imagePath:'https://img.freepik.com/premium-photo/business-presentation-meeting_236854-36722.jpg?ga=GA1.1.813785655.1730982360&semt=ais_hybrid',
-                    description: [ "Reliable Moderate User Plan", "Supports Gaming Activities", "Good Value Package", "Family-Friendly Option" ]
-                },
-                {
-                    package_name:'Priority Data 800GB',
-                    bandwidth:'30',
-                    fee:'3,199',
-                    limit:'800GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'5',
-                    imagePath:'https://img.freepik.com/premium-photo/multiethnic-startup-business-team-discussing-new-business-plan-working-laptop-tablet-computer-while-learning-about-drone-technology-future-business-ventures-top-view_530697-17474.jpg?ga=GA1.1.813785655.1730982360',
-                    description: [ "High Data Cap Option", "Frequent Streaming Supported", "Excellent Download Speeds", "Great Flexibility Offered" ]
-                },
-                {
-                    package_name:'Priority Data 1200GB',
-                    bandwidth:'50',
-                    fee:'4,199',
-                    limit:'1200GB',
-                    connection_ratio:'1:8',
-                    bandwidth_after_limit:'8',
-                    imagePath:'https://img.freepik.com/premium-photo/multi-ethnic-diversity-business-people-modern-business-project-habiliment_31965-301259.jpg?ga=GA1.1.813785655.1730982360',
-                    description: [ "Ample Data Allowance", "Perfect for Power Users", "Extensive Online Activities", "High-Speed Access Provided" ]
                 },
             ]
         },
