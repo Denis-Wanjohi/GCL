@@ -149,11 +149,11 @@
             </div>
             <!-- small screen -->
             <div class="sm:hidden block  absolute w-screen top-[60%]">
-                <div class="flex justify-between">
+                <div class="flex justify-between items-center aling-center">    
                     <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{
                         plans[start].name }}</div>
                     <p @click="router.push({ name: 'purchase', query: { p: plans[start].slug} })"
-                        class=" cursor-pointer bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
+                        class=" cursor-pointer bg-gradient-to-l  h-full text-nowrap rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
                         More ...</p>
 
                 </div>
@@ -847,7 +847,7 @@ onMounted(() => {
             start.value = -1
         }
         start.value++
-    }, 9000);
+    }, 4000);
 })
 
 </script>
