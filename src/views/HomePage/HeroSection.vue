@@ -136,7 +136,7 @@
                                 <span class="lg:text-2xl sm:text-[70%] text-end">Mbps</span>
                             </div>
                             <div
-                                class=" h-1/4 text-center font-mono   flex w-full align-center lg:text-2xl text-xl  justify-center text-nowrap">
+                                class=" h-1/4 text-center font-mono  flex w-full align-center lg:text-xl text-lg  justify-center text-nowrap">
                                 Ksh.{{ pack.fee }}
                                 <span v-if="start === 3 || start === 7">/hour</span>
                                 <span v-else>/month</span>
@@ -158,9 +158,9 @@
 
                 </div>
 
-                <div class="flex flex-wrap w-full justify-evenly ">
+                <div class="grid grid-cols-3 gap-y-1 w-full justify-evenly ">
                     <div @click="clicked(pack)"
-                        class=" sm:w-[180px] m-1  text-white  w-fit px-1 sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer "
+                        class=" sm:w-[180px]   text-white  w-fit  sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer "
                         v-for="(pack, i) in newPackages[plans[start].tag].packages" :key="i">
                         <div
                             class="sm:text-[100px] text-[20px] h-[65%]  text-center font-bold flex w-full align-center justify-center">
@@ -168,7 +168,7 @@
                             <span class="sm:text-2xl text-sm text-end">Mbps</span>
                         </div>
                         <div
-                            class=" h-1/4  text-stone-900 text-center font-mono   flex  align-center text-md  justify-center">
+                            class=" h-1/4  text-stone-900 text-center font-mono   flex  align-center text-xs  justify-center">
                             Ksh.{{ pack.fee }}
                             <span v-if="start === 3 || start === 7" class="text-xs">/hour</span>
                             <span v-else class="text-xs">/month</span>
