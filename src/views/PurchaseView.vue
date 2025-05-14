@@ -1,5 +1,4 @@
 <template>
-    
     <!-- FORM TO FILL WITH DATA -->
     <Form  :data = data v-if="packageSelected" @close=close></Form>
   
@@ -75,7 +74,7 @@
                           <v-list-item
                               v-for="(description, i) in package_plan.description"
                               :key="i"
-                              :value="item"
+                              
                               color="primary"
                               class="text-start"
                               style="background-color: beige;"
@@ -121,7 +120,7 @@
                                       <v-list-item
                                           v-for="(description, i) in package_plan.description"
                                           :key="i"
-                                          :value="item"
+                                        
                                           color="primary"
                                           style="background-color: beige;"
                                       >
@@ -155,6 +154,7 @@ import router from '@/router';
 import {useRoute} from 'vue-router';
 import   {onMounted, ref,watch} from 'vue';
 import Form from '../components/PackageRequest.vue'
+import { use } from 'chai';
 const plans = [
       {
           plan:'HOME PACKAGES',
@@ -731,13 +731,20 @@ watch(
   }
 )
 onMounted(()=>{
-
   if(route.fullPath == '/purchase'){
     // console.log('no params')
-  }else if(route.fullPath == '/purchase/home' ||route.fullPath == '/purchase/business' ||route.fullPath == '/purchase/student' ){
-    routePlan()
+  }else if(route.fullPath == '/purchase?p=priority-data' ||route.fullPath == '/purchase?p=elite-home' ||route.fullPath == '/purchase?p=metred-home' || route.fullPath == '/purchas?p=standard-home' ){
+    panel.value = [] 
+    if(useRoute().query.p == 'priority-data'){
+      panel.value[0] = 'Priority Data'
+    }else if(useRoute().query.p == 'elite-home'){
+      panel.value[0] = 'Elite Home'  
+    }else if(useRoute().query.p == 'metred-home'){
+      panel.value[0] = 'Metred Home'
+    }else if(useRoute().query.p == 'standard-home'){
+      panel.value[0] = 'Standard Home'
+    }
     router.replace('/purchase')
-    console.log()
   }else{
     plans.forEach((plan)=>{
       if(plan.plan.toLowerCase() == route.query.plan.toLowerCase()){
@@ -754,17 +761,21 @@ onMounted(()=>{
 })
 
 function routePlan(){
-  if(currentPath.value == '/purchase/home'){
+  if(currentPath.value == '/purchase?p=priority-data'){
     panel.value = [],
-    panel.value[0] = 'home'
+    panel.value[0] = 'Priority Data'
     router.replace('/purchase')
-  }else if(currentPath.value == '/purchase/student'){
+  }else if(currentPath.value == '/purchase?p=elite-home'){
     panel.value = [],
-    panel.value[0] = 'student'
+    panel.value[0] = 'Elite Home'
     router.replace('/purchase')
-  }else if(currentPath.value == '/purchase/business'){
+  }else if(currentPath.value == '/purchase?p=standard-home'){
     panel.value = [],
-    panel.value[0] = 'business'
+    panel.value[0] = 'Standard Home'
+    router.replace('/purchase')
+  }else if(currentPath.value == '/purchase?p=metred-home'){
+    panel.value = [],
+    panel.value[0] = 'Metred Home'
     router.replace('/purchase')
   }
 }
@@ -773,7 +784,7 @@ function planClick(){
   window.scrollTo(0,window.innerHeight * 0.2)
 }
 function all() {
-  panel.value = ['Elite Home', 'Standard Home', 'Priority Data','Metred Home']
+  panel.value = ['Priority Data','Elite Home', 'Standard Home','Metred Home']
 }
 function none() {
   panel.value = []

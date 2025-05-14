@@ -127,7 +127,7 @@
                         <v-list-item
                             v-for="(description, i) in packages.description"
                             :key="i"
-                            :value="item"
+                            
                             color="primary"
                             style="background-color: beige;"
                         >
@@ -178,7 +178,7 @@
                                 <v-list-item
                                     v-for="(description, i) in packages.description"
                                     :key="i"
-                                    :value="item"
+                                   
                                     color="primary"
                                     style="background-color: beige;"
                                 >

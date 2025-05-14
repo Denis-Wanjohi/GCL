@@ -233,7 +233,6 @@ function internet(){
   }
   store.dispatch('internet',details.value)
     .then((response)=>{
-      console.log(response.data.message)
       submitting.value = false;
       emailSent.value = true
       setTimeout(()=>{

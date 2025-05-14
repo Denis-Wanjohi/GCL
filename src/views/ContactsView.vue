@@ -432,7 +432,6 @@ function userDetails(){
 
     store.dispatch('contactForm',data)
         .then((response)=>{
-            console.log(response)
             submittedForm.value = false
             submitting.value =false
             details.value.firstname = ''
@@ -469,19 +468,5 @@ function userDetails(){
 
 }
 
-// import axios from "axios";
 
-// function test(){
-//     axios.post('backend/send_mail.php', {
-//     name: 'John Doe',
-//     email: 'johndoe@example.com',
-//     message: 'Hello, this is a test email!'
-// })
-// .then(response => {
-//     console.log(response.data);
-// })
-// .catch(error => {
-//     console.error(error);
-// });
-// }
 </script>

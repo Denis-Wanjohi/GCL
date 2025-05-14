@@ -71,7 +71,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
-  // console.log(router.getRoutes())
   let arr_routes = []
   router.getRoutes().forEach((element)=>{
     arr_routes.push(element.path)

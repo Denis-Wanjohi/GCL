@@ -44,7 +44,7 @@ const data = [
         ]
     },
     {
-        title:"fiber Specific",
+        title:"Fiber Specific",
         questions:[
             "What is the difference between fiber and wireless internet?",
             "How do I check if fiber is available in my area?"
