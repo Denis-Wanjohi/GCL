@@ -217,7 +217,6 @@ const details = ref({
   phoneNumber:'',
   whatsAppNumber:'',
   plan:props.data[0],
-  // package:`${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/month` + 'hello'
   package: props.data[1].limit == '_' ? `${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/hour` : `${props.data[1].bandwidth} Mbps for ${props.data[1].fee}/month`
   
 })

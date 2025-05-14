@@ -68,7 +68,6 @@ function scrollToTop() {
 }
 function supportReq() {
   router.push('/support_form')
-  // window.scrollTo(0,window.innerHeight * 0.1)
   if (window.innerWidth <= 426) {
     window.scrollTo(0, window.innerHeight * 1.85)
   } else {

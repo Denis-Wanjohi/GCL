@@ -180,7 +180,6 @@ function searchLocation() {
       location(coord.lng, coord.lat, coveredAreas[index]);
     }
   } else {
-    // message.value = `Sorry, we do not cover ${searchQuery.value}.<h1>one</h1>`;
     message.value = 'FAIL';
   }
 }

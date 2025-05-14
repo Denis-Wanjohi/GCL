@@ -21,10 +21,6 @@ const data = [
         question:"How do I troubleshoot my fiber connection?",
         answer:"Check the fiber optic cable for damage, ensure it's securely connected to the router. If the issue persists, contact our support team",
     },
-    // {
-    //     question:"Why can't I access certain websites or online services? ",
-    //     answer:"Check your firewall settings, ensure they're not blocking the website, and try accessing the website from a different device. If the issue persists, contact our support team.",
-    // },
     {
         question:"Why is my Wi-Fi network not showing up? ",
         answer:"Check your router's power cord, ensure it's securely plugged in. If the issue persists, contact our support team to investigate further.",

@@ -118,8 +118,8 @@
                 <div class="absolute lg:bottom-15 bottom-20 left-0 ">
                     <div class="flex justify-end pr-10">
                         <p @click="router.push({ name: 'purchase', query: { p: plans[start].slug} })"
-                            class=" cursor-pointer bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
-                           More ...</p>
+                            class=" cursor-pointer bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 px-3 py-2  animate__animated animate__flash animate__slower animate__infinite">
+                           See more packages...</p>
                     </div>
                     <div class="flex flex-wrap w-screen justify-evenly">
                         <div @click="clicked(pack)"
@@ -137,7 +137,7 @@
                             </div>
                             <div
                                 class=" h-1/4 text-center font-mono   flex w-full align-center lg:text-2xl text-xl  justify-center text-nowrap">
-                                {{ pack.fee }}
+                                Ksh.{{ pack.fee }}
                                 <span v-if="start === 3 || start === 7">/hour</span>
                                 <span v-else>/month</span>
 
@@ -153,8 +153,8 @@
                     <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{
                         plans[start].name }}</div>
                     <p @click="router.push({ name: 'purchase', query: { p: plans[start].slug} })"
-                        class=" cursor-pointer bg-gradient-to-l  h-full text-nowrap rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
-                        More ...</p>
+                        class=" cursor-pointer bg-gradient-to-l text-xs h-full text-nowrap rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
+                        See more packages ...</p>
 
                 </div>
 
@@ -169,7 +169,7 @@
                         </div>
                         <div
                             class=" h-1/4  text-stone-900 text-center font-mono   flex  align-center text-md  justify-center">
-                            {{ pack.fee }}
+                            Ksh.{{ pack.fee }}
                             <span v-if="start === 3 || start === 7" class="text-xs">/hour</span>
                             <span v-else class="text-xs">/month</span>
                         </div>

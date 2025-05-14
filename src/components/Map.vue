@@ -82,7 +82,7 @@ onMounted(() => {
         { name: "Kanthiga", lng: 37.655503079763875, lat: 0.07294816799402155, color: 'green' },
         { name: "Gakoromone", lng: 37.66561092555042, lat: 0.048460031407292145, color: 'green' },
         { name: "Kirua", lng: 37.67162875880659, lat: 0.1101863245048477, color: 'green' },
-        // Add more markers here if needed
+        
       ]
       };
 

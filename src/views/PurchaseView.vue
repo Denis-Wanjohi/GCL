@@ -5,8 +5,7 @@
     <!--PLANS AND PACKAGES  -->
       <div v-else class="mx-auto">
           <div>
-            <p class="text-center font-bold text-5xl py-5 text-cyan ">QUALITY AT A CHEAPER PRICE</p>
-            <p class="text-grey text-center">*click on an option to see more</p>
+            <p class="text-center font-bold text-5xl py-5 text-cyan ">QUALITY AT A MORE AFFORDABLE PRICE</p>
           </div>
           <div class=" pb-5 sm:w-11/12 mx-auto">
             <div class="text-center d-flex pb-4">
@@ -732,7 +731,6 @@ watch(
 )
 onMounted(()=>{
   if(route.fullPath == '/purchase'){
-    // console.log('no params')
   }else if(route.fullPath == '/purchase?p=priority-data' ||route.fullPath == '/purchase?p=elite-home' ||route.fullPath == '/purchase?p=metred-home' || route.fullPath == '/purchas?p=standard-home' ){
     panel.value = [] 
     if(useRoute().query.p == 'priority-data'){
