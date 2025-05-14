@@ -118,7 +118,7 @@
                 <div class="absolute lg:bottom-15 bottom-20 left-0 ">
                     <div class="flex justify-end pr-10">
                         <p @click="router.push({ name: 'purchase', query: { p: plans[start].slug} })"
-                            class=" cursor-pointer bg-gradient-to-l  rounded  from-[#f15a22] to-orange-600 px-3 py-2  animate__animated animate__flash animate__slower animate__infinite">
+                            class=" cursor-pointer bg-gradient-to-l font-bold   rounded  from-[#f15a22] to-orange-600 px-3 py-2  animate__animated animate__flash animate__slower animate__infinite">
                            See more packages...</p>
                     </div>
                     <div class="flex flex-wrap w-screen justify-evenly">
@@ -153,12 +153,12 @@
                     <div class="text-md p-2 font-extrabold text-white bg-gradient-to-r from-[#f15a22]">{{
                         plans[start].name }}</div>
                     <p @click="router.push({ name: 'purchase', query: { p: plans[start].slug} })"
-                        class=" cursor-pointer bg-gradient-to-l text-xs h-full text-nowrap rounded  from-[#f15a22] to-orange-600 px-3 py-2 font-bold animate__animated animate__flash animate__slower animate__infinite">
+                        class=" cursor-pointer bg-gradient-to-l text-xs h-full text-nowrap rounded  from-[#f15a22] to-orange-600 px-3 py-2  animate__animated animate__flash animate__slower animate__infinite">
                         See more packages ...</p>
 
                 </div>
 
-                <div class="grid grid-cols-3 gap-y-1 w-full justify-evenly ">
+                <div class="grid grid-cols-3 gap-y-1 pl-1 w-full justify-evenly ">
                     <div @click="clicked(pack)"
                         class=" sm:w-[180px]   text-white  w-fit  sm:h-[180px] h-fit  bg-gradient-to-tr rounded from-orange-600  to-[#f15a22]   cursor-pointer "
                         v-for="(pack, i) in newPackages[plans[start].tag].packages" :key="i">
