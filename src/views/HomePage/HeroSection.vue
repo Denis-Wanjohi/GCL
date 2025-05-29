@@ -205,19 +205,18 @@ const plans = ref(
             tag: 0,
         },
         {
-            name: 'ELITE HOME PACKAGES',
-            slug: 'elite-home',
-            description: 'Dont miss a moment',
-            imagePath: "/Images/gigabit-family.jpg",
+            name: 'STANDARD HOME PACKAGES',
+            slug: 'standard-home',
+            description: 'Keeping you up with no ease ',
+            imagePath: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             direction: "horizontal",
             tag: 1,
         },
         {
-            name: 'STANDARD HOME PACKAGES',
-            slug: 'standard-home',
-            description: 'Keeping you up with no ease ',
-
-            imagePath: "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            name: 'ELITE HOME PACKAGES',
+            slug: 'elite-home',
+            description: 'Dont miss a moment',
+            imagePath: "/Images/gigabit-family.jpg",
             direction: "horizontal",
             tag: 2,
         },
@@ -238,18 +237,18 @@ const plans = ref(
             tag: 0,
         },
         {
-            name: 'ELITE HOME PACKAGES',
-            slug: 'elite-home',
-            description: 'Happy moments tailored for you',
-            imagePath: "https://img.freepik.com/premium-photo/group-people-are-watching-soccer-game-tv_1262781-39800.jpg?w=900",
-            direction: "horizontal",
-            tag: 1,
-        },
-        {
             name: 'STANDARD HOME PACKAGES',
             slug: 'standard-home',
             description: 'Focus on the profit we take care of the connectivity',
             imagePath: "https://images.unsplash.com/photo-1573164574511-73c773193279?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            direction: "horizontal",
+            tag: 1,
+        },
+        {
+            name: 'ELITE HOME PACKAGES',
+            slug: 'elite-home',
+            description: 'Happy moments tailored for you',
+            imagePath: "https://img.freepik.com/premium-photo/group-people-are-watching-soccer-game-tv_1262781-39800.jpg?w=900",
             direction: "horizontal",
             tag: 2,
         },
@@ -551,6 +550,122 @@ onMounted(() => {
             ]
         },
         {
+            name: 'Standard Home Packages',
+            slug: 'standard-home',
+            packages: [
+                {
+                    package_name: 'Home Fiber Std 5',
+                    bandwidth: '5',
+                    fee: '1,349',
+                    limit: '300GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '1',
+                    imagePath: '/Images/2mbps.avif',
+                    description: ["Basic Package Available", "Light Browsing Only", "Cost-Effective Solution Offered", "Minimal Usage Plan"]
+                },
+                {
+                    package_name: 'Home Fiber Std 8',
+                    bandwidth: '8',
+                    fee: '1,699',
+                    limit: '400GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '2',
+                    imagePath: '/Images/5_mbps.avif',
+                    description: ["Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee"]
+                },
+                {
+                    package_name: 'Home Fiber Std 14',
+                    bandwidth: '14',
+                    fee: '2,299',
+                    limit: '680GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '3',
+                    imagePath: '/Images/10mbps.avif',
+                    description: ["Moderate Speed Option", "Suitable for Social Media", "Balanced Usage Experience", "Family-Friendly Package"]
+                },
+                {
+                    package_name: 'Home Fiber Std 20',
+                    bandwidth: '20',
+                    fee: '2,999',
+                    limit: '900GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '5',
+                    imagePath: '/Images/20_mbps.jpg',
+                    description: ["Ideal for Families", "Supports HD Video Streaming", "Multiple Devices Connected Easily", "Good Value Option"]
+                },
+                {
+                    package_name: 'Home Fiber Std 30',
+                    bandwidth: '30',
+                    fee: '3,899',
+                    limit: '1200GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '5',
+                    imagePath: '/Images/30_mbps.avif',
+                    description: ["Enhanced Speed Availability", "Handles Simultaneous Use Well", "Reliable Performance Guaranteed", "Great for Busy Households"]
+                },
+                {
+                    package_name: 'Home Fiber Std 50',
+                    bandwidth: '50',
+                    fee: '4,899',
+                    limit: '1500GB',
+                    connection_ratio: '1:6',
+                    bandwidth_after_limit: '5',
+                    imagePath: '/Images/30_mbps.avif',
+                    description: ["Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience"]
+                },
+                // {
+                //     package_name:'Home Fiber Std 75',
+                //     bandwidth:'75',
+                //     fee:'5,899',
+                //     limit:'1800GB',
+                //     connection_ratio:'1:6',
+                //     bandwidth_after_limit:'5',
+                //     imagePath:'/Images/30_mbps.avif',
+                //     description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
+                // },
+                // {
+                //     package_name:'Home Fiber Std 100',
+                //     bandwidth:'100',
+                //     fee:'6,649',
+                //     limit:'2100GB',
+                //     connection_ratio:'1:6',
+                //     bandwidth_after_limit:'10',
+                //     imagePath:'/Images/30_mbps.avif',
+                //     description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
+                // },
+                // {
+                //     package_name:'Home Fiber Std 150',
+                //     bandwidth:'150',
+                //     fee:'7,799',
+                //     limit:'2400GB',
+                //     connection_ratio:'1:6',
+                //     bandwidth_after_limit:'10',
+                //     imagePath:'/Images/30_mbps.avif',
+                //     description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
+                // },
+                // {
+                //     package_name:'Home Fiber Std 220',
+                //     bandwidth:'220',
+                //     fee:'8,999',
+                //     limit:'2600GB',
+                //     connection_ratio:'1:6',
+                //     bandwidth_after_limit:'15',
+                //     imagePath:'/Images/30_mbps.avif',
+                //     description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
+                // },
+                // {
+                //     package_name:'Home Fiber Std 300',
+                //     bandwidth:'300',
+                //     fee:'11,999',
+                //     limit:'3000GB',
+                //     connection_ratio:'1:6',
+                //     bandwidth_after_limit:'15',
+                //     imagePath:'/Images/30_mbps.avif',
+                //     description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
+                // },
+            ]
+        },
+        {
             name: 'Elite Home Packages',
             slug: 'elite-home',
             packages: [
@@ -673,122 +788,6 @@ onMounted(() => {
                 //         "Seamless Connectivity Offered",
                 //         "Heavy online users"
                 //     ],
-                // },
-            ]
-        },
-        {
-            name: 'Standard Home Packages',
-            slug: 'standard-home',
-            packages: [
-                {
-                    package_name: 'Home Fiber Std 5',
-                    bandwidth: '5',
-                    fee: '1,349',
-                    limit: '300GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '1',
-                    imagePath: '/Images/2mbps.avif',
-                    description: ["Basic Package Available", "Light Browsing Only", "Cost-Effective Solution Offered", "Minimal Usage Plan"]
-                },
-                {
-                    package_name: 'Home Fiber Std 8',
-                    bandwidth: '8',
-                    fee: '1,699',
-                    limit: '400GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '2',
-                    imagePath: '/Images/5_mbps.avif',
-                    description: ["Good for Small Households", "Casual Streaming Supported", "Reliable Internet Connection Available", "Affordable Monthly Fee"]
-                },
-                {
-                    package_name: 'Home Fiber Std 14',
-                    bandwidth: '14',
-                    fee: '2,299',
-                    limit: '680GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '3',
-                    imagePath: '/Images/10mbps.avif',
-                    description: ["Moderate Speed Option", "Suitable for Social Media", "Balanced Usage Experience", "Family-Friendly Package"]
-                },
-                {
-                    package_name: 'Home Fiber Std 20',
-                    bandwidth: '20',
-                    fee: '2,999',
-                    limit: '900GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '5',
-                    imagePath: '/Images/20_mbps.jpg',
-                    description: ["Ideal for Families", "Supports HD Video Streaming", "Multiple Devices Connected Easily", "Good Value Option"]
-                },
-                {
-                    package_name: 'Home Fiber Std 30',
-                    bandwidth: '30',
-                    fee: '3,899',
-                    limit: '1200GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '5',
-                    imagePath: '/Images/30_mbps.avif',
-                    description: ["Enhanced Speed Availability", "Handles Simultaneous Use Well", "Reliable Performance Guaranteed", "Great for Busy Households"]
-                },
-                {
-                    package_name: 'Home Fiber Std 50',
-                    bandwidth: '50',
-                    fee: '4,899',
-                    limit: '1500GB',
-                    connection_ratio: '1:6',
-                    bandwidth_after_limit: '5',
-                    imagePath: '/Images/30_mbps.avif',
-                    description: ["Great for Heavy Users", "Video Conferencing Support Available", "Fast Download Speeds Offered", "Efficient Browsing Experience"]
-                },
-                // {
-                //     package_name:'Home Fiber Std 75',
-                //     bandwidth:'75',
-                //     fee:'5,899',
-                //     limit:'1800GB',
-                //     connection_ratio:'1:6',
-                //     bandwidth_after_limit:'5',
-                //     imagePath:'/Images/30_mbps.avif',
-                //     description: [ "High-Speed Internet Access", "Supports Smart Devices Well", "Excellent for Streaming Activities", "Gaming Friendly Package" ]
-                // },
-                // {
-                //     package_name:'Home Fiber Std 100',
-                //     bandwidth:'100',
-                //     fee:'6,649',
-                //     limit:'2100GB',
-                //     connection_ratio:'1:6',
-                //     bandwidth_after_limit:'10',
-                //     imagePath:'/Images/30_mbps.avif',
-                //     description: [ "Premium Speed Package Offered", "Ideal for Large Families", "Multiple High-Demand Activities Supported", "Reliable Internet Connection" ]
-                // },
-                // {
-                //     package_name:'Home Fiber Std 150',
-                //     bandwidth:'150',
-                //     fee:'7,799',
-                //     limit:'2400GB',
-                //     connection_ratio:'1:6',
-                //     bandwidth_after_limit:'10',
-                //     imagePath:'/Images/30_mbps.avif',
-                //     description: [ "Exceptional Performance Guaranteed", "Seamless Connectivity Available", "Perfect for Power Users", "Multiple Devices Supported"]
-                // },
-                // {
-                //     package_name:'Home Fiber Std 220',
-                //     bandwidth:'220',
-                //     fee:'8,999',
-                //     limit:'2600GB',
-                //     connection_ratio:'1:6',
-                //     bandwidth_after_limit:'15',
-                //     imagePath:'/Images/30_mbps.avif',
-                //     description: [ "Ultra-Fast Internet Speeds", "Perfect for Tech-Savvy Homes", "Extensive Usage Capacity", "Ideal for Heavy Use"]
-                // },
-                // {
-                //     package_name:'Home Fiber Std 300',
-                //     bandwidth:'300',
-                //     fee:'11,999',
-                //     limit:'3000GB',
-                //     connection_ratio:'1:6',
-                //     bandwidth_after_limit:'15',
-                //     imagePath:'/Images/30_mbps.avif',
-                //     description: [ "Top-Tier Package Available", "Unmatched Reliability Offered", "Ideal for Businesses", "Heavy Internet Users Supported"]
                 // },
             ]
         },
