@@ -62,7 +62,7 @@
                                                         description }}</v-list-item-title>
                                                 </v-list-item>
                                             </v-list>
-                                            <div @click=selectedPlan(plan.name, package_plan)
+                                            <div @click="selectedPlan(plan.name, package_plan)"
                                                 class="px-4 py-1 rounded-md text-center font-mono text-md mx-auto w-fit my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">
                                                 SUBSCRIBE</div>
                                         </v-card>
@@ -112,7 +112,7 @@
                                                         </v-list-item-title>
                                                     </v-list-item>
                                                 </v-list>
-                                                <div @click=selectedPlan(plan.name, package_plan)
+                                                <div @click="selectedPlan(plan.name, package_plan)"
                                                     class="px-4 py-2 rounded-md text-center mx-auto w-1/2 my-2 bg-gradient-to-t from-blue-500 via-red to-blue-600 animate_animated animate-pulse cursor-pointer">
                                                     SUBSCRIBE</div>
                                             </v-card>
