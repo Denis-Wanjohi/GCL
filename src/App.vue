@@ -9,6 +9,7 @@ import IconHomePlan from "./components/icons/IconHomePlan.vue"
 import IconStudentPlan from "./components/icons/IconStudentPlan.vue"
 import IconBusinessPlan from "./components/icons/IconBusinessPlan.vue"
 import router from '@/router/index.js'
+import IconMeter from './components/icons/IconMeter.vue'
 let year = new Date().getFullYear()
 const talkToUs = ref(false)
 const footer = [
@@ -46,19 +47,25 @@ const footer = [
     title: "Plans",
     items: [
       {
-        value: "Home Packages",
-        link: "/purchase/home",
+        value: "Priority Data",
+        link: "/purchase?p=priority-data",
+        icon: IconStudentPlan
+      },
+      {
+        value: "Elite Home",
+        link: "/purchase?p=elite-home",
         icon: IconHomePlan
       },
       {
-        value: "Business Packages",
-        link: "/purchase/business",
+        value: "Standard Home",
+        link: "/purchase?p=standard-home",
         icon: IconBusinessPlan
+        
       },
       {
-        value: "Student Packages",
-        link: "/purchase/student",
-        icon: IconStudentPlan
+        value: "Metred Home",
+        link: "/purchase?p=metred-home",
+        icon: IconMeter
       },
     ]
   }
@@ -73,7 +80,7 @@ function supportReq() {
   } else {
     window.scrollTo(0, window.innerHeight * 0.6)
   }
-  
+
 }
 function one(item) {
   scrollToTop()
@@ -89,9 +96,9 @@ function cta() {
     <header class="w-screen bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-900">
       <div class="flex  w-full justify-between">
         <div class="sm:w-[30%]   w-3/4 flex justify-center  ">
-            <router-link to="/">
-              <img src="/Images/GCL_logo.png" class=" my-auto h-[80px] w-full bg-fill" alt="LOGO PNG">
-            </router-link>
+          <router-link to="/">
+            <img src="/Images/GCL_logo.png" class=" my-auto h-[80px] w-full bg-fill" alt="LOGO PNG">
+          </router-link>
         </div>
         <!-- LARGE  SCREEN -->
         <div class=" w-[70%] my-auto lg:block hidden text-white ">
@@ -250,7 +257,7 @@ function cta() {
                       <v-icon class="" :icon="item.icon"></v-icon>
                     </template>
                     <v-list-item-title><span class="font-bold text-start text-wrap sm:text-sm md:text-lg ">{{ item.value
-                        }}</span></v-list-item-title>
+                    }}</span></v-list-item-title>
                   </v-list-item>
 
                 </v-list>
