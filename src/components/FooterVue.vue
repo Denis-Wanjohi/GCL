@@ -38,18 +38,23 @@ const footer = [
         title:"Plans",
         items:[
           {
-            value:"Home Plan",
-            link:"/purchase",
+            value:"Priority Data",
+            link:"/purchase?p=priority-data",
             icon:IconHomePlan
           },
           {
-            value:"Business Plan",
-            link:"/purchase",
+            value:"Elite Home",
+            link:"/purchase?p=elite-home",
             icon:IconBusinessPlan
           },
           {
-            value:"Student Plan",
-            link:"/purchase",
+            value:"Standard Home",
+            link:"/purchase?p=standard-home",
+            icon:IconStudentPlan
+          },
+          {
+            value:"Metred Home",
+            link:"/purchase?p=metred-home",
             icon:IconStudentPlan
           },
         ]
